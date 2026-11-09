@@ -1,0 +1,189 @@
+{
+  "prs": 100,
+  "repositories": 100,
+  "split_prs": {
+    "evaluation": 20,
+    "development": 80
+  },
+  "split_repositories": {
+    "evaluation": 20,
+    "development": 80
+  },
+  "repository_overlap_between_splits": 0,
+  "pilot_prs_included": 4,
+  "agent": {
+    "OpenAI_Codex": 57,
+    "Copilot": 22,
+    "Devin": 11,
+    "Claude_Code": 6,
+    "Cursor": 4
+  },
+  "agent_by_split": {
+    "evaluation": {
+      "OpenAI_Codex": 14,
+      "Copilot": 5,
+      "Devin": 1
+    },
+    "development": {
+      "Copilot": 17,
+      "Devin": 10,
+      "OpenAI_Codex": 43,
+      "Claude_Code": 6,
+      "Cursor": 4
+    }
+  },
+  "pr_state": {
+    "merged": 48,
+    "closed": 37,
+    "open": 15
+  },
+  "has_linked_issue": 27,
+  "has_agent_testing_section": 65,
+  "agent_reported_test_failure": 21,
+  "touches_test_files": 48,
+  "repository_stars": {
+    "n": 100,
+    "min": 102,
+    "q1": 223.25,
+    "median": 638.5,
+    "q3": 3020.0,
+    "max": 203424,
+    "mean": 5989.52
+  },
+  "requirement_words": {
+    "n": 100,
+    "min": 10,
+    "q1": 22.25,
+    "median": 59.0,
+    "q3": 259.75,
+    "max": 709,
+    "mean": 145.82
+  },
+  "changed_lines": {
+    "n": 100,
+    "min": 2,
+    "q1": 20.75,
+    "median": 64.0,
+    "q3": 239.5,
+    "max": 969,
+    "mean": 178.83
+  },
+  "additions": {
+    "n": 100,
+    "min": 1,
+    "q1": 15.25,
+    "median": 55.0,
+    "q3": 179.75,
+    "max": 967,
+    "mean": 151.89
+  },
+  "deletions": {
+    "n": 100,
+    "min": 0,
+    "q1": 1.0,
+    "median": 7.5,
+    "q3": 22.0,
+    "max": 831,
+    "mean": 26.94
+  },
+  "changed_files": {
+    "n": 100,
+    "min": 1,
+    "q1": 2.0,
+    "median": 3.0,
+    "q3": 6.0,
+    "max": 27,
+    "mean": 4.49
+  },
+  "changed_python_files": {
+    "n": 100,
+    "min": 1,
+    "q1": 1.0,
+    "median": 2.0,
+    "q3": 4.0,
+    "max": 18,
+    "mean": 3.46
+  },
+  "commits": {
+    "n": 100,
+    "min": 1,
+    "q1": 1.0,
+    "median": 2.0,
+    "q3": 3.75,
+    "max": 1946,
+    "mean": 22.41
+  },
+  "created_month": {
+    "2025-01": 2,
+    "2025-02": 1,
+    "2025-03": 2,
+    "2025-04": 6,
+    "2025-05": 21,
+    "2025-06": 42,
+    "2025-07": 26
+  },
+  "licenses": {
+    "MIT": 48,
+    "Apache-2.0": 26,
+    "NOASSERTION": 7,
+    "AGPL-3.0": 5,
+    "unknown": 5,
+    "GPL-3.0": 4,
+    "BSD-3-Clause": 2,
+    "LGPL-3.0": 1,
+    "ISC": 1,
+    "GPL-2.0": 1
+  },
+  "cleaning_rules_fired": {
+    "testing_section_split": 65,
+    "boilerplate_line": 55,
+    "copilot_tips": 15,
+    "html_comment": 8,
+    "ellipsis_summary": 2,
+    "mermaid": 1
+  },
+  "review_evidence": {
+    "prs_with_human_review": 25,
+    "prs_with_human_inline_comments": 10,
+    "human_inline_comments": {
+      "n": 100,
+      "min": 0,
+      "q1": 0.0,
+      "median": 0.0,
+      "q3": 0.0,
+      "max": 8,
+      "mean": 0.45
+    }
+  },
+  "build": {
+    "dataset": "aidev-pop-python-v1",
+    "archive": "https://zenodo.org/records/16919051",
+    "parameters": {
+      "language": "python",
+      "min_stars_exclusive": 100,
+      "min_requirement_words": 10,
+      "max_changed_lines": 1000,
+      "max_changed_files": 30,
+      "prs_per_repository": 1,
+      "target_size": 100,
+      "eval_fraction": 0.2,
+      "seed": 572,
+      "pinned_pilot_prs": 5
+    },
+    "metadata_funnel": {
+      "input_prs": 33596,
+      "eligible_prs": 6889,
+      "excluded_language_or_stars": 26405,
+      "excluded_documentation_title": 208,
+      "excluded_insufficient_requirement_text": 94,
+      "eligible_repositories": 493
+    },
+    "patch_screening": {
+      "screened": 160,
+      "excluded_too_large": 15,
+      "excluded_no_python_changes": 42,
+      "excluded_pr_unavailable": 3,
+      "selected": 100
+    }
+  }
+}

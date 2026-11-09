@@ -9,4 +9,4 @@ def test_package_version() -> None:
 
 
 def test_cli_returns_zero() -> None:
-    assert main() == 0
+    assert main([]) == 0

@@ -1,0 +1,31 @@
+{
+  "dataset": "aidev-pop-python-v1",
+  "archive": "https://zenodo.org/records/16919051",
+  "parameters": {
+    "language": "python",
+    "min_stars_exclusive": 100,
+    "min_requirement_words": 10,
+    "max_changed_lines": 1000,
+    "max_changed_files": 30,
+    "prs_per_repository": 1,
+    "target_size": 100,
+    "eval_fraction": 0.2,
+    "seed": 572,
+    "pinned_pilot_prs": 5
+  },
+  "metadata_funnel": {
+    "input_prs": 33596,
+    "eligible_prs": 6889,
+    "excluded_language_or_stars": 26405,
+    "excluded_documentation_title": 208,
+    "excluded_insufficient_requirement_text": 94,
+    "eligible_repositories": 493
+  },
+  "patch_screening": {
+    "screened": 160,
+    "excluded_too_large": 15,
+    "excluded_no_python_changes": 42,
+    "excluded_pr_unavailable": 3,
+    "selected": 100
+  }
+}
