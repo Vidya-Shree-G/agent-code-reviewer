@@ -1,0 +1,223 @@
+{
+ "pr_id": 3196906611,
+ "repository": "paperless-ngx/paperless-ngx",
+ "pr_number": 10317,
+ "split": "development",
+ "agent": "OpenAI_Codex",
+ "head_sha": "ce07b0fd303744063f9eb2363fa144ce26130998",
+ "tool_versions": {
+  "ruff": "ruff 0.17.4",
+  "bandit": "__main__.py 1.9.4",
+  "python": "3.12.3"
+ },
+ "config": {
+  "run_tests": true,
+  "sandbox": true
+ },
+ "base_mode": "reverse_applied_diff",
+ "static": {
+  "files_analysed": 3,
+  "head_issues": 42,
+  "base_issues": 41,
+  "per_tool_head": {
+   "ruff": 37,
+   "bandit": 5
+  },
+  "per_tool_base": {
+   "ruff": 37,
+   "bandit": 4
+  },
+  "introduced": 1,
+  "seconds": 1.3
+ },
+ "tests": {
+  "env": {
+   "status": "partial",
+   "python": "3.15.2",
+   "steps": [
+    {
+     "step": "venv",
+     "ok": true,
+     "seconds": 0.0,
+     "timed_out": false,
+     "log_tail": ""
+    },
+    {
+     "step": "install -e .",
+     "ok": false,
+     "seconds": 2.4,
+     "timed_out": false,
+     "log_tail": "         File \"/dev/shm/acr/work/_shared_cache/uv/builds-v0/.tmpmAEyiD/lib/python3.15/site-packages/setuptools/build_meta.py\", line 331, in get_requires_for_build_wheel\n             return self._get_build_requires(config_settings, requirements=[])\n                    ~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n           File \"/dev/shm/acr/work/_shared_cache/uv/builds-v0/.tmpmAEyiD/lib/python3.15/site-packages/setuptools/build_meta.py\", line 301, in _get_build_requires\n             self.run_setup()\n             ~~~~~~~~~~~~~~^^\n           File \"/dev/shm/acr/work/_shared_cache/uv/builds-v0/.tmpmAEyiD/lib/python3.15/site-packages/setuptools/build_meta.py\", line 512, in run_setup\n             super().run_setup(setup_script=setup_script)\n             ~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^\n           File \"/dev/shm/acr/work/_shared_cache/uv/builds-v0/.tmpmAEyiD/lib/python3.15/site-packages/setuptools/build_meta.py\", line 317, in run_setup\n             exec(code, locals())\n             ~~~~^^^^^^^^^^^^^^^^\n           File \"<string>\", line 55, in <module>\n           File \"<string>\", line 16, in version\n         AttributeError: 'SourceFileLoader' object has no attribute 'load_module'. Did you mean '.exec_module' instead of '.load_module'?\n\nhint: `hiredis` (v3.2.1) was included because `paperless-ngx` (v2.17.1) depends on `redis[hiredis]` (v5.2.1) which depends on `hiredis`\n\nhint: Build failures usually indicate a problem with the package or the build environment\n"
+    },
+    {
+     "step": "install --group testing",
+     "ok": false,
+     "seconds": 0.8,
+     "timed_out": false,
+     "log_tail": "    Package libffi was not found in the pkg-config search path.\n         Perhaps you should add the directory containing `libffi.pc'\n         to the PKG_CONFIG_PATH environment variable\n         Package 'libffi', required by 'virtual:world', not found\n         /dev/shm/acr/work/_shared_cache/uv/builds-v0/.tmpX04xoc/lib/python3.15/site-packages/setuptools/dist.py:759: SetuptoolsDeprecationWarning: License classifiers are deprecated.\n         !!\n\n                 ********************************************************************************\n                 Please consider removing the following classifiers in favor of a SPDX license expression:\n\n                 License :: OSI Approved :: MIT License\n\n                 See https://packaging.python.org/en/latest/guides/writing-pyproject-toml/#license for details.\n                 ********************************************************************************\n\n         !!\n           self._finalize_license_expression()\n         src/c/_cffi_backend.c:15:10: fatal error: ffi.h: No such file or directory\n            15 | #include <ffi.h>\n               |          ^~~~~~~\n         compilation terminated.\n         error: command '/usr/bin/cc' failed with exit code 1\n\nhint: `cffi` (v1.17.1) was included because `daphne` (v4.2.1) depends on `autobahn` (v24.4.2) which depends on `cryptography` (v45.0.5) which depends on `cffi`\n\nhint: This error likely indicates that you need to install a library that provides `ffi.h` for `cffi@1.17.1`\n"
+    },
+    {
+     "step": "install --group dev",
+     "ok": false,
+     "seconds": 0.6,
+     "timed_out": false,
+     "log_tail": "    Package libffi was not found in the pkg-config search path.\n         Perhaps you should add the directory containing `libffi.pc'\n         to the PKG_CONFIG_PATH environment variable\n         Package 'libffi', required by 'virtual:world', not found\n         /dev/shm/acr/work/_shared_cache/uv/builds-v0/.tmp2TfRmv/lib/python3.15/site-packages/setuptools/dist.py:759: SetuptoolsDeprecationWarning: License classifiers are deprecated.\n         !!\n\n                 ********************************************************************************\n                 Please consider removing the following classifiers in favor of a SPDX license expression:\n\n                 License :: OSI Approved :: MIT License\n\n                 See https://packaging.python.org/en/latest/guides/writing-pyproject-toml/#license for details.\n                 ********************************************************************************\n\n         !!\n           self._finalize_license_expression()\n         src/c/_cffi_backend.c:15:10: fatal error: ffi.h: No such file or directory\n            15 | #include <ffi.h>\n               |          ^~~~~~~\n         compilation terminated.\n         error: command '/usr/bin/cc' failed with exit code 1\n\nhint: `cffi` (v1.17.1) was included because `daphne` (v4.2.1) depends on `autobahn` (v24.4.2) which depends on `cryptography` (v45.0.5) which depends on `cffi`\n\nhint: This error likely indicates that you need to install a library that provides `ffi.h` for `cffi@1.17.1`\n"
+    },
+    {
+     "step": "install pytest",
+     "ok": true,
+     "seconds": 0.0,
+     "timed_out": false,
+     "log_tail": ""
+    },
+    {
+     "step": "repair: install django",
+     "ok": true,
+     "seconds": 0.2,
+     "timed_out": false,
+     "log_tail": ""
+    }
+   ]
+  },
+  "selected_tests": [
+   {
+    "path": "src/documents/tests/test_bulk_edit.py",
+    "reason": "matches_module:bulk_edit",
+    "exists_at_base": true
+   },
+   {
+    "path": "src/documents/tests/test_views.py",
+    "reason": "matches_module:views",
+    "exists_at_base": true
+   },
+   {
+    "path": "src/paperless/tests/test_views.py",
+    "reason": "matches_module:views",
+    "exists_at_base": true
+   }
+  ],
+  "head_run": {
+   "status": "usage_error",
+   "exit_code": 4,
+   "seconds": 0.5,
+   "addopts_overridden": true,
+   "counts": {
+    "passed": 0,
+    "failed": 0,
+    "error": 0,
+    "skipped": 0
+   },
+   "tests": {},
+   "log_tail": "\nImportError while loading conftest '/dev/shm/acr/work/3196906611/src/head/src/documents/tests/conftest.py'.\nsrc/documents/tests/conftest.py:5: in <module>\n    from pytest_django.fixtures import SettingsWrapper\nE   ModuleNotFoundError: No module named 'pytest_django'\n"
+  },
+  "base_run": {
+   "status": "usage_error",
+   "exit_code": 4,
+   "seconds": 0.5,
+   "addopts_overridden": true,
+   "counts": {
+    "passed": 0,
+    "failed": 0,
+    "error": 0,
+    "skipped": 0
+   },
+   "tests": {},
+   "log_tail": "\nImportError while loading conftest '/dev/shm/acr/work/3196906611/src/base/src/documents/tests/conftest.py'.\nsrc/documents/tests/conftest.py:5: in <module>\n    from pytest_django.fixtures import SettingsWrapper\nE   ModuleNotFoundError: No module named 'pytest_django'\n"
+  },
+  "comparison": {
+   "regressions": [],
+   "new_test_failures": [],
+   "fixed": [],
+   "persistent_failures": []
+  },
+  "imports_head": {
+   "documents.bulk_edit": {
+    "ok": false,
+    "type": "ModuleNotFoundError",
+    "message": "No module named 'celery'",
+    "missing_module": "celery",
+    "file": "src/documents/bulk_edit.py",
+    "line": 11,
+    "traceback": "Traceback (most recent call last):\n  File \"<string>\", line 7, in <module>\n    importlib.import_module(m)\n    ~~~~~~~~~~~~~~~~~~~~~~~^^^\n  File \"/dev/shm/acr/work/_shared_cache/python/cpython-3.15.2-linux-x86_64-gnu/lib/python3.15/importlib/__init__.py\", line 88, in import_module\n    return _bootstrap._gcd_import(name[level:], package, level)\n           ~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"<frozen importlib._bootstrap>\", line 1389, in _gcd_import\n  File \"<frozen importlib._bootstrap>\", line 1353, in _find_and_load\n  File \"<frozen importlib._bootstrap>\", line 1249, in _find_and_load_unlocked\n  File \"<frozen importlib._bootstrap>\", line 857, in _load_unlocked\n  File \"<frozen importlib._bootstrap_external>\", line 751, in exec_module\n  File \"<frozen importlib._bootstrap>\", line 491, in _call_with_frames_removed\n  File \"/dev/shm/acr/work/3196906611/src/head/src/documents/bulk_edit.py\", line 11, in <module>\n    from celery import chain\nModuleNotFoundError: No module named 'celery'\n"
+   },
+   "documents.serialisers": {
+    "ok": false,
+    "type": "ModuleNotFoundError",
+    "message": "No module named 'magic'",
+    "missing_module": "magic",
+    "file": "src/documents/serialisers.py",
+    "line": 10,
+    "traceback": "Traceback (most recent call last):\n  File \"<string>\", line 7, in <module>\n    importlib.import_module(m)\n    ~~~~~~~~~~~~~~~~~~~~~~~^^^\n  File \"/dev/shm/acr/work/_shared_cache/python/cpython-3.15.2-linux-x86_64-gnu/lib/python3.15/importlib/__init__.py\", line 88, in import_module\n    return _bootstrap._gcd_import(name[level:], package, level)\n           ~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"<frozen importlib._bootstrap>\", line 1389, in _gcd_import\n  File \"<frozen importlib._bootstrap>\", line 1353, in _find_and_load\n  File \"<frozen importlib._bootstrap>\", line 1249, in _find_and_load_unlocked\n  File \"<frozen importlib._bootstrap>\", line 857, in _load_unlocked\n  File \"<frozen importlib._bootstrap_external>\", line 751, in exec_module\n  File \"<frozen importlib._bootstrap>\", line 491, in _call_with_frames_removed\n  File \"/dev/shm/acr/work/3196906611/src/head/src/documents/serialisers.py\", line 10, in <module>\n    import magic\nModuleNotFoundError: No module named 'magic'\n"
+   },
+   "documents.views": {
+    "ok": false,
+    "type": "ModuleNotFoundError",
+    "message": "No module named 'httpx'",
+    "missing_module": "httpx",
+    "file": "src/documents/views.py",
+    "line": 15,
+    "traceback": "Traceback (most recent call last):\n  File \"<string>\", line 7, in <module>\n    importlib.import_module(m)\n    ~~~~~~~~~~~~~~~~~~~~~~~^^^\n  File \"/dev/shm/acr/work/_shared_cache/python/cpython-3.15.2-linux-x86_64-gnu/lib/python3.15/importlib/__init__.py\", line 88, in import_module\n    return _bootstrap._gcd_import(name[level:], package, level)\n           ~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"<frozen importlib._bootstrap>\", line 1389, in _gcd_import\n  File \"<frozen importlib._bootstrap>\", line 1353, in _find_and_load\n  File \"<frozen importlib._bootstrap>\", line 1249, in _find_and_load_unlocked\n  File \"<frozen importlib._bootstrap>\", line 857, in _load_unlocked\n  File \"<frozen importlib._bootstrap_external>\", line 751, in exec_module\n  File \"<frozen importlib._bootstrap>\", line 491, in _call_with_frames_removed\n  File \"/dev/shm/acr/work/3196906611/src/head/src/documents/views.py\", line 15, in <module>\n    import httpx\nModuleNotFoundError: No module named 'httpx'. Did you mean: 'http'?\n"
+   }
+  },
+  "imports_base": {
+   "documents.bulk_edit": {
+    "ok": false,
+    "type": "ModuleNotFoundError",
+    "message": "No module named 'celery'",
+    "missing_module": "celery",
+    "file": "src/documents/bulk_edit.py",
+    "line": 11,
+    "traceback": "Traceback (most recent call last):\n  File \"<string>\", line 7, in <module>\n    importlib.import_module(m)\n    ~~~~~~~~~~~~~~~~~~~~~~~^^^\n  File \"/dev/shm/acr/work/_shared_cache/python/cpython-3.15.2-linux-x86_64-gnu/lib/python3.15/importlib/__init__.py\", line 88, in import_module\n    return _bootstrap._gcd_import(name[level:], package, level)\n           ~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"<frozen importlib._bootstrap>\", line 1389, in _gcd_import\n  File \"<frozen importlib._bootstrap>\", line 1353, in _find_and_load\n  File \"<frozen importlib._bootstrap>\", line 1249, in _find_and_load_unlocked\n  File \"<frozen importlib._bootstrap>\", line 857, in _load_unlocked\n  File \"<frozen importlib._bootstrap_external>\", line 751, in exec_module\n  File \"<frozen importlib._bootstrap>\", line 491, in _call_with_frames_removed\n  File \"/dev/shm/acr/work/3196906611/src/base/src/documents/bulk_edit.py\", line 11, in <module>\n    from celery import chain\nModuleNotFoundError: No module named 'celery'\n"
+   },
+   "documents.serialisers": {
+    "ok": false,
+    "type": "ModuleNotFoundError",
+    "message": "No module named 'magic'",
+    "missing_module": "magic",
+    "file": "src/documents/serialisers.py",
+    "line": 10,
+    "traceback": "Traceback (most recent call last):\n  File \"<string>\", line 7, in <module>\n    importlib.import_module(m)\n    ~~~~~~~~~~~~~~~~~~~~~~~^^^\n  File \"/dev/shm/acr/work/_shared_cache/python/cpython-3.15.2-linux-x86_64-gnu/lib/python3.15/importlib/__init__.py\", line 88, in import_module\n    return _bootstrap._gcd_import(name[level:], package, level)\n           ~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"<frozen importlib._bootstrap>\", line 1389, in _gcd_import\n  File \"<frozen importlib._bootstrap>\", line 1353, in _find_and_load\n  File \"<frozen importlib._bootstrap>\", line 1249, in _find_and_load_unlocked\n  File \"<frozen importlib._bootstrap>\", line 857, in _load_unlocked\n  File \"<frozen importlib._bootstrap_external>\", line 751, in exec_module\n  File \"<frozen importlib._bootstrap>\", line 491, in _call_with_frames_removed\n  File \"/dev/shm/acr/work/3196906611/src/base/src/documents/serialisers.py\", line 10, in <module>\n    import magic\nModuleNotFoundError: No module named 'magic'\n"
+   },
+   "documents.views": {
+    "ok": false,
+    "type": "ModuleNotFoundError",
+    "message": "No module named 'httpx'",
+    "missing_module": "httpx",
+    "file": "src/documents/views.py",
+    "line": 15,
+    "traceback": "Traceback (most recent call last):\n  File \"<string>\", line 7, in <module>\n    importlib.import_module(m)\n    ~~~~~~~~~~~~~~~~~~~~~~~^^^\n  File \"/dev/shm/acr/work/_shared_cache/python/cpython-3.15.2-linux-x86_64-gnu/lib/python3.15/importlib/__init__.py\", line 88, in import_module\n    return _bootstrap._gcd_import(name[level:], package, level)\n           ~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"<frozen importlib._bootstrap>\", line 1389, in _gcd_import\n  File \"<frozen importlib._bootstrap>\", line 1353, in _find_and_load\n  File \"<frozen importlib._bootstrap>\", line 1249, in _find_and_load_unlocked\n  File \"<frozen importlib._bootstrap>\", line 857, in _load_unlocked\n  File \"<frozen importlib._bootstrap_external>\", line 751, in exec_module\n  File \"<frozen importlib._bootstrap>\", line 491, in _call_with_frames_removed\n  File \"/dev/shm/acr/work/3196906611/src/base/src/documents/views.py\", line 15, in <module>\n    import httpx\nModuleNotFoundError: No module named 'httpx'. Did you mean: 'http'?\n"
+   }
+  },
+  "status": "head_usage_error",
+  "dependency_cutoff": "2025-07-02T19:00:59Z",
+  "seconds": 7.7,
+  "head_failures": 0
+ },
+ "findings": [
+  {
+   "tool": "bandit",
+   "rule": "B324",
+   "category": "security",
+   "severity": "high",
+   "confidence": "high",
+   "message": "hashlib: Use of weak MD5 hash for security. Consider usedforsecurity=False",
+   "file": "src/documents/bulk_edit.py",
+   "line": 546,
+   "end_line": 546,
+   "cwe": 327,
+   "on_changed_line": true,
+   "evidence": {
+    "type": "static",
+    "source_line": "doc.checksum = hashlib.md5(doc.source_path.read_bytes()).hexdigest()",
+    "more_info": "https://bandit.readthedocs.io/en/1.9.4/plugins/b324_hashlib.html"
+   },
+   "sources": [
+    "bandit"
+   ],
+   "finding_id": "8ee2ec53cac7",
+   "score": 3.5
+  }
+ ],
+ "status": "ok",
+ "seconds": 73.2
+}

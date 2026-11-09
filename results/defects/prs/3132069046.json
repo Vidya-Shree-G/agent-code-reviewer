@@ -1,0 +1,144 @@
+{
+ "pr_id": 3132069046,
+ "repository": "ray-project/ray",
+ "pr_number": 53690,
+ "split": "development",
+ "agent": "OpenAI_Codex",
+ "head_sha": "4e4f54fd294e93c7cad3a15c925eecb1df0926d4",
+ "tool_versions": {
+  "ruff": "ruff 0.17.4",
+  "bandit": "__main__.py 1.9.4",
+  "python": "3.12.3"
+ },
+ "config": {
+  "run_tests": true,
+  "sandbox": true
+ },
+ "base_mode": "reverse_applied_diff",
+ "static": {
+  "files_analysed": 6,
+  "head_issues": 13,
+  "base_issues": 13,
+  "per_tool_head": {
+   "ruff": 10,
+   "bandit": 3
+  },
+  "per_tool_base": {
+   "ruff": 10,
+   "bandit": 3
+  },
+  "introduced": 0,
+  "seconds": 1.9
+ },
+ "tests": {
+  "env": {
+   "status": "partial",
+   "python": "3.15.2",
+   "steps": [
+    {
+     "step": "venv",
+     "ok": true,
+     "seconds": 0.1,
+     "timed_out": false,
+     "log_tail": ""
+    },
+    {
+     "step": "install -e .",
+     "ok": false,
+     "seconds": 0.1,
+     "timed_out": false,
+     "log_tail": "error: Failed to parse metadata from built wheel\n  cause: TOML parse error at line 1, column 1\n           |\n         1 | [project]\n           | ^^^^^^^^^\n         `pyproject.toml` is using the `[project]` table, but the required `project.name` field is not set\n"
+    },
+    {
+     "step": "install pytest",
+     "ok": true,
+     "seconds": 0.1,
+     "timed_out": false,
+     "log_tail": ""
+    },
+    {
+     "step": "repair: install psutil",
+     "ok": true,
+     "seconds": 0.1,
+     "timed_out": false,
+     "log_tail": ""
+    }
+   ]
+  },
+  "selected_tests": [
+   {
+    "path": "python/ray/tests/unit/test_runtime_env_validation.py",
+    "reason": "changed_in_pr",
+    "exists_at_base": true
+   },
+   {
+    "path": "python/ray/serve/tests/test_runtime_env.py",
+    "reason": "matches_module:runtime_env",
+    "exists_at_base": true
+   },
+   {
+    "path": "python/ray/serve/tests/test_runtime_env_2.py",
+    "reason": "matches_module:runtime_env",
+    "exists_at_base": true
+   },
+   {
+    "path": "python/ray/tests/test_runtime_env.py",
+    "reason": "matches_module:runtime_env",
+    "exists_at_base": true
+   },
+   {
+    "path": "python/ray/tests/test_runtime_env_agent.py",
+    "reason": "matches_module:runtime_env",
+    "exists_at_base": true
+   },
+   {
+    "path": "python/ray/tests/test_runtime_env_complicated.py",
+    "reason": "matches_module:runtime_env",
+    "exists_at_base": true
+   }
+  ],
+  "head_run": {
+   "status": "usage_error",
+   "exit_code": 4,
+   "seconds": 0.7,
+   "addopts_overridden": true,
+   "counts": {
+    "passed": 0,
+    "failed": 0,
+    "error": 0,
+    "skipped": 0
+   },
+   "tests": {},
+   "log_tail": "\nImportError while loading conftest '/dev/shm/acr/work/3132069046/src/head/python/ray/tests/conftest.py'.\npython/ray/tests/conftest.py:24: in <module>\n    import ray._private.ray_constants as ray_constants\nE   ModuleNotFoundError: No module named 'ray._private'\n"
+  },
+  "base_run": {
+   "status": "usage_error",
+   "exit_code": 4,
+   "seconds": 0.9,
+   "addopts_overridden": true,
+   "counts": {
+    "passed": 0,
+    "failed": 0,
+    "error": 0,
+    "skipped": 0
+   },
+   "tests": {},
+   "log_tail": "\nImportError while loading conftest '/dev/shm/acr/work/3132069046/src/base/python/ray/tests/conftest.py'.\npython/ray/tests/conftest.py:24: in <module>\n    import ray._private.ray_constants as ray_constants\nE   ModuleNotFoundError: No module named 'ray._private'\n"
+  },
+  "comparison": {
+   "regressions": [],
+   "new_test_failures": [],
+   "fixed": [],
+   "persistent_failures": []
+  },
+  "imports_head": {},
+  "imports_base": {},
+  "status": "head_usage_error",
+  "dependency_cutoff": "2025-07-09T00:40:55Z",
+  "seconds": 7.1,
+  "head_failures": 0
+ },
+ "findings": [],
+ "status": "ok",
+ "seconds": 648.9
+}

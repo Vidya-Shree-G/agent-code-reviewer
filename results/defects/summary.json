@@ -1,0 +1,103 @@
+{
+  "prs_in_dataset": 100,
+  "prs_processed": 100,
+  "status": {
+    "ok": 99,
+    "checkout_failed": 1
+  },
+  "base_mode": {
+    "reverse_applied_diff": 96,
+    "base_branch_commit": 3
+  },
+  "findings_total": 124,
+  "prs_with_any_finding": 32,
+  "prs_with_high_severity_finding": 4,
+  "by_severity": {
+    "low": 82,
+    "medium": 27,
+    "high": 15
+  },
+  "by_category": {
+    "maintainability": 59,
+    "test": 25,
+    "correctness": 16,
+    "security": 16,
+    "error-handling": 5,
+    "concurrency": 3
+  },
+  "by_tool": {
+    "ruff": 80,
+    "pytest": 25,
+    "bandit": 16,
+    "import_check": 2,
+    "py_compile": 1
+  },
+  "by_rule": {
+    "ruff:F401": 42,
+    "pytest:new-test-failure": 13,
+    "pytest:test-regression": 12,
+    "ruff:PLW0603": 6,
+    "ruff:F841": 6,
+    "ruff:B904": 5,
+    "ruff:RUF012": 4,
+    "bandit:B404": 3,
+    "bandit:B603": 3,
+    "ruff:PLW1510": 3,
+    "ruff:F811": 3,
+    "ruff:ASYNC230": 2,
+    "bandit:B102": 2,
+    "ruff:invalid-syntax": 2,
+    "ruff:PLW2901": 2,
+    "import_check:missing-dependency": 1,
+    "ruff:F541": 1,
+    "bandit:B110": 1,
+    "bandit:B403": 1,
+    "bandit:B301": 1,
+    "ruff:B007": 1,
+    "bandit:B310": 1,
+    "bandit:B607": 1,
+    "ruff:ASYNC240": 1,
+    "ruff:B039": 1
+  },
+  "cwe": {
+    "CWE-78": 9,
+    "CWE-502": 2,
+    "CWE-377": 2,
+    "CWE-703": 1,
+    "CWE-22": 1,
+    "CWE-327": 1
+  },
+  "on_changed_line": 94,
+  "by_agent_findings_per_pr": {
+    "Claude_Code": 2.17,
+    "Copilot": 1.91,
+    "Cursor": 1.25,
+    "Devin": 2.7,
+    "OpenAI_Codex": 0.65
+  },
+  "tests": {
+    "env_status": {
+      "partial": 61,
+      "ok": 38
+    },
+    "test_status": {
+      "completed": 63,
+      "head_usage_error": 20,
+      "imports_only": 6,
+      "no_executable_checks": 8,
+      "head_timeout": 1,
+      "head_no_tests_collected": 1
+    },
+    "prs_with_selected_tests": 85,
+    "prs_with_completed_head_run": 63,
+    "prs_with_regression": 2,
+    "prs_with_new_test_failure": 7,
+    "prs_that_fix_a_failing_test": 0,
+    "flaky_regressions_discarded": 0,
+    "modules_import_checked": 169
+  },
+  "human_review_overlap": {
+    "findings_in_file_with_human_comment": 4,
+    "findings_within_3_lines_of_human_comment": 0
+  }
+}

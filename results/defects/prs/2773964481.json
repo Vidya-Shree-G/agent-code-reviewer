@@ -1,0 +1,164 @@
+{
+ "pr_id": 2773964481,
+ "repository": "bespokelabsai/curator",
+ "pr_number": 324,
+ "split": "development",
+ "agent": "Devin",
+ "head_sha": "a41b3385d3cde3b559cc79fddd42d47a29e9071e",
+ "tool_versions": {
+  "ruff": "ruff 0.17.4",
+  "bandit": "__main__.py 1.9.4",
+  "python": "3.12.3"
+ },
+ "config": {
+  "run_tests": true,
+  "sandbox": true
+ },
+ "base_mode": "reverse_applied_diff",
+ "static": {
+  "files_analysed": 6,
+  "head_issues": 16,
+  "base_issues": 16,
+  "per_tool_head": {
+   "ruff": 9,
+   "bandit": 7
+  },
+  "per_tool_base": {
+   "ruff": 9,
+   "bandit": 7
+  },
+  "introduced": 0,
+  "seconds": 0.3
+ },
+ "tests": {
+  "env": {
+   "status": "partial",
+   "python": "3.11.18",
+   "steps": [
+    {
+     "step": "venv",
+     "ok": true,
+     "seconds": 0.0,
+     "timed_out": false,
+     "log_tail": ""
+    },
+    {
+     "step": "install -e .",
+     "ok": false,
+     "seconds": 1.1,
+     "timed_out": false,
+     "log_tail": "error: No solution found when resolving dependencies\n  cause: Because there is no version of xformers{platform_machine == 'x86_64' and sys_platform == 'linux'}==0.0.27.post2 and vllm>=0.6.3,<=0.6.3.post1 depends on xformers{platform_machine == 'x86_64' and sys_platform == 'linux'}==0.0.27.post2, we can conclude that vllm>=0.6.3,<=0.6.3.post1 cannot be used.\n         And because only the following versions of vllm are available:\n             vllm<=0.6.3.post1\n             vllm>=0.6.4\n         we can conclude that vllm>=0.6.3,<0.6.4 cannot be used. (1)\n\n         Because there is no version of xformers{platform_machine == 'x86_64' and sys_platform == 'linux'}==0.0.28.post3 and vllm>=0.6.4 depends on xformers{platform_machine == 'x86_64' and sys_platform == 'linux'}==0.0.28.post3, we can conclude that vllm>=0.6.4 cannot be used.\n         And because we know from (1) that vllm>=0.6.3,<0.6.4 cannot be used, we can conclude that vllm>=0.6.3 cannot be used.\n         And because bespokelabs-curator==0.1.14 depends on vllm>=0.6.3, we can conclude that bespokelabs-curator==0.1.14 cannot be used.\n         And because only bespokelabs-curator==0.1.14 is available and you require bespokelabs-curator, we can conclude that your requirements are unsatisfiable.\n"
+    },
+    {
+     "step": "install poetry test/dev group",
+     "ok": true,
+     "seconds": 1.4,
+     "timed_out": false,
+     "log_tail": ""
+    },
+    {
+     "step": "install pytest",
+     "ok": true,
+     "seconds": 0.0,
+     "timed_out": false,
+     "log_tail": ""
+    },
+    {
+     "step": "repair: install datasets",
+     "ok": true,
+     "seconds": 3.8,
+     "timed_out": false,
+     "log_tail": ""
+    }
+   ]
+  },
+  "selected_tests": [
+   {
+    "path": "tests/test_caching.py",
+    "reason": "changed_in_pr",
+    "exists_at_base": true
+   }
+  ],
+  "head_run": {
+   "status": "completed",
+   "exit_code": 2,
+   "seconds": 1.4,
+   "addopts_overridden": false,
+   "counts": {
+    "passed": 0,
+    "failed": 0,
+    "error": 1,
+    "skipped": 0
+   },
+   "tests": {
+    "::tests.test_caching": {
+     "outcome": "error",
+     "detail": "collection failure\nImportError while importing test module '/dev/shm/acr/work/2773964481/src/head/tests/test_caching.py'.\nHint: make sure your test modules/packages have valid Python names.\nTraceback:\n../../../_shared_cache/python/cpython-3.11.18-linux-x86_64-gnu/lib/python3.11/importlib/__init__.py:126: in import_module\n    return _bootstrap._gcd_import(name[level:], package, level)\ntests/test_caching.py:5: in <module>\n    from bespokelabs import curator\nsrc/bespokelabs/curator/__init__.py:3: in <module>\n    from .dataset import Dataset\nsrc/bespokelabs/curator/dataset.py:8: in <module>\n    from pydantic import BaseModel\nE   ModuleNotFoundError: No module named 'pydantic'"
+    }
+   },
+   "log_tail": ""
+  },
+  "base_run": {
+   "status": "completed",
+   "exit_code": 2,
+   "seconds": 1.4,
+   "addopts_overridden": false,
+   "counts": {
+    "passed": 0,
+    "failed": 0,
+    "error": 1,
+    "skipped": 0
+   },
+   "tests": {
+    "::tests.test_caching": {
+     "outcome": "error",
+     "detail": "collection failure\nImportError while importing test module '/dev/shm/acr/work/2773964481/src/base/tests/test_caching.py'.\nHint: make sure your test modules/packages have valid Python names.\nTraceback:\n../../../_shared_cache/python/cpython-3.11.18-linux-x86_64-gnu/lib/python3.11/importlib/__init__.py:126: in import_module\n    return _bootstrap._gcd_import(name[level:], package, level)\ntests/test_caching.py:3: in <module>\n    from bespokelabs import curator\nsrc/bespokelabs/curator/__init__.py:3: in <module>\n    from .dataset import Dataset\nsrc/bespokelabs/curator/dataset.py:8: in <module>\n    from pydantic import BaseModel\nE   ModuleNotFoundError: No module named 'pydantic'"
+    }
+   },
+   "log_tail": ""
+  },
+  "comparison": {
+   "regressions": [],
+   "new_test_failures": [],
+   "fixed": [],
+   "persistent_failures": [
+    "::tests.test_caching"
+   ]
+  },
+  "imports_head": {
+   "bespokelabs": {
+    "ok": true
+   },
+   "bespokelabs.curator.dataset": {
+    "ok": false,
+    "type": "ModuleNotFoundError",
+    "message": "No module named 'pydantic'",
+    "missing_module": "pydantic",
+    "file": "src/bespokelabs/curator/dataset.py",
+    "line": 8,
+    "traceback": "Traceback (most recent call last):\n  File \"<string>\", line 7, in <module>\n  File \"/dev/shm/acr/work/_shared_cache/python/cpython-3.11.18-linux-x86_64-gnu/lib/python3.11/importlib/__init__.py\", line 126, in import_module\n    return _bootstrap._gcd_import(name[level:], package, level)\n           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"<frozen importlib._bootstrap>\", line 1204, in _gcd_import\n  File \"<frozen importlib._bootstrap>\", line 1176, in _find_and_load\n  File \"<frozen importlib._bootstrap>\", line 1126, in _find_and_load_unlocked\n  File \"<frozen importlib._bootstrap>\", line 241, in _call_with_frames_removed\n  File \"<frozen importlib._bootstrap>\", line 1204, in _gcd_import\n  File \"<frozen importlib._bootstrap>\", line 1176, in _find_and_load\n  File \"<frozen importlib._bootstrap>\", line 1147, in _find_and_load_unlocked\n  File \"<frozen importlib._bootstrap>\", line 690, in _load_unlocked\n  File \"<frozen importlib._bootstrap_external>\", line 940, in exec_module\n  File \"<frozen importlib._bootstrap>\", line 241, in _call_with_frames_removed\n  File \"/dev/shm/acr/work/2773964481/src/head/src/bespokelabs/curator/__init__.py\", line 3, in <module>\n    from .dataset import Dataset\n  File \"/dev/shm/acr/work/2773964481/src/head/src/bespokelabs/curator/dataset.py\", line 8, in <module>\n    from pydantic import BaseModel\nModuleNotFoundError: No module named 'pydantic'\n"
+   }
+  },
+  "imports_base": {
+   "bespokelabs": {
+    "ok": true
+   },
+   "bespokelabs.curator.dataset": {
+    "ok": false,
+    "type": "ModuleNotFoundError",
+    "message": "No module named 'pydantic'",
+    "missing_module": "pydantic",
+    "file": "src/bespokelabs/curator/dataset.py",
+    "line": 8,
+    "traceback": "Traceback (most recent call last):\n  File \"<string>\", line 7, in <module>\n  File \"/dev/shm/acr/work/_shared_cache/python/cpython-3.11.18-linux-x86_64-gnu/lib/python3.11/importlib/__init__.py\", line 126, in import_module\n    return _bootstrap._gcd_import(name[level:], package, level)\n           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"<frozen importlib._bootstrap>\", line 1204, in _gcd_import\n  File \"<frozen importlib._bootstrap>\", line 1176, in _find_and_load\n  File \"<frozen importlib._bootstrap>\", line 1126, in _find_and_load_unlocked\n  File \"<frozen importlib._bootstrap>\", line 241, in _call_with_frames_removed\n  File \"<frozen importlib._bootstrap>\", line 1204, in _gcd_import\n  File \"<frozen importlib._bootstrap>\", line 1176, in _find_and_load\n  File \"<frozen importlib._bootstrap>\", line 1147, in _find_and_load_unlocked\n  File \"<frozen importlib._bootstrap>\", line 690, in _load_unlocked\n  File \"<frozen importlib._bootstrap_external>\", line 940, in exec_module\n  File \"<frozen importlib._bootstrap>\", line 241, in _call_with_frames_removed\n  File \"/dev/shm/acr/work/2773964481/src/base/src/bespokelabs/curator/__init__.py\", line 3, in <module>\n    from .dataset import Dataset\n  File \"/dev/shm/acr/work/2773964481/src/base/src/bespokelabs/curator/dataset.py\", line 8, in <module>\n    from pydantic import BaseModel\nModuleNotFoundError: No module named 'pydantic'\n"
+   }
+  },
+  "status": "completed",
+  "dependency_cutoff": "2025-01-11T00:20:58Z",
+  "seconds": 12.0,
+  "head_failures": 1
+ },
+ "findings": [],
+ "status": "ok",
+ "seconds": 16.3
+}

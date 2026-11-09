@@ -1,0 +1,185 @@
+{
+ "pr_id": 3070900978,
+ "repository": "disler/claude-code-is-programmable",
+ "pr_number": 4,
+ "split": "development",
+ "agent": "OpenAI_Codex",
+ "head_sha": "2345540b53a516f728c2065257d2a86c27b1926c",
+ "tool_versions": {
+  "ruff": "ruff 0.17.4",
+  "bandit": "__main__.py 1.9.4",
+  "python": "3.12.3"
+ },
+ "config": {
+  "run_tests": true,
+  "sandbox": true
+ },
+ "base_mode": "reverse_applied_diff",
+ "static": {
+  "files_analysed": 2,
+  "head_issues": 4,
+  "base_issues": 0,
+  "per_tool_head": {
+   "ruff": 2,
+   "bandit": 2
+  },
+  "per_tool_base": {},
+  "introduced": 4,
+  "seconds": 0.3
+ },
+ "tests": {
+  "env": {
+   "status": "ok",
+   "python": "3.15.2",
+   "steps": [
+    {
+     "step": "venv",
+     "ok": true,
+     "seconds": 0.0,
+     "timed_out": false,
+     "log_tail": ""
+    },
+    {
+     "step": "install pytest",
+     "ok": true,
+     "seconds": 0.1,
+     "timed_out": false,
+     "log_tail": ""
+    }
+   ]
+  },
+  "selected_tests": [
+   {
+    "path": "tests/test_claude_testing_v1.py",
+    "reason": "changed_in_pr",
+    "exists_at_base": false
+   }
+  ],
+  "head_run": {
+   "status": "completed",
+   "exit_code": 0,
+   "seconds": 0.6,
+   "addopts_overridden": false,
+   "counts": {
+    "passed": 0,
+    "failed": 0,
+    "error": 0,
+    "skipped": 1
+   },
+   "tests": {},
+   "log_tail": ""
+  },
+  "base_run": {
+   "status": "not_run",
+   "tests": {}
+  },
+  "comparison": {
+   "regressions": [],
+   "new_test_failures": [],
+   "fixed": [],
+   "persistent_failures": []
+  },
+  "imports_head": {},
+  "imports_base": {},
+  "status": "completed",
+  "dependency_cutoff": "2025-05-17T15:59:16Z",
+  "seconds": 0.8,
+  "head_failures": 0
+ },
+ "findings": [
+  {
+   "tool": "bandit",
+   "rule": "B404",
+   "category": "security",
+   "severity": "low",
+   "confidence": "high",
+   "message": "blacklist: Consider possible security implications associated with the subprocess module.",
+   "file": "claude_testing_v1.py",
+   "line": 2,
+   "end_line": 2,
+   "cwe": 78,
+   "on_changed_line": true,
+   "evidence": {
+    "type": "static",
+    "source_line": "import subprocess",
+    "more_info": "https://bandit.readthedocs.io/en/1.9.4/blacklists/blacklist_imports.html#b404-import-subprocess"
+   },
+   "sources": [
+    "bandit"
+   ],
+   "finding_id": "a91189a97ab3",
+   "score": 1.5
+  },
+  {
+   "tool": "bandit",
+   "rule": "B603",
+   "category": "security",
+   "severity": "low",
+   "confidence": "high",
+   "message": "subprocess_without_shell_equals_true: subprocess call - check for execution of untrusted input.",
+   "file": "claude_testing_v1.py",
+   "line": 16,
+   "end_line": 21,
+   "cwe": 78,
+   "on_changed_line": true,
+   "evidence": {
+    "type": "static",
+    "source_line": "result = subprocess.run(",
+    "more_info": "https://bandit.readthedocs.io/en/1.9.4/plugins/b603_subprocess_without_shell_equals_true.html"
+   },
+   "sources": [
+    "bandit"
+   ],
+   "finding_id": "259ad215d067",
+   "score": 1.5
+  },
+  {
+   "tool": "ruff",
+   "rule": "F401",
+   "category": "maintainability",
+   "severity": "low",
+   "confidence": "high",
+   "message": "`json` imported but unused",
+   "file": "tests/test_claude_testing_v1.py",
+   "line": 3,
+   "end_line": 3,
+   "cwe": null,
+   "on_changed_line": true,
+   "evidence": {
+    "type": "static",
+    "source_line": "import json",
+    "url": "https://docs.astral.sh/ruff/rules/unused-import"
+   },
+   "sources": [
+    "ruff"
+   ],
+   "finding_id": "62c7f4ac3209",
+   "score": 1.5
+  },
+  {
+   "tool": "ruff",
+   "rule": "PLW1510",
+   "category": "correctness",
+   "severity": "low",
+   "confidence": "medium",
+   "message": "`subprocess.run` without explicit `check` argument",
+   "file": "claude_testing_v1.py",
+   "line": 16,
+   "end_line": 16,
+   "cwe": null,
+   "on_changed_line": true,
+   "evidence": {
+    "type": "static",
+    "source_line": "result = subprocess.run(",
+    "url": "https://docs.astral.sh/ruff/rules/subprocess-run-without-check"
+   },
+   "sources": [
+    "ruff"
+   ],
+   "finding_id": "8756843dd8a0",
+   "score": 1.2
+  }
+ ],
+ "status": "ok",
+ "seconds": 12.6
+}

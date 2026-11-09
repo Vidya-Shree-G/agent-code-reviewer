@@ -1,0 +1,103 @@
+{
+ "pr_id": 3255138054,
+ "repository": "roeniss/dhlottery-api",
+ "pr_number": 147,
+ "split": "evaluation",
+ "agent": "OpenAI_Codex",
+ "head_sha": "6974c7c71770fca8888aa1316c447cfd47b02d9f",
+ "tool_versions": {
+  "ruff": "ruff 0.17.4",
+  "bandit": "__main__.py 1.9.4",
+  "python": "3.12.3"
+ },
+ "config": {
+  "run_tests": true,
+  "sandbox": true
+ },
+ "base_mode": "reverse_applied_diff",
+ "static": {
+  "files_analysed": 1,
+  "head_issues": 0,
+  "base_issues": 0,
+  "per_tool_head": {},
+  "per_tool_base": {},
+  "introduced": 0,
+  "seconds": 0.1
+ },
+ "tests": {
+  "env": {
+   "status": "ok",
+   "python": "3.15.2",
+   "steps": [
+    {
+     "step": "venv",
+     "ok": true,
+     "seconds": 0.0,
+     "timed_out": false,
+     "log_tail": ""
+    },
+    {
+     "step": "install -e .",
+     "ok": true,
+     "seconds": 0.5,
+     "timed_out": false,
+     "log_tail": ""
+    },
+    {
+     "step": "install -r requirements.txt",
+     "ok": true,
+     "seconds": 0.0,
+     "timed_out": false,
+     "log_tail": ""
+    },
+    {
+     "step": "install pytest",
+     "ok": true,
+     "seconds": 0.0,
+     "timed_out": false,
+     "log_tail": ""
+    }
+   ]
+  },
+  "selected_tests": [
+   {
+    "path": "tests/test_workflow_trigger.py",
+    "reason": "changed_in_pr",
+    "exists_at_base": false
+   }
+  ],
+  "head_run": {
+   "status": "completed",
+   "exit_code": 0,
+   "seconds": 0.3,
+   "addopts_overridden": false,
+   "counts": {
+    "passed": 1,
+    "failed": 0,
+    "error": 0,
+    "skipped": 0
+   },
+   "tests": {},
+   "log_tail": ""
+  },
+  "base_run": {
+   "status": "not_run",
+   "tests": {}
+  },
+  "comparison": {
+   "regressions": [],
+   "new_test_failures": [],
+   "fixed": [],
+   "persistent_failures": []
+  },
+  "imports_head": {},
+  "imports_base": {},
+  "status": "completed",
+  "dependency_cutoff": "2025-07-23T13:10:12Z",
+  "seconds": 0.9,
+  "head_failures": 0
+ },
+ "findings": [],
+ "status": "ok",
+ "seconds": 1.6
+}

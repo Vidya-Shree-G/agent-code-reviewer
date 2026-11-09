@@ -1,0 +1,80 @@
+{
+ "pr_id": 3115134705,
+ "repository": "joshyattridge/smart-money-concepts",
+ "pr_number": 89,
+ "split": "evaluation",
+ "agent": "OpenAI_Codex",
+ "head_sha": "c9e8caddb0c568c6fdbefa95fd5ec55ea745932a",
+ "tool_versions": {
+  "ruff": "ruff 0.17.4",
+  "bandit": "__main__.py 1.9.4",
+  "python": "3.12.3"
+ },
+ "config": {
+  "run_tests": true,
+  "sandbox": true
+ },
+ "base_mode": "reverse_applied_diff",
+ "static": {
+  "files_analysed": 1,
+  "head_issues": 0,
+  "base_issues": 0,
+  "per_tool_head": {},
+  "per_tool_base": {},
+  "introduced": 0,
+  "seconds": 0.2
+ },
+ "tests": {
+  "env": {
+   "status": "partial",
+   "python": "3.15.2",
+   "steps": [
+    {
+     "step": "venv",
+     "ok": true,
+     "seconds": 0.0,
+     "timed_out": false,
+     "log_tail": ""
+    },
+    {
+     "step": "install -e .",
+     "ok": false,
+     "seconds": 0.8,
+     "timed_out": false,
+     "log_tail": "y__.build_wheel` failed (exit status: 1)\n\n         [stdout]\n         running bdist_wheel\n         /dev/shm/acr/work/_shared_cache/uv/builds-v0/.tmpgtQKLm/bin/python /dev/shm/acr/work/_shared_cache/uv/sdists-v10/pypi/llvmlite/0.44.0/1GK59AhRkqSlVkk-/src/ffi/build.py\n         LLVM version... \n\n         [stderr]\n         Traceback (most recent call last):\n           File \"/dev/shm/acr/work/_shared_cache/uv/sdists-v10/pypi/llvmlite/0.44.0/1GK59AhRkqSlVkk-/src/ffi/build.py\", line 258, in <module>\n             main()\n             ~~~~^^\n           File \"/dev/shm/acr/work/_shared_cache/uv/sdists-v10/pypi/llvmlite/0.44.0/1GK59AhRkqSlVkk-/src/ffi/build.py\", line 246, in main\n             main_posix('linux', '.so')\n             ~~~~~~~~~~^^^^^^^^^^^^^^^^\n           File \"/dev/shm/acr/work/_shared_cache/uv/sdists-v10/pypi/llvmlite/0.44.0/1GK59AhRkqSlVkk-/src/ffi/build.py\", line 163, in main_posix\n             raise RuntimeError(msg) from None\n         RuntimeError: Could not find a `llvm-config` binary. There are a number of reasons this could occur, please see: https://llvmlite.readthedocs.io/en/latest/admin-guide/install.html#using-pip for help.\n         error: command '/dev/shm/acr/work/_shared_cache/uv/builds-v0/.tmpgtQKLm/bin/python' failed with exit code 1\n\nhint: `llvmlite` (v0.44.0) was included because `smartmoneyconcepts` (v0.0.26) depends on `numba` (v0.61.2) which depends on `llvmlite`\n\nhint: Build failures usually indicate a problem with the package or the build environment\n"
+    },
+    {
+     "step": "install pytest",
+     "ok": true,
+     "seconds": 0.0,
+     "timed_out": false,
+     "log_tail": ""
+    }
+   ]
+  },
+  "selected_tests": [],
+  "head_run": {
+   "status": "not_run",
+   "tests": {}
+  },
+  "base_run": {
+   "status": "not_run",
+   "tests": {}
+  },
+  "comparison": {
+   "regressions": [],
+   "new_test_failures": [],
+   "fixed": [],
+   "persistent_failures": []
+  },
+  "imports_head": {},
+  "imports_base": {},
+  "status": "no_executable_checks",
+  "dependency_cutoff": "2025-06-03T19:17:52Z",
+  "seconds": 0.9,
+  "head_failures": 0
+ },
+ "findings": [],
+ "status": "ok",
+ "seconds": 51.6
+}

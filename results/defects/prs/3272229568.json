@@ -1,0 +1,159 @@
+{
+ "pr_id": 3272229568,
+ "repository": "vespa-engine/pyvespa",
+ "pr_number": 1097,
+ "split": "development",
+ "agent": "Copilot",
+ "head_sha": "f5515227b0d589a50abab8bca7892e1cbbd80458",
+ "tool_versions": {
+  "ruff": "ruff 0.17.4",
+  "bandit": "__main__.py 1.9.4",
+  "python": "3.12.3"
+ },
+ "config": {
+  "run_tests": true,
+  "sandbox": true
+ },
+ "base_mode": "reverse_applied_diff",
+ "static": {
+  "files_analysed": 2,
+  "head_issues": 98,
+  "base_issues": 98,
+  "per_tool_head": {
+   "ruff": 91,
+   "bandit": 7
+  },
+  "per_tool_base": {
+   "ruff": 91,
+   "bandit": 7
+  },
+  "introduced": 0,
+  "seconds": 0.5
+ },
+ "tests": {
+  "env": {
+   "status": "partial",
+   "python": "3.15.2",
+   "steps": [
+    {
+     "step": "venv",
+     "ok": true,
+     "seconds": 0.0,
+     "timed_out": false,
+     "log_tail": ""
+    },
+    {
+     "step": "install -e .[dev]",
+     "ok": false,
+     "seconds": 1.0,
+     "timed_out": false,
+     "log_tail": " by 'virtual:world', not found\n         Package libffi was not found in the pkg-config search path.\n         Perhaps you should add the directory containing `libffi.pc'\n         to the PKG_CONFIG_PATH environment variable\n         Package 'libffi', required by 'virtual:world', not found\n         /dev/shm/acr/work/_shared_cache/uv/builds-v0/.tmpXwjhFy/lib/python3.15/site-packages/setuptools/dist.py:759: SetuptoolsDeprecationWarning: License classifiers are deprecated.\n         !!\n\n                 ********************************************************************************\n                 Please consider removing the following classifiers in favor of a SPDX license expression:\n\n                 License :: OSI Approved :: MIT License\n\n                 See https://packaging.python.org/en/latest/guides/writing-pyproject-toml/#license for details.\n                 ********************************************************************************\n\n         !!\n           self._finalize_license_expression()\n         src/c/_cffi_backend.c:15:10: fatal error: ffi.h: No such file or directory\n            15 | #include <ffi.h>\n               |          ^~~~~~~\n         compilation terminated.\n         error: command '/usr/bin/cc' failed with exit code 1\n\nhint: `cffi` (v1.17.1) was included because `pyvespa` (v0.dev0) depends on `cryptography` (v45.0.5) which depends on `cffi`\n\nhint: This error likely indicates that you need to install a library that provides `ffi.h` for `cffi@1.17.1`\n",
+     "superseded": true
+    },
+    {
+     "step": "install -e .",
+     "ok": false,
+     "seconds": 0.5,
+     "timed_out": false,
+     "log_tail": " by 'virtual:world', not found\n         Package libffi was not found in the pkg-config search path.\n         Perhaps you should add the directory containing `libffi.pc'\n         to the PKG_CONFIG_PATH environment variable\n         Package 'libffi', required by 'virtual:world', not found\n         /dev/shm/acr/work/_shared_cache/uv/builds-v0/.tmp3UcKJI/lib/python3.15/site-packages/setuptools/dist.py:759: SetuptoolsDeprecationWarning: License classifiers are deprecated.\n         !!\n\n                 ********************************************************************************\n                 Please consider removing the following classifiers in favor of a SPDX license expression:\n\n                 License :: OSI Approved :: MIT License\n\n                 See https://packaging.python.org/en/latest/guides/writing-pyproject-toml/#license for details.\n                 ********************************************************************************\n\n         !!\n           self._finalize_license_expression()\n         src/c/_cffi_backend.c:15:10: fatal error: ffi.h: No such file or directory\n            15 | #include <ffi.h>\n               |          ^~~~~~~\n         compilation terminated.\n         error: command '/usr/bin/cc' failed with exit code 1\n\nhint: `cffi` (v1.17.1) was included because `pyvespa` (v0.dev0) depends on `cryptography` (v45.0.5) which depends on `cffi`\n\nhint: This error likely indicates that you need to install a library that provides `ffi.h` for `cffi@1.17.1`\n"
+    },
+    {
+     "step": "install pytest",
+     "ok": true,
+     "seconds": 0.0,
+     "timed_out": false,
+     "log_tail": ""
+    },
+    {
+     "step": "repair: install jinja2",
+     "ok": true,
+     "seconds": 0.0,
+     "timed_out": false,
+     "log_tail": ""
+    }
+   ]
+  },
+  "selected_tests": [
+   {
+    "path": "tests/unit/test_package.py",
+    "reason": "changed_in_pr",
+    "exists_at_base": true
+   }
+  ],
+  "head_run": {
+   "status": "completed",
+   "exit_code": 2,
+   "seconds": 0.5,
+   "addopts_overridden": false,
+   "counts": {
+    "passed": 0,
+    "failed": 0,
+    "error": 1,
+    "skipped": 0
+   },
+   "tests": {
+    "::tests.unit.test_package": {
+     "outcome": "error",
+     "detail": "collection failure\nImportError while importing test module '/dev/shm/acr/work/3272229568/src/head/tests/unit/test_package.py'.\nHint: make sure your test modules/packages have valid Python names.\nTraceback:\n../../../_shared_cache/python/cpython-3.15.2-linux-x86_64-gnu/lib/python3.15/importlib/__init__.py:88: in import_module\n    return _bootstrap._gcd_import(name[level:], package, level)\n           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\ntests/unit/test_package.py:7: in <module>\n    from vespa.package import (\nvespa/package.py:17: in <module>\n    from vespa.configuration.vt import Xml, vt\nvespa/configuration/vt.py:1: in <module>\n    from fastcore.utils import tuplify\nE   ModuleNotFoundError: No module named 'fastcore'"
+    }
+   },
+   "log_tail": ""
+  },
+  "base_run": {
+   "status": "completed",
+   "exit_code": 2,
+   "seconds": 0.5,
+   "addopts_overridden": false,
+   "counts": {
+    "passed": 0,
+    "failed": 0,
+    "error": 1,
+    "skipped": 0
+   },
+   "tests": {
+    "::tests.unit.test_package": {
+     "outcome": "error",
+     "detail": "collection failure\nImportError while importing test module '/dev/shm/acr/work/3272229568/src/base/tests/unit/test_package.py'.\nHint: make sure your test modules/packages have valid Python names.\nTraceback:\n../../../_shared_cache/python/cpython-3.15.2-linux-x86_64-gnu/lib/python3.15/importlib/__init__.py:88: in import_module\n    return _bootstrap._gcd_import(name[level:], package, level)\n           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\ntests/unit/test_package.py:7: in <module>\n    from vespa.package import (\nvespa/package.py:17: in <module>\n    from vespa.configuration.vt import Xml, vt\nvespa/configuration/vt.py:1: in <module>\n    from fastcore.utils import tuplify\nE   ModuleNotFoundError: No module named 'fastcore'"
+    }
+   },
+   "log_tail": ""
+  },
+  "comparison": {
+   "regressions": [],
+   "new_test_failures": [],
+   "fixed": [],
+   "persistent_failures": [
+    "::tests.unit.test_package"
+   ]
+  },
+  "imports_head": {
+   "vespa.package": {
+    "ok": false,
+    "type": "ModuleNotFoundError",
+    "message": "No module named 'fastcore'",
+    "missing_module": "fastcore",
+    "file": "vespa/configuration/vt.py",
+    "line": 1,
+    "traceback": "Traceback (most recent call last):\n  File \"<string>\", line 7, in <module>\n    importlib.import_module(m)\n    ~~~~~~~~~~~~~~~~~~~~~~~^^^\n  File \"/dev/shm/acr/work/_shared_cache/python/cpython-3.15.2-linux-x86_64-gnu/lib/python3.15/importlib/__init__.py\", line 88, in import_module\n    return _bootstrap._gcd_import(name[level:], package, level)\n           ~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"<frozen importlib._bootstrap>\", line 1389, in _gcd_import\n  File \"<frozen importlib._bootstrap>\", line 1353, in _find_and_load\n  File \"<frozen importlib._bootstrap>\", line 1249, in _find_and_load_unlocked\n  File \"<frozen importlib._bootstrap>\", line 857, in _load_unlocked\n  File \"<frozen importlib._bootstrap_external>\", line 751, in exec_module\n  File \"<frozen importlib._bootstrap>\", line 491, in _call_with_frames_removed\n  File \"/dev/shm/acr/work/3272229568/src/head/vespa/package.py\", line 17, in <module>\n    from vespa.configuration.vt import Xml, vt\n  File \"/dev/shm/acr/work/3272229568/src/head/vespa/configuration/vt.py\", line 1, in <module>\n    from fastcore.utils import tuplify\nModuleNotFoundError: No module named 'fastcore'\n"
+   }
+  },
+  "imports_base": {
+   "vespa.package": {
+    "ok": false,
+    "type": "ModuleNotFoundError",
+    "message": "No module named 'fastcore'",
+    "missing_module": "fastcore",
+    "file": "vespa/configuration/vt.py",
+    "line": 1,
+    "traceback": "Traceback (most recent call last):\n  File \"<string>\", line 7, in <module>\n    importlib.import_module(m)\n    ~~~~~~~~~~~~~~~~~~~~~~~^^^\n  File \"/dev/shm/acr/work/_shared_cache/python/cpython-3.15.2-linux-x86_64-gnu/lib/python3.15/importlib/__init__.py\", line 88, in import_module\n    return _bootstrap._gcd_import(name[level:], package, level)\n           ~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"<frozen importlib._bootstrap>\", line 1389, in _gcd_import\n  File \"<frozen importlib._bootstrap>\", line 1353, in _find_and_load\n  File \"<frozen importlib._bootstrap>\", line 1249, in _find_and_load_unlocked\n  File \"<frozen importlib._bootstrap>\", line 857, in _load_unlocked\n  File \"<frozen importlib._bootstrap_external>\", line 751, in exec_module\n  File \"<frozen importlib._bootstrap>\", line 491, in _call_with_frames_removed\n  File \"/dev/shm/acr/work/3272229568/src/base/vespa/package.py\", line 17, in <module>\n    from vespa.configuration.vt import Xml, vt\n  File \"/dev/shm/acr/work/3272229568/src/base/vespa/configuration/vt.py\", line 1, in <module>\n    from fastcore.utils import tuplify\nModuleNotFoundError: No module named 'fastcore'\n"
+   }
+  },
+  "status": "completed",
+  "dependency_cutoff": "2025-07-30T06:20:23Z",
+  "seconds": 3.8,
+  "head_failures": 1
+ },
+ "findings": [],
+ "status": "ok",
+ "seconds": 51.7
+}

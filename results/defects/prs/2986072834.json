@@ -1,0 +1,180 @@
+{
+ "pr_id": 2986072834,
+ "repository": "JoshuaC215/agent-service-toolkit",
+ "pr_number": 202,
+ "split": "development",
+ "agent": "Claude_Code",
+ "head_sha": "3ca7b418f12bb9c38c64a2e8e9dbb46f14bce444",
+ "tool_versions": {
+  "ruff": "ruff 0.17.4",
+  "bandit": "__main__.py 1.9.4",
+  "python": "3.12.3"
+ },
+ "config": {
+  "run_tests": true,
+  "sandbox": true
+ },
+ "base_mode": "reverse_applied_diff",
+ "static": {
+  "files_analysed": 1,
+  "head_issues": 0,
+  "base_issues": 0,
+  "per_tool_head": {},
+  "per_tool_base": {},
+  "introduced": 0,
+  "seconds": 0.2
+ },
+ "tests": {
+  "env": {
+   "status": "partial",
+   "python": "3.15.2",
+   "steps": [
+    {
+     "step": "venv",
+     "ok": true,
+     "seconds": 0.0,
+     "timed_out": false,
+     "log_tail": ""
+    },
+    {
+     "step": "install -e .",
+     "ok": false,
+     "seconds": 0.3,
+     "timed_out": false,
+     "log_tail": "pends on psycopg-binary{implementation_name != 'pypy'}==3.2.4, we can conclude that psycopg[binary]==3.2.4 cannot be used. (1)\n\n         Because psycopg-binary{implementation_name != 'pypy'}==3.2.5 has no wheels with a matching Python ABI tag (e.g., `cp315`) and psycopg[binary]==3.2.5 depends on psycopg-binary{implementation_name != 'pypy'}==3.2.5, we can conclude that psycopg[binary]==3.2.5 cannot be used.\n         And because we know from (1) that psycopg[binary]==3.2.4 cannot be used, we can conclude that psycopg[binary]>=3.2.4,<=3.2.5 cannot be used. (2)\n\n         Because psycopg-binary{implementation_name != 'pypy'}==3.2.6 has no wheels with a matching Python ABI tag (e.g., `cp315`) and psycopg[binary]>=3.2.6 depends on psycopg-binary{implementation_name != 'pypy'}==3.2.6, we can conclude that psycopg[binary]>=3.2.6 cannot be used.\n         And because we know from (2) that psycopg[binary]>=3.2.4,<=3.2.5 cannot be used, we can conclude that psycopg[binary]>=3.2.4 cannot be used.\n         And because agent-service-toolkit==0.1.0 depends on psycopg[binary]>=3.2.4, we can conclude that agent-service-toolkit==0.1.0 cannot be used.\n         And because only agent-service-toolkit==0.1.0 is available and you require agent-service-toolkit, we can conclude that your requirements are unsatisfiable.\n\nhint: You require CPython 3.15 (`cp315`), but we only found wheels for `psycopg-binary` (v3.2.4) with the following Python ABI tags: `cp38`, `cp39`, `cp310`, `cp311`, `cp312`, `cp313`\n"
+    },
+    {
+     "step": "install --group dev",
+     "ok": true,
+     "seconds": 0.9,
+     "timed_out": false,
+     "log_tail": ""
+    },
+    {
+     "step": "install pytest",
+     "ok": true,
+     "seconds": 0.0,
+     "timed_out": false,
+     "log_tail": ""
+    },
+    {
+     "step": "repair: install langgraph pydantic",
+     "ok": false,
+     "seconds": 1.5,
+     "timed_out": false,
+     "log_tail": " environment variable\n         Package 'libffi', required by 'virtual:world', not found\n         Package libffi was not found in the pkg-config search path.\n         Perhaps you should add the directory containing `libffi.pc'\n         to the PKG_CONFIG_PATH environment variable\n         Package 'libffi', required by 'virtual:world', not found\n         /dev/shm/acr/work/_shared_cache/uv/builds-v0/.tmpwvZQFT/lib/python3.15/site-packages/setuptools/dist.py:759: SetuptoolsDeprecationWarning: License classifiers are deprecated.\n         !!\n\n                 ********************************************************************************\n                 Please consider removing the following classifiers in favor of a SPDX license expression:\n\n                 License :: OSI Approved :: MIT License\n\n                 See https://packaging.python.org/en/latest/guides/writing-pyproject-toml/#license for details.\n                 ********************************************************************************\n\n         !!\n           self._finalize_license_expression()\n         src/c/_cffi_backend.c:15:10: fatal error: ffi.h: No such file or directory\n            15 | #include <ffi.h>\n               |          ^~~~~~~\n         compilation terminated.\n         error: command '/usr/bin/cc' failed with exit code 1\n\nhint: `zstandard` (v0.23.0) was included because `langgraph` (v0.3.28) depends on `langchain-core` (v0.3.51) which depends on `langsmith` (v0.3.30) which depends on `zstandard`\n"
+    }
+   ]
+  },
+  "selected_tests": [
+   {
+    "path": "tests/app/test_streamlit_app.py",
+    "reason": "full_suite",
+    "exists_at_base": true
+   },
+   {
+    "path": "tests/client/test_client.py",
+    "reason": "full_suite",
+    "exists_at_base": true
+   },
+   {
+    "path": "tests/core/test_llm.py",
+    "reason": "full_suite",
+    "exists_at_base": true
+   },
+   {
+    "path": "tests/core/test_settings.py",
+    "reason": "full_suite",
+    "exists_at_base": true
+   },
+   {
+    "path": "tests/integration/test_docker_e2e.py",
+    "reason": "full_suite",
+    "exists_at_base": true
+   },
+   {
+    "path": "tests/service/test_auth.py",
+    "reason": "full_suite",
+    "exists_at_base": true
+   },
+   {
+    "path": "tests/service/test_service.py",
+    "reason": "full_suite",
+    "exists_at_base": true
+   },
+   {
+    "path": "tests/service/test_service_e2e.py",
+    "reason": "full_suite",
+    "exists_at_base": true
+   },
+   {
+    "path": "tests/service/test_utils.py",
+    "reason": "full_suite",
+    "exists_at_base": true
+   }
+  ],
+  "head_run": {
+   "status": "usage_error",
+   "exit_code": 4,
+   "seconds": 0.3,
+   "addopts_overridden": true,
+   "counts": {
+    "passed": 0,
+    "failed": 0,
+    "error": 0,
+    "skipped": 0
+   },
+   "tests": {},
+   "log_tail": "\n/dev/shm/acr/work/2986072834/venv/lib/python3.15/site-packages/pluggy/_callers.py:141: SyntaxWarning: 'return' in a 'finally' block\n  return result\n/dev/shm/acr/work/2986072834/venv/lib/python3.15/site-packages/pluggy/_callers.py:182: SyntaxWarning: 'return' in a 'finally' block\n  return outcome.get_result()\nImportError while loading conftest '/dev/shm/acr/work/2986072834/src/head/tests/app/conftest.py'.\ntests/app/conftest.py:5: in <module>\n    from schema import AgentInfo, ServiceMetadata\nsrc/schema/__init__.py:2: in <module>\n    from schema.schema import (\nsrc/schema/schema.py:3: in <module>\n    from pydantic import BaseModel, Field, SerializeAsAny\nE   ModuleNotFoundError: No module named 'pydantic'\n"
+  },
+  "base_run": {
+   "status": "usage_error",
+   "exit_code": 4,
+   "seconds": 0.3,
+   "addopts_overridden": true,
+   "counts": {
+    "passed": 0,
+    "failed": 0,
+    "error": 0,
+    "skipped": 0
+   },
+   "tests": {},
+   "log_tail": "\n/dev/shm/acr/work/2986072834/venv/lib/python3.15/site-packages/pluggy/_callers.py:141: SyntaxWarning: 'return' in a 'finally' block\n  return result\n/dev/shm/acr/work/2986072834/venv/lib/python3.15/site-packages/pluggy/_callers.py:182: SyntaxWarning: 'return' in a 'finally' block\n  return outcome.get_result()\nImportError while loading conftest '/dev/shm/acr/work/2986072834/src/base/tests/app/conftest.py'.\ntests/app/conftest.py:5: in <module>\n    from schema import AgentInfo, ServiceMetadata\nsrc/schema/__init__.py:2: in <module>\n    from schema.schema import (\nsrc/schema/schema.py:3: in <module>\n    from pydantic import BaseModel, Field, SerializeAsAny\nE   ModuleNotFoundError: No module named 'pydantic'\n"
+  },
+  "comparison": {
+   "regressions": [],
+   "new_test_failures": [],
+   "fixed": [],
+   "persistent_failures": []
+  },
+  "imports_head": {
+   "memory.postgres": {
+    "ok": false,
+    "type": "ModuleNotFoundError",
+    "message": "No module named 'langgraph'",
+    "missing_module": "langgraph",
+    "file": "src/memory/__init__.py",
+    "line": 3,
+    "traceback": "Traceback (most recent call last):\n  File \"<string>\", line 7, in <module>\n    importlib.import_module(m)\n    ~~~~~~~~~~~~~~~~~~~~~~~^^^\n  File \"/dev/shm/acr/work/_shared_cache/python/cpython-3.15.2-linux-x86_64-gnu/lib/python3.15/importlib/__init__.py\", line 88, in import_module\n    return _bootstrap._gcd_import(name[level:], package, level)\n           ~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"<frozen importlib._bootstrap>\", line 1389, in _gcd_import\n  File \"<frozen importlib._bootstrap>\", line 1338, in _find_and_load\n  File \"<frozen importlib._bootstrap>\", line 1299, in _resolve_parents\n  File \"<frozen importlib._bootstrap>\", line 491, in _call_with_frames_removed\n  File \"<frozen importlib._bootstrap>\", line 1389, in _gcd_import\n  File \"<frozen importlib._bootstrap>\", line 1353, in _find_and_load\n  File \"<frozen importlib._bootstrap>\", line 1249, in _find_and_load_unlocked\n  File \"<frozen importlib._bootstrap>\", line 857, in _load_unlocked\n  File \"<frozen importlib._bootstrap_external>\", line 751, in exec_module\n  File \"<frozen importlib._bootstrap>\", line 491, in _call_with_frames_removed\n  File \"/dev/shm/acr/work/2986072834/src/head/src/memory/__init__.py\", line 3, in <module>\n    from langgraph.checkpoint.postgres.aio import AsyncPostgresSaver\nModuleNotFoundError: No module named 'langgraph'\n"
+   }
+  },
+  "imports_base": {
+   "memory.postgres": {
+    "ok": false,
+    "type": "ModuleNotFoundError",
+    "message": "No module named 'langgraph'",
+    "missing_module": "langgraph",
+    "file": "src/memory/__init__.py",
+    "line": 3,
+    "traceback": "Traceback (most recent call last):\n  File \"<string>\", line 7, in <module>\n    importlib.import_module(m)\n    ~~~~~~~~~~~~~~~~~~~~~~~^^^\n  File \"/dev/shm/acr/work/_shared_cache/python/cpython-3.15.2-linux-x86_64-gnu/lib/python3.15/importlib/__init__.py\", line 88, in import_module\n    return _bootstrap._gcd_import(name[level:], package, level)\n           ~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"<frozen importlib._bootstrap>\", line 1389, in _gcd_import\n  File \"<frozen importlib._bootstrap>\", line 1338, in _find_and_load\n  File \"<frozen importlib._bootstrap>\", line 1299, in _resolve_parents\n  File \"<frozen importlib._bootstrap>\", line 491, in _call_with_frames_removed\n  File \"<frozen importlib._bootstrap>\", line 1389, in _gcd_import\n  File \"<frozen importlib._bootstrap>\", line 1353, in _find_and_load\n  File \"<frozen importlib._bootstrap>\", line 1249, in _find_and_load_unlocked\n  File \"<frozen importlib._bootstrap>\", line 857, in _load_unlocked\n  File \"<frozen importlib._bootstrap_external>\", line 751, in exec_module\n  File \"<frozen importlib._bootstrap>\", line 491, in _call_with_frames_removed\n  File \"/dev/shm/acr/work/2986072834/src/base/src/memory/__init__.py\", line 3, in <module>\n    from langgraph.checkpoint.postgres.aio import AsyncPostgresSaver\nModuleNotFoundError: No module named 'langgraph'\n"
+   }
+  },
+  "status": "head_usage_error",
+  "dependency_cutoff": "2025-04-11T05:02:46Z",
+  "seconds": 4.2,
+  "head_failures": 0
+ },
+ "findings": [],
+ "status": "ok",
+ "seconds": 5.9
+}

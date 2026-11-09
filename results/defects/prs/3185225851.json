@@ -1,0 +1,291 @@
+{
+ "pr_id": 3185225851,
+ "repository": "microsoft/torchgeo",
+ "pr_number": 2861,
+ "split": "development",
+ "agent": "Copilot",
+ "head_sha": "7aa1feaff98d5b7f014de5ae0e9b2d6f8ef6c6da",
+ "tool_versions": {
+  "ruff": "ruff 0.17.4",
+  "bandit": "__main__.py 1.9.4",
+  "python": "3.12.3"
+ },
+ "config": {
+  "run_tests": true,
+  "sandbox": true
+ },
+ "base_mode": "reverse_applied_diff",
+ "static": {
+  "files_analysed": 7,
+  "head_issues": 0,
+  "base_issues": 0,
+  "per_tool_head": {},
+  "per_tool_base": {},
+  "introduced": 0,
+  "seconds": 1.2
+ },
+ "tests": {
+  "env": {
+   "status": "partial",
+   "python": "3.15.2",
+   "steps": [
+    {
+     "step": "venv",
+     "ok": true,
+     "seconds": 0.0,
+     "timed_out": false,
+     "log_tail": ""
+    },
+    {
+     "step": "install -e .[tests]",
+     "ok": false,
+     "seconds": 2.7,
+     "timed_out": false,
+     "log_tail": "       Because only the following versions of torch are available:\n             torch<2.7.0+cpu\n             torch>2.7.0+cpu,<2.7.1+cpu\n         and all of:\n             torch>=2.1.0,<=2.7.0\n             torch==2.7.1\n          have no wheels with a matching Python ABI tag (e.g., `cp315`), we can conclude that all of:\n             torch>=2.1.0,<=2.7.0\n             torch==2.7.1\n          cannot be used.\n         And because we know from (1) that all of:\n             lightning>=2.0.0,<=2.2.5\n             lightning>=2.4.0.dev20240630,<=2.5.0rc0\n             lightning>=2.5.0.post0\n         depend on one of:\n             torch>=1.11.0,<=1.13.1+cpu\n             torch>=2.1.0\n         we can conclude that all of:\n             lightning>=2.0.0,<=2.2.5\n             lightning>=2.4.0.dev20240630,<=2.5.0rc0\n             lightning>=2.5.0.post0\n         depend on torch>=1.11.0,<=1.13.1+cpu.\n         And because torchgeo==0.8.0.dev0 depends on one of:\n             lightning[pytorch-extra]>=2,<2.3.dev0\n             lightning[pytorch-extra]>=2.4.dev0,<2.5.0\n             lightning[pytorch-extra]>2.5.0\n         and torch>=2, we can conclude that torchgeo==0.8.0.dev0 cannot be used.\n         And because only torchgeo[tests]==0.8.0.dev0 is available and you require torchgeo[tests], we can conclude that your requirements are unsatisfiable.\n\nhint: You require CPython 3.15 (`cp315`), but we only found wheels for `torch` (v2.0.1+cpu) with the following Python ABI tags: `cp38`, `cp39`, `cp310`, `cp311`\n",
+     "superseded": true
+    },
+    {
+     "step": "install -e .",
+     "ok": false,
+     "seconds": 1.1,
+     "timed_out": false,
+     "log_tail": "       (1)\n\n         Because only the following versions of torch are available:\n             torch<2.7.0+cpu\n             torch>2.7.0+cpu,<2.7.1+cpu\n         and all of:\n             torch>=2.1.0,<=2.7.0\n             torch==2.7.1\n          have no wheels with a matching Python ABI tag (e.g., `cp315`), we can conclude that all of:\n             torch>=2.1.0,<=2.7.0\n             torch==2.7.1\n          cannot be used.\n         And because we know from (1) that all of:\n             lightning>=2.0.0,<=2.2.5\n             lightning>=2.4.0.dev20240630,<=2.5.0rc0\n             lightning>=2.5.0.post0\n         depend on one of:\n             torch>=1.11.0,<=1.13.1+cpu\n             torch>=2.1.0\n         we can conclude that all of:\n             lightning>=2.0.0,<=2.2.5\n             lightning>=2.4.0.dev20240630,<=2.5.0rc0\n             lightning>=2.5.0.post0\n         depend on torch>=1.11.0,<=1.13.1+cpu.\n         And because torchgeo==0.8.0.dev0 depends on one of:\n             lightning[pytorch-extra]>=2,<2.3.dev0\n             lightning[pytorch-extra]>=2.4.dev0,<2.5.0\n             lightning[pytorch-extra]>2.5.0\n         and torch>=2, we can conclude that torchgeo==0.8.0.dev0 cannot be used.\n         And because only torchgeo==0.8.0.dev0 is available and you require torchgeo, we can conclude that your requirements are unsatisfiable.\n\nhint: You require CPython 3.15 (`cp315`), but we only found wheels for `torch` (v2.0.1+cpu) with the following Python ABI tags: `cp38`, `cp39`, `cp310`, `cp311`\n"
+    },
+    {
+     "step": "install -r requirements/tests.txt",
+     "ok": false,
+     "seconds": 16.8,
+     "timed_out": false,
+     "log_tail": "err\n           error: the configured Python interpreter version (3.15) is newer than PyO3's maximum supported version (3.14)\n           = help: please check if an updated version of PyO3 is available. Current version: 0.25.1\n           = help: set PYO3_USE_ABI3_FORWARD_COMPATIBILITY=1 to suppress this check and build anyway using the stable ABI\n         warning: build failed, waiting for other jobs to finish...\n         💥 maturin failed\n           Caused by: Failed to build a native library through cargo\n           Caused by: Cargo build finished with \"exit status: 101\": `env -u CARGO PYO3_ENVIRONMENT_SIGNATURE=\"cpython-3.15-64bit\" PYO3_PYTHON=\"/dev/shm/acr/work/_shared_cache/uv/builds-v0/.tmpi2aDoF/bin/python\" PYTHON_SYS_EXECUTABLE=\"/dev/shm/acr/work/_shared_cache/uv/builds-v0/.tmpi2aDoF/bin/python\" \"cargo\" \"rustc\" \"--features\" \"pyo3/extension-module\" \"--message-format\" \"json-render-diagnostics\" \"--manifest-path\" \"/dev/shm/acr/work/_shared_cache/uv/sdists-v10/pypi/rpds-py/0.26.0/dTVpdZjJEFqk_2mc/src/Cargo.toml\" \"--release\" \"--lib\"`\n         Error: command ['maturin', 'pep517', 'build-wheel', '-i', '/dev/shm/acr/work/_shared_cache/uv/builds-v0/.tmpi2aDoF/bin/python', '--compatibility', 'off'] returned non-zero exit status 1\n\nhint: `rpds-py` (v0.26.0) was included because `nbmake` (v1.5.5) depends on `nbformat` (v5.10.4) which depends on `jsonschema` (v4.24.0) which depends on `rpds-py`\n\nhint: Build failures usually indicate a problem with the package or the build environment\n"
+    },
+    {
+     "step": "install pytest",
+     "ok": true,
+     "seconds": 0.0,
+     "timed_out": false,
+     "log_tail": ""
+    },
+    {
+     "step": "repair: install jsonargparse kornia torch",
+     "ok": false,
+     "seconds": 1.0,
+     "timed_out": false,
+     "log_tail": "error: No solution found when resolving dependencies\n  cause: Because only the following versions of torch are available:\n             torch<2.7.0+cpu\n             torch>2.7.0+cpu,<2.7.1+cpu\n         and all of:\n             torch<=2.7.0\n             torch==2.7.1\n          have no wheels with a matching Python ABI tag (e.g., `cp315`), we can conclude that all of:\n             torch<=2.7.0\n             torch==2.7.1\n          cannot be used.\n         And because you require torch, we can conclude that your requirements are unsatisfiable.\n\nhint: You require CPython 3.15 (`cp315`), but we only found wheels for `torch` (v2.7.1) with the following Python ABI tag: `cp313t`\n"
+    }
+   ]
+  },
+  "selected_tests": [
+   {
+    "path": "tests/datamodules/test_caffe.py",
+    "reason": "matches_module:caffe",
+    "exists_at_base": true
+   },
+   {
+    "path": "tests/datasets/test_caffe.py",
+    "reason": "matches_module:caffe",
+    "exists_at_base": true
+   },
+   {
+    "path": "tests/datasets/test_geonrw.py",
+    "reason": "matches_module:geonrw",
+    "exists_at_base": true
+   },
+   {
+    "path": "tests/datasets/test_patternnet.py",
+    "reason": "matches_module:patternnet",
+    "exists_at_base": true
+   },
+   {
+    "path": "tests/models/test_resnet.py",
+    "reason": "matches_module:resnet",
+    "exists_at_base": true
+   },
+   {
+    "path": "tests/datasets/test_substation.py",
+    "reason": "matches_module:substation",
+    "exists_at_base": true
+   },
+   {
+    "path": "tests/datasets/test_ucmerced.py",
+    "reason": "matches_module:ucmerced",
+    "exists_at_base": true
+   },
+   {
+    "path": "tests/models/test_vit.py",
+    "reason": "matches_module:vit",
+    "exists_at_base": true
+   }
+  ],
+  "head_run": {
+   "status": "usage_error",
+   "exit_code": 4,
+   "seconds": 0.2,
+   "addopts_overridden": true,
+   "counts": {
+    "passed": 0,
+    "failed": 0,
+    "error": 0,
+    "skipped": 0
+   },
+   "tests": {},
+   "log_tail": "\nERROR: while parsing the following warning configuration:\n\n  ignore::jsonargparse._deprecated.JsonargparseDeprecationWarning:lightning.pytorch.cli\n\nThis error occurred:\n\nTraceback (most recent call last):\n  File \"/dev/shm/acr/work/3185225851/venv/lib/python3.15/site-packages/_pytest/config/__init__.py\", line 1967, in parse_warning_filter\n    category: type[Warning] = _resolve_warning_category(category_)\n                              ~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^\n  File \"/dev/shm/acr/work/3185225851/venv/lib/python3.15/site-packages/_pytest/config/__init__.py\", line 2012, in _resolve_warning_category\n    m = __import__(module, None, None, [klass])\nModuleNotFoundError: No module named 'jsonargparse'\n\n\n"
+  },
+  "base_run": {
+   "status": "usage_error",
+   "exit_code": 4,
+   "seconds": 0.3,
+   "addopts_overridden": true,
+   "counts": {
+    "passed": 0,
+    "failed": 0,
+    "error": 0,
+    "skipped": 0
+   },
+   "tests": {},
+   "log_tail": "\nERROR: while parsing the following warning configuration:\n\n  ignore::jsonargparse._deprecated.JsonargparseDeprecationWarning:lightning.pytorch.cli\n\nThis error occurred:\n\nTraceback (most recent call last):\n  File \"/dev/shm/acr/work/3185225851/venv/lib/python3.15/site-packages/_pytest/config/__init__.py\", line 1967, in parse_warning_filter\n    category: type[Warning] = _resolve_warning_category(category_)\n                              ~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^\n  File \"/dev/shm/acr/work/3185225851/venv/lib/python3.15/site-packages/_pytest/config/__init__.py\", line 2012, in _resolve_warning_category\n    m = __import__(module, None, None, [klass])\nModuleNotFoundError: No module named 'jsonargparse'\n\n\n"
+  },
+  "comparison": {
+   "regressions": [],
+   "new_test_failures": [],
+   "fixed": [],
+   "persistent_failures": []
+  },
+  "imports_head": {
+   "torchgeo.datamodules.caffe": {
+    "ok": false,
+    "type": "ModuleNotFoundError",
+    "message": "No module named 'kornia'",
+    "missing_module": "kornia",
+    "file": "torchgeo/datamodules/agrifieldnet.py",
+    "line": 8,
+    "traceback": "Traceback (most recent call last):\n  File \"<string>\", line 7, in <module>\n    importlib.import_module(m)\n    ~~~~~~~~~~~~~~~~~~~~~~~^^^\n  File \"/dev/shm/acr/work/_shared_cache/python/cpython-3.15.2-linux-x86_64-gnu/lib/python3.15/importlib/__init__.py\", line 88, in import_module\n    return _bootstrap._gcd_import(name[level:], package, level)\n           ~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"<frozen importlib._bootstrap>\", line 1389, in _gcd_import\n  File \"<frozen importlib._bootstrap>\", line 1338, in _find_and_load\n  File \"<frozen importlib._bootstrap>\", line 1299, in _resolve_parents\n  File \"<frozen importlib._bootstrap>\", line 491, in _call_with_frames_removed\n  File \"<frozen importlib._bootstrap>\", line 1389, in _gcd_import\n  File \"<frozen importlib._bootstrap>\", line 1353, in _find_and_load\n  File \"<frozen importlib._bootstrap>\", line 1249, in _find_and_load_unlocked\n  File \"<frozen importlib._bootstrap>\", line 857, in _load_unlocked\n  File \"<frozen importlib._bootstrap_external>\", line 751, in exec_module\n  File \"<frozen importlib._bootstrap>\", line 491, in _call_with_frames_removed\n  File \"/dev/shm/acr/work/3185225851/src/head/torchgeo/datamodules/__init__.py\", line 6, in <module>\n    from .agrifieldnet import AgriFieldNetDataModule\n  File \"/dev/shm/acr/work/3185225851/src/head/torchgeo/datamodules/agrifieldnet.py\", line 8, in <module>\n    import kornia.augmentation as K\nModuleNotFoundError: No module named 'kornia'\n"
+   },
+   "torchgeo.datamodules.geonrw": {
+    "ok": false,
+    "type": "ModuleNotFoundError",
+    "message": "No module named 'kornia'",
+    "missing_module": "kornia",
+    "file": "torchgeo/datamodules/agrifieldnet.py",
+    "line": 8,
+    "traceback": "Traceback (most recent call last):\n  File \"<string>\", line 7, in <module>\n    importlib.import_module(m)\n    ~~~~~~~~~~~~~~~~~~~~~~~^^^\n  File \"/dev/shm/acr/work/_shared_cache/python/cpython-3.15.2-linux-x86_64-gnu/lib/python3.15/importlib/__init__.py\", line 88, in import_module\n    return _bootstrap._gcd_import(name[level:], package, level)\n           ~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"<frozen importlib._bootstrap>\", line 1389, in _gcd_import\n  File \"<frozen importlib._bootstrap>\", line 1338, in _find_and_load\n  File \"<frozen importlib._bootstrap>\", line 1299, in _resolve_parents\n  File \"<frozen importlib._bootstrap>\", line 491, in _call_with_frames_removed\n  File \"<frozen importlib._bootstrap>\", line 1389, in _gcd_import\n  File \"<frozen importlib._bootstrap>\", line 1353, in _find_and_load\n  File \"<frozen importlib._bootstrap>\", line 1249, in _find_and_load_unlocked\n  File \"<frozen importlib._bootstrap>\", line 857, in _load_unlocked\n  File \"<frozen importlib._bootstrap_external>\", line 751, in exec_module\n  File \"<frozen importlib._bootstrap>\", line 491, in _call_with_frames_removed\n  File \"/dev/shm/acr/work/3185225851/src/head/torchgeo/datamodules/__init__.py\", line 6, in <module>\n    from .agrifieldnet import AgriFieldNetDataModule\n  File \"/dev/shm/acr/work/3185225851/src/head/torchgeo/datamodules/agrifieldnet.py\", line 8, in <module>\n    import kornia.augmentation as K\nModuleNotFoundError: No module named 'kornia'\n"
+   },
+   "torchgeo.datamodules.patternnet": {
+    "ok": false,
+    "type": "ModuleNotFoundError",
+    "message": "No module named 'kornia'",
+    "missing_module": "kornia",
+    "file": "torchgeo/datamodules/agrifieldnet.py",
+    "line": 8,
+    "traceback": "Traceback (most recent call last):\n  File \"<string>\", line 7, in <module>\n    importlib.import_module(m)\n    ~~~~~~~~~~~~~~~~~~~~~~~^^^\n  File \"/dev/shm/acr/work/_shared_cache/python/cpython-3.15.2-linux-x86_64-gnu/lib/python3.15/importlib/__init__.py\", line 88, in import_module\n    return _bootstrap._gcd_import(name[level:], package, level)\n           ~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"<frozen importlib._bootstrap>\", line 1389, in _gcd_import\n  File \"<frozen importlib._bootstrap>\", line 1338, in _find_and_load\n  File \"<frozen importlib._bootstrap>\", line 1299, in _resolve_parents\n  File \"<frozen importlib._bootstrap>\", line 491, in _call_with_frames_removed\n  File \"<frozen importlib._bootstrap>\", line 1389, in _gcd_import\n  File \"<frozen importlib._bootstrap>\", line 1353, in _find_and_load\n  File \"<frozen importlib._bootstrap>\", line 1249, in _find_and_load_unlocked\n  File \"<frozen importlib._bootstrap>\", line 857, in _load_unlocked\n  File \"<frozen importlib._bootstrap_external>\", line 751, in exec_module\n  File \"<frozen importlib._bootstrap>\", line 491, in _call_with_frames_removed\n  File \"/dev/shm/acr/work/3185225851/src/head/torchgeo/datamodules/__init__.py\", line 6, in <module>\n    from .agrifieldnet import AgriFieldNetDataModule\n  File \"/dev/shm/acr/work/3185225851/src/head/torchgeo/datamodules/agrifieldnet.py\", line 8, in <module>\n    import kornia.augmentation as K\nModuleNotFoundError: No module named 'kornia'\n"
+   },
+   "torchgeo.datamodules.substation": {
+    "ok": false,
+    "type": "ModuleNotFoundError",
+    "message": "No module named 'kornia'",
+    "missing_module": "kornia",
+    "file": "torchgeo/datamodules/agrifieldnet.py",
+    "line": 8,
+    "traceback": "Traceback (most recent call last):\n  File \"<string>\", line 7, in <module>\n    importlib.import_module(m)\n    ~~~~~~~~~~~~~~~~~~~~~~~^^^\n  File \"/dev/shm/acr/work/_shared_cache/python/cpython-3.15.2-linux-x86_64-gnu/lib/python3.15/importlib/__init__.py\", line 88, in import_module\n    return _bootstrap._gcd_import(name[level:], package, level)\n           ~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"<frozen importlib._bootstrap>\", line 1389, in _gcd_import\n  File \"<frozen importlib._bootstrap>\", line 1338, in _find_and_load\n  File \"<frozen importlib._bootstrap>\", line 1299, in _resolve_parents\n  File \"<frozen importlib._bootstrap>\", line 491, in _call_with_frames_removed\n  File \"<frozen importlib._bootstrap>\", line 1389, in _gcd_import\n  File \"<frozen importlib._bootstrap>\", line 1353, in _find_and_load\n  File \"<frozen importlib._bootstrap>\", line 1249, in _find_and_load_unlocked\n  File \"<frozen importlib._bootstrap>\", line 857, in _load_unlocked\n  File \"<frozen importlib._bootstrap_external>\", line 751, in exec_module\n  File \"<frozen importlib._bootstrap>\", line 491, in _call_with_frames_removed\n  File \"/dev/shm/acr/work/3185225851/src/head/torchgeo/datamodules/__init__.py\", line 6, in <module>\n    from .agrifieldnet import AgriFieldNetDataModule\n  File \"/dev/shm/acr/work/3185225851/src/head/torchgeo/datamodules/agrifieldnet.py\", line 8, in <module>\n    import kornia.augmentation as K\nModuleNotFoundError: No module named 'kornia'\n"
+   },
+   "torchgeo.datamodules.ucmerced": {
+    "ok": false,
+    "type": "ModuleNotFoundError",
+    "message": "No module named 'kornia'",
+    "missing_module": "kornia",
+    "file": "torchgeo/datamodules/agrifieldnet.py",
+    "line": 8,
+    "traceback": "Traceback (most recent call last):\n  File \"<string>\", line 7, in <module>\n    importlib.import_module(m)\n    ~~~~~~~~~~~~~~~~~~~~~~~^^^\n  File \"/dev/shm/acr/work/_shared_cache/python/cpython-3.15.2-linux-x86_64-gnu/lib/python3.15/importlib/__init__.py\", line 88, in import_module\n    return _bootstrap._gcd_import(name[level:], package, level)\n           ~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"<frozen importlib._bootstrap>\", line 1389, in _gcd_import\n  File \"<frozen importlib._bootstrap>\", line 1338, in _find_and_load\n  File \"<frozen importlib._bootstrap>\", line 1299, in _resolve_parents\n  File \"<frozen importlib._bootstrap>\", line 491, in _call_with_frames_removed\n  File \"<frozen importlib._bootstrap>\", line 1389, in _gcd_import\n  File \"<frozen importlib._bootstrap>\", line 1353, in _find_and_load\n  File \"<frozen importlib._bootstrap>\", line 1249, in _find_and_load_unlocked\n  File \"<frozen importlib._bootstrap>\", line 857, in _load_unlocked\n  File \"<frozen importlib._bootstrap_external>\", line 751, in exec_module\n  File \"<frozen importlib._bootstrap>\", line 491, in _call_with_frames_removed\n  File \"/dev/shm/acr/work/3185225851/src/head/torchgeo/datamodules/__init__.py\", line 6, in <module>\n    from .agrifieldnet import AgriFieldNetDataModule\n  File \"/dev/shm/acr/work/3185225851/src/head/torchgeo/datamodules/agrifieldnet.py\", line 8, in <module>\n    import kornia.augmentation as K\nModuleNotFoundError: No module named 'kornia'\n"
+   },
+   "torchgeo.models.resnet": {
+    "ok": false,
+    "type": "ModuleNotFoundError",
+    "message": "No module named 'torch'",
+    "missing_module": "torch",
+    "file": "torchgeo/models/api.py",
+    "line": 16,
+    "traceback": "Traceback (most recent call last):\n  File \"<string>\", line 7, in <module>\n    importlib.import_module(m)\n    ~~~~~~~~~~~~~~~~~~~~~~~^^^\n  File \"/dev/shm/acr/work/_shared_cache/python/cpython-3.15.2-linux-x86_64-gnu/lib/python3.15/importlib/__init__.py\", line 88, in import_module\n    return _bootstrap._gcd_import(name[level:], package, level)\n           ~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"<frozen importlib._bootstrap>\", line 1389, in _gcd_import\n  File \"<frozen importlib._bootstrap>\", line 1338, in _find_and_load\n  File \"<frozen importlib._bootstrap>\", line 1299, in _resolve_parents\n  File \"<frozen importlib._bootstrap>\", line 491, in _call_with_frames_removed\n  File \"<frozen importlib._bootstrap>\", line 1389, in _gcd_import\n  File \"<frozen importlib._bootstrap>\", line 1353, in _find_and_load\n  File \"<frozen importlib._bootstrap>\", line 1249, in _find_and_load_unlocked\n  File \"<frozen importlib._bootstrap>\", line 857, in _load_unlocked\n  File \"<frozen importlib._bootstrap_external>\", line 751, in exec_module\n  File \"<frozen importlib._bootstrap>\", line 491, in _call_with_frames_removed\n  File \"/dev/shm/acr/work/3185225851/src/head/torchgeo/models/__init__.py\", line 6, in <module>\n    from .api import get_model, get_model_weights, get_weight, list_models\n  File \"/dev/shm/acr/work/3185225851/src/head/torchgeo/models/api.py\", line 16, in <module>\n    import torch.nn as nn\nModuleNotFoundError: No module named 'torch'\n"
+   },
+   "torchgeo.models.vit": {
+    "ok": false,
+    "type": "ModuleNotFoundError",
+    "message": "No module named 'torch'",
+    "missing_module": "torch",
+    "file": "torchgeo/models/api.py",
+    "line": 16,
+    "traceback": "Traceback (most recent call last):\n  File \"<string>\", line 7, in <module>\n    importlib.import_module(m)\n    ~~~~~~~~~~~~~~~~~~~~~~~^^^\n  File \"/dev/shm/acr/work/_shared_cache/python/cpython-3.15.2-linux-x86_64-gnu/lib/python3.15/importlib/__init__.py\", line 88, in import_module\n    return _bootstrap._gcd_import(name[level:], package, level)\n           ~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"<frozen importlib._bootstrap>\", line 1389, in _gcd_import\n  File \"<frozen importlib._bootstrap>\", line 1338, in _find_and_load\n  File \"<frozen importlib._bootstrap>\", line 1299, in _resolve_parents\n  File \"<frozen importlib._bootstrap>\", line 491, in _call_with_frames_removed\n  File \"<frozen importlib._bootstrap>\", line 1389, in _gcd_import\n  File \"<frozen importlib._bootstrap>\", line 1353, in _find_and_load\n  File \"<frozen importlib._bootstrap>\", line 1249, in _find_and_load_unlocked\n  File \"<frozen importlib._bootstrap>\", line 857, in _load_unlocked\n  File \"<frozen importlib._bootstrap_external>\", line 751, in exec_module\n  File \"<frozen importlib._bootstrap>\", line 491, in _call_with_frames_removed\n  File \"/dev/shm/acr/work/3185225851/src/head/torchgeo/models/__init__.py\", line 6, in <module>\n    from .api import get_model, get_model_weights, get_weight, list_models\n  File \"/dev/shm/acr/work/3185225851/src/head/torchgeo/models/api.py\", line 16, in <module>\n    import torch.nn as nn\nModuleNotFoundError: No module named 'torch'\n"
+   }
+  },
+  "imports_base": {
+   "torchgeo.datamodules.caffe": {
+    "ok": false,
+    "type": "ModuleNotFoundError",
+    "message": "No module named 'kornia'",
+    "missing_module": "kornia",
+    "file": "torchgeo/datamodules/agrifieldnet.py",
+    "line": 8,
+    "traceback": "Traceback (most recent call last):\n  File \"<string>\", line 7, in <module>\n    importlib.import_module(m)\n    ~~~~~~~~~~~~~~~~~~~~~~~^^^\n  File \"/dev/shm/acr/work/_shared_cache/python/cpython-3.15.2-linux-x86_64-gnu/lib/python3.15/importlib/__init__.py\", line 88, in import_module\n    return _bootstrap._gcd_import(name[level:], package, level)\n           ~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"<frozen importlib._bootstrap>\", line 1389, in _gcd_import\n  File \"<frozen importlib._bootstrap>\", line 1338, in _find_and_load\n  File \"<frozen importlib._bootstrap>\", line 1299, in _resolve_parents\n  File \"<frozen importlib._bootstrap>\", line 491, in _call_with_frames_removed\n  File \"<frozen importlib._bootstrap>\", line 1389, in _gcd_import\n  File \"<frozen importlib._bootstrap>\", line 1353, in _find_and_load\n  File \"<frozen importlib._bootstrap>\", line 1249, in _find_and_load_unlocked\n  File \"<frozen importlib._bootstrap>\", line 857, in _load_unlocked\n  File \"<frozen importlib._bootstrap_external>\", line 751, in exec_module\n  File \"<frozen importlib._bootstrap>\", line 491, in _call_with_frames_removed\n  File \"/dev/shm/acr/work/3185225851/src/base/torchgeo/datamodules/__init__.py\", line 6, in <module>\n    from .agrifieldnet import AgriFieldNetDataModule\n  File \"/dev/shm/acr/work/3185225851/src/base/torchgeo/datamodules/agrifieldnet.py\", line 8, in <module>\n    import kornia.augmentation as K\nModuleNotFoundError: No module named 'kornia'\n"
+   },
+   "torchgeo.datamodules.geonrw": {
+    "ok": false,
+    "type": "ModuleNotFoundError",
+    "message": "No module named 'kornia'",
+    "missing_module": "kornia",
+    "file": "torchgeo/datamodules/agrifieldnet.py",
+    "line": 8,
+    "traceback": "Traceback (most recent call last):\n  File \"<string>\", line 7, in <module>\n    importlib.import_module(m)\n    ~~~~~~~~~~~~~~~~~~~~~~~^^^\n  File \"/dev/shm/acr/work/_shared_cache/python/cpython-3.15.2-linux-x86_64-gnu/lib/python3.15/importlib/__init__.py\", line 88, in import_module\n    return _bootstrap._gcd_import(name[level:], package, level)\n           ~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"<frozen importlib._bootstrap>\", line 1389, in _gcd_import\n  File \"<frozen importlib._bootstrap>\", line 1338, in _find_and_load\n  File \"<frozen importlib._bootstrap>\", line 1299, in _resolve_parents\n  File \"<frozen importlib._bootstrap>\", line 491, in _call_with_frames_removed\n  File \"<frozen importlib._bootstrap>\", line 1389, in _gcd_import\n  File \"<frozen importlib._bootstrap>\", line 1353, in _find_and_load\n  File \"<frozen importlib._bootstrap>\", line 1249, in _find_and_load_unlocked\n  File \"<frozen importlib._bootstrap>\", line 857, in _load_unlocked\n  File \"<frozen importlib._bootstrap_external>\", line 751, in exec_module\n  File \"<frozen importlib._bootstrap>\", line 491, in _call_with_frames_removed\n  File \"/dev/shm/acr/work/3185225851/src/base/torchgeo/datamodules/__init__.py\", line 6, in <module>\n    from .agrifieldnet import AgriFieldNetDataModule\n  File \"/dev/shm/acr/work/3185225851/src/base/torchgeo/datamodules/agrifieldnet.py\", line 8, in <module>\n    import kornia.augmentation as K\nModuleNotFoundError: No module named 'kornia'\n"
+   },
+   "torchgeo.datamodules.patternnet": {
+    "ok": false,
+    "type": "ModuleNotFoundError",
+    "message": "No module named 'kornia'",
+    "missing_module": "kornia",
+    "file": "torchgeo/datamodules/agrifieldnet.py",
+    "line": 8,
+    "traceback": "Traceback (most recent call last):\n  File \"<string>\", line 7, in <module>\n    importlib.import_module(m)\n    ~~~~~~~~~~~~~~~~~~~~~~~^^^\n  File \"/dev/shm/acr/work/_shared_cache/python/cpython-3.15.2-linux-x86_64-gnu/lib/python3.15/importlib/__init__.py\", line 88, in import_module\n    return _bootstrap._gcd_import(name[level:], package, level)\n           ~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"<frozen importlib._bootstrap>\", line 1389, in _gcd_import\n  File \"<frozen importlib._bootstrap>\", line 1338, in _find_and_load\n  File \"<frozen importlib._bootstrap>\", line 1299, in _resolve_parents\n  File \"<frozen importlib._bootstrap>\", line 491, in _call_with_frames_removed\n  File \"<frozen importlib._bootstrap>\", line 1389, in _gcd_import\n  File \"<frozen importlib._bootstrap>\", line 1353, in _find_and_load\n  File \"<frozen importlib._bootstrap>\", line 1249, in _find_and_load_unlocked\n  File \"<frozen importlib._bootstrap>\", line 857, in _load_unlocked\n  File \"<frozen importlib._bootstrap_external>\", line 751, in exec_module\n  File \"<frozen importlib._bootstrap>\", line 491, in _call_with_frames_removed\n  File \"/dev/shm/acr/work/3185225851/src/base/torchgeo/datamodules/__init__.py\", line 6, in <module>\n    from .agrifieldnet import AgriFieldNetDataModule\n  File \"/dev/shm/acr/work/3185225851/src/base/torchgeo/datamodules/agrifieldnet.py\", line 8, in <module>\n    import kornia.augmentation as K\nModuleNotFoundError: No module named 'kornia'\n"
+   },
+   "torchgeo.datamodules.substation": {
+    "ok": false,
+    "type": "ModuleNotFoundError",
+    "message": "No module named 'kornia'",
+    "missing_module": "kornia",
+    "file": "torchgeo/datamodules/agrifieldnet.py",
+    "line": 8,
+    "traceback": "Traceback (most recent call last):\n  File \"<string>\", line 7, in <module>\n    importlib.import_module(m)\n    ~~~~~~~~~~~~~~~~~~~~~~~^^^\n  File \"/dev/shm/acr/work/_shared_cache/python/cpython-3.15.2-linux-x86_64-gnu/lib/python3.15/importlib/__init__.py\", line 88, in import_module\n    return _bootstrap._gcd_import(name[level:], package, level)\n           ~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"<frozen importlib._bootstrap>\", line 1389, in _gcd_import\n  File \"<frozen importlib._bootstrap>\", line 1338, in _find_and_load\n  File \"<frozen importlib._bootstrap>\", line 1299, in _resolve_parents\n  File \"<frozen importlib._bootstrap>\", line 491, in _call_with_frames_removed\n  File \"<frozen importlib._bootstrap>\", line 1389, in _gcd_import\n  File \"<frozen importlib._bootstrap>\", line 1353, in _find_and_load\n  File \"<frozen importlib._bootstrap>\", line 1249, in _find_and_load_unlocked\n  File \"<frozen importlib._bootstrap>\", line 857, in _load_unlocked\n  File \"<frozen importlib._bootstrap_external>\", line 751, in exec_module\n  File \"<frozen importlib._bootstrap>\", line 491, in _call_with_frames_removed\n  File \"/dev/shm/acr/work/3185225851/src/base/torchgeo/datamodules/__init__.py\", line 6, in <module>\n    from .agrifieldnet import AgriFieldNetDataModule\n  File \"/dev/shm/acr/work/3185225851/src/base/torchgeo/datamodules/agrifieldnet.py\", line 8, in <module>\n    import kornia.augmentation as K\nModuleNotFoundError: No module named 'kornia'\n"
+   },
+   "torchgeo.datamodules.ucmerced": {
+    "ok": false,
+    "type": "ModuleNotFoundError",
+    "message": "No module named 'kornia'",
+    "missing_module": "kornia",
+    "file": "torchgeo/datamodules/agrifieldnet.py",
+    "line": 8,
+    "traceback": "Traceback (most recent call last):\n  File \"<string>\", line 7, in <module>\n    importlib.import_module(m)\n    ~~~~~~~~~~~~~~~~~~~~~~~^^^\n  File \"/dev/shm/acr/work/_shared_cache/python/cpython-3.15.2-linux-x86_64-gnu/lib/python3.15/importlib/__init__.py\", line 88, in import_module\n    return _bootstrap._gcd_import(name[level:], package, level)\n           ~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"<frozen importlib._bootstrap>\", line 1389, in _gcd_import\n  File \"<frozen importlib._bootstrap>\", line 1338, in _find_and_load\n  File \"<frozen importlib._bootstrap>\", line 1299, in _resolve_parents\n  File \"<frozen importlib._bootstrap>\", line 491, in _call_with_frames_removed\n  File \"<frozen importlib._bootstrap>\", line 1389, in _gcd_import\n  File \"<frozen importlib._bootstrap>\", line 1353, in _find_and_load\n  File \"<frozen importlib._bootstrap>\", line 1249, in _find_and_load_unlocked\n  File \"<frozen importlib._bootstrap>\", line 857, in _load_unlocked\n  File \"<frozen importlib._bootstrap_external>\", line 751, in exec_module\n  File \"<frozen importlib._bootstrap>\", line 491, in _call_with_frames_removed\n  File \"/dev/shm/acr/work/3185225851/src/base/torchgeo/datamodules/__init__.py\", line 6, in <module>\n    from .agrifieldnet import AgriFieldNetDataModule\n  File \"/dev/shm/acr/work/3185225851/src/base/torchgeo/datamodules/agrifieldnet.py\", line 8, in <module>\n    import kornia.augmentation as K\nModuleNotFoundError: No module named 'kornia'\n"
+   },
+   "torchgeo.models.resnet": {
+    "ok": false,
+    "type": "ModuleNotFoundError",
+    "message": "No module named 'torch'",
+    "missing_module": "torch",
+    "file": "torchgeo/models/api.py",
+    "line": 16,
+    "traceback": "Traceback (most recent call last):\n  File \"<string>\", line 7, in <module>\n    importlib.import_module(m)\n    ~~~~~~~~~~~~~~~~~~~~~~~^^^\n  File \"/dev/shm/acr/work/_shared_cache/python/cpython-3.15.2-linux-x86_64-gnu/lib/python3.15/importlib/__init__.py\", line 88, in import_module\n    return _bootstrap._gcd_import(name[level:], package, level)\n           ~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"<frozen importlib._bootstrap>\", line 1389, in _gcd_import\n  File \"<frozen importlib._bootstrap>\", line 1338, in _find_and_load\n  File \"<frozen importlib._bootstrap>\", line 1299, in _resolve_parents\n  File \"<frozen importlib._bootstrap>\", line 491, in _call_with_frames_removed\n  File \"<frozen importlib._bootstrap>\", line 1389, in _gcd_import\n  File \"<frozen importlib._bootstrap>\", line 1353, in _find_and_load\n  File \"<frozen importlib._bootstrap>\", line 1249, in _find_and_load_unlocked\n  File \"<frozen importlib._bootstrap>\", line 857, in _load_unlocked\n  File \"<frozen importlib._bootstrap_external>\", line 751, in exec_module\n  File \"<frozen importlib._bootstrap>\", line 491, in _call_with_frames_removed\n  File \"/dev/shm/acr/work/3185225851/src/base/torchgeo/models/__init__.py\", line 6, in <module>\n    from .api import get_model, get_model_weights, get_weight, list_models\n  File \"/dev/shm/acr/work/3185225851/src/base/torchgeo/models/api.py\", line 16, in <module>\n    import torch.nn as nn\nModuleNotFoundError: No module named 'torch'\n"
+   },
+   "torchgeo.models.vit": {
+    "ok": false,
+    "type": "ModuleNotFoundError",
+    "message": "No module named 'torch'",
+    "missing_module": "torch",
+    "file": "torchgeo/models/api.py",
+    "line": 16,
+    "traceback": "Traceback (most recent call last):\n  File \"<string>\", line 7, in <module>\n    importlib.import_module(m)\n    ~~~~~~~~~~~~~~~~~~~~~~~^^^\n  File \"/dev/shm/acr/work/_shared_cache/python/cpython-3.15.2-linux-x86_64-gnu/lib/python3.15/importlib/__init__.py\", line 88, in import_module\n    return _bootstrap._gcd_import(name[level:], package, level)\n           ~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"<frozen importlib._bootstrap>\", line 1389, in _gcd_import\n  File \"<frozen importlib._bootstrap>\", line 1338, in _find_and_load\n  File \"<frozen importlib._bootstrap>\", line 1299, in _resolve_parents\n  File \"<frozen importlib._bootstrap>\", line 491, in _call_with_frames_removed\n  File \"<frozen importlib._bootstrap>\", line 1389, in _gcd_import\n  File \"<frozen importlib._bootstrap>\", line 1353, in _find_and_load\n  File \"<frozen importlib._bootstrap>\", line 1249, in _find_and_load_unlocked\n  File \"<frozen importlib._bootstrap>\", line 857, in _load_unlocked\n  File \"<frozen importlib._bootstrap_external>\", line 751, in exec_module\n  File \"<frozen importlib._bootstrap>\", line 491, in _call_with_frames_removed\n  File \"/dev/shm/acr/work/3185225851/src/base/torchgeo/models/__init__.py\", line 6, in <module>\n    from .api import get_model, get_model_weights, get_weight, list_models\n  File \"/dev/shm/acr/work/3185225851/src/base/torchgeo/models/api.py\", line 16, in <module>\n    import torch.nn as nn\nModuleNotFoundError: No module named 'torch'\n"
+   }
+  },
+  "status": "head_usage_error",
+  "dependency_cutoff": "2025-07-15T18:29:28Z",
+  "seconds": 23.1,
+  "head_failures": 0
+ },
+ "findings": [],
+ "status": "ok",
+ "seconds": 43.1
+}

@@ -1,0 +1,235 @@
+{
+ "pr_id": 3150091151,
+ "repository": "github/issue-metrics",
+ "pr_number": 540,
+ "split": "evaluation",
+ "agent": "Copilot",
+ "head_sha": "9aa2fd3003a272608dcc253a964a9b9522b7d40e",
+ "tool_versions": {
+  "ruff": "ruff 0.17.4",
+  "bandit": "__main__.py 1.9.4",
+  "python": "3.12.3"
+ },
+ "config": {
+  "run_tests": true,
+  "sandbox": true
+ },
+ "base_mode": "reverse_applied_diff",
+ "static": {
+  "files_analysed": 10,
+  "head_issues": 0,
+  "base_issues": 0,
+  "per_tool_head": {},
+  "per_tool_base": {},
+  "introduced": 0,
+  "seconds": 1.0
+ },
+ "tests": {
+  "env": {
+   "status": "partial",
+   "python": "3.15.2",
+   "steps": [
+    {
+     "step": "venv",
+     "ok": true,
+     "seconds": 0.0,
+     "timed_out": false,
+     "log_tail": ""
+    },
+    {
+     "step": "install -r requirements.txt",
+     "ok": false,
+     "seconds": 1.1,
+     "timed_out": false,
+     "log_tail": "ge libffi was not found in the pkg-config search path.\n         Perhaps you should add the directory containing `libffi.pc'\n         to the PKG_CONFIG_PATH environment variable\n         Package 'libffi', required by 'virtual:world', not found\n         /dev/shm/acr/work/_shared_cache/uv/builds-v0/.tmpBStkNy/lib/python3.15/site-packages/setuptools/dist.py:759: SetuptoolsDeprecationWarning: License classifiers are deprecated.\n         !!\n\n                 ********************************************************************************\n                 Please consider removing the following classifiers in favor of a SPDX license expression:\n\n                 License :: OSI Approved :: MIT License\n\n                 See https://packaging.python.org/en/latest/guides/writing-pyproject-toml/#license for details.\n                 ********************************************************************************\n\n         !!\n           self._finalize_license_expression()\n         src/c/_cffi_backend.c:15:10: fatal error: ffi.h: No such file or directory\n            15 | #include <ffi.h>\n               |          ^~~~~~~\n         compilation terminated.\n         error: command '/usr/bin/cc' failed with exit code 1\n\nhint: `cffi` (v1.17.1) was included because `github3-py` (v4.0.1) depends on `pyjwt[crypto]` (v2.10.1) which depends on `cryptography` (v45.0.4) which depends on `cffi`\n\nhint: This error likely indicates that you need to install a library that provides `ffi.h` for `cffi@1.17.1`\n"
+    },
+    {
+     "step": "install -r requirements-test.txt",
+     "ok": true,
+     "seconds": 0.6,
+     "timed_out": false,
+     "log_tail": ""
+    },
+    {
+     "step": "install pytest",
+     "ok": true,
+     "seconds": 0.1,
+     "timed_out": false,
+     "log_tail": ""
+    },
+    {
+     "step": "repair: install github3 python-dotenv",
+     "ok": false,
+     "seconds": 0.2,
+     "timed_out": false,
+     "log_tail": "error: No solution found when resolving dependencies\n  cause: Because github3 was not found in the package registry and you require github3, we can conclude that your requirements are unsatisfiable.\n"
+    }
+   ]
+  },
+  "selected_tests": [
+   {
+    "path": "test_assignee_functionality.py",
+    "reason": "changed_in_pr",
+    "exists_at_base": false
+   },
+   {
+    "path": "test_assignee_integration.py",
+    "reason": "changed_in_pr",
+    "exists_at_base": false
+   },
+   {
+    "path": "test_config.py",
+    "reason": "changed_in_pr",
+    "exists_at_base": true
+   },
+   {
+    "path": "test_json_writer.py",
+    "reason": "changed_in_pr",
+    "exists_at_base": true
+   },
+   {
+    "path": "test_markdown_writer.py",
+    "reason": "changed_in_pr",
+    "exists_at_base": true
+   },
+   {
+    "path": "test_issue_metrics.py",
+    "reason": "matches_module:issue_metrics",
+    "exists_at_base": true
+   }
+  ],
+  "head_run": {
+   "status": "completed",
+   "exit_code": 2,
+   "seconds": 1.4,
+   "addopts_overridden": false,
+   "counts": {
+    "passed": 0,
+    "failed": 0,
+    "error": 5,
+    "skipped": 0
+   },
+   "tests": {
+    "::test_assignee_functionality": {
+     "outcome": "error",
+     "detail": "collection failure\nImportError while importing test module '/dev/shm/acr/work/3150091151/src/head/test_assignee_functionality.py'.\nHint: make sure your test modules/packages have valid Python names.\nTraceback:\n../../../_shared_cache/python/cpython-3.15.2-linux-x86_64-gnu/lib/python3.15/importlib/__init__.py:88: in import_module\n    return _bootstrap._gcd_import(name[level:], package, level)\n           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\ntest_assignee_functionality.py:8: in <module>\n    from markdown_writer import get_non_hidden_columns\nmarkdown_writer.py:39: in <module>\n    from config import get_env_vars\nconfig.py:17: in <module>\n    from dotenv import load_dotenv\nE   ModuleNotFoundError: No module named 'dotenv'"
+    },
+    "::test_assignee_integration": {
+     "outcome": "error",
+     "detail": "collection failure\nImportError while importing test module '/dev/shm/acr/work/3150091151/src/head/test_assignee_integration.py'.\nHint: make sure your test modules/packages have valid Python names.\nTraceback:\n../../../_shared_cache/python/cpython-3.15.2-linux-x86_64-gnu/lib/python3.15/importlib/__init__.py:88: in import_module\n    return _bootstrap._gcd_import(name[level:], package, level)\n           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\ntest_assignee_integration.py:12: in <module>\n    from markdown_writer import write_to_markdown\nmarkdown_writer.py:39: in <module>\n    from config import get_env_vars\nconfig.py:17: in <module>\n    from dotenv import load_dotenv\nE   ModuleNotFoundError: No module named 'dotenv'"
+    },
+    "::test_config": {
+     "outcome": "error",
+     "detail": "collection failure\nImportError while importing test module '/dev/shm/acr/work/3150091151/src/head/test_config.py'.\nHint: make sure your test modules/packages have valid Python names.\nTraceback:\n../../../_shared_cache/python/cpython-3.15.2-linux-x86_64-gnu/lib/python3.15/importlib/__init__.py:88: in import_module\n    return _bootstrap._gcd_import(name[level:], package, level)\n           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\ntest_config.py:13: in <module>\n    from config import EnvVars, get_env_vars, get_int_env_var\nconfig.py:17: in <module>\n    from dotenv import load_dotenv\nE   ModuleNotFoundError: No module named 'dotenv'"
+    },
+    "::test_markdown_writer": {
+     "outcome": "error",
+     "detail": "collection failure\nImportError while importing test module '/dev/shm/acr/work/3150091151/src/head/test_markdown_writer.py'.\nHint: make sure your test modules/packages have valid Python names.\nTraceback:\n../../../_shared_cache/python/cpython-3.15.2-linux-x86_64-gnu/lib/python3.15/importlib/__init__.py:88: in import_module\n    return _bootstrap._gcd_import(name[level:], package, level)\n           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\ntest_markdown_writer.py:16: in <module>\n    from markdown_writer import write_to_markdown\nmarkdown_writer.py:39: in <module>\n    from config import get_env_vars\nconfig.py:17: in <module>\n    from dotenv import load_dotenv\nE   ModuleNotFoundError: No module named 'dotenv'"
+    },
+    "::test_issue_metrics": {
+     "outcome": "error",
+     "detail": "collection failure\nImportError while importing test module '/dev/shm/acr/work/3150091151/src/head/test_issue_metrics.py'.\nHint: make sure your test modules/packages have valid Python names.\nTraceback:\n../../../_shared_cache/python/cpython-3.15.2-linux-x86_64-gnu/lib/python3.15/importlib/__init__.py:88: in import_module\n    return _bootstrap._gcd_import(name[level:], package, level)\n           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\ntest_issue_metrics.py:19: in <module>\n    from issue_metrics import (\nissue_metrics.py:22: in <module>\n    import github3\nE   ModuleNotFoundError: No module named 'github3'"
+    }
+   },
+   "log_tail": ""
+  },
+  "base_run": {
+   "status": "completed",
+   "exit_code": 2,
+   "seconds": 1.1,
+   "addopts_overridden": false,
+   "counts": {
+    "passed": 0,
+    "failed": 0,
+    "error": 3,
+    "skipped": 0
+   },
+   "tests": {
+    "::test_config": {
+     "outcome": "error",
+     "detail": "collection failure\nImportError while importing test module '/dev/shm/acr/work/3150091151/src/base/test_config.py'.\nHint: make sure your test modules/packages have valid Python names.\nTraceback:\n../../../_shared_cache/python/cpython-3.15.2-linux-x86_64-gnu/lib/python3.15/importlib/__init__.py:88: in import_module\n    return _bootstrap._gcd_import(name[level:], package, level)\n           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\ntest_config.py:13: in <module>\n    from config import EnvVars, get_env_vars, get_int_env_var\nconfig.py:17: in <module>\n    from dotenv import load_dotenv\nE   ModuleNotFoundError: No module named 'dotenv'"
+    },
+    "::test_markdown_writer": {
+     "outcome": "error",
+     "detail": "collection failure\nImportError while importing test module '/dev/shm/acr/work/3150091151/src/base/test_markdown_writer.py'.\nHint: make sure your test modules/packages have valid Python names.\nTraceback:\n../../../_shared_cache/python/cpython-3.15.2-linux-x86_64-gnu/lib/python3.15/importlib/__init__.py:88: in import_module\n    return _bootstrap._gcd_import(name[level:], package, level)\n           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\ntest_markdown_writer.py:16: in <module>\n    from markdown_writer import write_to_markdown\nmarkdown_writer.py:39: in <module>\n    from config import get_env_vars\nconfig.py:17: in <module>\n    from dotenv import load_dotenv\nE   ModuleNotFoundError: No module named 'dotenv'"
+    },
+    "::test_issue_metrics": {
+     "outcome": "error",
+     "detail": "collection failure\nImportError while importing test module '/dev/shm/acr/work/3150091151/src/base/test_issue_metrics.py'.\nHint: make sure your test modules/packages have valid Python names.\nTraceback:\n../../../_shared_cache/python/cpython-3.15.2-linux-x86_64-gnu/lib/python3.15/importlib/__init__.py:88: in import_module\n    return _bootstrap._gcd_import(name[level:], package, level)\n           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\ntest_issue_metrics.py:19: in <module>\n    from issue_metrics import (\nissue_metrics.py:22: in <module>\n    import github3\nE   ModuleNotFoundError: No module named 'github3'"
+    }
+   },
+   "log_tail": ""
+  },
+  "comparison": {
+   "regressions": [],
+   "new_test_failures": [
+    "::test_assignee_functionality",
+    "::test_assignee_integration"
+   ],
+   "fixed": [],
+   "persistent_failures": [
+    "::test_config",
+    "::test_markdown_writer",
+    "::test_issue_metrics"
+   ]
+  },
+  "imports_head": {},
+  "imports_base": {},
+  "status": "completed",
+  "dependency_cutoff": "2025-06-17T16:34:27Z",
+  "seconds": 4.6,
+  "head_failures": 5
+ },
+ "findings": [
+  {
+   "tool": "pytest",
+   "rule": "new-test-failure",
+   "category": "test",
+   "severity": "medium",
+   "confidence": "medium",
+   "message": "Test ::test_assignee_functionality added or changed by the PR fails at head: collection failure",
+   "file": "config.py",
+   "line": 17,
+   "end_line": null,
+   "cwe": null,
+   "on_changed_line": false,
+   "evidence": {
+    "type": "test",
+    "test_id": "::test_assignee_functionality",
+    "outcome": "error",
+    "detail": "collection failure\nImportError while importing test module '/dev/shm/acr/work/3150091151/src/head/test_assignee_functionality.py'.\nHint: make sure your test modules/packages have valid Python names.\nTraceback:\n../../../_shared_cache/python/cpython-3.15.2-linux-x86_64-gnu/lib/python3.15/importlib/__init__.py:88: in import_module\n    return _bootstrap._gcd_import(name[level:], package, level)\n           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\ntest_assignee_functionality.py:8: in <module>\n    from markdown_writer import get_non_hidden_columns\nmarkdown_writer.py:39: in <module>\n    from config import get_env_vars\nconfig.py:17: in <module>\n    from dotenv import load_dotenv\nE   ModuleNotFoundError: No module named 'dotenv'"
+   },
+   "sources": [
+    "pytest"
+   ],
+   "finding_id": "dc65bfffcfbb",
+   "score": 1.4
+  },
+  {
+   "tool": "pytest",
+   "rule": "new-test-failure",
+   "category": "test",
+   "severity": "medium",
+   "confidence": "medium",
+   "message": "Test ::test_assignee_integration added or changed by the PR fails at head: collection failure",
+   "file": "config.py",
+   "line": 17,
+   "end_line": null,
+   "cwe": null,
+   "on_changed_line": false,
+   "evidence": {
+    "type": "test",
+    "test_id": "::test_assignee_integration",
+    "outcome": "error",
+    "detail": "collection failure\nImportError while importing test module '/dev/shm/acr/work/3150091151/src/head/test_assignee_integration.py'.\nHint: make sure your test modules/packages have valid Python names.\nTraceback:\n../../../_shared_cache/python/cpython-3.15.2-linux-x86_64-gnu/lib/python3.15/importlib/__init__.py:88: in import_module\n    return _bootstrap._gcd_import(name[level:], package, level)\n           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\ntest_assignee_integration.py:12: in <module>\n    from markdown_writer import write_to_markdown\nmarkdown_writer.py:39: in <module>\n    from config import get_env_vars\nconfig.py:17: in <module>\n    from dotenv import load_dotenv\nE   ModuleNotFoundError: No module named 'dotenv'"
+   },
+   "sources": [
+    "pytest"
+   ],
+   "finding_id": "e6f19c6cb8ef",
+   "score": 1.4
+  }
+ ],
+ "status": "ok",
+ "seconds": 6.6
+}

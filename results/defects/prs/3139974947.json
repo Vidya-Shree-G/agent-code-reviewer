@@ -1,0 +1,181 @@
+{
+ "pr_id": 3139974947,
+ "repository": "getsentry/sentry-python",
+ "pr_number": 4459,
+ "split": "development",
+ "agent": "Cursor",
+ "head_sha": "3fb28cb23ab5f60cfe302aeee2b1d8656116b2f0",
+ "tool_versions": {
+  "ruff": "ruff 0.17.4",
+  "bandit": "__main__.py 1.9.4",
+  "python": "3.12.3"
+ },
+ "config": {
+  "run_tests": true,
+  "sandbox": true
+ },
+ "base_mode": "reverse_applied_diff",
+ "static": {
+  "files_analysed": 12,
+  "head_issues": 33,
+  "base_issues": 33,
+  "per_tool_head": {
+   "ruff": 33
+  },
+  "per_tool_base": {
+   "ruff": 33
+  },
+  "introduced": 0,
+  "seconds": 0.7
+ },
+ "tests": {
+  "env": {
+   "status": "ok",
+   "python": "3.15.2",
+   "steps": [
+    {
+     "step": "venv",
+     "ok": true,
+     "seconds": 0.0,
+     "timed_out": false,
+     "log_tail": ""
+    },
+    {
+     "step": "install -e .",
+     "ok": true,
+     "seconds": 0.7,
+     "timed_out": false,
+     "log_tail": ""
+    },
+    {
+     "step": "install pytest",
+     "ok": true,
+     "seconds": 0.0,
+     "timed_out": false,
+     "log_tail": ""
+    },
+    {
+     "step": "repair: install jsonschema",
+     "ok": false,
+     "seconds": 14.5,
+     "timed_out": false,
+     "log_tail": "un-if-env-changed=PYO3_USE_ABI3_FORWARD_COMPATIBILITY\n\n           --- stderr\n           error: the configured Python interpreter version (3.15) is newer than PyO3's maximum supported version (3.14)\n           = help: please check if an updated version of PyO3 is available. Current version: 0.25.0\n           = help: set PYO3_USE_ABI3_FORWARD_COMPATIBILITY=1 to suppress this check and build anyway using the stable ABI\n         warning: build failed, waiting for other jobs to finish...\n         💥 maturin failed\n           Caused by: Failed to build a native library through cargo\n           Caused by: Cargo build finished with \"exit status: 101\": `env -u CARGO PYO3_ENVIRONMENT_SIGNATURE=\"cpython-3.15-64bit\" PYO3_PYTHON=\"/dev/shm/acr/work/_shared_cache/uv/builds-v0/.tmp0xX8KT/bin/python\" PYTHON_SYS_EXECUTABLE=\"/dev/shm/acr/work/_shared_cache/uv/builds-v0/.tmp0xX8KT/bin/python\" \"cargo\" \"rustc\" \"--features\" \"pyo3/extension-module\" \"--message-format\" \"json-render-diagnostics\" \"--manifest-path\" \"/dev/shm/acr/work/_shared_cache/uv/sdists-v10/pypi/rpds-py/0.25.1/iFOScntltgUEa7nP/src/Cargo.toml\" \"--release\" \"--lib\"`\n         Error: command ['maturin', 'pep517', 'build-wheel', '-i', '/dev/shm/acr/work/_shared_cache/uv/builds-v0/.tmp0xX8KT/bin/python', '--compatibility', 'off'] returned non-zero exit status 1\n\nhint: `rpds-py` (v0.25.1) was included because `jsonschema` (v4.24.0) depends on `rpds-py`\n\nhint: Build failures usually indicate a problem with the package or the build environment\n"
+    }
+   ]
+  },
+  "selected_tests": [
+   {
+    "path": "tests/integrations/aws_lambda/test_aws_lambda.py",
+    "reason": "changed_in_pr",
+    "exists_at_base": true
+   },
+   {
+    "path": "tests/integrations/redis/asyncio/test_redis_asyncio.py",
+    "reason": "changed_in_pr",
+    "exists_at_base": true
+   },
+   {
+    "path": "tests/integrations/redis/cluster/test_redis_cluster.py",
+    "reason": "changed_in_pr",
+    "exists_at_base": true
+   },
+   {
+    "path": "tests/integrations/redis/cluster_asyncio/test_redis_cluster_asyncio.py",
+    "reason": "changed_in_pr",
+    "exists_at_base": true
+   },
+   {
+    "path": "tests/integrations/redis/test_redis.py",
+    "reason": "changed_in_pr",
+    "exists_at_base": true
+   },
+   {
+    "path": "tests/integrations/redis_py_cluster_legacy/test_redis_py_cluster_legacy.py",
+    "reason": "changed_in_pr",
+    "exists_at_base": true
+   },
+   {
+    "path": "tests/opentelemetry/test_potel.py",
+    "reason": "changed_in_pr",
+    "exists_at_base": true
+   },
+   {
+    "path": "tests/test_api.py",
+    "reason": "changed_in_pr",
+    "exists_at_base": true
+   },
+   {
+    "path": "tests/test_scope.py",
+    "reason": "changed_in_pr",
+    "exists_at_base": true
+   },
+   {
+    "path": "tests/tracing/test_span_tags.py",
+    "reason": "changed_in_pr",
+    "exists_at_base": false
+   },
+   {
+    "path": "tests/opentelemetry/test_span_processor.py",
+    "reason": "matches_module:span_processor",
+    "exists_at_base": true
+   }
+  ],
+  "head_run": {
+   "status": "usage_error",
+   "exit_code": 4,
+   "seconds": 0.5,
+   "addopts_overridden": true,
+   "counts": {
+    "passed": 0,
+    "failed": 0,
+    "error": 0,
+    "skipped": 0
+   },
+   "tests": {},
+   "log_tail": "\nImportError while loading conftest '/dev/shm/acr/work/3139974947/src/head/tests/conftest.py'.\ntests/conftest.py:15: in <module>\n    import jsonschema\nE   ModuleNotFoundError: No module named 'jsonschema'\n"
+  },
+  "base_run": {
+   "status": "usage_error",
+   "exit_code": 4,
+   "seconds": 0.4,
+   "addopts_overridden": true,
+   "counts": {
+    "passed": 0,
+    "failed": 0,
+    "error": 0,
+    "skipped": 0
+   },
+   "tests": {},
+   "log_tail": "\nImportError while loading conftest '/dev/shm/acr/work/3139974947/src/base/tests/conftest.py'.\ntests/conftest.py:15: in <module>\n    import jsonschema\nE   ModuleNotFoundError: No module named 'jsonschema'\n"
+  },
+  "comparison": {
+   "regressions": [],
+   "new_test_failures": [],
+   "fixed": [],
+   "persistent_failures": []
+  },
+  "imports_head": {
+   "sentry_sdk.opentelemetry.span_processor": {
+    "ok": true
+   },
+   "sentry_sdk.scope": {
+    "ok": true
+   }
+  },
+  "imports_base": {
+   "sentry_sdk.opentelemetry.span_processor": {
+    "ok": true
+   },
+   "sentry_sdk.scope": {
+    "ok": true
+   }
+  },
+  "status": "head_usage_error",
+  "dependency_cutoff": "2025-07-01T08:17:34Z",
+  "seconds": 17.7,
+  "head_failures": 0
+ },
+ "findings": [],
+ "status": "ok",
+ "seconds": 20.9
+}

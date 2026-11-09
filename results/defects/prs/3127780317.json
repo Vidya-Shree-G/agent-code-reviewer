@@ -1,0 +1,212 @@
+{
+ "pr_id": 3127780317,
+ "repository": "rcaloras/bashhub-client",
+ "pr_number": 142,
+ "split": "development",
+ "agent": "OpenAI_Codex",
+ "head_sha": "7fa03bdbc30245f7b5fb0b34364a1604241fa768",
+ "tool_versions": {
+  "ruff": "ruff 0.17.4",
+  "bandit": "__main__.py 1.9.4",
+  "python": "3.12.3"
+ },
+ "config": {
+  "run_tests": true,
+  "sandbox": true
+ },
+ "base_mode": "reverse_applied_diff",
+ "static": {
+  "files_analysed": 1,
+  "head_issues": 27,
+  "base_issues": 27,
+  "per_tool_head": {
+   "ruff": 17,
+   "bandit": 10
+  },
+  "per_tool_base": {
+   "ruff": 17,
+   "bandit": 10
+  },
+  "introduced": 0,
+  "seconds": 0.5
+ },
+ "tests": {
+  "env": {
+   "status": "ok",
+   "python": "3.15.2",
+   "steps": [
+    {
+     "step": "venv",
+     "ok": true,
+     "seconds": 0.0,
+     "timed_out": false,
+     "log_tail": ""
+    },
+    {
+     "step": "install -e .",
+     "ok": true,
+     "seconds": 5.6,
+     "timed_out": false,
+     "log_tail": ""
+    },
+    {
+     "step": "install pytest",
+     "ok": true,
+     "seconds": 0.1,
+     "timed_out": false,
+     "log_tail": ""
+    },
+    {
+     "step": "repair: install urllib3",
+     "ok": true,
+     "seconds": 0.0,
+     "timed_out": false,
+     "log_tail": ""
+    }
+   ]
+  },
+  "selected_tests": [
+   {
+    "path": "tests/test_bashhub.py",
+    "reason": "full_suite",
+    "exists_at_base": true
+   },
+   {
+    "path": "tests/test_bashhub_globals.py",
+    "reason": "full_suite",
+    "exists_at_base": true
+   },
+   {
+    "path": "tests/test_bashhub_setup.py",
+    "reason": "full_suite",
+    "exists_at_base": true
+   },
+   {
+    "path": "tests/test_command.py",
+    "reason": "full_suite",
+    "exists_at_base": true
+   },
+   {
+    "path": "tests/test_command_form.py",
+    "reason": "full_suite",
+    "exists_at_base": true
+   },
+   {
+    "path": "tests/test_shell_utils.py",
+    "reason": "full_suite",
+    "exists_at_base": true
+   }
+  ],
+  "head_run": {
+   "status": "completed",
+   "exit_code": 2,
+   "seconds": 1.0,
+   "addopts_overridden": false,
+   "counts": {
+    "passed": 0,
+    "failed": 0,
+    "error": 5,
+    "skipped": 0
+   },
+   "tests": {
+    "::tests.test_bashhub": {
+     "outcome": "error",
+     "detail": "ache/python/cpython-3.15.2-linux-x86_64-gnu/lib/python3.15/importlib/__init__.py:88: in import_module\n    return _bootstrap._gcd_import(name[level:], package, level)\n           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\ntests/test_bashhub.py:6: in <module>\n    from bashhub.bashhub import bashhub\nbashhub/bashhub.py:11: in <module>\n    from .model import CommandForm\nbashhub/model/__init__.py:1: in <module>\n    from .command import *\nbashhub/model/command.py:2: in <module>\n    from .min_command import MinCommand\nbashhub/model/min_command.py:2: in <module>\n    import requests\n../../venv/lib/python3.15/site-packages/requests/__init__.py:43: in <module>\n    import urllib3\n../../venv/lib/python3.15/site-packages/urllib3/__init__.py:7: in <module>\n    from .connectionpool import HTTPConnectionPool, HTTPSConnectionPool, connection_from_url\n../../venv/lib/python3.15/site-packages/urllib3/connectionpool.py:11: in <module>\n    from .exceptions import (\n../../venv/lib/python3.15/site-packages/urllib3/exceptions.py:2: in <module>\n    from .packages.six.moves.http_client import IncompleteRead as httplib_IncompleteRead\nE   ModuleNotFoundError: No module named 'urllib3.packages.six.moves'"
+    },
+    "::tests.test_bashhub_globals": {
+     "outcome": "error",
+     "detail": "hon-3.15.2-linux-x86_64-gnu/lib/python3.15/importlib/__init__.py:88: in import_module\n    return _bootstrap._gcd_import(name[level:], package, level)\n           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\ntests/test_bashhub_globals.py:1: in <module>\n    from bashhub.bashhub import bashhub_globals\nbashhub/bashhub.py:11: in <module>\n    from .model import CommandForm\nbashhub/model/__init__.py:1: in <module>\n    from .command import *\nbashhub/model/command.py:2: in <module>\n    from .min_command import MinCommand\nbashhub/model/min_command.py:2: in <module>\n    import requests\n../../venv/lib/python3.15/site-packages/requests/__init__.py:43: in <module>\n    import urllib3\n../../venv/lib/python3.15/site-packages/urllib3/__init__.py:7: in <module>\n    from .connectionpool import HTTPConnectionPool, HTTPSConnectionPool, connection_from_url\n../../venv/lib/python3.15/site-packages/urllib3/connectionpool.py:11: in <module>\n    from .exceptions import (\n../../venv/lib/python3.15/site-packages/urllib3/exceptions.py:2: in <module>\n    from .packages.six.moves.http_client import IncompleteRead as httplib_IncompleteRead\nE   ModuleNotFoundError: No module named 'urllib3.packages.six.moves'"
+    },
+    "::tests.test_bashhub_setup": {
+     "outcome": "error",
+     "detail": "le importing test module '/dev/shm/acr/work/3127780317/src/head/tests/test_bashhub_setup.py'.\nHint: make sure your test modules/packages have valid Python names.\nTraceback:\n../../../_shared_cache/python/cpython-3.15.2-linux-x86_64-gnu/lib/python3.15/importlib/__init__.py:88: in import_module\n    return _bootstrap._gcd_import(name[level:], package, level)\n           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\ntests/test_bashhub_setup.py:4: in <module>\n    from bashhub.bashhub_setup import  handle_system_information\nbashhub/bashhub_setup.py:7: in <module>\n    import requests\n../../venv/lib/python3.15/site-packages/requests/__init__.py:43: in <module>\n    import urllib3\n../../venv/lib/python3.15/site-packages/urllib3/__init__.py:7: in <module>\n    from .connectionpool import HTTPConnectionPool, HTTPSConnectionPool, connection_from_url\n../../venv/lib/python3.15/site-packages/urllib3/connectionpool.py:11: in <module>\n    from .exceptions import (\n../../venv/lib/python3.15/site-packages/urllib3/exceptions.py:2: in <module>\n    from .packages.six.moves.http_client import IncompleteRead as httplib_IncompleteRead\nE   ModuleNotFoundError: No module named 'urllib3.packages.six.moves'"
+    },
+    "::tests.test_command": {
+     "outcome": "error",
+     "detail": " modules/packages have valid Python names.\nTraceback:\n../../../_shared_cache/python/cpython-3.15.2-linux-x86_64-gnu/lib/python3.15/importlib/__init__.py:88: in import_module\n    return _bootstrap._gcd_import(name[level:], package, level)\n           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\ntests/test_command.py:1: in <module>\n    from bashhub.model import Command\nbashhub/model/__init__.py:1: in <module>\n    from .command import *\nbashhub/model/command.py:2: in <module>\n    from .min_command import MinCommand\nbashhub/model/min_command.py:2: in <module>\n    import requests\n../../venv/lib/python3.15/site-packages/requests/__init__.py:43: in <module>\n    import urllib3\n../../venv/lib/python3.15/site-packages/urllib3/__init__.py:7: in <module>\n    from .connectionpool import HTTPConnectionPool, HTTPSConnectionPool, connection_from_url\n../../venv/lib/python3.15/site-packages/urllib3/connectionpool.py:11: in <module>\n    from .exceptions import (\n../../venv/lib/python3.15/site-packages/urllib3/exceptions.py:2: in <module>\n    from .packages.six.moves.http_client import IncompleteRead as httplib_IncompleteRead\nE   ModuleNotFoundError: No module named 'urllib3.packages.six.moves'"
+    },
+    "::tests.test_command_form": {
+     "outcome": "error",
+     "detail": "packages have valid Python names.\nTraceback:\n../../../_shared_cache/python/cpython-3.15.2-linux-x86_64-gnu/lib/python3.15/importlib/__init__.py:88: in import_module\n    return _bootstrap._gcd_import(name[level:], package, level)\n           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\ntests/test_command_form.py:1: in <module>\n    from bashhub.model import CommandForm\nbashhub/model/__init__.py:1: in <module>\n    from .command import *\nbashhub/model/command.py:2: in <module>\n    from .min_command import MinCommand\nbashhub/model/min_command.py:2: in <module>\n    import requests\n../../venv/lib/python3.15/site-packages/requests/__init__.py:43: in <module>\n    import urllib3\n../../venv/lib/python3.15/site-packages/urllib3/__init__.py:7: in <module>\n    from .connectionpool import HTTPConnectionPool, HTTPSConnectionPool, connection_from_url\n../../venv/lib/python3.15/site-packages/urllib3/connectionpool.py:11: in <module>\n    from .exceptions import (\n../../venv/lib/python3.15/site-packages/urllib3/exceptions.py:2: in <module>\n    from .packages.six.moves.http_client import IncompleteRead as httplib_IncompleteRead\nE   ModuleNotFoundError: No module named 'urllib3.packages.six.moves'"
+    }
+   },
+   "log_tail": ""
+  },
+  "base_run": {
+   "status": "completed",
+   "exit_code": 2,
+   "seconds": 1.4,
+   "addopts_overridden": false,
+   "counts": {
+    "passed": 0,
+    "failed": 0,
+    "error": 5,
+    "skipped": 0
+   },
+   "tests": {
+    "::tests.test_bashhub": {
+     "outcome": "error",
+     "detail": "ache/python/cpython-3.15.2-linux-x86_64-gnu/lib/python3.15/importlib/__init__.py:88: in import_module\n    return _bootstrap._gcd_import(name[level:], package, level)\n           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\ntests/test_bashhub.py:6: in <module>\n    from bashhub.bashhub import bashhub\nbashhub/bashhub.py:11: in <module>\n    from .model import CommandForm\nbashhub/model/__init__.py:1: in <module>\n    from .command import *\nbashhub/model/command.py:2: in <module>\n    from .min_command import MinCommand\nbashhub/model/min_command.py:2: in <module>\n    import requests\n../../venv/lib/python3.15/site-packages/requests/__init__.py:43: in <module>\n    import urllib3\n../../venv/lib/python3.15/site-packages/urllib3/__init__.py:7: in <module>\n    from .connectionpool import HTTPConnectionPool, HTTPSConnectionPool, connection_from_url\n../../venv/lib/python3.15/site-packages/urllib3/connectionpool.py:11: in <module>\n    from .exceptions import (\n../../venv/lib/python3.15/site-packages/urllib3/exceptions.py:2: in <module>\n    from .packages.six.moves.http_client import IncompleteRead as httplib_IncompleteRead\nE   ModuleNotFoundError: No module named 'urllib3.packages.six.moves'"
+    },
+    "::tests.test_bashhub_globals": {
+     "outcome": "error",
+     "detail": "hon-3.15.2-linux-x86_64-gnu/lib/python3.15/importlib/__init__.py:88: in import_module\n    return _bootstrap._gcd_import(name[level:], package, level)\n           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\ntests/test_bashhub_globals.py:1: in <module>\n    from bashhub.bashhub import bashhub_globals\nbashhub/bashhub.py:11: in <module>\n    from .model import CommandForm\nbashhub/model/__init__.py:1: in <module>\n    from .command import *\nbashhub/model/command.py:2: in <module>\n    from .min_command import MinCommand\nbashhub/model/min_command.py:2: in <module>\n    import requests\n../../venv/lib/python3.15/site-packages/requests/__init__.py:43: in <module>\n    import urllib3\n../../venv/lib/python3.15/site-packages/urllib3/__init__.py:7: in <module>\n    from .connectionpool import HTTPConnectionPool, HTTPSConnectionPool, connection_from_url\n../../venv/lib/python3.15/site-packages/urllib3/connectionpool.py:11: in <module>\n    from .exceptions import (\n../../venv/lib/python3.15/site-packages/urllib3/exceptions.py:2: in <module>\n    from .packages.six.moves.http_client import IncompleteRead as httplib_IncompleteRead\nE   ModuleNotFoundError: No module named 'urllib3.packages.six.moves'"
+    },
+    "::tests.test_bashhub_setup": {
+     "outcome": "error",
+     "detail": "le importing test module '/dev/shm/acr/work/3127780317/src/base/tests/test_bashhub_setup.py'.\nHint: make sure your test modules/packages have valid Python names.\nTraceback:\n../../../_shared_cache/python/cpython-3.15.2-linux-x86_64-gnu/lib/python3.15/importlib/__init__.py:88: in import_module\n    return _bootstrap._gcd_import(name[level:], package, level)\n           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\ntests/test_bashhub_setup.py:4: in <module>\n    from bashhub.bashhub_setup import  handle_system_information\nbashhub/bashhub_setup.py:7: in <module>\n    import requests\n../../venv/lib/python3.15/site-packages/requests/__init__.py:43: in <module>\n    import urllib3\n../../venv/lib/python3.15/site-packages/urllib3/__init__.py:7: in <module>\n    from .connectionpool import HTTPConnectionPool, HTTPSConnectionPool, connection_from_url\n../../venv/lib/python3.15/site-packages/urllib3/connectionpool.py:11: in <module>\n    from .exceptions import (\n../../venv/lib/python3.15/site-packages/urllib3/exceptions.py:2: in <module>\n    from .packages.six.moves.http_client import IncompleteRead as httplib_IncompleteRead\nE   ModuleNotFoundError: No module named 'urllib3.packages.six.moves'"
+    },
+    "::tests.test_command": {
+     "outcome": "error",
+     "detail": " modules/packages have valid Python names.\nTraceback:\n../../../_shared_cache/python/cpython-3.15.2-linux-x86_64-gnu/lib/python3.15/importlib/__init__.py:88: in import_module\n    return _bootstrap._gcd_import(name[level:], package, level)\n           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\ntests/test_command.py:1: in <module>\n    from bashhub.model import Command\nbashhub/model/__init__.py:1: in <module>\n    from .command import *\nbashhub/model/command.py:2: in <module>\n    from .min_command import MinCommand\nbashhub/model/min_command.py:2: in <module>\n    import requests\n../../venv/lib/python3.15/site-packages/requests/__init__.py:43: in <module>\n    import urllib3\n../../venv/lib/python3.15/site-packages/urllib3/__init__.py:7: in <module>\n    from .connectionpool import HTTPConnectionPool, HTTPSConnectionPool, connection_from_url\n../../venv/lib/python3.15/site-packages/urllib3/connectionpool.py:11: in <module>\n    from .exceptions import (\n../../venv/lib/python3.15/site-packages/urllib3/exceptions.py:2: in <module>\n    from .packages.six.moves.http_client import IncompleteRead as httplib_IncompleteRead\nE   ModuleNotFoundError: No module named 'urllib3.packages.six.moves'"
+    },
+    "::tests.test_command_form": {
+     "outcome": "error",
+     "detail": "packages have valid Python names.\nTraceback:\n../../../_shared_cache/python/cpython-3.15.2-linux-x86_64-gnu/lib/python3.15/importlib/__init__.py:88: in import_module\n    return _bootstrap._gcd_import(name[level:], package, level)\n           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\ntests/test_command_form.py:1: in <module>\n    from bashhub.model import CommandForm\nbashhub/model/__init__.py:1: in <module>\n    from .command import *\nbashhub/model/command.py:2: in <module>\n    from .min_command import MinCommand\nbashhub/model/min_command.py:2: in <module>\n    import requests\n../../venv/lib/python3.15/site-packages/requests/__init__.py:43: in <module>\n    import urllib3\n../../venv/lib/python3.15/site-packages/urllib3/__init__.py:7: in <module>\n    from .connectionpool import HTTPConnectionPool, HTTPSConnectionPool, connection_from_url\n../../venv/lib/python3.15/site-packages/urllib3/connectionpool.py:11: in <module>\n    from .exceptions import (\n../../venv/lib/python3.15/site-packages/urllib3/exceptions.py:2: in <module>\n    from .packages.six.moves.http_client import IncompleteRead as httplib_IncompleteRead\nE   ModuleNotFoundError: No module named 'urllib3.packages.six.moves'"
+    }
+   },
+   "log_tail": ""
+  },
+  "comparison": {
+   "regressions": [],
+   "new_test_failures": [],
+   "fixed": [],
+   "persistent_failures": [
+    "::tests.test_bashhub",
+    "::tests.test_bashhub_globals",
+    "::tests.test_bashhub_setup",
+    "::tests.test_command",
+    "::tests.test_command_form"
+   ]
+  },
+  "imports_head": {
+   "bashhub.rest_client": {
+    "ok": false,
+    "type": "ModuleNotFoundError",
+    "message": "No module named 'urllib3.packages.six.moves'",
+    "missing_module": "urllib3.packages.six.moves",
+    "file": "bashhub/rest_client.py",
+    "line": 4,
+    "traceback": "__init__.py\", line 88, in import_module\n    return _bootstrap._gcd_import(name[level:], package, level)\n           ~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"<frozen importlib._bootstrap>\", line 1389, in _gcd_import\n  File \"<frozen importlib._bootstrap>\", line 1353, in _find_and_load\n  File \"<frozen importlib._bootstrap>\", line 1249, in _find_and_load_unlocked\n  File \"<frozen importlib._bootstrap>\", line 857, in _load_unlocked\n  File \"<frozen importlib._bootstrap_external>\", line 751, in exec_module\n  File \"<frozen importlib._bootstrap>\", line 491, in _call_with_frames_removed\n  File \"/dev/shm/acr/work/3127780317/src/head/bashhub/rest_client.py\", line 4, in <module>\n    import requests\n  File \"/dev/shm/acr/work/3127780317/venv/lib/python3.15/site-packages/requests/__init__.py\", line 43, in <module>\n    import urllib3\n  File \"/dev/shm/acr/work/3127780317/venv/lib/python3.15/site-packages/urllib3/__init__.py\", line 7, in <module>\n    from .connectionpool import HTTPConnectionPool, HTTPSConnectionPool, connection_from_url\n  File \"/dev/shm/acr/work/3127780317/venv/lib/python3.15/site-packages/urllib3/connectionpool.py\", line 11, in <module>\n    from .exceptions import (\n    ...<13 lines>...\n    )\n  File \"/dev/shm/acr/work/3127780317/venv/lib/python3.15/site-packages/urllib3/exceptions.py\", line 2, in <module>\n    from .packages.six.moves.http_client import IncompleteRead as httplib_IncompleteRead\nModuleNotFoundError: No module named 'urllib3.packages.six.moves'\n"
+   }
+  },
+  "imports_base": {
+   "bashhub.rest_client": {
+    "ok": false,
+    "type": "ModuleNotFoundError",
+    "message": "No module named 'urllib3.packages.six.moves'",
+    "missing_module": "urllib3.packages.six.moves",
+    "file": "bashhub/rest_client.py",
+    "line": 4,
+    "traceback": "__init__.py\", line 88, in import_module\n    return _bootstrap._gcd_import(name[level:], package, level)\n           ~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"<frozen importlib._bootstrap>\", line 1389, in _gcd_import\n  File \"<frozen importlib._bootstrap>\", line 1353, in _find_and_load\n  File \"<frozen importlib._bootstrap>\", line 1249, in _find_and_load_unlocked\n  File \"<frozen importlib._bootstrap>\", line 857, in _load_unlocked\n  File \"<frozen importlib._bootstrap_external>\", line 751, in exec_module\n  File \"<frozen importlib._bootstrap>\", line 491, in _call_with_frames_removed\n  File \"/dev/shm/acr/work/3127780317/src/base/bashhub/rest_client.py\", line 4, in <module>\n    import requests\n  File \"/dev/shm/acr/work/3127780317/venv/lib/python3.15/site-packages/requests/__init__.py\", line 43, in <module>\n    import urllib3\n  File \"/dev/shm/acr/work/3127780317/venv/lib/python3.15/site-packages/urllib3/__init__.py\", line 7, in <module>\n    from .connectionpool import HTTPConnectionPool, HTTPSConnectionPool, connection_from_url\n  File \"/dev/shm/acr/work/3127780317/venv/lib/python3.15/site-packages/urllib3/connectionpool.py\", line 11, in <module>\n    from .exceptions import (\n    ...<13 lines>...\n    )\n  File \"/dev/shm/acr/work/3127780317/venv/lib/python3.15/site-packages/urllib3/exceptions.py\", line 2, in <module>\n    from .packages.six.moves.http_client import IncompleteRead as httplib_IncompleteRead\nModuleNotFoundError: No module named 'urllib3.packages.six.moves'\n"
+   }
+  },
+  "status": "completed",
+  "dependency_cutoff": "2025-06-08T17:00:02Z",
+  "seconds": 11.1,
+  "head_failures": 5
+ },
+ "findings": [],
+ "status": "ok",
+ "seconds": 12.7
+}

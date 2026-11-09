@@ -1,0 +1,142 @@
+{
+ "pr_id": 3192545670,
+ "repository": "NewFuture/DDNS",
+ "pr_number": 495,
+ "split": "development",
+ "agent": "Copilot",
+ "head_sha": "a122fa3b8b15c98ec553dde9877d473b7fb046d5",
+ "tool_versions": {
+  "ruff": "ruff 0.17.4",
+  "bandit": "__main__.py 1.9.4",
+  "python": "3.12.3"
+ },
+ "config": {
+  "run_tests": true,
+  "sandbox": true
+ },
+ "base_mode": "reverse_applied_diff",
+ "static": {
+  "files_analysed": 3,
+  "head_issues": 7,
+  "base_issues": 6,
+  "per_tool_head": {
+   "ruff": 1,
+   "bandit": 6
+  },
+  "per_tool_base": {
+   "ruff": 1,
+   "bandit": 5
+  },
+  "introduced": 1,
+  "seconds": 0.3
+ },
+ "tests": {
+  "env": {
+   "status": "partial",
+   "python": "3.15.2",
+   "steps": [
+    {
+     "step": "venv",
+     "ok": true,
+     "seconds": 0.0,
+     "timed_out": false,
+     "log_tail": ""
+    },
+    {
+     "step": "install -e .[dev]",
+     "ok": false,
+     "seconds": 0.4,
+     "timed_out": false,
+     "log_tail": "         ~~~~~~~~~~~~~~~~~~~~~~~~^^\n           File \"/dev/shm/acr/work/_shared_cache/uv/builds-v0/.tmp6D5kFF/lib/python3.15/site-packages/setuptools/_distutils/cmd.py\", line 135, in ensure_finalized\n             self.finalize_options()\n             ~~~~~~~~~~~~~~~~~~~~~^^\n           File \"/dev/shm/acr/work/_shared_cache/uv/builds-v0/.tmp6D5kFF/lib/python3.15/site-packages/setuptools/command/egg_info.py\", line 225, in finalize_options\n             self.egg_version = self.tagged_version()\n                                ~~~~~~~~~~~~~~~~~~~^^\n           File \"/dev/shm/acr/work/_shared_cache/uv/builds-v0/.tmp6D5kFF/lib/python3.15/site-packages/setuptools/command/egg_info.py\", line 131, in tagged_version\n             return _normalization.safe_version(tagged)\n                    ~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^\n           File \"/dev/shm/acr/work/_shared_cache/uv/builds-v0/.tmp6D5kFF/lib/python3.15/site-packages/setuptools/_normalization.py\", line 64, in safe_version\n             return str(packaging.version.Version(attempt))\n                        ~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^\n           File \"/dev/shm/acr/work/_shared_cache/uv/builds-v0/.tmp6D5kFF/lib/python3.15/site-packages/setuptools/_vendor/packaging/version.py\", line 202, in __init__\n             raise InvalidVersion(f\"Invalid version: {version!r}\")\n         packaging.version.InvalidVersion: Invalid version: '-BUILD_VERSION-'\n\nhint: Build failures usually indicate a problem with the package or the build environment\n",
+     "superseded": true
+    },
+    {
+     "step": "install -e .",
+     "ok": false,
+     "seconds": 0.5,
+     "timed_out": false,
+     "log_tail": "         ~~~~~~~~~~~~~~~~~~~~~~~~^^\n           File \"/dev/shm/acr/work/_shared_cache/uv/builds-v0/.tmpM2TaQn/lib/python3.15/site-packages/setuptools/_distutils/cmd.py\", line 135, in ensure_finalized\n             self.finalize_options()\n             ~~~~~~~~~~~~~~~~~~~~~^^\n           File \"/dev/shm/acr/work/_shared_cache/uv/builds-v0/.tmpM2TaQn/lib/python3.15/site-packages/setuptools/command/egg_info.py\", line 225, in finalize_options\n             self.egg_version = self.tagged_version()\n                                ~~~~~~~~~~~~~~~~~~~^^\n           File \"/dev/shm/acr/work/_shared_cache/uv/builds-v0/.tmpM2TaQn/lib/python3.15/site-packages/setuptools/command/egg_info.py\", line 131, in tagged_version\n             return _normalization.safe_version(tagged)\n                    ~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^\n           File \"/dev/shm/acr/work/_shared_cache/uv/builds-v0/.tmpM2TaQn/lib/python3.15/site-packages/setuptools/_normalization.py\", line 64, in safe_version\n             return str(packaging.version.Version(attempt))\n                        ~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^\n           File \"/dev/shm/acr/work/_shared_cache/uv/builds-v0/.tmpM2TaQn/lib/python3.15/site-packages/setuptools/_vendor/packaging/version.py\", line 202, in __init__\n             raise InvalidVersion(f\"Invalid version: {version!r}\")\n         packaging.version.InvalidVersion: Invalid version: '-BUILD_VERSION-'\n\nhint: Build failures usually indicate a problem with the package or the build environment\n"
+    },
+    {
+     "step": "install pytest",
+     "ok": true,
+     "seconds": 0.1,
+     "timed_out": false,
+     "log_tail": ""
+    }
+   ]
+  },
+  "selected_tests": [
+   {
+    "path": "tests/test_util_cache.py",
+    "reason": "changed_in_pr",
+    "exists_at_base": false
+   }
+  ],
+  "head_run": {
+   "status": "completed",
+   "exit_code": 0,
+   "seconds": 0.4,
+   "addopts_overridden": false,
+   "counts": {
+    "passed": 33,
+    "failed": 0,
+    "error": 0,
+    "skipped": 0
+   },
+   "tests": {},
+   "log_tail": ""
+  },
+  "base_run": {
+   "status": "not_run",
+   "tests": {}
+  },
+  "comparison": {
+   "regressions": [],
+   "new_test_failures": [],
+   "fixed": [],
+   "persistent_failures": []
+  },
+  "imports_head": {
+   "ddns.util.cache": {
+    "ok": true
+   }
+  },
+  "imports_base": {
+   "ddns.util.cache": {
+    "ok": true
+   }
+  },
+  "status": "completed",
+  "dependency_cutoff": "2025-07-01T16:29:37Z",
+  "seconds": 1.5,
+  "head_failures": 0
+ },
+ "findings": [
+  {
+   "tool": "bandit",
+   "rule": "B306",
+   "category": "security",
+   "severity": "low",
+   "confidence": "high",
+   "message": "blacklist: Use of insecure and deprecated function (mktemp).",
+   "file": "tests/test_util_cache.py",
+   "line": 32,
+   "end_line": 32,
+   "cwe": 377,
+   "on_changed_line": true,
+   "evidence": {
+    "type": "static",
+    "source_line": "self.cache_file = tempfile.mktemp(prefix=\"ddns_test_cache_\", suffix=\"pk1\")",
+    "more_info": "https://bandit.readthedocs.io/en/1.9.4/blacklists/blacklist_calls.html#b306-mktemp-q"
+   },
+   "sources": [
+    "bandit"
+   ],
+   "finding_id": "090e4cf201a1",
+   "score": 1.5
+  }
+ ],
+ "status": "ok",
+ "seconds": 2.8
+}

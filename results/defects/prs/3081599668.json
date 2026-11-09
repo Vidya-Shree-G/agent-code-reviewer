@@ -1,0 +1,73 @@
+{
+ "pr_id": 3081599668,
+ "repository": "AIAdvantage/chatgpt-api-youtube",
+ "pr_number": 14,
+ "split": "development",
+ "agent": "OpenAI_Codex",
+ "head_sha": "a3b1c462f3ca7caaf379f427fffcee918ae08528",
+ "tool_versions": {
+  "ruff": "ruff 0.17.4",
+  "bandit": "__main__.py 1.9.4",
+  "python": "3.12.3"
+ },
+ "config": {
+  "run_tests": true,
+  "sandbox": true
+ },
+ "base_mode": "reverse_applied_diff",
+ "static": {
+  "files_analysed": 1,
+  "head_issues": 0,
+  "base_issues": 0,
+  "per_tool_head": {},
+  "per_tool_base": {},
+  "introduced": 0,
+  "seconds": 0.2
+ },
+ "tests": {
+  "env": {
+   "status": "ok",
+   "python": "3.15.2",
+   "steps": [
+    {
+     "step": "venv",
+     "ok": true,
+     "seconds": 0.1,
+     "timed_out": false,
+     "log_tail": ""
+    },
+    {
+     "step": "install pytest",
+     "ok": true,
+     "seconds": 0.1,
+     "timed_out": false,
+     "log_tail": ""
+    }
+   ]
+  },
+  "selected_tests": [],
+  "head_run": {
+   "status": "not_run",
+   "tests": {}
+  },
+  "base_run": {
+   "status": "not_run",
+   "tests": {}
+  },
+  "comparison": {
+   "regressions": [],
+   "new_test_failures": [],
+   "fixed": [],
+   "persistent_failures": []
+  },
+  "imports_head": {},
+  "imports_base": {},
+  "status": "no_executable_checks",
+  "dependency_cutoff": "2025-05-21T23:01:36Z",
+  "seconds": 0.1,
+  "head_failures": 0
+ },
+ "findings": [],
+ "status": "ok",
+ "seconds": 1.1
+}

@@ -1,0 +1,315 @@
+{
+ "pr_id": 3244419015,
+ "repository": "567-labs/instructor",
+ "pr_number": 1726,
+ "split": "development",
+ "agent": "OpenAI_Codex",
+ "head_sha": "0e73cf7e2ff68a1dc275cce7be4fbc0effbce68f",
+ "tool_versions": {
+  "ruff": "ruff 0.17.4",
+  "bandit": "__main__.py 1.9.4",
+  "python": "3.12.3"
+ },
+ "config": {
+  "run_tests": true,
+  "sandbox": true
+ },
+ "base_mode": "reverse_applied_diff",
+ "static": {
+  "files_analysed": 9,
+  "head_issues": 2,
+  "base_issues": 2,
+  "per_tool_head": {
+   "ruff": 2
+  },
+  "per_tool_base": {
+   "ruff": 2
+  },
+  "introduced": 0,
+  "seconds": 0.5
+ },
+ "tests": {
+  "env": {
+   "status": "partial",
+   "python": "3.15.2",
+   "steps": [
+    {
+     "step": "venv",
+     "ok": true,
+     "seconds": 0.0,
+     "timed_out": false,
+     "log_tail": ""
+    },
+    {
+     "step": "install -e .[dev]",
+     "ok": false,
+     "seconds": 3.3,
+     "timed_out": false,
+     "log_tail": "                                                  ~~~~~~~~^^\n           File \"/dev/shm/acr/work/_shared_cache/uv/builds-v0/.tmpQc5Afx/lib/python3.15/site-packages/maturin/__init__.py\", line 76, in _get_env\n             extra_env = setup_rust()\n           File \"/dev/shm/acr/work/_shared_cache/uv/builds-v0/.tmpQc5Afx/lib/python3.15/site-packages/puccinialin/_setup_rust.py\", line 123, in setup_rust\n             install_rust(rustup_init, rustup_home, cargo_home, file)\n             ~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n           File \"/dev/shm/acr/work/_shared_cache/uv/builds-v0/.tmpQc5Afx/lib/python3.15/site-packages/puccinialin/_setup_rust.py\", line 66, in install_rust\n             check_call(\n             ~~~~~~~~~~^\n                 [\n                 ^\n             ...<13 lines>...\n                 stderr=file,\n                 ^^^^^^^^^^^^\n             )\n             ^\n           File \"/dev/shm/acr/work/_shared_cache/python/cpython-3.15.2-linux-x86_64-gnu/lib/python3.15/subprocess.py\", line 534, in check_call\n             raise CalledProcessError(retcode, cmd)\n         subprocess.CalledProcessError: Command [PosixPath('/dev/shm/acr/work/3244419015/home/.cache/puccinialin/rustup-init/rustup-init'), '-y', '--no-modify-path', '--profile', 'minimal'] returned non-zero exit status 1.\n\nhint: `jiter` (v0.10.0) was included because `instructor` (v1.10.0) depends on `jiter`\n\nhint: Build failures usually indicate a problem with the package or the build environment\n",
+     "superseded": true
+    },
+    {
+     "step": "install -e .",
+     "ok": false,
+     "seconds": 1.0,
+     "timed_out": false,
+     "log_tail": "                                  ~~~~~~~~^^\n           File \"/dev/shm/acr/work/_shared_cache/uv/builds-v0/.tmpvdfqHb/lib/python3.15/site-packages/maturin/__init__.py\", line 76, in _get_env\n             extra_env = setup_rust()\n           File \"/dev/shm/acr/work/_shared_cache/uv/builds-v0/.tmpvdfqHb/lib/python3.15/site-packages/puccinialin/_setup_rust.py\", line 123, in setup_rust\n             install_rust(rustup_init, rustup_home, cargo_home, file)\n             ~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n           File \"/dev/shm/acr/work/_shared_cache/uv/builds-v0/.tmpvdfqHb/lib/python3.15/site-packages/puccinialin/_setup_rust.py\", line 66, in install_rust\n             check_call(\n             ~~~~~~~~~~^\n                 [\n                 ^\n             ...<13 lines>...\n                 stderr=file,\n                 ^^^^^^^^^^^^\n             )\n             ^\n           File \"/dev/shm/acr/work/_shared_cache/python/cpython-3.15.2-linux-x86_64-gnu/lib/python3.15/subprocess.py\", line 534, in check_call\n             raise CalledProcessError(retcode, cmd)\n         subprocess.CalledProcessError: Command [PosixPath('/dev/shm/acr/work/3244419015/home/.cache/puccinialin/rustup-init/rustup-init'), '-y', '--no-modify-path', '--profile', 'minimal'] returned non-zero exit status 1.\n\nhint: `pydantic-core` (v2.33.2) was included because `instructor` (v1.10.0) depends on `pydantic-core`\n\nhint: Build failures usually indicate a problem with the package or the build environment\n"
+    },
+    {
+     "step": "install --group dev",
+     "ok": true,
+     "seconds": 0.3,
+     "timed_out": false,
+     "log_tail": ""
+    },
+    {
+     "step": "install -r requirements.txt",
+     "ok": false,
+     "seconds": 2.7,
+     "timed_out": false,
+     "log_tail": "the directory containing `libffi.pc'\n         to the PKG_CONFIG_PATH environment variable\n         Package 'libffi', required by 'virtual:world', not found\n         Package libffi was not found in the pkg-config search path.\n         Perhaps you should add the directory containing `libffi.pc'\n         to the PKG_CONFIG_PATH environment variable\n         Package 'libffi', required by 'virtual:world', not found\n         /dev/shm/acr/work/_shared_cache/uv/builds-v0/.tmpjqccAi/lib/python3.15/site-packages/setuptools/dist.py:759: SetuptoolsDeprecationWarning: License classifiers are deprecated.\n         !!\n\n                 ********************************************************************************\n                 Please consider removing the following classifiers in favor of a SPDX license expression:\n\n                 License :: OSI Approved :: MIT License\n\n                 See https://packaging.python.org/en/latest/guides/writing-pyproject-toml/#license for details.\n                 ********************************************************************************\n\n         !!\n           self._finalize_license_expression()\n         src/c/_cffi_backend.c:15:10: fatal error: ffi.h: No such file or directory\n            15 | #include <ffi.h>\n               |          ^~~~~~~\n         compilation terminated.\n         error: command '/usr/bin/cc' failed with exit code 1\n\nhint: This error likely indicates that you need to install a library that provides `ffi.h` for `cffi@1.17.1`\n"
+    },
+    {
+     "step": "install pytest",
+     "ok": true,
+     "seconds": 0.0,
+     "timed_out": false,
+     "log_tail": ""
+    },
+    {
+     "step": "repair: install pydantic requests",
+     "ok": false,
+     "seconds": 13.0,
+     "timed_out": false,
+     "log_tail": "COMPATIBILITY\n\n           --- stderr\n           error: the configured Python interpreter version (3.15) is newer than PyO3's maximum supported version (3.13)\n           = help: please check if an updated version of PyO3 is available. Current version: 0.24.1\n           = help: set PYO3_USE_ABI3_FORWARD_COMPATIBILITY=1 to suppress this check and build anyway using the stable ABI\n         warning: build failed, waiting for other jobs to finish...\n         💥 maturin failed\n           Caused by: Failed to build a native library through cargo\n           Caused by: Cargo build finished with \"exit status: 101\": `env -u CARGO PYO3_ENVIRONMENT_SIGNATURE=\"cpython-3.15-64bit\" PYO3_PYTHON=\"/dev/shm/acr/work/_shared_cache/uv/builds-v0/.tmpo7sFDT/bin/python\" PYTHON_SYS_EXECUTABLE=\"/dev/shm/acr/work/_shared_cache/uv/builds-v0/.tmpo7sFDT/bin/python\" \"cargo\" \"rustc\" \"--features\" \"pyo3/extension-module\" \"--message-format\" \"json-render-diagnostics\" \"--manifest-path\" \"/dev/shm/acr/work/_shared_cache/uv/sdists-v10/pypi/pydantic-core/2.33.2/D5dNEOkhKV9CkE_G/src/Cargo.toml\" \"--release\" \"--lib\" \"--crate-type\" \"cdylib\"`\n         Error: command ['maturin', 'pep517', 'build-wheel', '-i', '/dev/shm/acr/work/_shared_cache/uv/builds-v0/.tmpo7sFDT/bin/python', '--compatibility', 'off'] returned non-zero exit status 1\n\nhint: `pydantic-core` (v2.33.2) was included because `pydantic` (v2.11.7) depends on `pydantic-core`\n\nhint: Build failures usually indicate a problem with the package or the build environment\n"
+    }
+   ]
+  },
+  "selected_tests": [
+   {
+    "path": "tests/test_process_response.py",
+    "reason": "imports_changed_module",
+    "exists_at_base": true
+   }
+  ],
+  "head_run": {
+   "status": "completed",
+   "exit_code": 2,
+   "seconds": 0.8,
+   "addopts_overridden": false,
+   "counts": {
+    "passed": 0,
+    "failed": 0,
+    "error": 1,
+    "skipped": 0
+   },
+   "tests": {
+    "::tests.test_process_response": {
+     "outcome": "error",
+     "detail": "collection failure\nImportError while importing test module '/dev/shm/acr/work/3244419015/src/head/tests/test_process_response.py'.\nHint: make sure your test modules/packages have valid Python names.\nTraceback:\n../../../_shared_cache/python/cpython-3.15.2-linux-x86_64-gnu/lib/python3.15/importlib/__init__.py:88: in import_module\n    return _bootstrap._gcd_import(name[level:], package, level)\n           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\ntests/test_process_response.py:2: in <module>\n    from pydantic import BaseModel\nE   ModuleNotFoundError: No module named 'pydantic'"
+    }
+   },
+   "log_tail": ""
+  },
+  "base_run": {
+   "status": "completed",
+   "exit_code": 2,
+   "seconds": 0.8,
+   "addopts_overridden": false,
+   "counts": {
+    "passed": 0,
+    "failed": 0,
+    "error": 1,
+    "skipped": 0
+   },
+   "tests": {
+    "::tests.test_process_response": {
+     "outcome": "error",
+     "detail": "collection failure\nImportError while importing test module '/dev/shm/acr/work/3244419015/src/base/tests/test_process_response.py'.\nHint: make sure your test modules/packages have valid Python names.\nTraceback:\n../../../_shared_cache/python/cpython-3.15.2-linux-x86_64-gnu/lib/python3.15/importlib/__init__.py:88: in import_module\n    return _bootstrap._gcd_import(name[level:], package, level)\n           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\ntests/test_process_response.py:2: in <module>\n    from pydantic import BaseModel\nE   ModuleNotFoundError: No module named 'pydantic'"
+    }
+   },
+   "log_tail": ""
+  },
+  "comparison": {
+   "regressions": [],
+   "new_test_failures": [],
+   "fixed": [],
+   "persistent_failures": [
+    "::tests.test_process_response"
+   ]
+  },
+  "imports_head": {
+   "instructor.utils.anthropic": {
+    "ok": false,
+    "type": "ModuleNotFoundError",
+    "message": "No module named 'requests'",
+    "missing_module": "requests",
+    "file": "instructor/multimodal.py",
+    "line": 20,
+    "traceback": "6_64-gnu/lib/python3.15/importlib/__init__.py\", line 88, in import_module\n    return _bootstrap._gcd_import(name[level:], package, level)\n           ~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"<frozen importlib._bootstrap>\", line 1389, in _gcd_import\n  File \"<frozen importlib._bootstrap>\", line 1338, in _find_and_load\n  File \"<frozen importlib._bootstrap>\", line 1299, in _resolve_parents\n  File \"<frozen importlib._bootstrap>\", line 491, in _call_with_frames_removed\n  File \"<frozen importlib._bootstrap>\", line 1389, in _gcd_import\n  File \"<frozen importlib._bootstrap>\", line 1338, in _find_and_load\n  File \"<frozen importlib._bootstrap>\", line 1299, in _resolve_parents\n  File \"<frozen importlib._bootstrap>\", line 491, in _call_with_frames_removed\n  File \"<frozen importlib._bootstrap>\", line 1389, in _gcd_import\n  File \"<frozen importlib._bootstrap>\", line 1353, in _find_and_load\n  File \"<frozen importlib._bootstrap>\", line 1249, in _find_and_load_unlocked\n  File \"<frozen importlib._bootstrap>\", line 857, in _load_unlocked\n  File \"<frozen importlib._bootstrap_external>\", line 751, in exec_module\n  File \"<frozen importlib._bootstrap>\", line 491, in _call_with_frames_removed\n  File \"/dev/shm/acr/work/3244419015/src/head/instructor/__init__.py\", line 4, in <module>\n    from .multimodal import Image, Audio\n  File \"/dev/shm/acr/work/3244419015/src/head/instructor/multimodal.py\", line 20, in <module>\n    import requests\nModuleNotFoundError: No module named 'requests'\n"
+   },
+   "instructor.utils.bedrock": {
+    "ok": false,
+    "type": "ModuleNotFoundError",
+    "message": "No module named 'requests'",
+    "missing_module": "requests",
+    "file": "instructor/multimodal.py",
+    "line": 20,
+    "traceback": "6_64-gnu/lib/python3.15/importlib/__init__.py\", line 88, in import_module\n    return _bootstrap._gcd_import(name[level:], package, level)\n           ~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"<frozen importlib._bootstrap>\", line 1389, in _gcd_import\n  File \"<frozen importlib._bootstrap>\", line 1338, in _find_and_load\n  File \"<frozen importlib._bootstrap>\", line 1299, in _resolve_parents\n  File \"<frozen importlib._bootstrap>\", line 491, in _call_with_frames_removed\n  File \"<frozen importlib._bootstrap>\", line 1389, in _gcd_import\n  File \"<frozen importlib._bootstrap>\", line 1338, in _find_and_load\n  File \"<frozen importlib._bootstrap>\", line 1299, in _resolve_parents\n  File \"<frozen importlib._bootstrap>\", line 491, in _call_with_frames_removed\n  File \"<frozen importlib._bootstrap>\", line 1389, in _gcd_import\n  File \"<frozen importlib._bootstrap>\", line 1353, in _find_and_load\n  File \"<frozen importlib._bootstrap>\", line 1249, in _find_and_load_unlocked\n  File \"<frozen importlib._bootstrap>\", line 857, in _load_unlocked\n  File \"<frozen importlib._bootstrap_external>\", line 751, in exec_module\n  File \"<frozen importlib._bootstrap>\", line 491, in _call_with_frames_removed\n  File \"/dev/shm/acr/work/3244419015/src/head/instructor/__init__.py\", line 4, in <module>\n    from .multimodal import Image, Audio\n  File \"/dev/shm/acr/work/3244419015/src/head/instructor/multimodal.py\", line 20, in <module>\n    import requests\nModuleNotFoundError: No module named 'requests'\n"
+   },
+   "instructor.utils.cerebras": {
+    "ok": false,
+    "type": "ModuleNotFoundError",
+    "message": "No module named 'requests'",
+    "missing_module": "requests",
+    "file": "instructor/multimodal.py",
+    "line": 20,
+    "traceback": "6_64-gnu/lib/python3.15/importlib/__init__.py\", line 88, in import_module\n    return _bootstrap._gcd_import(name[level:], package, level)\n           ~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"<frozen importlib._bootstrap>\", line 1389, in _gcd_import\n  File \"<frozen importlib._bootstrap>\", line 1338, in _find_and_load\n  File \"<frozen importlib._bootstrap>\", line 1299, in _resolve_parents\n  File \"<frozen importlib._bootstrap>\", line 491, in _call_with_frames_removed\n  File \"<frozen importlib._bootstrap>\", line 1389, in _gcd_import\n  File \"<frozen importlib._bootstrap>\", line 1338, in _find_and_load\n  File \"<frozen importlib._bootstrap>\", line 1299, in _resolve_parents\n  File \"<frozen importlib._bootstrap>\", line 491, in _call_with_frames_removed\n  File \"<frozen importlib._bootstrap>\", line 1389, in _gcd_import\n  File \"<frozen importlib._bootstrap>\", line 1353, in _find_and_load\n  File \"<frozen importlib._bootstrap>\", line 1249, in _find_and_load_unlocked\n  File \"<frozen importlib._bootstrap>\", line 857, in _load_unlocked\n  File \"<frozen importlib._bootstrap_external>\", line 751, in exec_module\n  File \"<frozen importlib._bootstrap>\", line 491, in _call_with_frames_removed\n  File \"/dev/shm/acr/work/3244419015/src/head/instructor/__init__.py\", line 4, in <module>\n    from .multimodal import Image, Audio\n  File \"/dev/shm/acr/work/3244419015/src/head/instructor/multimodal.py\", line 20, in <module>\n    import requests\nModuleNotFoundError: No module named 'requests'\n"
+   },
+   "instructor.utils.cohere": {
+    "ok": false,
+    "type": "ModuleNotFoundError",
+    "message": "No module named 'requests'",
+    "missing_module": "requests",
+    "file": "instructor/multimodal.py",
+    "line": 20,
+    "traceback": "6_64-gnu/lib/python3.15/importlib/__init__.py\", line 88, in import_module\n    return _bootstrap._gcd_import(name[level:], package, level)\n           ~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"<frozen importlib._bootstrap>\", line 1389, in _gcd_import\n  File \"<frozen importlib._bootstrap>\", line 1338, in _find_and_load\n  File \"<frozen importlib._bootstrap>\", line 1299, in _resolve_parents\n  File \"<frozen importlib._bootstrap>\", line 491, in _call_with_frames_removed\n  File \"<frozen importlib._bootstrap>\", line 1389, in _gcd_import\n  File \"<frozen importlib._bootstrap>\", line 1338, in _find_and_load\n  File \"<frozen importlib._bootstrap>\", line 1299, in _resolve_parents\n  File \"<frozen importlib._bootstrap>\", line 491, in _call_with_frames_removed\n  File \"<frozen importlib._bootstrap>\", line 1389, in _gcd_import\n  File \"<frozen importlib._bootstrap>\", line 1353, in _find_and_load\n  File \"<frozen importlib._bootstrap>\", line 1249, in _find_and_load_unlocked\n  File \"<frozen importlib._bootstrap>\", line 857, in _load_unlocked\n  File \"<frozen importlib._bootstrap_external>\", line 751, in exec_module\n  File \"<frozen importlib._bootstrap>\", line 491, in _call_with_frames_removed\n  File \"/dev/shm/acr/work/3244419015/src/head/instructor/__init__.py\", line 4, in <module>\n    from .multimodal import Image, Audio\n  File \"/dev/shm/acr/work/3244419015/src/head/instructor/multimodal.py\", line 20, in <module>\n    import requests\nModuleNotFoundError: No module named 'requests'\n"
+   },
+   "instructor.utils.fireworks": {
+    "ok": false,
+    "type": "ModuleNotFoundError",
+    "message": "No module named 'requests'",
+    "missing_module": "requests",
+    "file": "instructor/multimodal.py",
+    "line": 20,
+    "traceback": "6_64-gnu/lib/python3.15/importlib/__init__.py\", line 88, in import_module\n    return _bootstrap._gcd_import(name[level:], package, level)\n           ~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"<frozen importlib._bootstrap>\", line 1389, in _gcd_import\n  File \"<frozen importlib._bootstrap>\", line 1338, in _find_and_load\n  File \"<frozen importlib._bootstrap>\", line 1299, in _resolve_parents\n  File \"<frozen importlib._bootstrap>\", line 491, in _call_with_frames_removed\n  File \"<frozen importlib._bootstrap>\", line 1389, in _gcd_import\n  File \"<frozen importlib._bootstrap>\", line 1338, in _find_and_load\n  File \"<frozen importlib._bootstrap>\", line 1299, in _resolve_parents\n  File \"<frozen importlib._bootstrap>\", line 491, in _call_with_frames_removed\n  File \"<frozen importlib._bootstrap>\", line 1389, in _gcd_import\n  File \"<frozen importlib._bootstrap>\", line 1353, in _find_and_load\n  File \"<frozen importlib._bootstrap>\", line 1249, in _find_and_load_unlocked\n  File \"<frozen importlib._bootstrap>\", line 857, in _load_unlocked\n  File \"<frozen importlib._bootstrap_external>\", line 751, in exec_module\n  File \"<frozen importlib._bootstrap>\", line 491, in _call_with_frames_removed\n  File \"/dev/shm/acr/work/3244419015/src/head/instructor/__init__.py\", line 4, in <module>\n    from .multimodal import Image, Audio\n  File \"/dev/shm/acr/work/3244419015/src/head/instructor/multimodal.py\", line 20, in <module>\n    import requests\nModuleNotFoundError: No module named 'requests'\n"
+   },
+   "instructor.utils.google": {
+    "ok": false,
+    "type": "ModuleNotFoundError",
+    "message": "No module named 'requests'",
+    "missing_module": "requests",
+    "file": "instructor/multimodal.py",
+    "line": 20,
+    "traceback": "6_64-gnu/lib/python3.15/importlib/__init__.py\", line 88, in import_module\n    return _bootstrap._gcd_import(name[level:], package, level)\n           ~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"<frozen importlib._bootstrap>\", line 1389, in _gcd_import\n  File \"<frozen importlib._bootstrap>\", line 1338, in _find_and_load\n  File \"<frozen importlib._bootstrap>\", line 1299, in _resolve_parents\n  File \"<frozen importlib._bootstrap>\", line 491, in _call_with_frames_removed\n  File \"<frozen importlib._bootstrap>\", line 1389, in _gcd_import\n  File \"<frozen importlib._bootstrap>\", line 1338, in _find_and_load\n  File \"<frozen importlib._bootstrap>\", line 1299, in _resolve_parents\n  File \"<frozen importlib._bootstrap>\", line 491, in _call_with_frames_removed\n  File \"<frozen importlib._bootstrap>\", line 1389, in _gcd_import\n  File \"<frozen importlib._bootstrap>\", line 1353, in _find_and_load\n  File \"<frozen importlib._bootstrap>\", line 1249, in _find_and_load_unlocked\n  File \"<frozen importlib._bootstrap>\", line 857, in _load_unlocked\n  File \"<frozen importlib._bootstrap_external>\", line 751, in exec_module\n  File \"<frozen importlib._bootstrap>\", line 491, in _call_with_frames_removed\n  File \"/dev/shm/acr/work/3244419015/src/head/instructor/__init__.py\", line 4, in <module>\n    from .multimodal import Image, Audio\n  File \"/dev/shm/acr/work/3244419015/src/head/instructor/multimodal.py\", line 20, in <module>\n    import requests\nModuleNotFoundError: No module named 'requests'\n"
+   },
+   "instructor.utils.mistral": {
+    "ok": false,
+    "type": "ModuleNotFoundError",
+    "message": "No module named 'requests'",
+    "missing_module": "requests",
+    "file": "instructor/multimodal.py",
+    "line": 20,
+    "traceback": "6_64-gnu/lib/python3.15/importlib/__init__.py\", line 88, in import_module\n    return _bootstrap._gcd_import(name[level:], package, level)\n           ~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"<frozen importlib._bootstrap>\", line 1389, in _gcd_import\n  File \"<frozen importlib._bootstrap>\", line 1338, in _find_and_load\n  File \"<frozen importlib._bootstrap>\", line 1299, in _resolve_parents\n  File \"<frozen importlib._bootstrap>\", line 491, in _call_with_frames_removed\n  File \"<frozen importlib._bootstrap>\", line 1389, in _gcd_import\n  File \"<frozen importlib._bootstrap>\", line 1338, in _find_and_load\n  File \"<frozen importlib._bootstrap>\", line 1299, in _resolve_parents\n  File \"<frozen importlib._bootstrap>\", line 491, in _call_with_frames_removed\n  File \"<frozen importlib._bootstrap>\", line 1389, in _gcd_import\n  File \"<frozen importlib._bootstrap>\", line 1353, in _find_and_load\n  File \"<frozen importlib._bootstrap>\", line 1249, in _find_and_load_unlocked\n  File \"<frozen importlib._bootstrap>\", line 857, in _load_unlocked\n  File \"<frozen importlib._bootstrap_external>\", line 751, in exec_module\n  File \"<frozen importlib._bootstrap>\", line 491, in _call_with_frames_removed\n  File \"/dev/shm/acr/work/3244419015/src/head/instructor/__init__.py\", line 4, in <module>\n    from .multimodal import Image, Audio\n  File \"/dev/shm/acr/work/3244419015/src/head/instructor/multimodal.py\", line 20, in <module>\n    import requests\nModuleNotFoundError: No module named 'requests'\n"
+   },
+   "instructor.utils.perplexity": {
+    "ok": false,
+    "type": "ModuleNotFoundError",
+    "message": "No module named 'requests'",
+    "missing_module": "requests",
+    "file": "instructor/multimodal.py",
+    "line": 20,
+    "traceback": "6_64-gnu/lib/python3.15/importlib/__init__.py\", line 88, in import_module\n    return _bootstrap._gcd_import(name[level:], package, level)\n           ~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"<frozen importlib._bootstrap>\", line 1389, in _gcd_import\n  File \"<frozen importlib._bootstrap>\", line 1338, in _find_and_load\n  File \"<frozen importlib._bootstrap>\", line 1299, in _resolve_parents\n  File \"<frozen importlib._bootstrap>\", line 491, in _call_with_frames_removed\n  File \"<frozen importlib._bootstrap>\", line 1389, in _gcd_import\n  File \"<frozen importlib._bootstrap>\", line 1338, in _find_and_load\n  File \"<frozen importlib._bootstrap>\", line 1299, in _resolve_parents\n  File \"<frozen importlib._bootstrap>\", line 491, in _call_with_frames_removed\n  File \"<frozen importlib._bootstrap>\", line 1389, in _gcd_import\n  File \"<frozen importlib._bootstrap>\", line 1353, in _find_and_load\n  File \"<frozen importlib._bootstrap>\", line 1249, in _find_and_load_unlocked\n  File \"<frozen importlib._bootstrap>\", line 857, in _load_unlocked\n  File \"<frozen importlib._bootstrap_external>\", line 751, in exec_module\n  File \"<frozen importlib._bootstrap>\", line 491, in _call_with_frames_removed\n  File \"/dev/shm/acr/work/3244419015/src/head/instructor/__init__.py\", line 4, in <module>\n    from .multimodal import Image, Audio\n  File \"/dev/shm/acr/work/3244419015/src/head/instructor/multimodal.py\", line 20, in <module>\n    import requests\nModuleNotFoundError: No module named 'requests'\n"
+   },
+   "instructor.utils.writer": {
+    "ok": false,
+    "type": "ModuleNotFoundError",
+    "message": "No module named 'requests'",
+    "missing_module": "requests",
+    "file": "instructor/multimodal.py",
+    "line": 20,
+    "traceback": "6_64-gnu/lib/python3.15/importlib/__init__.py\", line 88, in import_module\n    return _bootstrap._gcd_import(name[level:], package, level)\n           ~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"<frozen importlib._bootstrap>\", line 1389, in _gcd_import\n  File \"<frozen importlib._bootstrap>\", line 1338, in _find_and_load\n  File \"<frozen importlib._bootstrap>\", line 1299, in _resolve_parents\n  File \"<frozen importlib._bootstrap>\", line 491, in _call_with_frames_removed\n  File \"<frozen importlib._bootstrap>\", line 1389, in _gcd_import\n  File \"<frozen importlib._bootstrap>\", line 1338, in _find_and_load\n  File \"<frozen importlib._bootstrap>\", line 1299, in _resolve_parents\n  File \"<frozen importlib._bootstrap>\", line 491, in _call_with_frames_removed\n  File \"<frozen importlib._bootstrap>\", line 1389, in _gcd_import\n  File \"<frozen importlib._bootstrap>\", line 1353, in _find_and_load\n  File \"<frozen importlib._bootstrap>\", line 1249, in _find_and_load_unlocked\n  File \"<frozen importlib._bootstrap>\", line 857, in _load_unlocked\n  File \"<frozen importlib._bootstrap_external>\", line 751, in exec_module\n  File \"<frozen importlib._bootstrap>\", line 491, in _call_with_frames_removed\n  File \"/dev/shm/acr/work/3244419015/src/head/instructor/__init__.py\", line 4, in <module>\n    from .multimodal import Image, Audio\n  File \"/dev/shm/acr/work/3244419015/src/head/instructor/multimodal.py\", line 20, in <module>\n    import requests\nModuleNotFoundError: No module named 'requests'\n"
+   }
+  },
+  "imports_base": {
+   "instructor.utils.anthropic": {
+    "ok": false,
+    "type": "ModuleNotFoundError",
+    "message": "No module named 'requests'",
+    "missing_module": "requests",
+    "file": "instructor/multimodal.py",
+    "line": 20,
+    "traceback": "6_64-gnu/lib/python3.15/importlib/__init__.py\", line 88, in import_module\n    return _bootstrap._gcd_import(name[level:], package, level)\n           ~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"<frozen importlib._bootstrap>\", line 1389, in _gcd_import\n  File \"<frozen importlib._bootstrap>\", line 1338, in _find_and_load\n  File \"<frozen importlib._bootstrap>\", line 1299, in _resolve_parents\n  File \"<frozen importlib._bootstrap>\", line 491, in _call_with_frames_removed\n  File \"<frozen importlib._bootstrap>\", line 1389, in _gcd_import\n  File \"<frozen importlib._bootstrap>\", line 1338, in _find_and_load\n  File \"<frozen importlib._bootstrap>\", line 1299, in _resolve_parents\n  File \"<frozen importlib._bootstrap>\", line 491, in _call_with_frames_removed\n  File \"<frozen importlib._bootstrap>\", line 1389, in _gcd_import\n  File \"<frozen importlib._bootstrap>\", line 1353, in _find_and_load\n  File \"<frozen importlib._bootstrap>\", line 1249, in _find_and_load_unlocked\n  File \"<frozen importlib._bootstrap>\", line 857, in _load_unlocked\n  File \"<frozen importlib._bootstrap_external>\", line 751, in exec_module\n  File \"<frozen importlib._bootstrap>\", line 491, in _call_with_frames_removed\n  File \"/dev/shm/acr/work/3244419015/src/base/instructor/__init__.py\", line 4, in <module>\n    from .multimodal import Image, Audio\n  File \"/dev/shm/acr/work/3244419015/src/base/instructor/multimodal.py\", line 20, in <module>\n    import requests\nModuleNotFoundError: No module named 'requests'\n"
+   },
+   "instructor.utils.bedrock": {
+    "ok": false,
+    "type": "ModuleNotFoundError",
+    "message": "No module named 'requests'",
+    "missing_module": "requests",
+    "file": "instructor/multimodal.py",
+    "line": 20,
+    "traceback": "6_64-gnu/lib/python3.15/importlib/__init__.py\", line 88, in import_module\n    return _bootstrap._gcd_import(name[level:], package, level)\n           ~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"<frozen importlib._bootstrap>\", line 1389, in _gcd_import\n  File \"<frozen importlib._bootstrap>\", line 1338, in _find_and_load\n  File \"<frozen importlib._bootstrap>\", line 1299, in _resolve_parents\n  File \"<frozen importlib._bootstrap>\", line 491, in _call_with_frames_removed\n  File \"<frozen importlib._bootstrap>\", line 1389, in _gcd_import\n  File \"<frozen importlib._bootstrap>\", line 1338, in _find_and_load\n  File \"<frozen importlib._bootstrap>\", line 1299, in _resolve_parents\n  File \"<frozen importlib._bootstrap>\", line 491, in _call_with_frames_removed\n  File \"<frozen importlib._bootstrap>\", line 1389, in _gcd_import\n  File \"<frozen importlib._bootstrap>\", line 1353, in _find_and_load\n  File \"<frozen importlib._bootstrap>\", line 1249, in _find_and_load_unlocked\n  File \"<frozen importlib._bootstrap>\", line 857, in _load_unlocked\n  File \"<frozen importlib._bootstrap_external>\", line 751, in exec_module\n  File \"<frozen importlib._bootstrap>\", line 491, in _call_with_frames_removed\n  File \"/dev/shm/acr/work/3244419015/src/base/instructor/__init__.py\", line 4, in <module>\n    from .multimodal import Image, Audio\n  File \"/dev/shm/acr/work/3244419015/src/base/instructor/multimodal.py\", line 20, in <module>\n    import requests\nModuleNotFoundError: No module named 'requests'\n"
+   },
+   "instructor.utils.cerebras": {
+    "ok": false,
+    "type": "ModuleNotFoundError",
+    "message": "No module named 'requests'",
+    "missing_module": "requests",
+    "file": "instructor/multimodal.py",
+    "line": 20,
+    "traceback": "6_64-gnu/lib/python3.15/importlib/__init__.py\", line 88, in import_module\n    return _bootstrap._gcd_import(name[level:], package, level)\n           ~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"<frozen importlib._bootstrap>\", line 1389, in _gcd_import\n  File \"<frozen importlib._bootstrap>\", line 1338, in _find_and_load\n  File \"<frozen importlib._bootstrap>\", line 1299, in _resolve_parents\n  File \"<frozen importlib._bootstrap>\", line 491, in _call_with_frames_removed\n  File \"<frozen importlib._bootstrap>\", line 1389, in _gcd_import\n  File \"<frozen importlib._bootstrap>\", line 1338, in _find_and_load\n  File \"<frozen importlib._bootstrap>\", line 1299, in _resolve_parents\n  File \"<frozen importlib._bootstrap>\", line 491, in _call_with_frames_removed\n  File \"<frozen importlib._bootstrap>\", line 1389, in _gcd_import\n  File \"<frozen importlib._bootstrap>\", line 1353, in _find_and_load\n  File \"<frozen importlib._bootstrap>\", line 1249, in _find_and_load_unlocked\n  File \"<frozen importlib._bootstrap>\", line 857, in _load_unlocked\n  File \"<frozen importlib._bootstrap_external>\", line 751, in exec_module\n  File \"<frozen importlib._bootstrap>\", line 491, in _call_with_frames_removed\n  File \"/dev/shm/acr/work/3244419015/src/base/instructor/__init__.py\", line 4, in <module>\n    from .multimodal import Image, Audio\n  File \"/dev/shm/acr/work/3244419015/src/base/instructor/multimodal.py\", line 20, in <module>\n    import requests\nModuleNotFoundError: No module named 'requests'\n"
+   },
+   "instructor.utils.cohere": {
+    "ok": false,
+    "type": "ModuleNotFoundError",
+    "message": "No module named 'requests'",
+    "missing_module": "requests",
+    "file": "instructor/multimodal.py",
+    "line": 20,
+    "traceback": "6_64-gnu/lib/python3.15/importlib/__init__.py\", line 88, in import_module\n    return _bootstrap._gcd_import(name[level:], package, level)\n           ~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"<frozen importlib._bootstrap>\", line 1389, in _gcd_import\n  File \"<frozen importlib._bootstrap>\", line 1338, in _find_and_load\n  File \"<frozen importlib._bootstrap>\", line 1299, in _resolve_parents\n  File \"<frozen importlib._bootstrap>\", line 491, in _call_with_frames_removed\n  File \"<frozen importlib._bootstrap>\", line 1389, in _gcd_import\n  File \"<frozen importlib._bootstrap>\", line 1338, in _find_and_load\n  File \"<frozen importlib._bootstrap>\", line 1299, in _resolve_parents\n  File \"<frozen importlib._bootstrap>\", line 491, in _call_with_frames_removed\n  File \"<frozen importlib._bootstrap>\", line 1389, in _gcd_import\n  File \"<frozen importlib._bootstrap>\", line 1353, in _find_and_load\n  File \"<frozen importlib._bootstrap>\", line 1249, in _find_and_load_unlocked\n  File \"<frozen importlib._bootstrap>\", line 857, in _load_unlocked\n  File \"<frozen importlib._bootstrap_external>\", line 751, in exec_module\n  File \"<frozen importlib._bootstrap>\", line 491, in _call_with_frames_removed\n  File \"/dev/shm/acr/work/3244419015/src/base/instructor/__init__.py\", line 4, in <module>\n    from .multimodal import Image, Audio\n  File \"/dev/shm/acr/work/3244419015/src/base/instructor/multimodal.py\", line 20, in <module>\n    import requests\nModuleNotFoundError: No module named 'requests'\n"
+   },
+   "instructor.utils.fireworks": {
+    "ok": false,
+    "type": "ModuleNotFoundError",
+    "message": "No module named 'requests'",
+    "missing_module": "requests",
+    "file": "instructor/multimodal.py",
+    "line": 20,
+    "traceback": "6_64-gnu/lib/python3.15/importlib/__init__.py\", line 88, in import_module\n    return _bootstrap._gcd_import(name[level:], package, level)\n           ~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"<frozen importlib._bootstrap>\", line 1389, in _gcd_import\n  File \"<frozen importlib._bootstrap>\", line 1338, in _find_and_load\n  File \"<frozen importlib._bootstrap>\", line 1299, in _resolve_parents\n  File \"<frozen importlib._bootstrap>\", line 491, in _call_with_frames_removed\n  File \"<frozen importlib._bootstrap>\", line 1389, in _gcd_import\n  File \"<frozen importlib._bootstrap>\", line 1338, in _find_and_load\n  File \"<frozen importlib._bootstrap>\", line 1299, in _resolve_parents\n  File \"<frozen importlib._bootstrap>\", line 491, in _call_with_frames_removed\n  File \"<frozen importlib._bootstrap>\", line 1389, in _gcd_import\n  File \"<frozen importlib._bootstrap>\", line 1353, in _find_and_load\n  File \"<frozen importlib._bootstrap>\", line 1249, in _find_and_load_unlocked\n  File \"<frozen importlib._bootstrap>\", line 857, in _load_unlocked\n  File \"<frozen importlib._bootstrap_external>\", line 751, in exec_module\n  File \"<frozen importlib._bootstrap>\", line 491, in _call_with_frames_removed\n  File \"/dev/shm/acr/work/3244419015/src/base/instructor/__init__.py\", line 4, in <module>\n    from .multimodal import Image, Audio\n  File \"/dev/shm/acr/work/3244419015/src/base/instructor/multimodal.py\", line 20, in <module>\n    import requests\nModuleNotFoundError: No module named 'requests'\n"
+   },
+   "instructor.utils.google": {
+    "ok": false,
+    "type": "ModuleNotFoundError",
+    "message": "No module named 'requests'",
+    "missing_module": "requests",
+    "file": "instructor/multimodal.py",
+    "line": 20,
+    "traceback": "6_64-gnu/lib/python3.15/importlib/__init__.py\", line 88, in import_module\n    return _bootstrap._gcd_import(name[level:], package, level)\n           ~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"<frozen importlib._bootstrap>\", line 1389, in _gcd_import\n  File \"<frozen importlib._bootstrap>\", line 1338, in _find_and_load\n  File \"<frozen importlib._bootstrap>\", line 1299, in _resolve_parents\n  File \"<frozen importlib._bootstrap>\", line 491, in _call_with_frames_removed\n  File \"<frozen importlib._bootstrap>\", line 1389, in _gcd_import\n  File \"<frozen importlib._bootstrap>\", line 1338, in _find_and_load\n  File \"<frozen importlib._bootstrap>\", line 1299, in _resolve_parents\n  File \"<frozen importlib._bootstrap>\", line 491, in _call_with_frames_removed\n  File \"<frozen importlib._bootstrap>\", line 1389, in _gcd_import\n  File \"<frozen importlib._bootstrap>\", line 1353, in _find_and_load\n  File \"<frozen importlib._bootstrap>\", line 1249, in _find_and_load_unlocked\n  File \"<frozen importlib._bootstrap>\", line 857, in _load_unlocked\n  File \"<frozen importlib._bootstrap_external>\", line 751, in exec_module\n  File \"<frozen importlib._bootstrap>\", line 491, in _call_with_frames_removed\n  File \"/dev/shm/acr/work/3244419015/src/base/instructor/__init__.py\", line 4, in <module>\n    from .multimodal import Image, Audio\n  File \"/dev/shm/acr/work/3244419015/src/base/instructor/multimodal.py\", line 20, in <module>\n    import requests\nModuleNotFoundError: No module named 'requests'\n"
+   },
+   "instructor.utils.mistral": {
+    "ok": false,
+    "type": "ModuleNotFoundError",
+    "message": "No module named 'requests'",
+    "missing_module": "requests",
+    "file": "instructor/multimodal.py",
+    "line": 20,
+    "traceback": "6_64-gnu/lib/python3.15/importlib/__init__.py\", line 88, in import_module\n    return _bootstrap._gcd_import(name[level:], package, level)\n           ~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"<frozen importlib._bootstrap>\", line 1389, in _gcd_import\n  File \"<frozen importlib._bootstrap>\", line 1338, in _find_and_load\n  File \"<frozen importlib._bootstrap>\", line 1299, in _resolve_parents\n  File \"<frozen importlib._bootstrap>\", line 491, in _call_with_frames_removed\n  File \"<frozen importlib._bootstrap>\", line 1389, in _gcd_import\n  File \"<frozen importlib._bootstrap>\", line 1338, in _find_and_load\n  File \"<frozen importlib._bootstrap>\", line 1299, in _resolve_parents\n  File \"<frozen importlib._bootstrap>\", line 491, in _call_with_frames_removed\n  File \"<frozen importlib._bootstrap>\", line 1389, in _gcd_import\n  File \"<frozen importlib._bootstrap>\", line 1353, in _find_and_load\n  File \"<frozen importlib._bootstrap>\", line 1249, in _find_and_load_unlocked\n  File \"<frozen importlib._bootstrap>\", line 857, in _load_unlocked\n  File \"<frozen importlib._bootstrap_external>\", line 751, in exec_module\n  File \"<frozen importlib._bootstrap>\", line 491, in _call_with_frames_removed\n  File \"/dev/shm/acr/work/3244419015/src/base/instructor/__init__.py\", line 4, in <module>\n    from .multimodal import Image, Audio\n  File \"/dev/shm/acr/work/3244419015/src/base/instructor/multimodal.py\", line 20, in <module>\n    import requests\nModuleNotFoundError: No module named 'requests'\n"
+   },
+   "instructor.utils.perplexity": {
+    "ok": false,
+    "type": "ModuleNotFoundError",
+    "message": "No module named 'requests'",
+    "missing_module": "requests",
+    "file": "instructor/multimodal.py",
+    "line": 20,
+    "traceback": "6_64-gnu/lib/python3.15/importlib/__init__.py\", line 88, in import_module\n    return _bootstrap._gcd_import(name[level:], package, level)\n           ~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"<frozen importlib._bootstrap>\", line 1389, in _gcd_import\n  File \"<frozen importlib._bootstrap>\", line 1338, in _find_and_load\n  File \"<frozen importlib._bootstrap>\", line 1299, in _resolve_parents\n  File \"<frozen importlib._bootstrap>\", line 491, in _call_with_frames_removed\n  File \"<frozen importlib._bootstrap>\", line 1389, in _gcd_import\n  File \"<frozen importlib._bootstrap>\", line 1338, in _find_and_load\n  File \"<frozen importlib._bootstrap>\", line 1299, in _resolve_parents\n  File \"<frozen importlib._bootstrap>\", line 491, in _call_with_frames_removed\n  File \"<frozen importlib._bootstrap>\", line 1389, in _gcd_import\n  File \"<frozen importlib._bootstrap>\", line 1353, in _find_and_load\n  File \"<frozen importlib._bootstrap>\", line 1249, in _find_and_load_unlocked\n  File \"<frozen importlib._bootstrap>\", line 857, in _load_unlocked\n  File \"<frozen importlib._bootstrap_external>\", line 751, in exec_module\n  File \"<frozen importlib._bootstrap>\", line 491, in _call_with_frames_removed\n  File \"/dev/shm/acr/work/3244419015/src/base/instructor/__init__.py\", line 4, in <module>\n    from .multimodal import Image, Audio\n  File \"/dev/shm/acr/work/3244419015/src/base/instructor/multimodal.py\", line 20, in <module>\n    import requests\nModuleNotFoundError: No module named 'requests'\n"
+   },
+   "instructor.utils.writer": {
+    "ok": false,
+    "type": "ModuleNotFoundError",
+    "message": "No module named 'requests'",
+    "missing_module": "requests",
+    "file": "instructor/multimodal.py",
+    "line": 20,
+    "traceback": "6_64-gnu/lib/python3.15/importlib/__init__.py\", line 88, in import_module\n    return _bootstrap._gcd_import(name[level:], package, level)\n           ~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"<frozen importlib._bootstrap>\", line 1389, in _gcd_import\n  File \"<frozen importlib._bootstrap>\", line 1338, in _find_and_load\n  File \"<frozen importlib._bootstrap>\", line 1299, in _resolve_parents\n  File \"<frozen importlib._bootstrap>\", line 491, in _call_with_frames_removed\n  File \"<frozen importlib._bootstrap>\", line 1389, in _gcd_import\n  File \"<frozen importlib._bootstrap>\", line 1338, in _find_and_load\n  File \"<frozen importlib._bootstrap>\", line 1299, in _resolve_parents\n  File \"<frozen importlib._bootstrap>\", line 491, in _call_with_frames_removed\n  File \"<frozen importlib._bootstrap>\", line 1389, in _gcd_import\n  File \"<frozen importlib._bootstrap>\", line 1353, in _find_and_load\n  File \"<frozen importlib._bootstrap>\", line 1249, in _find_and_load_unlocked\n  File \"<frozen importlib._bootstrap>\", line 857, in _load_unlocked\n  File \"<frozen importlib._bootstrap_external>\", line 751, in exec_module\n  File \"<frozen importlib._bootstrap>\", line 491, in _call_with_frames_removed\n  File \"/dev/shm/acr/work/3244419015/src/base/instructor/__init__.py\", line 4, in <module>\n    from .multimodal import Image, Audio\n  File \"/dev/shm/acr/work/3244419015/src/base/instructor/multimodal.py\", line 20, in <module>\n    import requests\nModuleNotFoundError: No module named 'requests'\n"
+   }
+  },
+  "status": "completed",
+  "dependency_cutoff": "2025-07-18T21:36:45Z",
+  "seconds": 22.3,
+  "head_failures": 1
+ },
+ "findings": [],
+ "status": "ok",
+ "seconds": 160.3
+}

@@ -1,0 +1,232 @@
+{
+ "pr_id": 3159625454,
+ "repository": "grll/mcpadapt",
+ "pr_number": 58,
+ "split": "development",
+ "agent": "OpenAI_Codex",
+ "head_sha": "34a346714fca3794c55d6c1283f8d2cdd9cb957f",
+ "tool_versions": {
+  "ruff": "ruff 0.17.4",
+  "bandit": "__main__.py 1.9.4",
+  "python": "3.12.3"
+ },
+ "config": {
+  "run_tests": true,
+  "sandbox": true
+ },
+ "base_mode": "reverse_applied_diff",
+ "static": {
+  "files_analysed": 1,
+  "head_issues": 0,
+  "base_issues": 0,
+  "per_tool_head": {},
+  "per_tool_base": {},
+  "introduced": 0,
+  "seconds": 0.3
+ },
+ "tests": {
+  "env": {
+   "status": "ok",
+   "python": "3.10.22",
+   "steps": [
+    {
+     "step": "venv",
+     "ok": true,
+     "seconds": 0.2,
+     "timed_out": false,
+     "log_tail": ""
+    },
+    {
+     "step": "install -e .[test]",
+     "ok": true,
+     "seconds": 11.8,
+     "timed_out": false,
+     "log_tail": ""
+    },
+    {
+     "step": "install --group dev",
+     "ok": true,
+     "seconds": 3.7,
+     "timed_out": false,
+     "log_tail": ""
+    },
+    {
+     "step": "install pytest",
+     "ok": true,
+     "seconds": 0.0,
+     "timed_out": false,
+     "log_tail": ""
+    }
+   ]
+  },
+  "selected_tests": [
+   {
+    "path": "tests/test_core.py",
+    "reason": "matches_module:core",
+    "exists_at_base": true
+   }
+  ],
+  "head_run": {
+   "status": "completed",
+   "exit_code": 1,
+   "seconds": 92.9,
+   "addopts_overridden": false,
+   "counts": {
+    "passed": 2,
+    "failed": 6,
+    "error": 6,
+    "skipped": 0
+   },
+   "tests": {
+    "tests.test_core::test_basic_sync": {
+     "outcome": "failed",
+     "detail": "tmcp import FastMCP\\n\\nmcp = FastMCP(\"Echo Server\")\\n\\n@mcp.tool()\\ndef echo_tool(text: str) -> str:\\n    \"\"\"Echo the input text\"\"\"\\n    return f\"Echo: {text}\"\\n\\nmcp.run()\\n'\n\n    def test_basic_sync(echo_server_script):\n>       with MCPAdapt(\n            StdioServerParameters(\n                command=\"uv\", args=[\"run\", \"python\", \"-c\", echo_server_script]\n            ),\n            DummyAdapter(),\n        ) as tools:\n\ntests/test_core.py:179: \n_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ \nsrc/mcpadapt/core.py:300: in __enter__\n    self.start()\n_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ \n\nself = <mcpadapt.core.MCPAdapt object at 0x7545cad55b70>\n\n    def start(self):\n        \"\"\"Start the client in synchronous context.\"\"\"\n        self.thread.start()\n    \n        # check connection to mcp server is ready\n        if not self.ready.wait(timeout=self.connect_timeout):\n>           raise TimeoutError(\n                f\"Couldn't connect to the MCP server after {self.connect_timeout} seconds\"\n            )\nE           TimeoutError: Couldn't connect to the MCP server after 30 seconds\n\nsrc/mcpadapt/core.py:288: TimeoutError"
+    },
+    "tests.test_core::test_basic_sync_multiple_tools": {
+     "outcome": "failed",
+     "detail": "ync_multiple_tools(echo_server_script):\n>       with MCPAdapt(\n            [\n                StdioServerParameters(\n                    command=\"uv\", args=[\"run\", \"python\", \"-c\", echo_server_script]\n                ),\n                StdioServerParameters(\n                    command=\"uv\", args=[\"run\", \"python\", \"-c\", echo_server_script]\n                ),\n            ],\n            DummyAdapter(),\n        ) as tools:\n\ntests/test_core.py:190: \n_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ \nsrc/mcpadapt/core.py:300: in __enter__\n    self.start()\n_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ \n\nself = <mcpadapt.core.MCPAdapt object at 0x7545cb51c4f0>\n\n    def start(self):\n        \"\"\"Start the client in synchronous context.\"\"\"\n        self.thread.start()\n    \n        # check connection to mcp server is ready\n        if not self.ready.wait(timeout=self.connect_timeout):\n>           raise TimeoutError(\n                f\"Couldn't connect to the MCP server after {self.connect_timeout} seconds\"\n            )\nE           TimeoutError: Couldn't connect to the MCP server after 30 seconds\n\nsrc/mcpadapt/core.py:288: TimeoutError"
+    },
+    "tests.test_core::test_basic_sync_update_tools": {
+     "outcome": "failed",
+     "detail": "\\n    \"\"\"N...updated\\n    if not updated:\\n        update_tool()\\n        updated = True\\n    return f\"Echo: {text}\"\\n\\nmcp.run()\\n'\n\n    def test_basic_sync_update_tools(update_server_script):\n        adapter = MCPAdapt(\n            StdioServerParameters(\n                command=\"uv\", args=[\"run\", \"python\", \"-c\", update_server_script]\n            ),\n            DummyAdapter(),\n        )\n>       with adapter as tools:\n\ntests/test_core.py:213: \n_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ \nsrc/mcpadapt/core.py:300: in __enter__\n    self.start()\n_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ \n\nself = <mcpadapt.core.MCPAdapt object at 0x7545cad68250>\n\n    def start(self):\n        \"\"\"Start the client in synchronous context.\"\"\"\n        self.thread.start()\n    \n        # check connection to mcp server is ready\n        if not self.ready.wait(timeout=self.connect_timeout):\n>           raise TimeoutError(\n                f\"Couldn't connect to the MCP server after {self.connect_timeout} seconds\"\n            )\nE           TimeoutError: Couldn't connect to the MCP server after 30 seconds\n\nsrc/mcpadapt/core.py:288: TimeoutError"
+    },
+    "tests.test_core::test_basic_async": {
+     "outcome": "failed",
+     "detail": "       err_msg = err_msg.decode()\n            except ValueError:\n                exception_name = b'SubprocessError'\n                hex_errno = b'0'\n                err_msg = 'Bad exception data from child: {!r}'.format(\n                              bytes(errpipe_data))\n            child_exception_type = getattr(\n                    builtins, exception_name.decode('ascii'),\n                    SubprocessError)\n            if issubclass(child_exception_type, OSError) and hex_errno:\n                errno_num = int(hex_errno, 16)\n                child_exec_never_called = (err_msg == \"noexec\")\n                if child_exec_never_called:\n                    err_msg = \"\"\n                    # The error must be from chdir(cwd).\n                    err_filename = cwd\n                else:\n                    err_filename = orig_executable\n                if errno_num != 0:\n                    err_msg = os.strerror(errno_num)\n>               raise child_exception_type(errno_num, err_msg, err_filename)\nE               FileNotFoundError: [Errno 2] No such file or directory: 'uv'\n\n../../../_shared_cache/python/cpython-3.10-linux-x86_64-gnu/lib/python3.10/subprocess.py:1863: FileNotFoundError"
+    },
+    "tests.test_core::test_basic_async_multiple_tools": {
+     "outcome": "failed",
+     "detail": "       err_msg = err_msg.decode()\n            except ValueError:\n                exception_name = b'SubprocessError'\n                hex_errno = b'0'\n                err_msg = 'Bad exception data from child: {!r}'.format(\n                              bytes(errpipe_data))\n            child_exception_type = getattr(\n                    builtins, exception_name.decode('ascii'),\n                    SubprocessError)\n            if issubclass(child_exception_type, OSError) and hex_errno:\n                errno_num = int(hex_errno, 16)\n                child_exec_never_called = (err_msg == \"noexec\")\n                if child_exec_never_called:\n                    err_msg = \"\"\n                    # The error must be from chdir(cwd).\n                    err_filename = cwd\n                else:\n                    err_filename = orig_executable\n                if errno_num != 0:\n                    err_msg = os.strerror(errno_num)\n>               raise child_exception_type(errno_num, err_msg, err_filename)\nE               FileNotFoundError: [Errno 2] No such file or directory: 'uv'\n\n../../../_shared_cache/python/cpython-3.10-linux-x86_64-gnu/lib/python3.10/subprocess.py:1863: FileNotFoundError"
+    },
+    "tests.test_core::test_basic_async_update_tools": {
+     "outcome": "failed",
+     "detail": "       err_msg = err_msg.decode()\n            except ValueError:\n                exception_name = b'SubprocessError'\n                hex_errno = b'0'\n                err_msg = 'Bad exception data from child: {!r}'.format(\n                              bytes(errpipe_data))\n            child_exception_type = getattr(\n                    builtins, exception_name.decode('ascii'),\n                    SubprocessError)\n            if issubclass(child_exception_type, OSError) and hex_errno:\n                errno_num = int(hex_errno, 16)\n                child_exec_never_called = (err_msg == \"noexec\")\n                if child_exec_never_called:\n                    err_msg = \"\"\n                    # The error must be from chdir(cwd).\n                    err_filename = cwd\n                else:\n                    err_filename = orig_executable\n                if errno_num != 0:\n                    err_msg = os.strerror(errno_num)\n>               raise child_exception_type(errno_num, err_msg, err_filename)\nE               FileNotFoundError: [Errno 2] No such file or directory: 'uv'\n\n../../../_shared_cache/python/cpython-3.10-linux-x86_64-gnu/lib/python3.10/subprocess.py:1863: FileNotFoundError"
+    },
+    "tests.test_core::test_basic_sync_sse": {
+     "outcome": "error",
+     "detail": "   err_msg = err_msg.decode()\n            except ValueError:\n                exception_name = b'SubprocessError'\n                hex_errno = b'0'\n                err_msg = 'Bad exception data from child: {!r}'.format(\n                              bytes(errpipe_data))\n            child_exception_type = getattr(\n                    builtins, exception_name.decode('ascii'),\n                    SubprocessError)\n            if issubclass(child_exception_type, OSError) and hex_errno:\n                errno_num = int(hex_errno, 16)\n                child_exec_never_called = (err_msg == \"noexec\")\n                if child_exec_never_called:\n                    err_msg = \"\"\n                    # The error must be from chdir(cwd).\n                    err_filename = cwd\n                else:\n                    err_filename = orig_executable\n                if errno_num != 0:\n                    err_msg = os.strerror(errno_num)\n>               raise child_exception_type(errno_num, err_msg, err_filename)\nE               FileNotFoundError: [Errno 2] No such file or directory: 'python'\n\n../../../_shared_cache/python/cpython-3.10-linux-x86_64-gnu/lib/python3.10/subprocess.py:1863: FileNotFoundError"
+    },
+    "tests.test_core::test_basic_sync_multiple_sse": {
+     "outcome": "error",
+     "detail": "   err_msg = err_msg.decode()\n            except ValueError:\n                exception_name = b'SubprocessError'\n                hex_errno = b'0'\n                err_msg = 'Bad exception data from child: {!r}'.format(\n                              bytes(errpipe_data))\n            child_exception_type = getattr(\n                    builtins, exception_name.decode('ascii'),\n                    SubprocessError)\n            if issubclass(child_exception_type, OSError) and hex_errno:\n                errno_num = int(hex_errno, 16)\n                child_exec_never_called = (err_msg == \"noexec\")\n                if child_exec_never_called:\n                    err_msg = \"\"\n                    # The error must be from chdir(cwd).\n                    err_filename = cwd\n                else:\n                    err_filename = orig_executable\n                if errno_num != 0:\n                    err_msg = os.strerror(errno_num)\n>               raise child_exception_type(errno_num, err_msg, err_filename)\nE               FileNotFoundError: [Errno 2] No such file or directory: 'python'\n\n../../../_shared_cache/python/cpython-3.10-linux-x86_64-gnu/lib/python3.10/subprocess.py:1863: FileNotFoundError"
+    },
+    "tests.test_core::test_basic_async_sse": {
+     "outcome": "error",
+     "detail": "   err_msg = err_msg.decode()\n            except ValueError:\n                exception_name = b'SubprocessError'\n                hex_errno = b'0'\n                err_msg = 'Bad exception data from child: {!r}'.format(\n                              bytes(errpipe_data))\n            child_exception_type = getattr(\n                    builtins, exception_name.decode('ascii'),\n                    SubprocessError)\n            if issubclass(child_exception_type, OSError) and hex_errno:\n                errno_num = int(hex_errno, 16)\n                child_exec_never_called = (err_msg == \"noexec\")\n                if child_exec_never_called:\n                    err_msg = \"\"\n                    # The error must be from chdir(cwd).\n                    err_filename = cwd\n                else:\n                    err_filename = orig_executable\n                if errno_num != 0:\n                    err_msg = os.strerror(errno_num)\n>               raise child_exception_type(errno_num, err_msg, err_filename)\nE               FileNotFoundError: [Errno 2] No such file or directory: 'python'\n\n../../../_shared_cache/python/cpython-3.10-linux-x86_64-gnu/lib/python3.10/subprocess.py:1863: FileNotFoundError"
+    },
+    "tests.test_core::test_basic_async_multiple_sse": {
+     "outcome": "error",
+     "detail": "   err_msg = err_msg.decode()\n            except ValueError:\n                exception_name = b'SubprocessError'\n                hex_errno = b'0'\n                err_msg = 'Bad exception data from child: {!r}'.format(\n                              bytes(errpipe_data))\n            child_exception_type = getattr(\n                    builtins, exception_name.decode('ascii'),\n                    SubprocessError)\n            if issubclass(child_exception_type, OSError) and hex_errno:\n                errno_num = int(hex_errno, 16)\n                child_exec_never_called = (err_msg == \"noexec\")\n                if child_exec_never_called:\n                    err_msg = \"\"\n                    # The error must be from chdir(cwd).\n                    err_filename = cwd\n                else:\n                    err_filename = orig_executable\n                if errno_num != 0:\n                    err_msg = os.strerror(errno_num)\n>               raise child_exception_type(errno_num, err_msg, err_filename)\nE               FileNotFoundError: [Errno 2] No such file or directory: 'python'\n\n../../../_shared_cache/python/cpython-3.10-linux-x86_64-gnu/lib/python3.10/subprocess.py:1863: FileNotFoundError"
+    },
+    "tests.test_core::test_basic_sync_streamable_http": {
+     "outcome": "error",
+     "detail": "   err_msg = err_msg.decode()\n            except ValueError:\n                exception_name = b'SubprocessError'\n                hex_errno = b'0'\n                err_msg = 'Bad exception data from child: {!r}'.format(\n                              bytes(errpipe_data))\n            child_exception_type = getattr(\n                    builtins, exception_name.decode('ascii'),\n                    SubprocessError)\n            if issubclass(child_exception_type, OSError) and hex_errno:\n                errno_num = int(hex_errno, 16)\n                child_exec_never_called = (err_msg == \"noexec\")\n                if child_exec_never_called:\n                    err_msg = \"\"\n                    # The error must be from chdir(cwd).\n                    err_filename = cwd\n                else:\n                    err_filename = orig_executable\n                if errno_num != 0:\n                    err_msg = os.strerror(errno_num)\n>               raise child_exception_type(errno_num, err_msg, err_filename)\nE               FileNotFoundError: [Errno 2] No such file or directory: 'python'\n\n../../../_shared_cache/python/cpython-3.10-linux-x86_64-gnu/lib/python3.10/subprocess.py:1863: FileNotFoundError"
+    },
+    "tests.test_core::test_basic_async_streamable_http": {
+     "outcome": "error",
+     "detail": "   err_msg = err_msg.decode()\n            except ValueError:\n                exception_name = b'SubprocessError'\n                hex_errno = b'0'\n                err_msg = 'Bad exception data from child: {!r}'.format(\n                              bytes(errpipe_data))\n            child_exception_type = getattr(\n                    builtins, exception_name.decode('ascii'),\n                    SubprocessError)\n            if issubclass(child_exception_type, OSError) and hex_errno:\n                errno_num = int(hex_errno, 16)\n                child_exec_never_called = (err_msg == \"noexec\")\n                if child_exec_never_called:\n                    err_msg = \"\"\n                    # The error must be from chdir(cwd).\n                    err_filename = cwd\n                else:\n                    err_filename = orig_executable\n                if errno_num != 0:\n                    err_msg = os.strerror(errno_num)\n>               raise child_exception_type(errno_num, err_msg, err_filename)\nE               FileNotFoundError: [Errno 2] No such file or directory: 'python'\n\n../../../_shared_cache/python/cpython-3.10-linux-x86_64-gnu/lib/python3.10/subprocess.py:1863: FileNotFoundError"
+    }
+   },
+   "log_tail": ""
+  },
+  "base_run": {
+   "status": "completed",
+   "exit_code": 1,
+   "seconds": 95.9,
+   "addopts_overridden": false,
+   "counts": {
+    "passed": 2,
+    "failed": 6,
+    "error": 6,
+    "skipped": 0
+   },
+   "tests": {
+    "tests.test_core::test_basic_sync": {
+     "outcome": "failed",
+     "detail": "tmcp import FastMCP\\n\\nmcp = FastMCP(\"Echo Server\")\\n\\n@mcp.tool()\\ndef echo_tool(text: str) -> str:\\n    \"\"\"Echo the input text\"\"\"\\n    return f\"Echo: {text}\"\\n\\nmcp.run()\\n'\n\n    def test_basic_sync(echo_server_script):\n>       with MCPAdapt(\n            StdioServerParameters(\n                command=\"uv\", args=[\"run\", \"python\", \"-c\", echo_server_script]\n            ),\n            DummyAdapter(),\n        ) as tools:\n\ntests/test_core.py:179: \n_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ \nsrc/mcpadapt/core.py:300: in __enter__\n    self.start()\n_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ \n\nself = <mcpadapt.core.MCPAdapt object at 0x776160bba3b0>\n\n    def start(self):\n        \"\"\"Start the client in synchronous context.\"\"\"\n        self.thread.start()\n    \n        # check connection to mcp server is ready\n        if not self.ready.wait(timeout=self.connect_timeout):\n>           raise TimeoutError(\n                f\"Couldn't connect to the MCP server after {self.connect_timeout} seconds\"\n            )\nE           TimeoutError: Couldn't connect to the MCP server after 30 seconds\n\nsrc/mcpadapt/core.py:288: TimeoutError"
+    },
+    "tests.test_core::test_basic_sync_multiple_tools": {
+     "outcome": "failed",
+     "detail": "ync_multiple_tools(echo_server_script):\n>       with MCPAdapt(\n            [\n                StdioServerParameters(\n                    command=\"uv\", args=[\"run\", \"python\", \"-c\", echo_server_script]\n                ),\n                StdioServerParameters(\n                    command=\"uv\", args=[\"run\", \"python\", \"-c\", echo_server_script]\n                ),\n            ],\n            DummyAdapter(),\n        ) as tools:\n\ntests/test_core.py:190: \n_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ \nsrc/mcpadapt/core.py:300: in __enter__\n    self.start()\n_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ \n\nself = <mcpadapt.core.MCPAdapt object at 0x776160b1f6d0>\n\n    def start(self):\n        \"\"\"Start the client in synchronous context.\"\"\"\n        self.thread.start()\n    \n        # check connection to mcp server is ready\n        if not self.ready.wait(timeout=self.connect_timeout):\n>           raise TimeoutError(\n                f\"Couldn't connect to the MCP server after {self.connect_timeout} seconds\"\n            )\nE           TimeoutError: Couldn't connect to the MCP server after 30 seconds\n\nsrc/mcpadapt/core.py:288: TimeoutError"
+    },
+    "tests.test_core::test_basic_sync_update_tools": {
+     "outcome": "failed",
+     "detail": "\\n    \"\"\"N...updated\\n    if not updated:\\n        update_tool()\\n        updated = True\\n    return f\"Echo: {text}\"\\n\\nmcp.run()\\n'\n\n    def test_basic_sync_update_tools(update_server_script):\n        adapter = MCPAdapt(\n            StdioServerParameters(\n                command=\"uv\", args=[\"run\", \"python\", \"-c\", update_server_script]\n            ),\n            DummyAdapter(),\n        )\n>       with adapter as tools:\n\ntests/test_core.py:213: \n_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ \nsrc/mcpadapt/core.py:300: in __enter__\n    self.start()\n_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ \n\nself = <mcpadapt.core.MCPAdapt object at 0x776160b6bf10>\n\n    def start(self):\n        \"\"\"Start the client in synchronous context.\"\"\"\n        self.thread.start()\n    \n        # check connection to mcp server is ready\n        if not self.ready.wait(timeout=self.connect_timeout):\n>           raise TimeoutError(\n                f\"Couldn't connect to the MCP server after {self.connect_timeout} seconds\"\n            )\nE           TimeoutError: Couldn't connect to the MCP server after 30 seconds\n\nsrc/mcpadapt/core.py:288: TimeoutError"
+    },
+    "tests.test_core::test_basic_async": {
+     "outcome": "failed",
+     "detail": "       err_msg = err_msg.decode()\n            except ValueError:\n                exception_name = b'SubprocessError'\n                hex_errno = b'0'\n                err_msg = 'Bad exception data from child: {!r}'.format(\n                              bytes(errpipe_data))\n            child_exception_type = getattr(\n                    builtins, exception_name.decode('ascii'),\n                    SubprocessError)\n            if issubclass(child_exception_type, OSError) and hex_errno:\n                errno_num = int(hex_errno, 16)\n                child_exec_never_called = (err_msg == \"noexec\")\n                if child_exec_never_called:\n                    err_msg = \"\"\n                    # The error must be from chdir(cwd).\n                    err_filename = cwd\n                else:\n                    err_filename = orig_executable\n                if errno_num != 0:\n                    err_msg = os.strerror(errno_num)\n>               raise child_exception_type(errno_num, err_msg, err_filename)\nE               FileNotFoundError: [Errno 2] No such file or directory: 'uv'\n\n../../../_shared_cache/python/cpython-3.10-linux-x86_64-gnu/lib/python3.10/subprocess.py:1863: FileNotFoundError"
+    },
+    "tests.test_core::test_basic_async_multiple_tools": {
+     "outcome": "failed",
+     "detail": "       err_msg = err_msg.decode()\n            except ValueError:\n                exception_name = b'SubprocessError'\n                hex_errno = b'0'\n                err_msg = 'Bad exception data from child: {!r}'.format(\n                              bytes(errpipe_data))\n            child_exception_type = getattr(\n                    builtins, exception_name.decode('ascii'),\n                    SubprocessError)\n            if issubclass(child_exception_type, OSError) and hex_errno:\n                errno_num = int(hex_errno, 16)\n                child_exec_never_called = (err_msg == \"noexec\")\n                if child_exec_never_called:\n                    err_msg = \"\"\n                    # The error must be from chdir(cwd).\n                    err_filename = cwd\n                else:\n                    err_filename = orig_executable\n                if errno_num != 0:\n                    err_msg = os.strerror(errno_num)\n>               raise child_exception_type(errno_num, err_msg, err_filename)\nE               FileNotFoundError: [Errno 2] No such file or directory: 'uv'\n\n../../../_shared_cache/python/cpython-3.10-linux-x86_64-gnu/lib/python3.10/subprocess.py:1863: FileNotFoundError"
+    },
+    "tests.test_core::test_basic_async_update_tools": {
+     "outcome": "failed",
+     "detail": "       err_msg = err_msg.decode()\n            except ValueError:\n                exception_name = b'SubprocessError'\n                hex_errno = b'0'\n                err_msg = 'Bad exception data from child: {!r}'.format(\n                              bytes(errpipe_data))\n            child_exception_type = getattr(\n                    builtins, exception_name.decode('ascii'),\n                    SubprocessError)\n            if issubclass(child_exception_type, OSError) and hex_errno:\n                errno_num = int(hex_errno, 16)\n                child_exec_never_called = (err_msg == \"noexec\")\n                if child_exec_never_called:\n                    err_msg = \"\"\n                    # The error must be from chdir(cwd).\n                    err_filename = cwd\n                else:\n                    err_filename = orig_executable\n                if errno_num != 0:\n                    err_msg = os.strerror(errno_num)\n>               raise child_exception_type(errno_num, err_msg, err_filename)\nE               FileNotFoundError: [Errno 2] No such file or directory: 'uv'\n\n../../../_shared_cache/python/cpython-3.10-linux-x86_64-gnu/lib/python3.10/subprocess.py:1863: FileNotFoundError"
+    },
+    "tests.test_core::test_basic_sync_sse": {
+     "outcome": "error",
+     "detail": "   err_msg = err_msg.decode()\n            except ValueError:\n                exception_name = b'SubprocessError'\n                hex_errno = b'0'\n                err_msg = 'Bad exception data from child: {!r}'.format(\n                              bytes(errpipe_data))\n            child_exception_type = getattr(\n                    builtins, exception_name.decode('ascii'),\n                    SubprocessError)\n            if issubclass(child_exception_type, OSError) and hex_errno:\n                errno_num = int(hex_errno, 16)\n                child_exec_never_called = (err_msg == \"noexec\")\n                if child_exec_never_called:\n                    err_msg = \"\"\n                    # The error must be from chdir(cwd).\n                    err_filename = cwd\n                else:\n                    err_filename = orig_executable\n                if errno_num != 0:\n                    err_msg = os.strerror(errno_num)\n>               raise child_exception_type(errno_num, err_msg, err_filename)\nE               FileNotFoundError: [Errno 2] No such file or directory: 'python'\n\n../../../_shared_cache/python/cpython-3.10-linux-x86_64-gnu/lib/python3.10/subprocess.py:1863: FileNotFoundError"
+    },
+    "tests.test_core::test_basic_sync_multiple_sse": {
+     "outcome": "error",
+     "detail": "   err_msg = err_msg.decode()\n            except ValueError:\n                exception_name = b'SubprocessError'\n                hex_errno = b'0'\n                err_msg = 'Bad exception data from child: {!r}'.format(\n                              bytes(errpipe_data))\n            child_exception_type = getattr(\n                    builtins, exception_name.decode('ascii'),\n                    SubprocessError)\n            if issubclass(child_exception_type, OSError) and hex_errno:\n                errno_num = int(hex_errno, 16)\n                child_exec_never_called = (err_msg == \"noexec\")\n                if child_exec_never_called:\n                    err_msg = \"\"\n                    # The error must be from chdir(cwd).\n                    err_filename = cwd\n                else:\n                    err_filename = orig_executable\n                if errno_num != 0:\n                    err_msg = os.strerror(errno_num)\n>               raise child_exception_type(errno_num, err_msg, err_filename)\nE               FileNotFoundError: [Errno 2] No such file or directory: 'python'\n\n../../../_shared_cache/python/cpython-3.10-linux-x86_64-gnu/lib/python3.10/subprocess.py:1863: FileNotFoundError"
+    },
+    "tests.test_core::test_basic_async_sse": {
+     "outcome": "error",
+     "detail": "   err_msg = err_msg.decode()\n            except ValueError:\n                exception_name = b'SubprocessError'\n                hex_errno = b'0'\n                err_msg = 'Bad exception data from child: {!r}'.format(\n                              bytes(errpipe_data))\n            child_exception_type = getattr(\n                    builtins, exception_name.decode('ascii'),\n                    SubprocessError)\n            if issubclass(child_exception_type, OSError) and hex_errno:\n                errno_num = int(hex_errno, 16)\n                child_exec_never_called = (err_msg == \"noexec\")\n                if child_exec_never_called:\n                    err_msg = \"\"\n                    # The error must be from chdir(cwd).\n                    err_filename = cwd\n                else:\n                    err_filename = orig_executable\n                if errno_num != 0:\n                    err_msg = os.strerror(errno_num)\n>               raise child_exception_type(errno_num, err_msg, err_filename)\nE               FileNotFoundError: [Errno 2] No such file or directory: 'python'\n\n../../../_shared_cache/python/cpython-3.10-linux-x86_64-gnu/lib/python3.10/subprocess.py:1863: FileNotFoundError"
+    },
+    "tests.test_core::test_basic_async_multiple_sse": {
+     "outcome": "error",
+     "detail": "   err_msg = err_msg.decode()\n            except ValueError:\n                exception_name = b'SubprocessError'\n                hex_errno = b'0'\n                err_msg = 'Bad exception data from child: {!r}'.format(\n                              bytes(errpipe_data))\n            child_exception_type = getattr(\n                    builtins, exception_name.decode('ascii'),\n                    SubprocessError)\n            if issubclass(child_exception_type, OSError) and hex_errno:\n                errno_num = int(hex_errno, 16)\n                child_exec_never_called = (err_msg == \"noexec\")\n                if child_exec_never_called:\n                    err_msg = \"\"\n                    # The error must be from chdir(cwd).\n                    err_filename = cwd\n                else:\n                    err_filename = orig_executable\n                if errno_num != 0:\n                    err_msg = os.strerror(errno_num)\n>               raise child_exception_type(errno_num, err_msg, err_filename)\nE               FileNotFoundError: [Errno 2] No such file or directory: 'python'\n\n../../../_shared_cache/python/cpython-3.10-linux-x86_64-gnu/lib/python3.10/subprocess.py:1863: FileNotFoundError"
+    },
+    "tests.test_core::test_basic_sync_streamable_http": {
+     "outcome": "error",
+     "detail": "   err_msg = err_msg.decode()\n            except ValueError:\n                exception_name = b'SubprocessError'\n                hex_errno = b'0'\n                err_msg = 'Bad exception data from child: {!r}'.format(\n                              bytes(errpipe_data))\n            child_exception_type = getattr(\n                    builtins, exception_name.decode('ascii'),\n                    SubprocessError)\n            if issubclass(child_exception_type, OSError) and hex_errno:\n                errno_num = int(hex_errno, 16)\n                child_exec_never_called = (err_msg == \"noexec\")\n                if child_exec_never_called:\n                    err_msg = \"\"\n                    # The error must be from chdir(cwd).\n                    err_filename = cwd\n                else:\n                    err_filename = orig_executable\n                if errno_num != 0:\n                    err_msg = os.strerror(errno_num)\n>               raise child_exception_type(errno_num, err_msg, err_filename)\nE               FileNotFoundError: [Errno 2] No such file or directory: 'python'\n\n../../../_shared_cache/python/cpython-3.10-linux-x86_64-gnu/lib/python3.10/subprocess.py:1863: FileNotFoundError"
+    },
+    "tests.test_core::test_basic_async_streamable_http": {
+     "outcome": "error",
+     "detail": "   err_msg = err_msg.decode()\n            except ValueError:\n                exception_name = b'SubprocessError'\n                hex_errno = b'0'\n                err_msg = 'Bad exception data from child: {!r}'.format(\n                              bytes(errpipe_data))\n            child_exception_type = getattr(\n                    builtins, exception_name.decode('ascii'),\n                    SubprocessError)\n            if issubclass(child_exception_type, OSError) and hex_errno:\n                errno_num = int(hex_errno, 16)\n                child_exec_never_called = (err_msg == \"noexec\")\n                if child_exec_never_called:\n                    err_msg = \"\"\n                    # The error must be from chdir(cwd).\n                    err_filename = cwd\n                else:\n                    err_filename = orig_executable\n                if errno_num != 0:\n                    err_msg = os.strerror(errno_num)\n>               raise child_exception_type(errno_num, err_msg, err_filename)\nE               FileNotFoundError: [Errno 2] No such file or directory: 'python'\n\n../../../_shared_cache/python/cpython-3.10-linux-x86_64-gnu/lib/python3.10/subprocess.py:1863: FileNotFoundError"
+    }
+   },
+   "log_tail": ""
+  },
+  "comparison": {
+   "regressions": [],
+   "new_test_failures": [],
+   "fixed": [],
+   "persistent_failures": [
+    "tests.test_core::test_basic_sync",
+    "tests.test_core::test_basic_sync_multiple_tools",
+    "tests.test_core::test_basic_sync_update_tools",
+    "tests.test_core::test_basic_async",
+    "tests.test_core::test_basic_async_multiple_tools",
+    "tests.test_core::test_basic_async_update_tools",
+    "tests.test_core::test_basic_sync_sse",
+    "tests.test_core::test_basic_sync_multiple_sse",
+    "tests.test_core::test_basic_async_sse",
+    "tests.test_core::test_basic_async_multiple_sse",
+    "tests.test_core::test_basic_sync_streamable_http",
+    "tests.test_core::test_basic_async_streamable_http"
+   ]
+  },
+  "imports_head": {
+   "mcpadapt.core": {
+    "ok": true
+   }
+  },
+  "imports_base": {
+   "mcpadapt.core": {
+    "ok": true
+   }
+  },
+  "status": "completed",
+  "dependency_cutoff": "2025-06-19T09:29:18Z",
+  "seconds": 207.9,
+  "head_failures": 12
+ },
+ "findings": [],
+ "status": "ok",
+ "seconds": 216.3
+}

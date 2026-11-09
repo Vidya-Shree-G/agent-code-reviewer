@@ -1,0 +1,275 @@
+{
+ "pr_id": 3075393105,
+ "repository": "astronomer/airflow-ai-sdk",
+ "pr_number": 31,
+ "split": "development",
+ "agent": "OpenAI_Codex",
+ "head_sha": "22622cbc081a8d5f9345e361012793f88c86b026",
+ "tool_versions": {
+  "ruff": "ruff 0.17.4",
+  "bandit": "__main__.py 1.9.4",
+  "python": "3.12.3"
+ },
+ "config": {
+  "run_tests": true,
+  "sandbox": true
+ },
+ "base_mode": "reverse_applied_diff",
+ "static": {
+  "files_analysed": 14,
+  "head_issues": 11,
+  "base_issues": 6,
+  "per_tool_head": {
+   "ruff": 8,
+   "bandit": 3
+  },
+  "per_tool_base": {
+   "ruff": 6
+  },
+  "introduced": 5,
+  "seconds": 0.4
+ },
+ "tests": {
+  "env": {
+   "status": "ok",
+   "python": "3.12.10",
+   "steps": [
+    {
+     "step": "venv",
+     "ok": true,
+     "seconds": 0.0,
+     "timed_out": false,
+     "log_tail": ""
+    },
+    {
+     "step": "install -e .",
+     "ok": true,
+     "seconds": 1.4,
+     "timed_out": false,
+     "log_tail": ""
+    },
+    {
+     "step": "install --group dev",
+     "ok": true,
+     "seconds": 0.0,
+     "timed_out": false,
+     "log_tail": ""
+    },
+    {
+     "step": "install pytest",
+     "ok": true,
+     "seconds": 0.0,
+     "timed_out": false,
+     "log_tail": ""
+    },
+    {
+     "step": "repair: install sentence_transformers",
+     "ok": true,
+     "seconds": 7.7,
+     "timed_out": false,
+     "log_tail": ""
+    }
+   ]
+  },
+  "selected_tests": [
+   {
+    "path": "tests/operators/test_embed.py",
+    "reason": "changed_in_pr",
+    "exists_at_base": true
+   },
+   {
+    "path": "tests/operators/test_agent.py",
+    "reason": "matches_module:agent",
+    "exists_at_base": true
+   },
+   {
+    "path": "tests/test_airflow_imports.py",
+    "reason": "matches_module:airflow",
+    "exists_at_base": true
+   },
+   {
+    "path": "tests/operators/test_llm.py",
+    "reason": "matches_module:llm",
+    "exists_at_base": true
+   },
+   {
+    "path": "tests/operators/test_llm_branch.py",
+    "reason": "matches_module:llm",
+    "exists_at_base": true
+   }
+  ],
+  "head_run": {
+   "status": "completed",
+   "exit_code": 0,
+   "seconds": 8.4,
+   "addopts_overridden": false,
+   "counts": {
+    "passed": 21,
+    "failed": 0,
+    "error": 0,
+    "skipped": 0
+   },
+   "tests": {},
+   "log_tail": ""
+  },
+  "base_run": {
+   "status": "completed",
+   "exit_code": 0,
+   "seconds": 8.2,
+   "addopts_overridden": false,
+   "counts": {
+    "passed": 21,
+    "failed": 0,
+    "error": 0,
+    "skipped": 0
+   },
+   "tests": {},
+   "log_tail": ""
+  },
+  "comparison": {
+   "regressions": [],
+   "new_test_failures": [],
+   "fixed": [],
+   "persistent_failures": []
+  },
+  "imports_head": {
+   "airflow_ai_sdk": {
+    "ok": true
+   },
+   "airflow_ai_sdk.airflow": {
+    "ok": true
+   }
+  },
+  "imports_base": {
+   "airflow_ai_sdk": {
+    "ok": true
+   },
+   "airflow_ai_sdk.airflow": {
+    "ok": true
+   }
+  },
+  "status": "completed",
+  "dependency_cutoff": "2025-05-22T15:45:41Z",
+  "seconds": 40.7,
+  "head_failures": 0
+ },
+ "findings": [
+  {
+   "tool": "ruff",
+   "rule": "F401",
+   "category": "maintainability",
+   "severity": "low",
+   "confidence": "high",
+   "message": "`airflow_ai_sdk.airflow.Context` imported but unused",
+   "file": "airflow_ai_sdk/operators/llm.py",
+   "line": 11,
+   "end_line": 11,
+   "cwe": null,
+   "on_changed_line": true,
+   "evidence": {
+    "type": "static",
+    "source_line": "from airflow_ai_sdk.airflow import Context",
+    "url": "https://docs.astral.sh/ruff/rules/unused-import"
+   },
+   "sources": [
+    "ruff"
+   ],
+   "finding_id": "634525da44d8",
+   "score": 1.5
+  },
+  {
+   "tool": "bandit",
+   "rule": "B404",
+   "category": "security",
+   "severity": "low",
+   "confidence": "high",
+   "message": "blacklist: Consider possible security implications associated with the subprocess module.",
+   "file": "scripts/generate_interface_docs.py",
+   "line": 10,
+   "end_line": 10,
+   "cwe": 78,
+   "on_changed_line": true,
+   "evidence": {
+    "type": "static",
+    "source_line": "import subprocess",
+    "more_info": "https://bandit.readthedocs.io/en/1.9.4/blacklists/blacklist_imports.html#b404-import-subprocess"
+   },
+   "sources": [
+    "bandit"
+   ],
+   "finding_id": "f65def476b45",
+   "score": 1.5
+  },
+  {
+   "tool": "bandit",
+   "rule": "B607",
+   "category": "security",
+   "severity": "low",
+   "confidence": "high",
+   "message": "start_process_with_partial_path: Starting a process with a partial executable path",
+   "file": "scripts/generate_interface_docs.py",
+   "line": 47,
+   "end_line": 47,
+   "cwe": 78,
+   "on_changed_line": true,
+   "evidence": {
+    "type": "static",
+    "source_line": "subprocess.run([\"pre-commit\", \"run\", \"--all-files\"])  # noqa: S603 S607",
+    "more_info": "https://bandit.readthedocs.io/en/1.9.4/plugins/b607_start_process_with_partial_path.html"
+   },
+   "sources": [
+    "bandit"
+   ],
+   "finding_id": "c8100e06b671",
+   "score": 1.5
+  },
+  {
+   "tool": "bandit",
+   "rule": "B603",
+   "category": "security",
+   "severity": "low",
+   "confidence": "high",
+   "message": "subprocess_without_shell_equals_true: subprocess call - check for execution of untrusted input.",
+   "file": "scripts/generate_interface_docs.py",
+   "line": 47,
+   "end_line": 47,
+   "cwe": 78,
+   "on_changed_line": true,
+   "evidence": {
+    "type": "static",
+    "source_line": "subprocess.run([\"pre-commit\", \"run\", \"--all-files\"])  # noqa: S603 S607",
+    "more_info": "https://bandit.readthedocs.io/en/1.9.4/plugins/b603_subprocess_without_shell_equals_true.html"
+   },
+   "sources": [
+    "bandit"
+   ],
+   "finding_id": "0c1bafc77dd1",
+   "score": 1.5
+  },
+  {
+   "tool": "ruff",
+   "rule": "PLW1510",
+   "category": "correctness",
+   "severity": "low",
+   "confidence": "medium",
+   "message": "`subprocess.run` without explicit `check` argument",
+   "file": "scripts/generate_interface_docs.py",
+   "line": 47,
+   "end_line": 47,
+   "cwe": null,
+   "on_changed_line": true,
+   "evidence": {
+    "type": "static",
+    "source_line": "subprocess.run([\"pre-commit\", \"run\", \"--all-files\"])  # noqa: S603 S607",
+    "url": "https://docs.astral.sh/ruff/rules/subprocess-run-without-check"
+   },
+   "sources": [
+    "ruff"
+   ],
+   "finding_id": "8a50ac24d1e3",
+   "score": 1.2
+  }
+ ],
+ "status": "ok",
+ "seconds": 42.7
+}

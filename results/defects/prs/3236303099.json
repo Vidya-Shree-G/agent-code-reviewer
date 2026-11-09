@@ -1,0 +1,135 @@
+{
+ "pr_id": 3236303099,
+ "repository": "wzdavid/ThinkRAG",
+ "pr_number": 26,
+ "split": "development",
+ "agent": "Cursor",
+ "head_sha": "dee12514c0b618a55d821c86eba6f9f67611efc3",
+ "tool_versions": {
+  "ruff": "ruff 0.17.4",
+  "bandit": "__main__.py 1.9.4",
+  "python": "3.12.3"
+ },
+ "config": {
+  "run_tests": true,
+  "sandbox": true
+ },
+ "base_mode": "reverse_applied_diff",
+ "static": {
+  "files_analysed": 3,
+  "head_issues": 1,
+  "base_issues": 1,
+  "per_tool_head": {
+   "ruff": 1
+  },
+  "per_tool_base": {
+   "ruff": 1
+  },
+  "introduced": 0,
+  "seconds": 0.2
+ },
+ "tests": {
+  "env": {
+   "status": "partial",
+   "python": "3.15.2",
+   "steps": [
+    {
+     "step": "venv",
+     "ok": true,
+     "seconds": 0.0,
+     "timed_out": false,
+     "log_tail": ""
+    },
+    {
+     "step": "install -r requirements.txt",
+     "ok": false,
+     "seconds": 2.6,
+     "timed_out": false,
+     "log_tail": "error: No solution found when resolving dependencies\n  cause: Because only the following versions of torch are available:\n             torch<2.7.0+cpu\n             torch>2.7.0+cpu,<2.7.1+cpu\n         and all of:\n             torch>=1.11.0,<=2.7.0\n             torch==2.7.1\n          have no wheels with a matching Python ABI tag (e.g., `cp315`), we can conclude that all of:\n             torch>=1.11.0,<=2.7.0\n             torch==2.7.1\n          cannot be used.\n         And because sentence-transformers>=2.6.1 depends on torch>=1.11.0, we can conclude that sentence-transformers>=2.6.1 cannot be used.\n         And because llama-index-embeddings-huggingface==0.3.1 depends on sentence-transformers>=2.6.1 and you require llama-index-embeddings-huggingface==0.3.1, we can conclude that your requirements are unsatisfiable.\n\nhint: You require CPython 3.15 (`cp315`), but we only found wheels for `torch` (v2.7.1) with the following Python ABI tag: `cp313t`\n"
+    },
+    {
+     "step": "install pytest",
+     "ok": true,
+     "seconds": 0.0,
+     "timed_out": false,
+     "log_tail": ""
+    },
+    {
+     "step": "repair: install llama_index streamlit",
+     "ok": false,
+     "seconds": 0.6,
+     "timed_out": false,
+     "log_tail": "ject.license`. You can also use `project.license-files`. (Both options available on setuptools>=77.0.0).\n\n                 This deprecation is overdue, please update your project and remove deprecated\n                 calls to avoid build errors in the future.\n\n                 See https://packaging.python.org/en/latest/guides/writing-pyproject-toml/#license for details.\n                 ********************************************************************************\n\n         !!\n           corresp(dist, value, root_dir)\n         warning: no files found matching 'Makefile'\n         error: can't find Rust compiler\n\n         If you are using an outdated pip version, it is possible a prebuilt wheel is available for this package but pip is not able to install from it. Installing from the wheel would avoid the need for a Rust compiler.\n\n         To update pip, run:\n\n             pip install --upgrade pip\n\n         and then retry package installation.\n\n         If you did intend to build this package from source, try installing a Rust compiler from your system package manager and ensure it is on the PATH during installation. Alternatively, rustup (available at https://rustup.rs) is the recommended way to download and update the Rust compiler toolchain.\n\nhint: `tiktoken` (v0.9.0) was included because `llama-index` (v0.12.49) depends on `llama-index-core` (v0.12.49) which depends on `tiktoken`\n\nhint: Build failures usually indicate a problem with the package or the build environment\n"
+    }
+   ]
+  },
+  "selected_tests": [],
+  "head_run": {
+   "status": "not_run",
+   "tests": {}
+  },
+  "base_run": {
+   "status": "not_run",
+   "tests": {}
+  },
+  "comparison": {
+   "regressions": [],
+   "new_test_failures": [],
+   "fixed": [],
+   "persistent_failures": []
+  },
+  "imports_head": {
+   "frontend.state": {
+    "ok": false,
+    "type": "ModuleNotFoundError",
+    "message": "No module named 'streamlit'",
+    "missing_module": "streamlit",
+    "file": "frontend/state.py",
+    "line": 1,
+    "traceback": "Traceback (most recent call last):\n  File \"<string>\", line 7, in <module>\n    importlib.import_module(m)\n    ~~~~~~~~~~~~~~~~~~~~~~~^^^\n  File \"/dev/shm/acr/work/_shared_cache/python/cpython-3.15.2-linux-x86_64-gnu/lib/python3.15/importlib/__init__.py\", line 88, in import_module\n    return _bootstrap._gcd_import(name[level:], package, level)\n           ~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"<frozen importlib._bootstrap>\", line 1389, in _gcd_import\n  File \"<frozen importlib._bootstrap>\", line 1353, in _find_and_load\n  File \"<frozen importlib._bootstrap>\", line 1249, in _find_and_load_unlocked\n  File \"<frozen importlib._bootstrap>\", line 857, in _load_unlocked\n  File \"<frozen importlib._bootstrap_external>\", line 751, in exec_module\n  File \"<frozen importlib._bootstrap>\", line 491, in _call_with_frames_removed\n  File \"/dev/shm/acr/work/3236303099/src/head/frontend/state.py\", line 1, in <module>\n    import streamlit as st\nModuleNotFoundError: No module named 'streamlit'\n"
+   },
+   "server.retriever": {
+    "ok": false,
+    "type": "ModuleNotFoundError",
+    "message": "No module named 'llama_index'",
+    "missing_module": "llama_index",
+    "file": "server/retriever.py",
+    "line": 3,
+    "traceback": "Traceback (most recent call last):\n  File \"<string>\", line 7, in <module>\n    importlib.import_module(m)\n    ~~~~~~~~~~~~~~~~~~~~~~~^^^\n  File \"/dev/shm/acr/work/_shared_cache/python/cpython-3.15.2-linux-x86_64-gnu/lib/python3.15/importlib/__init__.py\", line 88, in import_module\n    return _bootstrap._gcd_import(name[level:], package, level)\n           ~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"<frozen importlib._bootstrap>\", line 1389, in _gcd_import\n  File \"<frozen importlib._bootstrap>\", line 1353, in _find_and_load\n  File \"<frozen importlib._bootstrap>\", line 1249, in _find_and_load_unlocked\n  File \"<frozen importlib._bootstrap>\", line 857, in _load_unlocked\n  File \"<frozen importlib._bootstrap_external>\", line 751, in exec_module\n  File \"<frozen importlib._bootstrap>\", line 491, in _call_with_frames_removed\n  File \"/dev/shm/acr/work/3236303099/src/head/server/retriever.py\", line 3, in <module>\n    from llama_index.core.retrievers import BaseRetriever\nModuleNotFoundError: No module named 'llama_index'\n"
+   },
+   "server.utils.file": {
+    "ok": true
+   }
+  },
+  "imports_base": {
+   "frontend.state": {
+    "ok": false,
+    "type": "ModuleNotFoundError",
+    "message": "No module named 'streamlit'",
+    "missing_module": "streamlit",
+    "file": "frontend/state.py",
+    "line": 1,
+    "traceback": "Traceback (most recent call last):\n  File \"<string>\", line 7, in <module>\n    importlib.import_module(m)\n    ~~~~~~~~~~~~~~~~~~~~~~~^^^\n  File \"/dev/shm/acr/work/_shared_cache/python/cpython-3.15.2-linux-x86_64-gnu/lib/python3.15/importlib/__init__.py\", line 88, in import_module\n    return _bootstrap._gcd_import(name[level:], package, level)\n           ~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"<frozen importlib._bootstrap>\", line 1389, in _gcd_import\n  File \"<frozen importlib._bootstrap>\", line 1353, in _find_and_load\n  File \"<frozen importlib._bootstrap>\", line 1249, in _find_and_load_unlocked\n  File \"<frozen importlib._bootstrap>\", line 857, in _load_unlocked\n  File \"<frozen importlib._bootstrap_external>\", line 751, in exec_module\n  File \"<frozen importlib._bootstrap>\", line 491, in _call_with_frames_removed\n  File \"/dev/shm/acr/work/3236303099/src/base/frontend/state.py\", line 1, in <module>\n    import streamlit as st\nModuleNotFoundError: No module named 'streamlit'\n"
+   },
+   "server.retriever": {
+    "ok": false,
+    "type": "ModuleNotFoundError",
+    "message": "No module named 'llama_index'",
+    "missing_module": "llama_index",
+    "file": "server/retriever.py",
+    "line": 3,
+    "traceback": "Traceback (most recent call last):\n  File \"<string>\", line 7, in <module>\n    importlib.import_module(m)\n    ~~~~~~~~~~~~~~~~~~~~~~~^^^\n  File \"/dev/shm/acr/work/_shared_cache/python/cpython-3.15.2-linux-x86_64-gnu/lib/python3.15/importlib/__init__.py\", line 88, in import_module\n    return _bootstrap._gcd_import(name[level:], package, level)\n           ~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"<frozen importlib._bootstrap>\", line 1389, in _gcd_import\n  File \"<frozen importlib._bootstrap>\", line 1353, in _find_and_load\n  File \"<frozen importlib._bootstrap>\", line 1249, in _find_and_load_unlocked\n  File \"<frozen importlib._bootstrap>\", line 857, in _load_unlocked\n  File \"<frozen importlib._bootstrap_external>\", line 751, in exec_module\n  File \"<frozen importlib._bootstrap>\", line 491, in _call_with_frames_removed\n  File \"/dev/shm/acr/work/3236303099/src/base/server/retriever.py\", line 3, in <module>\n    from llama_index.core.retrievers import BaseRetriever\nModuleNotFoundError: No module named 'llama_index'\n"
+   },
+   "server.utils.file": {
+    "ok": true
+   }
+  },
+  "status": "imports_only",
+  "dependency_cutoff": "2025-07-16T14:56:41Z",
+  "seconds": 3.3,
+  "head_failures": 0
+ },
+ "findings": [],
+ "status": "ok",
+ "seconds": 15.8
+}

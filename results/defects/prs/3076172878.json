@@ -1,0 +1,279 @@
+{
+ "pr_id": 3076172878,
+ "repository": "defog-ai/introspect",
+ "pr_number": 501,
+ "split": "development",
+ "agent": "OpenAI_Codex",
+ "head_sha": "6857bd2b530b5cfdd8de2c247549f16d844fed24",
+ "tool_versions": {
+  "ruff": "ruff 0.17.4",
+  "bandit": "__main__.py 1.9.4",
+  "python": "3.12.3"
+ },
+ "config": {
+  "run_tests": true,
+  "sandbox": true
+ },
+ "base_mode": "reverse_applied_diff",
+ "static": {
+  "files_analysed": 2,
+  "head_issues": 25,
+  "base_issues": 24,
+  "per_tool_head": {
+   "ruff": 19,
+   "bandit": 6
+  },
+  "per_tool_base": {
+   "ruff": 19,
+   "bandit": 5
+  },
+  "introduced": 2,
+  "seconds": 0.4
+ },
+ "tests": {
+  "env": {
+   "status": "ok",
+   "python": "3.15.2",
+   "steps": [
+    {
+     "step": "venv",
+     "ok": true,
+     "seconds": 0.0,
+     "timed_out": false,
+     "log_tail": ""
+    },
+    {
+     "step": "install pytest",
+     "ok": true,
+     "seconds": 0.1,
+     "timed_out": false,
+     "log_tail": ""
+    },
+    {
+     "step": "repair: install requests",
+     "ok": true,
+     "seconds": 0.0,
+     "timed_out": false,
+     "log_tail": ""
+    }
+   ]
+  },
+  "selected_tests": [
+   {
+    "path": "backend/test_streaming.py",
+    "reason": "full_suite",
+    "exists_at_base": true
+   },
+   {
+    "path": "backend/tests/backend_routes/test_auth.py",
+    "reason": "full_suite",
+    "exists_at_base": true
+   },
+   {
+    "path": "backend/tests/backend_routes/test_db_creds_and_metadata.py",
+    "reason": "full_suite",
+    "exists_at_base": true
+   },
+   {
+    "path": "backend/tests/backend_routes/test_generate_and_execute_query.py",
+    "reason": "full_suite",
+    "exists_at_base": true
+   },
+   {
+    "path": "backend/tests/backend_routes/test_generate_oracle_report.py",
+    "reason": "full_suite",
+    "exists_at_base": true
+   },
+   {
+    "path": "backend/tests/backend_routes/test_instructions_and_golden_queries.py",
+    "reason": "full_suite",
+    "exists_at_base": true
+   },
+   {
+    "path": "backend/tests/backend_routes/test_manage_users.py",
+    "reason": "full_suite",
+    "exists_at_base": true
+   },
+   {
+    "path": "backend/tests/backend_routes/test_pdf_search.py",
+    "reason": "full_suite",
+    "exists_at_base": true
+   },
+   {
+    "path": "backend/tests/backend_routes/test_tools.py",
+    "reason": "full_suite",
+    "exists_at_base": true
+   },
+   {
+    "path": "backend/tests/backend_routes/test_upload_files.py",
+    "reason": "full_suite",
+    "exists_at_base": true
+   },
+   {
+    "path": "backend/tests/file_uploads/test_column_detection.py",
+    "reason": "full_suite",
+    "exists_at_base": true
+   },
+   {
+    "path": "backend/tests/file_uploads/test_csv_cleaning.py",
+    "reason": "full_suite",
+    "exists_at_base": true
+   },
+   {
+    "path": "backend/tests/file_uploads/test_date_time_parsing.py",
+    "reason": "full_suite",
+    "exists_at_base": true
+   },
+   {
+    "path": "backend/tests/file_uploads/test_excel_cleaning.py",
+    "reason": "full_suite",
+    "exists_at_base": true
+   },
+   {
+    "path": "backend/tests/file_uploads/test_excel_cleaning_openai.py",
+    "reason": "full_suite",
+    "exists_at_base": true
+   },
+   {
+    "path": "backend/tests/file_uploads/test_postgres_export.py",
+    "reason": "full_suite",
+    "exists_at_base": true
+   },
+   {
+    "path": "backend/tests/file_uploads/test_sql_generation.py",
+    "reason": "full_suite",
+    "exists_at_base": true
+   },
+   {
+    "path": "backend/tests/file_uploads/test_value_conversion.py",
+    "reason": "full_suite",
+    "exists_at_base": true
+   },
+   {
+    "path": "backend/tests/test_code_interpreter.py",
+    "reason": "full_suite",
+    "exists_at_base": true
+   },
+   {
+    "path": "backend/tests/test_utils.py",
+    "reason": "full_suite",
+    "exists_at_base": true
+   },
+   {
+    "path": "backend/tests/test_utils_df.py",
+    "reason": "full_suite",
+    "exists_at_base": true
+   },
+   {
+    "path": "backend/tests/test_utils_join_hints.py",
+    "reason": "full_suite",
+    "exists_at_base": true
+   },
+   {
+    "path": "backend/tests/test_utils_logging.py",
+    "reason": "full_suite",
+    "exists_at_base": true
+   },
+   {
+    "path": "backend/tests/test_utils_md.py",
+    "reason": "full_suite",
+    "exists_at_base": true
+   },
+   {
+    "path": "backend/tests/test_utils_sql.py",
+    "reason": "full_suite",
+    "exists_at_base": true
+   }
+  ],
+  "head_run": {
+   "status": "usage_error",
+   "exit_code": 4,
+   "seconds": 0.6,
+   "addopts_overridden": true,
+   "counts": {
+    "passed": 0,
+    "failed": 0,
+    "error": 0,
+    "skipped": 0
+   },
+   "tests": {},
+   "log_tail": "\nImportError while loading conftest '/dev/shm/acr/work/3076172878/src/head/backend/tests/backend_routes/conftest.py'.\nbackend/tests/backend_routes/conftest.py:19: in <module>\n    from sqlalchemy import create_engine, text\nE   ModuleNotFoundError: No module named 'sqlalchemy'\n"
+  },
+  "base_run": {
+   "status": "usage_error",
+   "exit_code": 4,
+   "seconds": 0.6,
+   "addopts_overridden": true,
+   "counts": {
+    "passed": 0,
+    "failed": 0,
+    "error": 0,
+    "skipped": 0
+   },
+   "tests": {},
+   "log_tail": "\nImportError while loading conftest '/dev/shm/acr/work/3076172878/src/base/backend/tests/backend_routes/conftest.py'.\nbackend/tests/backend_routes/conftest.py:19: in <module>\n    from sqlalchemy import create_engine, text\nE   ModuleNotFoundError: No module named 'sqlalchemy'\n"
+  },
+  "comparison": {
+   "regressions": [],
+   "new_test_failures": [],
+   "fixed": [],
+   "persistent_failures": []
+  },
+  "imports_head": {},
+  "imports_base": {},
+  "status": "head_usage_error",
+  "dependency_cutoff": "2025-05-20T08:43:34Z",
+  "seconds": 3.5,
+  "head_failures": 0
+ },
+ "findings": [
+  {
+   "tool": "bandit",
+   "rule": "B102",
+   "category": "security",
+   "severity": "medium",
+   "confidence": "high",
+   "message": "exec_used: Use of exec detected.",
+   "file": "backend/tools/tool_routes.py",
+   "line": 519,
+   "end_line": 519,
+   "cwe": 78,
+   "on_changed_line": true,
+   "evidence": {
+    "type": "static",
+    "source_line": "exec(request.input_model, namespace)",
+    "more_info": "https://bandit.readthedocs.io/en/1.9.4/plugins/b102_exec_used.html"
+   },
+   "sources": [
+    "bandit"
+   ],
+   "finding_id": "cc1f957e3b59",
+   "score": 2.5
+  },
+  {
+   "tool": "bandit",
+   "rule": "B102",
+   "category": "security",
+   "severity": "medium",
+   "confidence": "high",
+   "message": "exec_used: Use of exec detected.",
+   "file": "backend/tools/tool_routes.py",
+   "line": 524,
+   "end_line": 524,
+   "cwe": 78,
+   "on_changed_line": true,
+   "evidence": {
+    "type": "static",
+    "source_line": "exec(request.tool_code, module.__dict__)",
+    "more_info": "https://bandit.readthedocs.io/en/1.9.4/plugins/b102_exec_used.html"
+   },
+   "sources": [
+    "bandit"
+   ],
+   "finding_id": "d0a791060752",
+   "score": 2.5
+  }
+ ],
+ "status": "ok",
+ "seconds": 9.5
+}

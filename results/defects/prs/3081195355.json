@@ -1,0 +1,315 @@
+{
+ "pr_id": 3081195355,
+ "repository": "microsoft/Multi-Agent-Custom-Automation-Engine-Solution-Accelerator",
+ "pr_number": 224,
+ "split": "development",
+ "agent": "Copilot",
+ "head_sha": "4aa9ec09c053db98aa048833a1fb3f6d43191a4a",
+ "tool_versions": {
+  "ruff": "ruff 0.17.4",
+  "bandit": "__main__.py 1.9.4",
+  "python": "3.12.3"
+ },
+ "config": {
+  "run_tests": true,
+  "sandbox": true
+ },
+ "base_mode": "reverse_applied_diff",
+ "static": {
+  "files_analysed": 7,
+  "head_issues": 13,
+  "base_issues": 6,
+  "per_tool_head": {
+   "ruff": 13
+  },
+  "per_tool_base": {
+   "ruff": 6
+  },
+  "introduced": 7,
+  "seconds": 0.7
+ },
+ "tests": {
+  "env": {
+   "status": "ok",
+   "python": "3.15.2",
+   "steps": [
+    {
+     "step": "venv",
+     "ok": true,
+     "seconds": 0.0,
+     "timed_out": false,
+     "log_tail": ""
+    },
+    {
+     "step": "install pytest",
+     "ok": true,
+     "seconds": 0.2,
+     "timed_out": false,
+     "log_tail": ""
+    },
+    {
+     "step": "repair: install azure semantic_kernel",
+     "ok": false,
+     "seconds": 0.8,
+     "timed_out": false,
+     "log_tail": "s-v0/.tmpZo1XAN/lib/python3.15/site-packages/setuptools/build_meta.py\", line 317, in run_setup\n             exec(code, locals())\n             ~~~~^^^^^^^^^^^^^^^^\n           File \"<string>\", line 60, in <module>\n         RuntimeError: \n\n         Starting with v5.0.0, the 'azure' meta-package is deprecated and cannot be installed anymore.\n         Please install the service specific packages prefixed by `azure` needed for your application.\n\n         The complete list of available packages can be found at:\n         https://aka.ms/azsdk/python/all\n\n         Here's a non-exhaustive list of common packages:\n\n         -  azure-mgmt-compute (https://pypi.python.org/pypi/azure-mgmt-compute) : Management of Virtual Machines, etc.\n         -  azure-mgmt-storage (https://pypi.python.org/pypi/azure-mgmt-storage) : Management of storage accounts.\n         -  azure-mgmt-resource (https://pypi.python.org/pypi/azure-mgmt-resource) : Generic package about Azure Resource Management (ARM)\n         -  azure-keyvault-secrets (https://pypi.python.org/pypi/azure-keyvault-secrets) : Access to secrets in Key Vault\n         -  azure-storage-blob (https://pypi.python.org/pypi/azure-storage-blob) : Access to blobs in storage accounts\n\n         A more comprehensive discussion of the rationale for this decision can be found in the following issue:\n         https://github.com/Azure/azure-sdk-for-python/issues/10646\n\n\nhint: Build failures usually indicate a problem with the package or the build environment\n"
+    }
+   ]
+  },
+  "selected_tests": [
+   {
+    "path": "src/backend/tests/test_knowledge_agent_integration.py",
+    "reason": "changed_in_pr",
+    "exists_at_base": false
+   },
+   {
+    "path": "src/backend/tests/test_planner_agent_integration.py",
+    "reason": "matches_module:planner_agent",
+    "exists_at_base": true
+   }
+  ],
+  "head_run": {
+   "status": "completed",
+   "exit_code": 1,
+   "seconds": 0.5,
+   "addopts_overridden": false,
+   "counts": {
+    "passed": 0,
+    "failed": 0,
+    "error": 0,
+    "skipped": 0
+   },
+   "tests": {},
+   "log_tail": ""
+  },
+  "base_run": {
+   "status": "completed",
+   "exit_code": 1,
+   "seconds": 0.4,
+   "addopts_overridden": false,
+   "counts": {
+    "passed": 0,
+    "failed": 0,
+    "error": 0,
+    "skipped": 0
+   },
+   "tests": {},
+   "log_tail": ""
+  },
+  "comparison": {
+   "regressions": [],
+   "new_test_failures": [],
+   "fixed": [],
+   "persistent_failures": []
+  },
+  "imports_head": {
+   "backend.app_config": {
+    "ok": false,
+    "type": "ModuleNotFoundError",
+    "message": "No module named 'azure'",
+    "missing_module": "azure",
+    "file": "src/backend/app_config.py",
+    "line": 6,
+    "traceback": "Traceback (most recent call last):\n  File \"<string>\", line 7, in <module>\n    importlib.import_module(m)\n    ~~~~~~~~~~~~~~~~~~~~~~~^^^\n  File \"/dev/shm/acr/work/_shared_cache/python/cpython-3.15.2-linux-x86_64-gnu/lib/python3.15/importlib/__init__.py\", line 88, in import_module\n    return _bootstrap._gcd_import(name[level:], package, level)\n           ~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"<frozen importlib._bootstrap>\", line 1389, in _gcd_import\n  File \"<frozen importlib._bootstrap>\", line 1353, in _find_and_load\n  File \"<frozen importlib._bootstrap>\", line 1249, in _find_and_load_unlocked\n  File \"<frozen importlib._bootstrap>\", line 857, in _load_unlocked\n  File \"<frozen importlib._bootstrap_external>\", line 751, in exec_module\n  File \"<frozen importlib._bootstrap>\", line 491, in _call_with_frames_removed\n  File \"/dev/shm/acr/work/3081195355/src/head/src/backend/app_config.py\", line 6, in <module>\n    from azure.ai.projects.aio import AIProjectClient\nModuleNotFoundError: No module named 'azure'\n"
+   },
+   "backend.models.messages_kernel": {
+    "ok": false,
+    "type": "ModuleNotFoundError",
+    "message": "No module named 'semantic_kernel'",
+    "missing_module": "semantic_kernel",
+    "file": "src/backend/models/messages_kernel.py",
+    "line": 6,
+    "traceback": "Traceback (most recent call last):\n  File \"<string>\", line 7, in <module>\n    importlib.import_module(m)\n    ~~~~~~~~~~~~~~~~~~~~~~~^^^\n  File \"/dev/shm/acr/work/_shared_cache/python/cpython-3.15.2-linux-x86_64-gnu/lib/python3.15/importlib/__init__.py\", line 88, in import_module\n    return _bootstrap._gcd_import(name[level:], package, level)\n           ~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"<frozen importlib._bootstrap>\", line 1389, in _gcd_import\n  File \"<frozen importlib._bootstrap>\", line 1353, in _find_and_load\n  File \"<frozen importlib._bootstrap>\", line 1249, in _find_and_load_unlocked\n  File \"<frozen importlib._bootstrap>\", line 857, in _load_unlocked\n  File \"<frozen importlib._bootstrap_external>\", line 751, in exec_module\n  File \"<frozen importlib._bootstrap>\", line 491, in _call_with_frames_removed\n  File \"/dev/shm/acr/work/3081195355/src/head/src/backend/models/messages_kernel.py\", line 6, in <module>\n    from semantic_kernel.kernel_pydantic import Field, KernelBaseModel\nModuleNotFoundError: No module named 'semantic_kernel'\n"
+   }
+  },
+  "imports_base": {
+   "backend.app_config": {
+    "ok": false,
+    "type": "ModuleNotFoundError",
+    "message": "No module named 'azure'",
+    "missing_module": "azure",
+    "file": "src/backend/app_config.py",
+    "line": 6,
+    "traceback": "Traceback (most recent call last):\n  File \"<string>\", line 7, in <module>\n    importlib.import_module(m)\n    ~~~~~~~~~~~~~~~~~~~~~~~^^^\n  File \"/dev/shm/acr/work/_shared_cache/python/cpython-3.15.2-linux-x86_64-gnu/lib/python3.15/importlib/__init__.py\", line 88, in import_module\n    return _bootstrap._gcd_import(name[level:], package, level)\n           ~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"<frozen importlib._bootstrap>\", line 1389, in _gcd_import\n  File \"<frozen importlib._bootstrap>\", line 1353, in _find_and_load\n  File \"<frozen importlib._bootstrap>\", line 1249, in _find_and_load_unlocked\n  File \"<frozen importlib._bootstrap>\", line 857, in _load_unlocked\n  File \"<frozen importlib._bootstrap_external>\", line 751, in exec_module\n  File \"<frozen importlib._bootstrap>\", line 491, in _call_with_frames_removed\n  File \"/dev/shm/acr/work/3081195355/src/base/src/backend/app_config.py\", line 6, in <module>\n    from azure.ai.projects.aio import AIProjectClient\nModuleNotFoundError: No module named 'azure'\n"
+   },
+   "backend.models.messages_kernel": {
+    "ok": false,
+    "type": "ModuleNotFoundError",
+    "message": "No module named 'semantic_kernel'",
+    "missing_module": "semantic_kernel",
+    "file": "src/backend/models/messages_kernel.py",
+    "line": 6,
+    "traceback": "Traceback (most recent call last):\n  File \"<string>\", line 7, in <module>\n    importlib.import_module(m)\n    ~~~~~~~~~~~~~~~~~~~~~~~^^^\n  File \"/dev/shm/acr/work/_shared_cache/python/cpython-3.15.2-linux-x86_64-gnu/lib/python3.15/importlib/__init__.py\", line 88, in import_module\n    return _bootstrap._gcd_import(name[level:], package, level)\n           ~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"<frozen importlib._bootstrap>\", line 1389, in _gcd_import\n  File \"<frozen importlib._bootstrap>\", line 1353, in _find_and_load\n  File \"<frozen importlib._bootstrap>\", line 1249, in _find_and_load_unlocked\n  File \"<frozen importlib._bootstrap>\", line 857, in _load_unlocked\n  File \"<frozen importlib._bootstrap_external>\", line 751, in exec_module\n  File \"<frozen importlib._bootstrap>\", line 491, in _call_with_frames_removed\n  File \"/dev/shm/acr/work/3081195355/src/base/src/backend/models/messages_kernel.py\", line 6, in <module>\n    from semantic_kernel.kernel_pydantic import Field, KernelBaseModel\nModuleNotFoundError: No module named 'semantic_kernel'\n"
+   }
+  },
+  "status": "completed",
+  "dependency_cutoff": "2025-05-21T20:06:19Z",
+  "seconds": 2.4,
+  "head_failures": 0
+ },
+ "findings": [
+  {
+   "tool": "ruff",
+   "rule": "ASYNC240",
+   "category": "concurrency",
+   "severity": "medium",
+   "confidence": "medium",
+   "message": "Async functions should not perform blocking os.path operations",
+   "file": "src/backend/kernel_tools/knowledge_tools.py",
+   "line": 114,
+   "end_line": 114,
+   "cwe": null,
+   "on_changed_line": true,
+   "evidence": {
+    "type": "static",
+    "source_line": "if not search_path or not os.path.exists(search_path):",
+    "url": "https://docs.astral.sh/ruff/rules/blocking-path-method-in-async-function"
+   },
+   "sources": [
+    "ruff"
+   ],
+   "finding_id": "02f113afa89e",
+   "score": 1.9
+  },
+  {
+   "tool": "ruff",
+   "rule": "ASYNC230",
+   "category": "concurrency",
+   "severity": "medium",
+   "confidence": "medium",
+   "message": "Async functions should not open files with blocking methods like `open`",
+   "file": "src/backend/kernel_tools/knowledge_tools.py",
+   "line": 134,
+   "end_line": 134,
+   "cwe": null,
+   "on_changed_line": true,
+   "evidence": {
+    "type": "static",
+    "source_line": "with open(file_path, 'r', encoding='utf-8') as f:",
+    "url": "https://docs.astral.sh/ruff/rules/blocking-open-call-in-async-function"
+   },
+   "sources": [
+    "ruff"
+   ],
+   "finding_id": "30955f648e2a",
+   "score": 1.9
+  },
+  {
+   "tool": "ruff",
+   "rule": "F401",
+   "category": "maintainability",
+   "severity": "low",
+   "confidence": "high",
+   "message": "`typing.Any` imported but unused",
+   "file": "src/backend/app_config.py",
+   "line": 4,
+   "end_line": 4,
+   "cwe": null,
+   "on_changed_line": true,
+   "evidence": {
+    "type": "static",
+    "source_line": "from typing import Optional, Union, Any",
+    "url": "https://docs.astral.sh/ruff/rules/unused-import"
+   },
+   "sources": [
+    "ruff"
+   ],
+   "finding_id": "6de582c2cb04",
+   "score": 1.5
+  },
+  {
+   "tool": "ruff",
+   "rule": "F401",
+   "category": "maintainability",
+   "severity": "low",
+   "confidence": "high",
+   "message": "`typing.List` imported but unused",
+   "file": "src/backend/kernel_tools/knowledge_tools.py",
+   "line": 5,
+   "end_line": 5,
+   "cwe": null,
+   "on_changed_line": true,
+   "evidence": {
+    "type": "static",
+    "source_line": "from typing import Any, Dict, List, Optional, Annotated, Union",
+    "url": "https://docs.astral.sh/ruff/rules/unused-import"
+   },
+   "sources": [
+    "ruff"
+   ],
+   "finding_id": "6ca2624089e9",
+   "score": 1.5
+  },
+  {
+   "tool": "ruff",
+   "rule": "F401",
+   "category": "maintainability",
+   "severity": "low",
+   "confidence": "high",
+   "message": "`typing.Annotated` imported but unused",
+   "file": "src/backend/kernel_tools/knowledge_tools.py",
+   "line": 5,
+   "end_line": 5,
+   "cwe": null,
+   "on_changed_line": true,
+   "evidence": {
+    "type": "static",
+    "source_line": "from typing import Any, Dict, List, Optional, Annotated, Union",
+    "url": "https://docs.astral.sh/ruff/rules/unused-import"
+   },
+   "sources": [
+    "ruff"
+   ],
+   "finding_id": "89edfa2e731a",
+   "score": 1.5
+  },
+  {
+   "tool": "ruff",
+   "rule": "F401",
+   "category": "maintainability",
+   "severity": "low",
+   "confidence": "high",
+   "message": "`typing.Union` imported but unused",
+   "file": "src/backend/kernel_tools/knowledge_tools.py",
+   "line": 5,
+   "end_line": 5,
+   "cwe": null,
+   "on_changed_line": true,
+   "evidence": {
+    "type": "static",
+    "source_line": "from typing import Any, Dict, List, Optional, Annotated, Union",
+    "url": "https://docs.astral.sh/ruff/rules/unused-import"
+   },
+   "sources": [
+    "ruff"
+   ],
+   "finding_id": "b3307d42e3ab",
+   "score": 1.5
+  },
+  {
+   "tool": "ruff",
+   "rule": "F401",
+   "category": "maintainability",
+   "severity": "low",
+   "confidence": "high",
+   "message": "`azure.search.documents.SearchClient` imported but unused",
+   "file": "src/backend/kernel_tools/knowledge_tools.py",
+   "line": 9,
+   "end_line": 9,
+   "cwe": null,
+   "on_changed_line": true,
+   "evidence": {
+    "type": "static",
+    "source_line": "from azure.search.documents import SearchClient",
+    "url": "https://docs.astral.sh/ruff/rules/unused-import"
+   },
+   "sources": [
+    "ruff"
+   ],
+   "finding_id": "e33c2c6cbbdb",
+   "score": 1.5
+  }
+ ],
+ "status": "ok",
+ "seconds": 24.3
+}

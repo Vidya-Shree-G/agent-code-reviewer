@@ -1,0 +1,195 @@
+{
+ "pr_id": 3070236056,
+ "repository": "OpenMind/OM1",
+ "pr_number": 244,
+ "split": "development",
+ "agent": "OpenAI_Codex",
+ "head_sha": "7959d2f9adf5c73a7200c2c93b4fd70bbf21404e",
+ "tool_versions": {
+  "ruff": "ruff 0.17.4",
+  "bandit": "__main__.py 1.9.4",
+  "python": "3.12.3"
+ },
+ "config": {
+  "run_tests": true,
+  "sandbox": true
+ },
+ "base_mode": "reverse_applied_diff",
+ "static": {
+  "files_analysed": 1,
+  "head_issues": 0,
+  "base_issues": 0,
+  "per_tool_head": {},
+  "per_tool_base": {},
+  "introduced": 0,
+  "seconds": 0.2
+ },
+ "tests": {
+  "env": {
+   "status": "partial",
+   "python": "3.12.10",
+   "steps": [
+    {
+     "step": "venv",
+     "ok": true,
+     "seconds": 0.0,
+     "timed_out": false,
+     "log_tail": ""
+    },
+    {
+     "step": "install -e .",
+     "ok": false,
+     "seconds": 4.4,
+     "timed_out": false,
+     "log_tail": "/local/include -I/usr/include -I/dev/shm/acr/work/_shared_cache/uv/builds-v0/.tmpyR0Xez/include -I/dev/shm/acr/work/_shared_cache/python/cpython-3.12.10-linux-x86_64-gnu/include/python3.12 -c src/pyaudio/device_api.c -o build/temp.linux-x86_64-cpython-312/src/pyaudio/device_api.o\n\n         [stderr]\n         /dev/shm/acr/work/_shared_cache/uv/builds-v0/.tmpyR0Xez/lib/python3.12/site-packages/setuptools/dist.py:759: SetuptoolsDeprecationWarning: License classifiers are deprecated.\n         !!\n\n                 ********************************************************************************\n                 Please consider removing the following classifiers in favor of a SPDX license expression:\n\n                 License :: OSI Approved :: MIT License\n\n                 See https://packaging.python.org/en/latest/guides/writing-pyproject-toml/#license for details.\n                 ********************************************************************************\n\n         !!\n           self._finalize_license_expression()\n         src/pyaudio/device_api.c:9:10: fatal error: portaudio.h: No such file or directory\n             9 | #include \"portaudio.h\"\n               |          ^~~~~~~~~~~~~\n         compilation terminated.\n         error: command '/usr/bin/cc' failed with exit code 1\n\nhint: `pyaudio` (v0.2.14) was included because `om1` (v0.1.0) depends on `pyaudio`\n\nhint: This error likely indicates that you need to install a library that provides `portaudio.h` for `pyaudio@0.2.14`\n"
+    },
+    {
+     "step": "install --group dev",
+     "ok": true,
+     "seconds": 1.1,
+     "timed_out": false,
+     "log_tail": ""
+    },
+    {
+     "step": "install pytest",
+     "ok": true,
+     "seconds": 0.0,
+     "timed_out": false,
+     "log_tail": ""
+    },
+    {
+     "step": "repair: install json5 pydantic",
+     "ok": true,
+     "seconds": 0.0,
+     "timed_out": false,
+     "log_tail": ""
+    }
+   ]
+  },
+  "selected_tests": [
+   {
+    "path": "tests/config/test_config.py",
+    "reason": "imports_changed_module",
+    "exists_at_base": true
+   },
+   {
+    "path": "tests/integration/test_case_runner.py",
+    "reason": "imports_changed_module",
+    "exists_at_base": true
+   },
+   {
+    "path": "tests/llm/test_init.py",
+    "reason": "imports_changed_module",
+    "exists_at_base": true
+   },
+   {
+    "path": "tests/runtime/test_config.py",
+    "reason": "imports_changed_module",
+    "exists_at_base": true
+   },
+   {
+    "path": "tests/runtime/test_cortex.py",
+    "reason": "imports_changed_module",
+    "exists_at_base": true
+   },
+   {
+    "path": "tests/simulators/test_orchestrator.py",
+    "reason": "imports_changed_module",
+    "exists_at_base": true
+   }
+  ],
+  "head_run": {
+   "status": "completed",
+   "exit_code": 2,
+   "seconds": 0.5,
+   "addopts_overridden": false,
+   "counts": {
+    "passed": 0,
+    "failed": 0,
+    "error": 3,
+    "skipped": 0
+   },
+   "tests": {
+    "::tests.config.test_config": {
+     "outcome": "error",
+     "detail": "collection failure\nImportError while importing test module '/dev/shm/acr/work/3070236056/src/head/tests/config/test_config.py'.\nHint: make sure your test modules/packages have valid Python names.\nTraceback:\n../../../_shared_cache/python/cpython-3.12-linux-x86_64-gnu/lib/python3.12/importlib/__init__.py:90: in import_module\n    return _bootstrap._gcd_import(name[level:], package, level)\ntests/config/test_config.py:8: in <module>\n    from runtime.config import load_input, load_llm, load_simulator\nsrc/runtime/config.py:12: in <module>\n    from llm import LLM, LLMConfig, load_llm\nsrc/llm/__init__.py:8: in <module>\n    from providers.io_provider import IOProvider\nsrc/providers/__init__.py:2: in <module>\n    from .status_provider import BatteryStatus, StatusProvider, TeleopsStatus\nsrc/providers/status_provider.py:6: in <module>\n    import requests\nE   ModuleNotFoundError: No module named 'requests'"
+    },
+    "::tests.integration.test_case_runner": {
+     "outcome": "error",
+     "detail": "collection failure\nImportError while importing test module '/dev/shm/acr/work/3070236056/src/head/tests/integration/test_case_runner.py'.\nHint: make sure your test modules/packages have valid Python names.\nTraceback:\n../../../_shared_cache/python/cpython-3.12-linux-x86_64-gnu/lib/python3.12/importlib/__init__.py:90: in import_module\n    return _bootstrap._gcd_import(name[level:], package, level)\ntests/integration/test_case_runner.py:8: in <module>\n    import openai\nE   ModuleNotFoundError: No module named 'openai'"
+    },
+    "::tests.runtime.test_cortex": {
+     "outcome": "error",
+     "detail": "collection failure\nImportError while importing test module '/dev/shm/acr/work/3070236056/src/head/tests/runtime/test_cortex.py'.\nHint: make sure your test modules/packages have valid Python names.\nTraceback:\n../../../_shared_cache/python/cpython-3.12-linux-x86_64-gnu/lib/python3.12/importlib/__init__.py:90: in import_module\n    return _bootstrap._gcd_import(name[level:], package, level)\ntests/runtime/test_cortex.py:8: in <module>\n    from runtime.cortex import CortexRuntime\nsrc/runtime/cortex.py:8: in <module>\n    from providers.sleep_ticker_provider import SleepTickerProvider\nsrc/providers/__init__.py:2: in <module>\n    from .status_provider import BatteryStatus, StatusProvider, TeleopsStatus\nsrc/providers/status_provider.py:6: in <module>\n    import requests\nE   ModuleNotFoundError: No module named 'requests'"
+    }
+   },
+   "log_tail": ""
+  },
+  "base_run": {
+   "status": "completed",
+   "exit_code": 2,
+   "seconds": 0.5,
+   "addopts_overridden": false,
+   "counts": {
+    "passed": 0,
+    "failed": 0,
+    "error": 3,
+    "skipped": 0
+   },
+   "tests": {
+    "::tests.config.test_config": {
+     "outcome": "error",
+     "detail": "collection failure\nImportError while importing test module '/dev/shm/acr/work/3070236056/src/base/tests/config/test_config.py'.\nHint: make sure your test modules/packages have valid Python names.\nTraceback:\n../../../_shared_cache/python/cpython-3.12-linux-x86_64-gnu/lib/python3.12/importlib/__init__.py:90: in import_module\n    return _bootstrap._gcd_import(name[level:], package, level)\ntests/config/test_config.py:8: in <module>\n    from runtime.config import load_input, load_llm, load_simulator\nsrc/runtime/config.py:12: in <module>\n    from llm import LLM, LLMConfig, load_llm\nsrc/llm/__init__.py:8: in <module>\n    from providers.io_provider import IOProvider\nsrc/providers/__init__.py:2: in <module>\n    from .status_provider import BatteryStatus, StatusProvider, TeleopsStatus\nsrc/providers/status_provider.py:6: in <module>\n    import requests\nE   ModuleNotFoundError: No module named 'requests'"
+    },
+    "::tests.integration.test_case_runner": {
+     "outcome": "error",
+     "detail": "collection failure\nImportError while importing test module '/dev/shm/acr/work/3070236056/src/base/tests/integration/test_case_runner.py'.\nHint: make sure your test modules/packages have valid Python names.\nTraceback:\n../../../_shared_cache/python/cpython-3.12-linux-x86_64-gnu/lib/python3.12/importlib/__init__.py:90: in import_module\n    return _bootstrap._gcd_import(name[level:], package, level)\ntests/integration/test_case_runner.py:8: in <module>\n    import openai\nE   ModuleNotFoundError: No module named 'openai'"
+    },
+    "::tests.runtime.test_cortex": {
+     "outcome": "error",
+     "detail": "collection failure\nImportError while importing test module '/dev/shm/acr/work/3070236056/src/base/tests/runtime/test_cortex.py'.\nHint: make sure your test modules/packages have valid Python names.\nTraceback:\n../../../_shared_cache/python/cpython-3.12-linux-x86_64-gnu/lib/python3.12/importlib/__init__.py:90: in import_module\n    return _bootstrap._gcd_import(name[level:], package, level)\ntests/runtime/test_cortex.py:8: in <module>\n    from runtime.cortex import CortexRuntime\nsrc/runtime/cortex.py:8: in <module>\n    from providers.sleep_ticker_provider import SleepTickerProvider\nsrc/providers/__init__.py:2: in <module>\n    from .status_provider import BatteryStatus, StatusProvider, TeleopsStatus\nsrc/providers/status_provider.py:6: in <module>\n    import requests\nE   ModuleNotFoundError: No module named 'requests'"
+    }
+   },
+   "log_tail": ""
+  },
+  "comparison": {
+   "regressions": [],
+   "new_test_failures": [],
+   "fixed": [],
+   "persistent_failures": [
+    "::tests.config.test_config",
+    "::tests.integration.test_case_runner",
+    "::tests.runtime.test_cortex"
+   ]
+  },
+  "imports_head": {
+   "runtime.config": {
+    "ok": false,
+    "type": "ModuleNotFoundError",
+    "message": "No module named 'requests'",
+    "missing_module": "requests",
+    "file": "src/providers/status_provider.py",
+    "line": 6,
+    "traceback": "Traceback (most recent call last):\n  File \"<string>\", line 7, in <module>\n  File \"/dev/shm/acr/work/_shared_cache/python/cpython-3.12-linux-x86_64-gnu/lib/python3.12/importlib/__init__.py\", line 90, in import_module\n    return _bootstrap._gcd_import(name[level:], package, level)\n           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"<frozen importlib._bootstrap>\", line 1387, in _gcd_import\n  File \"<frozen importlib._bootstrap>\", line 1360, in _find_and_load\n  File \"<frozen importlib._bootstrap>\", line 1331, in _find_and_load_unlocked\n  File \"<frozen importlib._bootstrap>\", line 935, in _load_unlocked\n  File \"<frozen importlib._bootstrap_external>\", line 999, in exec_module\n  File \"<frozen importlib._bootstrap>\", line 488, in _call_with_frames_removed\n  File \"/dev/shm/acr/work/3070236056/src/head/src/runtime/config.py\", line 12, in <module>\n    from llm import LLM, LLMConfig, load_llm\n  File \"/dev/shm/acr/work/3070236056/src/head/src/llm/__init__.py\", line 8, in <module>\n    from providers.io_provider import IOProvider\n  File \"/dev/shm/acr/work/3070236056/src/head/src/providers/__init__.py\", line 2, in <module>\n    from .status_provider import BatteryStatus, StatusProvider, TeleopsStatus\n  File \"/dev/shm/acr/work/3070236056/src/head/src/providers/status_provider.py\", line 6, in <module>\n    import requests\nModuleNotFoundError: No module named 'requests'\n"
+   }
+  },
+  "imports_base": {
+   "runtime.config": {
+    "ok": false,
+    "type": "ModuleNotFoundError",
+    "message": "No module named 'requests'",
+    "missing_module": "requests",
+    "file": "src/providers/status_provider.py",
+    "line": 6,
+    "traceback": "Traceback (most recent call last):\n  File \"<string>\", line 7, in <module>\n  File \"/dev/shm/acr/work/_shared_cache/python/cpython-3.12-linux-x86_64-gnu/lib/python3.12/importlib/__init__.py\", line 90, in import_module\n    return _bootstrap._gcd_import(name[level:], package, level)\n           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"<frozen importlib._bootstrap>\", line 1387, in _gcd_import\n  File \"<frozen importlib._bootstrap>\", line 1360, in _find_and_load\n  File \"<frozen importlib._bootstrap>\", line 1331, in _find_and_load_unlocked\n  File \"<frozen importlib._bootstrap>\", line 935, in _load_unlocked\n  File \"<frozen importlib._bootstrap_external>\", line 999, in exec_module\n  File \"<frozen importlib._bootstrap>\", line 488, in _call_with_frames_removed\n  File \"/dev/shm/acr/work/3070236056/src/base/src/runtime/config.py\", line 12, in <module>\n    from llm import LLM, LLMConfig, load_llm\n  File \"/dev/shm/acr/work/3070236056/src/base/src/llm/__init__.py\", line 8, in <module>\n    from providers.io_provider import IOProvider\n  File \"/dev/shm/acr/work/3070236056/src/base/src/providers/__init__.py\", line 2, in <module>\n    from .status_provider import BatteryStatus, StatusProvider, TeleopsStatus\n  File \"/dev/shm/acr/work/3070236056/src/base/src/providers/status_provider.py\", line 6, in <module>\n    import requests\nModuleNotFoundError: No module named 'requests'\n"
+   }
+  },
+  "status": "completed",
+  "dependency_cutoff": "2025-05-17T03:11:44Z",
+  "seconds": 7.6,
+  "head_failures": 3
+ },
+ "findings": [],
+ "status": "ok",
+ "seconds": 10.9
+}

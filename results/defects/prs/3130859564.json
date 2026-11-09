@@ -1,0 +1,192 @@
+{
+ "pr_id": 3130859564,
+ "repository": "epignatelli/navix",
+ "pr_number": 101,
+ "split": "development",
+ "agent": "OpenAI_Codex",
+ "head_sha": "4c52964cc29d2410530ff121e2ace7588888aa4c",
+ "tool_versions": {
+  "ruff": "ruff 0.17.4",
+  "bandit": "__main__.py 1.9.4",
+  "python": "3.12.3"
+ },
+ "config": {
+  "run_tests": true,
+  "sandbox": true
+ },
+ "base_mode": "reverse_applied_diff",
+ "static": {
+  "files_analysed": 3,
+  "head_issues": 1,
+  "base_issues": 1,
+  "per_tool_head": {
+   "ruff": 1
+  },
+  "per_tool_base": {
+   "ruff": 1
+  },
+  "introduced": 0,
+  "seconds": 1.4
+ },
+ "tests": {
+  "env": {
+   "status": "partial",
+   "python": "3.15.2",
+   "steps": [
+    {
+     "step": "venv",
+     "ok": true,
+     "seconds": 0.1,
+     "timed_out": false,
+     "log_tail": ""
+    },
+    {
+     "step": "install -e .",
+     "ok": false,
+     "seconds": 4.2,
+     "timed_out": false,
+     "log_tail": "error: No solution found when resolving dependencies\n  cause: Because all of:\n             jaxlib<=0.4.31\n             jaxlib>=0.4.33\n          have no wheels with a matching Python ABI tag (e.g., `cp315`) and only the following versions of jaxlib are available:\n             jaxlib<=0.4.31\n             jaxlib==0.4.32\n             jaxlib>=0.4.33\n         we can conclude that all of:\n             jaxlib<0.4.32\n             jaxlib>0.4.32\n          cannot be used.\n         And because jaxlib==0.4.32 was yanked, we can conclude that all versions of jaxlib cannot be used.\n         And because all versions of rlax depend on jaxlib and navix==0.7.0 depends on rlax, we can conclude that navix==0.7.0 cannot be used.\n         And because only navix==0.7.0 is available and you require navix, we can conclude that your requirements are unsatisfiable.\n\nhint: You require CPython 3.15 (`cp315`), but we only found wheels for `jaxlib` (v0.6.1) with the following Python ABI tags: `cp310`, `cp311`, `cp312`, `cp313`, `cp313t`\n"
+    },
+    {
+     "step": "install -r requirements.txt",
+     "ok": false,
+     "seconds": 0.2,
+     "timed_out": false,
+     "log_tail": "error: No solution found when resolving dependencies\n  cause: Because all of:\n             jaxlib<=0.4.31\n             jaxlib>=0.4.33\n          have no wheels with a matching Python ABI tag (e.g., `cp315`) and only the following versions of jaxlib are available:\n             jaxlib<=0.4.31\n             jaxlib==0.4.32\n             jaxlib>=0.4.33\n         we can conclude that all of:\n             jaxlib<0.4.32\n             jaxlib>0.4.32\n          cannot be used.\n         And because jaxlib==0.4.32 was yanked, we can conclude that all versions of jaxlib cannot be used.\n         And because all versions of rlax depend on jaxlib and you require rlax, we can conclude that your requirements are unsatisfiable.\n\nhint: You require CPython 3.15 (`cp315`), but we only found wheels for `jaxlib` (v0.6.1) with the following Python ABI tags: `cp310`, `cp311`, `cp312`, `cp313`, `cp313t`\n"
+    },
+    {
+     "step": "install pytest",
+     "ok": true,
+     "seconds": 0.4,
+     "timed_out": false,
+     "log_tail": ""
+    },
+    {
+     "step": "repair: install jax",
+     "ok": false,
+     "seconds": 107.7,
+     "timed_out": false,
+     "log_tail": "ran --version` gave \"[Errno 2] No such file or directory: 'nvfortran'\"\n         Running `nvfortran -V` gave \"[Errno 2] No such file or directory: 'nvfortran'\"\n         Running `pgfortran --help` gave \"[Errno 2] No such file or directory: 'pgfortran'\"\n         Running `pgfortran --version` gave \"[Errno 2] No such file or directory: 'pgfortran'\"\n         Running `pgfortran -V` gave \"[Errno 2] No such file or directory: 'pgfortran'\"\n         Running `ifort --help` gave \"[Errno 2] No such file or directory: 'ifort'\"\n         Running `ifort --version` gave \"[Errno 2] No such file or directory: 'ifort'\"\n         Running `ifort -V` gave \"[Errno 2] No such file or directory: 'ifort'\"\n         Running `ifx --help` gave \"[Errno 2] No such file or directory: 'ifx'\"\n         Running `ifx --version` gave \"[Errno 2] No such file or directory: 'ifx'\"\n         Running `ifx -V` gave \"[Errno 2] No such file or directory: 'ifx'\"\n         Running `g95 --help` gave \"[Errno 2] No such file or directory: 'g95'\"\n         Running `g95 --version` gave \"[Errno 2] No such file or directory: 'g95'\"\n         Running `g95 -V` gave \"[Errno 2] No such file or directory: 'g95'\"\n\n         A full log can be found at /dev/shm/acr/work/_shared_cache/uv/sdists-v10/pypi/scipy/1.15.3/tWCtuW7WHn56PP9J/src/.mesonpy-b3rkff59/meson-logs/meson-log.txt\n\nhint: `scipy` (v1.15.3) was included because `jax` (v0.4.29) depends on `scipy`\n\nhint: Build failures usually indicate a problem with the package or the build environment\n"
+    }
+   ]
+  },
+  "selected_tests": [
+   {
+    "path": "tests/test_observations.py",
+    "reason": "matches_module:observations",
+    "exists_at_base": true
+   }
+  ],
+  "head_run": {
+   "status": "completed",
+   "exit_code": 2,
+   "seconds": 4.8,
+   "addopts_overridden": false,
+   "counts": {
+    "passed": 0,
+    "failed": 0,
+    "error": 1,
+    "skipped": 0
+   },
+   "tests": {
+    "::tests.test_observations": {
+     "outcome": "error",
+     "detail": "collection failure\nImportError while importing test module '/dev/shm/acr/work/3130859564/src/head/tests/test_observations.py'.\nHint: make sure your test modules/packages have valid Python names.\nTraceback:\n../../../_shared_cache/python/cpython-3.15.2-linux-x86_64-gnu/lib/python3.15/importlib/__init__.py:88: in import_module\n    return _bootstrap._gcd_import(name[level:], package, level)\n           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\ntests/test_observations.py:1: in <module>\n    import jax\nE   ModuleNotFoundError: No module named 'jax'"
+    }
+   },
+   "log_tail": ""
+  },
+  "base_run": {
+   "status": "completed",
+   "exit_code": 2,
+   "seconds": 3.3,
+   "addopts_overridden": false,
+   "counts": {
+    "passed": 0,
+    "failed": 0,
+    "error": 1,
+    "skipped": 0
+   },
+   "tests": {
+    "::tests.test_observations": {
+     "outcome": "error",
+     "detail": "collection failure\nImportError while importing test module '/dev/shm/acr/work/3130859564/src/base/tests/test_observations.py'.\nHint: make sure your test modules/packages have valid Python names.\nTraceback:\n../../../_shared_cache/python/cpython-3.15.2-linux-x86_64-gnu/lib/python3.15/importlib/__init__.py:88: in import_module\n    return _bootstrap._gcd_import(name[level:], package, level)\n           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\ntests/test_observations.py:1: in <module>\n    import jax\nE   ModuleNotFoundError: No module named 'jax'"
+    }
+   },
+   "log_tail": ""
+  },
+  "comparison": {
+   "regressions": [],
+   "new_test_failures": [],
+   "fixed": [],
+   "persistent_failures": [
+    "::tests.test_observations"
+   ]
+  },
+  "imports_head": {
+   "navix.environments.environment": {
+    "ok": false,
+    "type": "ModuleNotFoundError",
+    "message": "No module named 'jax'",
+    "missing_module": "jax",
+    "file": "navix/actions.py",
+    "line": 26,
+    "traceback": "-3.15.2-linux-x86_64-gnu/lib/python3.15/importlib/__init__.py\", line 88, in import_module\n    return _bootstrap._gcd_import(name[level:], package, level)\n           ~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"<frozen importlib._bootstrap>\", line 1389, in _gcd_import\n  File \"<frozen importlib._bootstrap>\", line 1338, in _find_and_load\n  File \"<frozen importlib._bootstrap>\", line 1299, in _resolve_parents\n  File \"<frozen importlib._bootstrap>\", line 491, in _call_with_frames_removed\n  File \"<frozen importlib._bootstrap>\", line 1389, in _gcd_import\n  File \"<frozen importlib._bootstrap>\", line 1338, in _find_and_load\n  File \"<frozen importlib._bootstrap>\", line 1299, in _resolve_parents\n  File \"<frozen importlib._bootstrap>\", line 491, in _call_with_frames_removed\n  File \"<frozen importlib._bootstrap>\", line 1389, in _gcd_import\n  File \"<frozen importlib._bootstrap>\", line 1353, in _find_and_load\n  File \"<frozen importlib._bootstrap>\", line 1249, in _find_and_load_unlocked\n  File \"<frozen importlib._bootstrap>\", line 857, in _load_unlocked\n  File \"<frozen importlib._bootstrap_external>\", line 751, in exec_module\n  File \"<frozen importlib._bootstrap>\", line 491, in _call_with_frames_removed\n  File \"/dev/shm/acr/work/3130859564/src/head/navix/__init__.py\", line 21, in <module>\n    from . import (\n    ...<14 lines>...\n    )\n  File \"/dev/shm/acr/work/3130859564/src/head/navix/actions.py\", line 26, in <module>\n    import jax\nModuleNotFoundError: No module named 'jax'\n"
+   },
+   "navix.observations": {
+    "ok": false,
+    "type": "ModuleNotFoundError",
+    "message": "No module named 'jax'",
+    "missing_module": "jax",
+    "file": "navix/actions.py",
+    "line": 26,
+    "traceback": "Traceback (most recent call last):\n  File \"<string>\", line 7, in <module>\n    importlib.import_module(m)\n    ~~~~~~~~~~~~~~~~~~~~~~~^^^\n  File \"/dev/shm/acr/work/_shared_cache/python/cpython-3.15.2-linux-x86_64-gnu/lib/python3.15/importlib/__init__.py\", line 88, in import_module\n    return _bootstrap._gcd_import(name[level:], package, level)\n           ~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"<frozen importlib._bootstrap>\", line 1389, in _gcd_import\n  File \"<frozen importlib._bootstrap>\", line 1338, in _find_and_load\n  File \"<frozen importlib._bootstrap>\", line 1299, in _resolve_parents\n  File \"<frozen importlib._bootstrap>\", line 491, in _call_with_frames_removed\n  File \"<frozen importlib._bootstrap>\", line 1389, in _gcd_import\n  File \"<frozen importlib._bootstrap>\", line 1353, in _find_and_load\n  File \"<frozen importlib._bootstrap>\", line 1249, in _find_and_load_unlocked\n  File \"<frozen importlib._bootstrap>\", line 857, in _load_unlocked\n  File \"<frozen importlib._bootstrap_external>\", line 751, in exec_module\n  File \"<frozen importlib._bootstrap>\", line 491, in _call_with_frames_removed\n  File \"/dev/shm/acr/work/3130859564/src/head/navix/__init__.py\", line 21, in <module>\n    from . import (\n    ...<14 lines>...\n    )\n  File \"/dev/shm/acr/work/3130859564/src/head/navix/actions.py\", line 26, in <module>\n    import jax\nModuleNotFoundError: No module named 'jax'\n"
+   },
+   "navix.states": {
+    "ok": false,
+    "type": "ModuleNotFoundError",
+    "message": "No module named 'jax'",
+    "missing_module": "jax",
+    "file": "navix/actions.py",
+    "line": 26,
+    "traceback": "Traceback (most recent call last):\n  File \"<string>\", line 7, in <module>\n    importlib.import_module(m)\n    ~~~~~~~~~~~~~~~~~~~~~~~^^^\n  File \"/dev/shm/acr/work/_shared_cache/python/cpython-3.15.2-linux-x86_64-gnu/lib/python3.15/importlib/__init__.py\", line 88, in import_module\n    return _bootstrap._gcd_import(name[level:], package, level)\n           ~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"<frozen importlib._bootstrap>\", line 1389, in _gcd_import\n  File \"<frozen importlib._bootstrap>\", line 1338, in _find_and_load\n  File \"<frozen importlib._bootstrap>\", line 1299, in _resolve_parents\n  File \"<frozen importlib._bootstrap>\", line 491, in _call_with_frames_removed\n  File \"<frozen importlib._bootstrap>\", line 1389, in _gcd_import\n  File \"<frozen importlib._bootstrap>\", line 1353, in _find_and_load\n  File \"<frozen importlib._bootstrap>\", line 1249, in _find_and_load_unlocked\n  File \"<frozen importlib._bootstrap>\", line 857, in _load_unlocked\n  File \"<frozen importlib._bootstrap_external>\", line 751, in exec_module\n  File \"<frozen importlib._bootstrap>\", line 491, in _call_with_frames_removed\n  File \"/dev/shm/acr/work/3130859564/src/head/navix/__init__.py\", line 21, in <module>\n    from . import (\n    ...<14 lines>...\n    )\n  File \"/dev/shm/acr/work/3130859564/src/head/navix/actions.py\", line 26, in <module>\n    import jax\nModuleNotFoundError: No module named 'jax'\n"
+   }
+  },
+  "imports_base": {
+   "navix.environments.environment": {
+    "ok": false,
+    "type": "ModuleNotFoundError",
+    "message": "No module named 'jax'",
+    "missing_module": "jax",
+    "file": "navix/actions.py",
+    "line": 26,
+    "traceback": "-3.15.2-linux-x86_64-gnu/lib/python3.15/importlib/__init__.py\", line 88, in import_module\n    return _bootstrap._gcd_import(name[level:], package, level)\n           ~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"<frozen importlib._bootstrap>\", line 1389, in _gcd_import\n  File \"<frozen importlib._bootstrap>\", line 1338, in _find_and_load\n  File \"<frozen importlib._bootstrap>\", line 1299, in _resolve_parents\n  File \"<frozen importlib._bootstrap>\", line 491, in _call_with_frames_removed\n  File \"<frozen importlib._bootstrap>\", line 1389, in _gcd_import\n  File \"<frozen importlib._bootstrap>\", line 1338, in _find_and_load\n  File \"<frozen importlib._bootstrap>\", line 1299, in _resolve_parents\n  File \"<frozen importlib._bootstrap>\", line 491, in _call_with_frames_removed\n  File \"<frozen importlib._bootstrap>\", line 1389, in _gcd_import\n  File \"<frozen importlib._bootstrap>\", line 1353, in _find_and_load\n  File \"<frozen importlib._bootstrap>\", line 1249, in _find_and_load_unlocked\n  File \"<frozen importlib._bootstrap>\", line 857, in _load_unlocked\n  File \"<frozen importlib._bootstrap_external>\", line 751, in exec_module\n  File \"<frozen importlib._bootstrap>\", line 491, in _call_with_frames_removed\n  File \"/dev/shm/acr/work/3130859564/src/base/navix/__init__.py\", line 21, in <module>\n    from . import (\n    ...<14 lines>...\n    )\n  File \"/dev/shm/acr/work/3130859564/src/base/navix/actions.py\", line 26, in <module>\n    import jax\nModuleNotFoundError: No module named 'jax'\n"
+   },
+   "navix.observations": {
+    "ok": false,
+    "type": "ModuleNotFoundError",
+    "message": "No module named 'jax'",
+    "missing_module": "jax",
+    "file": "navix/actions.py",
+    "line": 26,
+    "traceback": "Traceback (most recent call last):\n  File \"<string>\", line 7, in <module>\n    importlib.import_module(m)\n    ~~~~~~~~~~~~~~~~~~~~~~~^^^\n  File \"/dev/shm/acr/work/_shared_cache/python/cpython-3.15.2-linux-x86_64-gnu/lib/python3.15/importlib/__init__.py\", line 88, in import_module\n    return _bootstrap._gcd_import(name[level:], package, level)\n           ~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"<frozen importlib._bootstrap>\", line 1389, in _gcd_import\n  File \"<frozen importlib._bootstrap>\", line 1338, in _find_and_load\n  File \"<frozen importlib._bootstrap>\", line 1299, in _resolve_parents\n  File \"<frozen importlib._bootstrap>\", line 491, in _call_with_frames_removed\n  File \"<frozen importlib._bootstrap>\", line 1389, in _gcd_import\n  File \"<frozen importlib._bootstrap>\", line 1353, in _find_and_load\n  File \"<frozen importlib._bootstrap>\", line 1249, in _find_and_load_unlocked\n  File \"<frozen importlib._bootstrap>\", line 857, in _load_unlocked\n  File \"<frozen importlib._bootstrap_external>\", line 751, in exec_module\n  File \"<frozen importlib._bootstrap>\", line 491, in _call_with_frames_removed\n  File \"/dev/shm/acr/work/3130859564/src/base/navix/__init__.py\", line 21, in <module>\n    from . import (\n    ...<14 lines>...\n    )\n  File \"/dev/shm/acr/work/3130859564/src/base/navix/actions.py\", line 26, in <module>\n    import jax\nModuleNotFoundError: No module named 'jax'\n"
+   },
+   "navix.states": {
+    "ok": false,
+    "type": "ModuleNotFoundError",
+    "message": "No module named 'jax'",
+    "missing_module": "jax",
+    "file": "navix/actions.py",
+    "line": 26,
+    "traceback": "Traceback (most recent call last):\n  File \"<string>\", line 7, in <module>\n    importlib.import_module(m)\n    ~~~~~~~~~~~~~~~~~~~~~~~^^^\n  File \"/dev/shm/acr/work/_shared_cache/python/cpython-3.15.2-linux-x86_64-gnu/lib/python3.15/importlib/__init__.py\", line 88, in import_module\n    return _bootstrap._gcd_import(name[level:], package, level)\n           ~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"<frozen importlib._bootstrap>\", line 1389, in _gcd_import\n  File \"<frozen importlib._bootstrap>\", line 1338, in _find_and_load\n  File \"<frozen importlib._bootstrap>\", line 1299, in _resolve_parents\n  File \"<frozen importlib._bootstrap>\", line 491, in _call_with_frames_removed\n  File \"<frozen importlib._bootstrap>\", line 1389, in _gcd_import\n  File \"<frozen importlib._bootstrap>\", line 1353, in _find_and_load\n  File \"<frozen importlib._bootstrap>\", line 1249, in _find_and_load_unlocked\n  File \"<frozen importlib._bootstrap>\", line 857, in _load_unlocked\n  File \"<frozen importlib._bootstrap_external>\", line 751, in exec_module\n  File \"<frozen importlib._bootstrap>\", line 491, in _call_with_frames_removed\n  File \"/dev/shm/acr/work/3130859564/src/base/navix/__init__.py\", line 21, in <module>\n    from . import (\n    ...<14 lines>...\n    )\n  File \"/dev/shm/acr/work/3130859564/src/base/navix/actions.py\", line 26, in <module>\n    import jax\nModuleNotFoundError: No module named 'jax'\n"
+   }
+  },
+  "status": "completed",
+  "dependency_cutoff": "2025-06-09T16:54:35Z",
+  "seconds": 121.7,
+  "head_failures": 1
+ },
+ "findings": [],
+ "status": "ok",
+ "seconds": 128.5
+}

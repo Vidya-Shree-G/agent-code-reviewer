@@ -1,0 +1,205 @@
+{
+ "pr_id": 3128580678,
+ "repository": "hivesolutions/netius",
+ "pr_number": 45,
+ "split": "development",
+ "agent": "OpenAI_Codex",
+ "head_sha": "13ec28958e7e390270fb6e1d0bf9f91c78cd3ecd",
+ "tool_versions": {
+  "ruff": "ruff 0.17.4",
+  "bandit": "__main__.py 1.9.4",
+  "python": "3.12.3"
+ },
+ "config": {
+  "run_tests": true,
+  "sandbox": true
+ },
+ "base_mode": "reverse_applied_diff",
+ "static": {
+  "files_analysed": 11,
+  "head_issues": 5,
+  "base_issues": 0,
+  "per_tool_head": {
+   "ruff": 5
+  },
+  "per_tool_base": {},
+  "introduced": 5,
+  "seconds": 0.1
+ },
+ "tests": {
+  "env": {
+   "status": "ok",
+   "python": "3.15.2",
+   "steps": [
+    {
+     "step": "venv",
+     "ok": true,
+     "seconds": 0.0,
+     "timed_out": false,
+     "log_tail": ""
+    },
+    {
+     "step": "install -e .",
+     "ok": true,
+     "seconds": 1.2,
+     "timed_out": false,
+     "log_tail": ""
+    },
+    {
+     "step": "install -r requirements.txt",
+     "ok": true,
+     "seconds": 0.0,
+     "timed_out": false,
+     "log_tail": ""
+    },
+    {
+     "step": "install pytest",
+     "ok": true,
+     "seconds": 0.0,
+     "timed_out": false,
+     "log_tail": ""
+    }
+   ]
+  },
+  "selected_tests": [],
+  "head_run": {
+   "status": "not_run",
+   "tests": {}
+  },
+  "base_run": {
+   "status": "not_run",
+   "tests": {}
+  },
+  "comparison": {
+   "regressions": [],
+   "new_test_failures": [],
+   "fixed": [],
+   "persistent_failures": []
+  },
+  "imports_head": {},
+  "imports_base": {},
+  "status": "no_executable_checks",
+  "dependency_cutoff": "2025-06-08T17:58:31Z",
+  "seconds": 1.2,
+  "head_failures": 0
+ },
+ "findings": [
+  {
+   "tool": "ruff",
+   "rule": "F401",
+   "category": "maintainability",
+   "severity": "low",
+   "confidence": "high",
+   "message": "`typing.Any` imported but unused",
+   "file": "src/netius/base/agent.pyi",
+   "line": 1,
+   "end_line": 1,
+   "cwe": null,
+   "on_changed_line": true,
+   "evidence": {
+    "type": "static",
+    "source_line": "from typing import Any",
+    "url": "https://docs.astral.sh/ruff/rules/unused-import"
+   },
+   "sources": [
+    "ruff"
+   ],
+   "finding_id": "ff091bfb696e",
+   "score": 1.5
+  },
+  {
+   "tool": "ruff",
+   "rule": "F401",
+   "category": "maintainability",
+   "severity": "low",
+   "confidence": "high",
+   "message": "`typing.Any` imported but unused",
+   "file": "src/netius/base/client.pyi",
+   "line": 1,
+   "end_line": 1,
+   "cwe": null,
+   "on_changed_line": true,
+   "evidence": {
+    "type": "static",
+    "source_line": "from typing import Any",
+    "url": "https://docs.astral.sh/ruff/rules/unused-import"
+   },
+   "sources": [
+    "ruff"
+   ],
+   "finding_id": "ce0e237f780a",
+   "score": 1.5
+  },
+  {
+   "tool": "ruff",
+   "rule": "F401",
+   "category": "maintainability",
+   "severity": "low",
+   "confidence": "high",
+   "message": "`.common.BaseThread` imported but unused",
+   "file": "src/netius/base/client.pyi",
+   "line": 3,
+   "end_line": 3,
+   "cwe": null,
+   "on_changed_line": true,
+   "evidence": {
+    "type": "static",
+    "source_line": "from .common import Base, BaseThread",
+    "url": "https://docs.astral.sh/ruff/rules/unused-import"
+   },
+   "sources": [
+    "ruff"
+   ],
+   "finding_id": "98f00386a0ab",
+   "score": 1.5
+  },
+  {
+   "tool": "ruff",
+   "rule": "RUF012",
+   "category": "correctness",
+   "severity": "low",
+   "confidence": "medium",
+   "message": "Mutable default value for class attribute",
+   "file": "src/netius/test/base/stubs.py",
+   "line": 38,
+   "end_line": 49,
+   "cwe": null,
+   "on_changed_line": true,
+   "evidence": {
+    "type": "static",
+    "source_line": "MODULES = [",
+    "url": "https://docs.astral.sh/ruff/rules/mutable-class-default"
+   },
+   "sources": [
+    "ruff"
+   ],
+   "finding_id": "22526ddf8a41",
+   "score": 1.2
+  },
+  {
+   "tool": "ruff",
+   "rule": "PLW1510",
+   "category": "correctness",
+   "severity": "low",
+   "confidence": "medium",
+   "message": "`subprocess.run` without explicit `check` argument",
+   "file": "src/netius/test/base/stubs.py",
+   "line": 52,
+   "end_line": 52,
+   "cwe": null,
+   "on_changed_line": true,
+   "evidence": {
+    "type": "static",
+    "source_line": "result = subprocess.run(",
+    "url": "https://docs.astral.sh/ruff/rules/subprocess-run-without-check"
+   },
+   "sources": [
+    "ruff"
+   ],
+   "finding_id": "5d6410ca9c19",
+   "score": 1.2
+  }
+ ],
+ "status": "ok",
+ "seconds": 2.1
+}

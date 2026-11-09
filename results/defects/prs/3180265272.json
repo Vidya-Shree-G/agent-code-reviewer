@@ -1,0 +1,162 @@
+{
+ "pr_id": 3180265272,
+ "repository": "jeshraghian/snntorch",
+ "pr_number": 382,
+ "split": "development",
+ "agent": "OpenAI_Codex",
+ "head_sha": "92090dff8d516f775307d5b9d6b3ea25062d3441",
+ "tool_versions": {
+  "ruff": "ruff 0.17.4",
+  "bandit": "__main__.py 1.9.4",
+  "python": "3.12.3"
+ },
+ "config": {
+  "run_tests": true,
+  "sandbox": true
+ },
+ "base_mode": "reverse_applied_diff",
+ "static": {
+  "files_analysed": 3,
+  "head_issues": 7,
+  "base_issues": 7,
+  "per_tool_head": {
+   "ruff": 7
+  },
+  "per_tool_base": {
+   "ruff": 7
+  },
+  "introduced": 0,
+  "seconds": 0.3
+ },
+ "tests": {
+  "env": {
+   "status": "partial",
+   "python": "3.15.2",
+   "steps": [
+    {
+     "step": "venv",
+     "ok": true,
+     "seconds": 0.0,
+     "timed_out": false,
+     "log_tail": ""
+    },
+    {
+     "step": "install -e .",
+     "ok": true,
+     "seconds": 0.4,
+     "timed_out": false,
+     "log_tail": ""
+    },
+    {
+     "step": "install -r requirements_dev.txt",
+     "ok": false,
+     "seconds": 0.2,
+     "timed_out": false,
+     "log_tail": "uilds-v0/.tmpMvholO/lib/python3.15/site-packages/setuptools/build_meta.py\", line 331, in get_requires_for_build_wheel\n             return self._get_build_requires(config_settings, requirements=[])\n                    ~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n           File \"/dev/shm/acr/work/_shared_cache/uv/builds-v0/.tmpMvholO/lib/python3.15/site-packages/setuptools/build_meta.py\", line 301, in _get_build_requires\n             self.run_setup()\n             ~~~~~~~~~~~~~~^^\n           File \"/dev/shm/acr/work/_shared_cache/uv/builds-v0/.tmpMvholO/lib/python3.15/site-packages/setuptools/build_meta.py\", line 512, in run_setup\n             super().run_setup(setup_script=setup_script)\n             ~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^\n           File \"/dev/shm/acr/work/_shared_cache/uv/builds-v0/.tmpMvholO/lib/python3.15/site-packages/setuptools/build_meta.py\", line 317, in run_setup\n             exec(code, locals())\n             ~~~~^^^^^^^^^^^^^^^^\n           File \"<string>\", line 20, in <module>\n         ModuleNotFoundError: No module named 'imp'\n\nhint: This error likely indicates that `watchdog@0.9.0` depends on `imp`, but doesn't declare it as a build dependency. If `watchdog` is a first-party package, consider adding `imp` to its `build-system.requires`. Otherwise, either add it to your `pyproject.toml` under:\n\n[tool.uv.extra-build-dependencies]\nwatchdog = [\"imp\"]\n\nor `uv pip install imp` into the environment and re-run with `--no-build-isolation`.\n"
+    },
+    {
+     "step": "install pytest",
+     "ok": true,
+     "seconds": 0.0,
+     "timed_out": false,
+     "log_tail": ""
+    },
+    {
+     "step": "repair: install torch",
+     "ok": false,
+     "seconds": 0.0,
+     "timed_out": false,
+     "log_tail": "error: No solution found when resolving dependencies\n  cause: Because only the following versions of torch are available:\n             torch<2.7.0+cpu\n             torch>2.7.0+cpu,<2.7.1+cpu\n         and all of:\n             torch<=2.7.0\n             torch==2.7.1\n          have no wheels with a matching Python ABI tag (e.g., `cp315`), we can conclude that all of:\n             torch<=2.7.0\n             torch==2.7.1\n          cannot be used.\n         And because you require torch, we can conclude that your requirements are unsatisfiable.\n\nhint: You require CPython 3.15 (`cp315`), but we only found wheels for `torch` (v2.7.1) with the following Python ABI tag: `cp313t`\n"
+    }
+   ]
+  },
+  "selected_tests": [
+   {
+    "path": "tests/test_nir.py",
+    "reason": "changed_in_pr",
+    "exists_at_base": true
+   }
+  ],
+  "head_run": {
+   "status": "usage_error",
+   "exit_code": 4,
+   "seconds": 0.2,
+   "addopts_overridden": true,
+   "counts": {
+    "passed": 0,
+    "failed": 0,
+    "error": 0,
+    "skipped": 0
+   },
+   "tests": {},
+   "log_tail": "\nImportError while loading conftest '/dev/shm/acr/work/3180265272/src/head/tests/conftest.py'.\ntests/conftest.py:2: in <module>\n    import snntorch as snn\nsnntorch/__init__.py:2: in <module>\n    from ._neurons import *\nsnntorch/_neurons/__init__.py:23: in <module>\n    from .neurons import SpikingNeuron\nsnntorch/_neurons/neurons.py:2: in <module>\n    from snntorch.surrogate import atan\nsnntorch/surrogate.py:1: in <module>\n    import torch\nE   ModuleNotFoundError: No module named 'torch'\n"
+  },
+  "base_run": {
+   "status": "usage_error",
+   "exit_code": 4,
+   "seconds": 0.2,
+   "addopts_overridden": true,
+   "counts": {
+    "passed": 0,
+    "failed": 0,
+    "error": 0,
+    "skipped": 0
+   },
+   "tests": {},
+   "log_tail": "\nImportError while loading conftest '/dev/shm/acr/work/3180265272/src/base/tests/conftest.py'.\ntests/conftest.py:2: in <module>\n    import snntorch as snn\nsnntorch/__init__.py:2: in <module>\n    from ._neurons import *\nsnntorch/_neurons/__init__.py:23: in <module>\n    from .neurons import SpikingNeuron\nsnntorch/_neurons/neurons.py:2: in <module>\n    from snntorch.surrogate import atan\nsnntorch/surrogate.py:1: in <module>\n    import torch\nE   ModuleNotFoundError: No module named 'torch'\n"
+  },
+  "comparison": {
+   "regressions": [],
+   "new_test_failures": [],
+   "fixed": [],
+   "persistent_failures": []
+  },
+  "imports_head": {
+   "snntorch.export_nir": {
+    "ok": false,
+    "type": "ModuleNotFoundError",
+    "message": "No module named 'torch'",
+    "missing_module": "torch",
+    "file": "snntorch/surrogate.py",
+    "line": 1,
+    "traceback": "ache/python/cpython-3.15.2-linux-x86_64-gnu/lib/python3.15/importlib/__init__.py\", line 88, in import_module\n    return _bootstrap._gcd_import(name[level:], package, level)\n           ~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"<frozen importlib._bootstrap>\", line 1389, in _gcd_import\n  File \"<frozen importlib._bootstrap>\", line 1338, in _find_and_load\n  File \"<frozen importlib._bootstrap>\", line 1299, in _resolve_parents\n  File \"<frozen importlib._bootstrap>\", line 491, in _call_with_frames_removed\n  File \"<frozen importlib._bootstrap>\", line 1389, in _gcd_import\n  File \"<frozen importlib._bootstrap>\", line 1353, in _find_and_load\n  File \"<frozen importlib._bootstrap>\", line 1249, in _find_and_load_unlocked\n  File \"<frozen importlib._bootstrap>\", line 857, in _load_unlocked\n  File \"<frozen importlib._bootstrap_external>\", line 751, in exec_module\n  File \"<frozen importlib._bootstrap>\", line 491, in _call_with_frames_removed\n  File \"/dev/shm/acr/work/3180265272/src/head/snntorch/__init__.py\", line 2, in <module>\n    from ._neurons import *\n  File \"/dev/shm/acr/work/3180265272/src/head/snntorch/_neurons/__init__.py\", line 23, in <module>\n    from .neurons import SpikingNeuron\n  File \"/dev/shm/acr/work/3180265272/src/head/snntorch/_neurons/neurons.py\", line 2, in <module>\n    from snntorch.surrogate import atan\n  File \"/dev/shm/acr/work/3180265272/src/head/snntorch/surrogate.py\", line 1, in <module>\n    import torch\nModuleNotFoundError: No module named 'torch'\n"
+   },
+   "snntorch.import_nir": {
+    "ok": false,
+    "type": "ModuleNotFoundError",
+    "message": "No module named 'torch'",
+    "missing_module": "torch",
+    "file": "snntorch/surrogate.py",
+    "line": 1,
+    "traceback": "ache/python/cpython-3.15.2-linux-x86_64-gnu/lib/python3.15/importlib/__init__.py\", line 88, in import_module\n    return _bootstrap._gcd_import(name[level:], package, level)\n           ~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"<frozen importlib._bootstrap>\", line 1389, in _gcd_import\n  File \"<frozen importlib._bootstrap>\", line 1338, in _find_and_load\n  File \"<frozen importlib._bootstrap>\", line 1299, in _resolve_parents\n  File \"<frozen importlib._bootstrap>\", line 491, in _call_with_frames_removed\n  File \"<frozen importlib._bootstrap>\", line 1389, in _gcd_import\n  File \"<frozen importlib._bootstrap>\", line 1353, in _find_and_load\n  File \"<frozen importlib._bootstrap>\", line 1249, in _find_and_load_unlocked\n  File \"<frozen importlib._bootstrap>\", line 857, in _load_unlocked\n  File \"<frozen importlib._bootstrap_external>\", line 751, in exec_module\n  File \"<frozen importlib._bootstrap>\", line 491, in _call_with_frames_removed\n  File \"/dev/shm/acr/work/3180265272/src/head/snntorch/__init__.py\", line 2, in <module>\n    from ._neurons import *\n  File \"/dev/shm/acr/work/3180265272/src/head/snntorch/_neurons/__init__.py\", line 23, in <module>\n    from .neurons import SpikingNeuron\n  File \"/dev/shm/acr/work/3180265272/src/head/snntorch/_neurons/neurons.py\", line 2, in <module>\n    from snntorch.surrogate import atan\n  File \"/dev/shm/acr/work/3180265272/src/head/snntorch/surrogate.py\", line 1, in <module>\n    import torch\nModuleNotFoundError: No module named 'torch'\n"
+   }
+  },
+  "imports_base": {
+   "snntorch.export_nir": {
+    "ok": false,
+    "type": "ModuleNotFoundError",
+    "message": "No module named 'torch'",
+    "missing_module": "torch",
+    "file": "snntorch/surrogate.py",
+    "line": 1,
+    "traceback": "ache/python/cpython-3.15.2-linux-x86_64-gnu/lib/python3.15/importlib/__init__.py\", line 88, in import_module\n    return _bootstrap._gcd_import(name[level:], package, level)\n           ~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"<frozen importlib._bootstrap>\", line 1389, in _gcd_import\n  File \"<frozen importlib._bootstrap>\", line 1338, in _find_and_load\n  File \"<frozen importlib._bootstrap>\", line 1299, in _resolve_parents\n  File \"<frozen importlib._bootstrap>\", line 491, in _call_with_frames_removed\n  File \"<frozen importlib._bootstrap>\", line 1389, in _gcd_import\n  File \"<frozen importlib._bootstrap>\", line 1353, in _find_and_load\n  File \"<frozen importlib._bootstrap>\", line 1249, in _find_and_load_unlocked\n  File \"<frozen importlib._bootstrap>\", line 857, in _load_unlocked\n  File \"<frozen importlib._bootstrap_external>\", line 751, in exec_module\n  File \"<frozen importlib._bootstrap>\", line 491, in _call_with_frames_removed\n  File \"/dev/shm/acr/work/3180265272/src/base/snntorch/__init__.py\", line 2, in <module>\n    from ._neurons import *\n  File \"/dev/shm/acr/work/3180265272/src/base/snntorch/_neurons/__init__.py\", line 23, in <module>\n    from .neurons import SpikingNeuron\n  File \"/dev/shm/acr/work/3180265272/src/base/snntorch/_neurons/neurons.py\", line 2, in <module>\n    from snntorch.surrogate import atan\n  File \"/dev/shm/acr/work/3180265272/src/base/snntorch/surrogate.py\", line 1, in <module>\n    import torch\nModuleNotFoundError: No module named 'torch'\n"
+   },
+   "snntorch.import_nir": {
+    "ok": false,
+    "type": "ModuleNotFoundError",
+    "message": "No module named 'torch'",
+    "missing_module": "torch",
+    "file": "snntorch/surrogate.py",
+    "line": 1,
+    "traceback": "ache/python/cpython-3.15.2-linux-x86_64-gnu/lib/python3.15/importlib/__init__.py\", line 88, in import_module\n    return _bootstrap._gcd_import(name[level:], package, level)\n           ~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"<frozen importlib._bootstrap>\", line 1389, in _gcd_import\n  File \"<frozen importlib._bootstrap>\", line 1338, in _find_and_load\n  File \"<frozen importlib._bootstrap>\", line 1299, in _resolve_parents\n  File \"<frozen importlib._bootstrap>\", line 491, in _call_with_frames_removed\n  File \"<frozen importlib._bootstrap>\", line 1389, in _gcd_import\n  File \"<frozen importlib._bootstrap>\", line 1353, in _find_and_load\n  File \"<frozen importlib._bootstrap>\", line 1249, in _find_and_load_unlocked\n  File \"<frozen importlib._bootstrap>\", line 857, in _load_unlocked\n  File \"<frozen importlib._bootstrap_external>\", line 751, in exec_module\n  File \"<frozen importlib._bootstrap>\", line 491, in _call_with_frames_removed\n  File \"/dev/shm/acr/work/3180265272/src/base/snntorch/__init__.py\", line 2, in <module>\n    from ._neurons import *\n  File \"/dev/shm/acr/work/3180265272/src/base/snntorch/_neurons/__init__.py\", line 23, in <module>\n    from .neurons import SpikingNeuron\n  File \"/dev/shm/acr/work/3180265272/src/base/snntorch/_neurons/neurons.py\", line 2, in <module>\n    from snntorch.surrogate import atan\n  File \"/dev/shm/acr/work/3180265272/src/base/snntorch/surrogate.py\", line 1, in <module>\n    import torch\nModuleNotFoundError: No module named 'torch'\n"
+   }
+  },
+  "status": "head_usage_error",
+  "dependency_cutoff": "2025-06-26T20:14:52Z",
+  "seconds": 1.8,
+  "head_failures": 0
+ },
+ "findings": [],
+ "status": "ok",
+ "seconds": 10.4
+}

@@ -1,0 +1,91 @@
+{
+ "pr_id": 3095242760,
+ "repository": "stefankoegl/kdtree",
+ "pr_number": 55,
+ "split": "development",
+ "agent": "Copilot",
+ "head_sha": "55ed2e5b29362c9f3270911131c876aed58027ab",
+ "tool_versions": {
+  "ruff": "ruff 0.17.4",
+  "bandit": "__main__.py 1.9.4",
+  "python": "3.12.3"
+ },
+ "config": {
+  "run_tests": true,
+  "sandbox": true
+ },
+ "base_mode": "reverse_applied_diff",
+ "static": {
+  "files_analysed": 1,
+  "head_issues": 1,
+  "base_issues": 1,
+  "per_tool_head": {
+   "ruff": 1
+  },
+  "per_tool_base": {
+   "ruff": 1
+  },
+  "introduced": 0,
+  "seconds": 0.9
+ },
+ "tests": {
+  "env": {
+   "status": "ok",
+   "python": "3.15.2",
+   "steps": [
+    {
+     "step": "venv",
+     "ok": true,
+     "seconds": 0.0,
+     "timed_out": false,
+     "log_tail": ""
+    },
+    {
+     "step": "install -e .",
+     "ok": true,
+     "seconds": 1.2,
+     "timed_out": false,
+     "log_tail": ""
+    },
+    {
+     "step": "install -r requirements-dev.txt",
+     "ok": true,
+     "seconds": 0.1,
+     "timed_out": false,
+     "log_tail": ""
+    },
+    {
+     "step": "install pytest",
+     "ok": true,
+     "seconds": 0.1,
+     "timed_out": false,
+     "log_tail": ""
+    }
+   ]
+  },
+  "selected_tests": [],
+  "head_run": {
+   "status": "not_run",
+   "tests": {}
+  },
+  "base_run": {
+   "status": "not_run",
+   "tests": {}
+  },
+  "comparison": {
+   "regressions": [],
+   "new_test_failures": [],
+   "fixed": [],
+   "persistent_failures": []
+  },
+  "imports_head": {},
+  "imports_base": {},
+  "status": "no_executable_checks",
+  "dependency_cutoff": "2025-05-27T21:13:00Z",
+  "seconds": 1.5,
+  "head_failures": 0
+ },
+ "findings": [],
+ "status": "ok",
+ "seconds": 4.7
+}

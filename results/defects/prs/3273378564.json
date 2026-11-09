@@ -1,0 +1,253 @@
+{
+ "pr_id": 3273378564,
+ "repository": "bugsink/bugsink",
+ "pr_number": 172,
+ "split": "evaluation",
+ "agent": "Copilot",
+ "head_sha": "33b7dd600b366e52c232b79da7d45f481fbd4a51",
+ "tool_versions": {
+  "ruff": "ruff 0.17.4",
+  "bandit": "__main__.py 1.9.4",
+  "python": "3.12.3"
+ },
+ "config": {
+  "run_tests": true,
+  "sandbox": true
+ },
+ "base_mode": "reverse_applied_diff",
+ "static": {
+  "files_analysed": 2,
+  "head_issues": 6,
+  "base_issues": 3,
+  "per_tool_head": {
+   "ruff": 5,
+   "bandit": 1
+  },
+  "per_tool_base": {
+   "ruff": 3
+  },
+  "introduced": 3,
+  "seconds": 0.3
+ },
+ "tests": {
+  "env": {
+   "status": "partial",
+   "python": "3.15.2",
+   "steps": [
+    {
+     "step": "venv",
+     "ok": true,
+     "seconds": 0.0,
+     "timed_out": false,
+     "log_tail": ""
+    },
+    {
+     "step": "install -e .",
+     "ok": false,
+     "seconds": 17.5,
+     "timed_out": false,
+     "log_tail": "ILITY\n\n           --- stderr\n           error: the configured Python interpreter version (3.15) is newer than PyO3's maximum supported version (3.14)\n           = help: please check if an updated version of PyO3 is available. Current version: 0.25.1\n           = help: set PYO3_USE_ABI3_FORWARD_COMPATIBILITY=1 to suppress this check and build anyway using the stable ABI\n         warning: build failed, waiting for other jobs to finish...\n         💥 maturin failed\n           Caused by: Failed to build a native library through cargo\n           Caused by: Cargo build finished with \"exit status: 101\": `env -u CARGO PYO3_ENVIRONMENT_SIGNATURE=\"cpython-3.15-64bit\" PYO3_PYTHON=\"/dev/shm/acr/work/_shared_cache/uv/builds-v0/.tmpBu0Jzv/bin/python\" PYTHON_SYS_EXECUTABLE=\"/dev/shm/acr/work/_shared_cache/uv/builds-v0/.tmpBu0Jzv/bin/python\" \"cargo\" \"rustc\" \"--features\" \"pyo3/extension-module\" \"--message-format\" \"json-render-diagnostics\" \"--manifest-path\" \"/dev/shm/acr/work/_shared_cache/uv/sdists-v10/pypi/rpds-py/0.26.0/dTVpdZjJEFqk_2mc/src/Cargo.toml\" \"--release\" \"--lib\"`\n         Error: command ['maturin', 'pep517', 'build-wheel', '-i', '/dev/shm/acr/work/_shared_cache/uv/builds-v0/.tmpBu0Jzv/bin/python', '--compatibility', 'off'] returned non-zero exit status 1\n\nhint: `rpds-py` (v0.26.0) was included because `bugsink` (v0.1.dev1+g33b7dd6) depends on `jsonschema` (v4.25.0) which depends on `rpds-py`\n\nhint: Build failures usually indicate a problem with the package or the build environment\n"
+    },
+    {
+     "step": "install -r requirements.txt",
+     "ok": false,
+     "seconds": 1.6,
+     "timed_out": false,
+     "log_tail": "un-if-env-changed=PYO3_USE_ABI3_FORWARD_COMPATIBILITY\n\n           --- stderr\n           error: the configured Python interpreter version (3.15) is newer than PyO3's maximum supported version (3.14)\n           = help: please check if an updated version of PyO3 is available. Current version: 0.25.1\n           = help: set PYO3_USE_ABI3_FORWARD_COMPATIBILITY=1 to suppress this check and build anyway using the stable ABI\n         warning: build failed, waiting for other jobs to finish...\n         💥 maturin failed\n           Caused by: Failed to build a native library through cargo\n           Caused by: Cargo build finished with \"exit status: 101\": `env -u CARGO PYO3_ENVIRONMENT_SIGNATURE=\"cpython-3.15-64bit\" PYO3_PYTHON=\"/dev/shm/acr/work/_shared_cache/uv/builds-v0/.tmpNsYqpO/bin/python\" PYTHON_SYS_EXECUTABLE=\"/dev/shm/acr/work/_shared_cache/uv/builds-v0/.tmpNsYqpO/bin/python\" \"cargo\" \"rustc\" \"--features\" \"pyo3/extension-module\" \"--message-format\" \"json-render-diagnostics\" \"--manifest-path\" \"/dev/shm/acr/work/_shared_cache/uv/sdists-v10/pypi/rpds-py/0.26.0/dTVpdZjJEFqk_2mc/src/Cargo.toml\" \"--release\" \"--lib\"`\n         Error: command ['maturin', 'pep517', 'build-wheel', '-i', '/dev/shm/acr/work/_shared_cache/uv/builds-v0/.tmpNsYqpO/bin/python', '--compatibility', 'off'] returned non-zero exit status 1\n\nhint: `rpds-py` (v0.26.0) was included because `jsonschema` (v4.25.0) depends on `rpds-py`\n\nhint: Build failures usually indicate a problem with the package or the build environment\n"
+    },
+    {
+     "step": "install pytest",
+     "ok": true,
+     "seconds": 0.0,
+     "timed_out": false,
+     "log_tail": ""
+    },
+    {
+     "step": "repair: install django python-dateutil",
+     "ok": true,
+     "seconds": 1.1,
+     "timed_out": false,
+     "log_tail": ""
+    }
+   ]
+  },
+  "selected_tests": [
+   {
+    "path": "bsmain/management/commands/stress_test.py",
+    "reason": "full_suite",
+    "exists_at_base": true
+   },
+   {
+    "path": "bugsink/test_utils.py",
+    "reason": "full_suite",
+    "exists_at_base": true
+   }
+  ],
+  "head_run": {
+   "status": "completed",
+   "exit_code": 2,
+   "seconds": 0.7,
+   "addopts_overridden": false,
+   "counts": {
+    "passed": 0,
+    "failed": 0,
+    "error": 2,
+    "skipped": 0
+   },
+   "tests": {
+    "::bsmain.management.commands.stress_test": {
+     "outcome": "error",
+     "detail": "collection failure\nImportError while importing test module '/dev/shm/acr/work/3273378564/src/head/bsmain/management/commands/stress_test.py'.\nHint: make sure your test modules/packages have valid Python names.\nTraceback:\n../../../_shared_cache/python/cpython-3.15.2-linux-x86_64-gnu/lib/python3.15/importlib/__init__.py:88: in import_module\n    return _bootstrap._gcd_import(name[level:], package, level)\n           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\nbsmain/management/commands/stress_test.py:4: in <module>\n    import brotli\nE   ModuleNotFoundError: No module named 'brotli'"
+    },
+    "::bugsink.test_utils": {
+     "outcome": "error",
+     "detail": "collection failure\nbugsink/test_utils.py:4: in <module>\n    from phonehome.models import Installation\nphonehome/models.py:10: in <module>\n    class Installation(models.Model):\n../../venv/lib/python3.15/site-packages/django/db/models/base.py:131: in __new__\n    app_config = apps.get_containing_app_config(module)\n                 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n../../venv/lib/python3.15/site-packages/django/apps/registry.py:260: in get_containing_app_config\n    self.check_apps_ready()\n../../venv/lib/python3.15/site-packages/django/apps/registry.py:137: in check_apps_ready\n    settings.INSTALLED_APPS\n../../venv/lib/python3.15/site-packages/django/conf/__init__.py:81: in __getattr__\n    self._setup(name)\n../../venv/lib/python3.15/site-packages/django/conf/__init__.py:61: in _setup\n    raise ImproperlyConfigured(\nE   django.core.exceptions.ImproperlyConfigured: Requested setting INSTALLED_APPS, but settings are not configured. You must either define the environment variable DJANGO_SETTINGS_MODULE or call settings.configure() before accessing settings."
+    }
+   },
+   "log_tail": ""
+  },
+  "base_run": {
+   "status": "completed",
+   "exit_code": 2,
+   "seconds": 0.7,
+   "addopts_overridden": false,
+   "counts": {
+    "passed": 0,
+    "failed": 0,
+    "error": 2,
+    "skipped": 0
+   },
+   "tests": {
+    "::bsmain.management.commands.stress_test": {
+     "outcome": "error",
+     "detail": "collection failure\nImportError while importing test module '/dev/shm/acr/work/3273378564/src/base/bsmain/management/commands/stress_test.py'.\nHint: make sure your test modules/packages have valid Python names.\nTraceback:\n../../../_shared_cache/python/cpython-3.15.2-linux-x86_64-gnu/lib/python3.15/importlib/__init__.py:88: in import_module\n    return _bootstrap._gcd_import(name[level:], package, level)\n           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\nbsmain/management/commands/stress_test.py:4: in <module>\n    import brotli\nE   ModuleNotFoundError: No module named 'brotli'"
+    },
+    "::bugsink.test_utils": {
+     "outcome": "error",
+     "detail": "collection failure\nbugsink/test_utils.py:4: in <module>\n    from phonehome.models import Installation\nphonehome/models.py:10: in <module>\n    class Installation(models.Model):\n../../venv/lib/python3.15/site-packages/django/db/models/base.py:131: in __new__\n    app_config = apps.get_containing_app_config(module)\n                 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n../../venv/lib/python3.15/site-packages/django/apps/registry.py:260: in get_containing_app_config\n    self.check_apps_ready()\n../../venv/lib/python3.15/site-packages/django/apps/registry.py:137: in check_apps_ready\n    settings.INSTALLED_APPS\n../../venv/lib/python3.15/site-packages/django/conf/__init__.py:81: in __getattr__\n    self._setup(name)\n../../venv/lib/python3.15/site-packages/django/conf/__init__.py:61: in _setup\n    raise ImproperlyConfigured(\nE   django.core.exceptions.ImproperlyConfigured: Requested setting INSTALLED_APPS, but settings are not configured. You must either define the environment variable DJANGO_SETTINGS_MODULE or call settings.configure() before accessing settings."
+    }
+   },
+   "log_tail": ""
+  },
+  "comparison": {
+   "regressions": [],
+   "new_test_failures": [],
+   "fixed": [],
+   "persistent_failures": [
+    "::bsmain.management.commands.stress_test",
+    "::bugsink.test_utils"
+   ]
+  },
+  "imports_head": {
+   "ingest.management.commands.vacuum_ingest_dir": {
+    "ok": true
+   },
+   "ingest.tests": {
+    "ok": false,
+    "type": "ImproperlyConfigured",
+    "message": "Requested setting INSTALLED_APPS, but settings are not configured. You must either define the environment variable DJANGO_SETTINGS_MODULE or call settings.configure() before accessing settings.",
+    "missing_module": null,
+    "file": "phonehome/models.py",
+    "line": 10,
+    "traceback": "<module>\n    from bugsink.test_utils import TransactionTestCase25251 as TransactionTestCase\n  File \"/dev/shm/acr/work/3273378564/src/head/bugsink/test_utils.py\", line 4, in <module>\n    from phonehome.models import Installation\n  File \"/dev/shm/acr/work/3273378564/src/head/phonehome/models.py\", line 10, in <module>\n    class Installation(models.Model):\n    ...<29 lines>...\n            return True\n  File \"/dev/shm/acr/work/3273378564/venv/lib/python3.15/site-packages/django/db/models/base.py\", line 131, in __new__\n    app_config = apps.get_containing_app_config(module)\n  File \"/dev/shm/acr/work/3273378564/venv/lib/python3.15/site-packages/django/apps/registry.py\", line 260, in get_containing_app_config\n    self.check_apps_ready()\n    ~~~~~~~~~~~~~~~~~~~~~^^\n  File \"/dev/shm/acr/work/3273378564/venv/lib/python3.15/site-packages/django/apps/registry.py\", line 137, in check_apps_ready\n    settings.INSTALLED_APPS\n  File \"/dev/shm/acr/work/3273378564/venv/lib/python3.15/site-packages/django/conf/__init__.py\", line 81, in __getattr__\n    self._setup(name)\n    ~~~~~~~~~~~^^^^^^\n  File \"/dev/shm/acr/work/3273378564/venv/lib/python3.15/site-packages/django/conf/__init__.py\", line 61, in _setup\n    raise ImproperlyConfigured(\n    ...<4 lines>...\n    )\ndjango.core.exceptions.ImproperlyConfigured: Requested setting INSTALLED_APPS, but settings are not configured. You must either define the environment variable DJANGO_SETTINGS_MODULE or call settings.configure() before accessing settings.\n"
+   }
+  },
+  "imports_base": {
+   "ingest.management.commands.vacuum_ingest_dir": {
+    "ok": false,
+    "type": "ModuleNotFoundError",
+    "message": "No module named 'ingest.management.commands.vacuum_ingest_dir'",
+    "missing_module": "ingest.management.commands.vacuum_ingest_dir",
+    "file": null,
+    "line": null,
+    "traceback": "Traceback (most recent call last):\n  File \"<string>\", line 7, in <module>\n    importlib.import_module(m)\n    ~~~~~~~~~~~~~~~~~~~~~~~^^^\n  File \"/dev/shm/acr/work/_shared_cache/python/cpython-3.15.2-linux-x86_64-gnu/lib/python3.15/importlib/__init__.py\", line 88, in import_module\n    return _bootstrap._gcd_import(name[level:], package, level)\n           ~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"<frozen importlib._bootstrap>\", line 1389, in _gcd_import\n  File \"<frozen importlib._bootstrap>\", line 1353, in _find_and_load\n  File \"<frozen importlib._bootstrap>\", line 1242, in _find_and_load_unlocked\nModuleNotFoundError: No module named 'ingest.management.commands.vacuum_ingest_dir'. Did you mean: 'ingest.management.commands.__init__'?\n"
+   },
+   "ingest.tests": {
+    "ok": false,
+    "type": "ImproperlyConfigured",
+    "message": "Requested setting INSTALLED_APPS, but settings are not configured. You must either define the environment variable DJANGO_SETTINGS_MODULE or call settings.configure() before accessing settings.",
+    "missing_module": null,
+    "file": "phonehome/models.py",
+    "line": 10,
+    "traceback": "<module>\n    from bugsink.test_utils import TransactionTestCase25251 as TransactionTestCase\n  File \"/dev/shm/acr/work/3273378564/src/base/bugsink/test_utils.py\", line 4, in <module>\n    from phonehome.models import Installation\n  File \"/dev/shm/acr/work/3273378564/src/base/phonehome/models.py\", line 10, in <module>\n    class Installation(models.Model):\n    ...<29 lines>...\n            return True\n  File \"/dev/shm/acr/work/3273378564/venv/lib/python3.15/site-packages/django/db/models/base.py\", line 131, in __new__\n    app_config = apps.get_containing_app_config(module)\n  File \"/dev/shm/acr/work/3273378564/venv/lib/python3.15/site-packages/django/apps/registry.py\", line 260, in get_containing_app_config\n    self.check_apps_ready()\n    ~~~~~~~~~~~~~~~~~~~~~^^\n  File \"/dev/shm/acr/work/3273378564/venv/lib/python3.15/site-packages/django/apps/registry.py\", line 137, in check_apps_ready\n    settings.INSTALLED_APPS\n  File \"/dev/shm/acr/work/3273378564/venv/lib/python3.15/site-packages/django/conf/__init__.py\", line 81, in __getattr__\n    self._setup(name)\n    ~~~~~~~~~~~^^^^^^\n  File \"/dev/shm/acr/work/3273378564/venv/lib/python3.15/site-packages/django/conf/__init__.py\", line 61, in _setup\n    raise ImproperlyConfigured(\n    ...<4 lines>...\n    )\ndjango.core.exceptions.ImproperlyConfigured: Requested setting INSTALLED_APPS, but settings are not configured. You must either define the environment variable DJANGO_SETTINGS_MODULE or call settings.configure() before accessing settings.\n"
+   }
+  },
+  "status": "completed",
+  "dependency_cutoff": "2025-07-29T12:07:47Z",
+  "seconds": 23.4,
+  "head_failures": 2
+ },
+ "findings": [
+  {
+   "tool": "bandit",
+   "rule": "B108",
+   "category": "security",
+   "severity": "medium",
+   "confidence": "medium",
+   "message": "hardcoded_tmp_directory: Probable insecure usage of temp file/directory.",
+   "file": "ingest/tests.py",
+   "line": 919,
+   "end_line": 919,
+   "cwe": 377,
+   "on_changed_line": true,
+   "evidence": {
+    "type": "static",
+    "source_line": "nonexistent_dir = \"/tmp/nonexistent_ingest_dir\"",
+    "more_info": "https://bandit.readthedocs.io/en/1.9.4/plugins/b108_hardcoded_tmp_directory.html"
+   },
+   "sources": [
+    "bandit"
+   ],
+   "finding_id": "42ff80c590e7",
+   "score": 1.9
+  },
+  {
+   "tool": "ruff",
+   "rule": "B904",
+   "category": "error-handling",
+   "severity": "low",
+   "confidence": "medium",
+   "message": "Within an `except` clause, raise exceptions with `raise ... from err` or `raise ... from None` to distinguish them from errors in exception handling",
+   "file": "ingest/management/commands/vacuum_ingest_dir.py",
+   "line": 79,
+   "end_line": 79,
+   "cwe": null,
+   "on_changed_line": true,
+   "evidence": {
+    "type": "static",
+    "source_line": "raise CommandError(\"Error accessing ingest directory {}: {}\".format(ingest_dir, e))",
+    "url": "https://docs.astral.sh/ruff/rules/raise-without-from-inside-except"
+   },
+   "sources": [
+    "ruff"
+   ],
+   "finding_id": "2b57660bbc8c",
+   "score": 1.2
+  },
+  {
+   "tool": "ruff",
+   "rule": "PLW0108",
+   "category": "maintainability",
+   "severity": "low",
+   "confidence": "low",
+   "message": "Lambda may be unnecessary; consider inlining inner function",
+   "file": "ingest/tests.py",
+   "line": 897,
+   "end_line": 897,
+   "cwe": null,
+   "on_changed_line": true,
+   "evidence": {
+    "type": "static",
+    "source_line": "self.addCleanup(lambda: self._cleanup_test_dir())",
+    "url": "https://docs.astral.sh/ruff/rules/unnecessary-lambda"
+   },
+   "sources": [
+    "ruff"
+   ],
+   "finding_id": "1ac917f5a834",
+   "score": 0.9
+  }
+ ],
+ "status": "ok",
+ "seconds": 26.8
+}

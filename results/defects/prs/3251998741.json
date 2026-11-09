@@ -1,0 +1,322 @@
+{
+ "pr_id": 3251998741,
+ "repository": "swingerman/ha-dual-smart-thermostat",
+ "pr_number": 394,
+ "split": "development",
+ "agent": "Copilot",
+ "head_sha": "bb467c17e02c62c4ddb45a7e3120c24d67b2064e",
+ "tool_versions": {
+  "ruff": "ruff 0.17.4",
+  "bandit": "__main__.py 1.9.4",
+  "python": "3.12.3"
+ },
+ "config": {
+  "run_tests": true,
+  "sandbox": true
+ },
+ "base_mode": "reverse_applied_diff",
+ "static": {
+  "files_analysed": 7,
+  "head_issues": 4,
+  "base_issues": 0,
+  "per_tool_head": {
+   "ruff": 4
+  },
+  "per_tool_base": {},
+  "introduced": 4,
+  "seconds": 1.0
+ },
+ "tests": {
+  "env": {
+   "status": "partial",
+   "python": "3.15.2",
+   "steps": [
+    {
+     "step": "venv",
+     "ok": true,
+     "seconds": 0.0,
+     "timed_out": false,
+     "log_tail": ""
+    },
+    {
+     "step": "install -e .",
+     "ok": false,
+     "seconds": 0.1,
+     "timed_out": false,
+     "log_tail": "error: `/dev/shm/acr/work/3251998741/src/head` does not appear to be a Python project, as neither `pyproject.toml` nor `setup.py` are present in the directory\n"
+    },
+    {
+     "step": "install -r requirements.txt",
+     "ok": false,
+     "seconds": 2.1,
+     "timed_out": false,
+     "log_tail": "tual:world', not found\n         Package libffi was not found in the pkg-config search path.\n         Perhaps you should add the directory containing `libffi.pc'\n         to the PKG_CONFIG_PATH environment variable\n         Package 'libffi', required by 'virtual:world', not found\n         /dev/shm/acr/work/_shared_cache/uv/builds-v0/.tmpOrdbIm/lib/python3.15/site-packages/setuptools/dist.py:759: SetuptoolsDeprecationWarning: License classifiers are deprecated.\n         !!\n\n                 ********************************************************************************\n                 Please consider removing the following classifiers in favor of a SPDX license expression:\n\n                 License :: OSI Approved :: MIT License\n\n                 See https://packaging.python.org/en/latest/guides/writing-pyproject-toml/#license for details.\n                 ********************************************************************************\n\n         !!\n           self._finalize_license_expression()\n         src/c/_cffi_backend.c:15:10: fatal error: ffi.h: No such file or directory\n            15 | #include <ffi.h>\n               |          ^~~~~~~\n         compilation terminated.\n         error: command '/usr/bin/cc' failed with exit code 1\n\nhint: `cffi` (v1.17.1) was included because `homeassistant` (v2025.7.3) depends on `cryptography` (v45.0.3) which depends on `cffi`\n\nhint: This error likely indicates that you need to install a library that provides `ffi.h` for `cffi@1.17.1`\n"
+    },
+    {
+     "step": "install -r requirements-dev.txt",
+     "ok": false,
+     "seconds": 0.9,
+     "timed_out": false,
+     "log_tail": "error: No solution found when resolving dependencies\n  cause: Because aiohttp==3.11.13 was yanked (reason: Regression: https://github.com/aio-libs/aiohttp/issues/10617) and homeassistant==2025.3.3 depends on aiohttp==3.11.13, we can conclude that homeassistant==2025.3.3 cannot be used.\n         And because pytest-homeassistant-custom-component==0.13.224 depends on homeassistant==2025.3.3 and you require pytest-homeassistant-custom-component==0.13.224, we can conclude that your requirements are unsatisfiable.\n"
+    },
+    {
+     "step": "install pytest",
+     "ok": true,
+     "seconds": 0.1,
+     "timed_out": false,
+     "log_tail": ""
+    },
+    {
+     "step": "repair: install homeassistant",
+     "ok": false,
+     "seconds": 1.4,
+     "timed_out": false,
+     "log_tail": "tual:world', not found\n         Package libffi was not found in the pkg-config search path.\n         Perhaps you should add the directory containing `libffi.pc'\n         to the PKG_CONFIG_PATH environment variable\n         Package 'libffi', required by 'virtual:world', not found\n         /dev/shm/acr/work/_shared_cache/uv/builds-v0/.tmpzXYyB1/lib/python3.15/site-packages/setuptools/dist.py:759: SetuptoolsDeprecationWarning: License classifiers are deprecated.\n         !!\n\n                 ********************************************************************************\n                 Please consider removing the following classifiers in favor of a SPDX license expression:\n\n                 License :: OSI Approved :: MIT License\n\n                 See https://packaging.python.org/en/latest/guides/writing-pyproject-toml/#license for details.\n                 ********************************************************************************\n\n         !!\n           self._finalize_license_expression()\n         src/c/_cffi_backend.c:15:10: fatal error: ffi.h: No such file or directory\n            15 | #include <ffi.h>\n               |          ^~~~~~~\n         compilation terminated.\n         error: command '/usr/bin/cc' failed with exit code 1\n\nhint: `cffi` (v1.17.1) was included because `homeassistant` (v2025.7.3) depends on `cryptography` (v45.0.3) which depends on `cffi`\n\nhint: This error likely indicates that you need to install a library that provides `ffi.h` for `cffi@1.17.1`\n"
+    }
+   ]
+  },
+  "selected_tests": [
+   {
+    "path": "tests/test_multi_entity.py",
+    "reason": "changed_in_pr",
+    "exists_at_base": false
+   }
+  ],
+  "head_run": {
+   "status": "usage_error",
+   "exit_code": 4,
+   "seconds": 0.5,
+   "addopts_overridden": true,
+   "counts": {
+    "passed": 0,
+    "failed": 0,
+    "error": 0,
+    "skipped": 0
+   },
+   "tests": {},
+   "log_tail": "\nImportError while loading conftest '/dev/shm/acr/work/3251998741/src/head/tests/conftest.py'.\ntests/__init__.py:6: in <module>\n    from homeassistant.components.climate import (\nE   ModuleNotFoundError: No module named 'homeassistant'\n"
+  },
+  "base_run": {
+   "status": "not_run",
+   "tests": {}
+  },
+  "comparison": {
+   "regressions": [],
+   "new_test_failures": [],
+   "fixed": [],
+   "persistent_failures": []
+  },
+  "imports_head": {
+   "custom_components.dual_smart_thermostat.climate": {
+    "ok": false,
+    "type": "ModuleNotFoundError",
+    "message": "No module named 'homeassistant'",
+    "missing_module": "homeassistant",
+    "file": "custom_components/dual_smart_thermostat/__init__.py",
+    "line": 3,
+    "traceback": "Traceback (most recent call last):\n  File \"<string>\", line 7, in <module>\n    importlib.import_module(m)\n    ~~~~~~~~~~~~~~~~~~~~~~~^^^\n  File \"/dev/shm/acr/work/_shared_cache/python/cpython-3.15.2-linux-x86_64-gnu/lib/python3.15/importlib/__init__.py\", line 88, in import_module\n    return _bootstrap._gcd_import(name[level:], package, level)\n           ~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"<frozen importlib._bootstrap>\", line 1389, in _gcd_import\n  File \"<frozen importlib._bootstrap>\", line 1338, in _find_and_load\n  File \"<frozen importlib._bootstrap>\", line 1299, in _resolve_parents\n  File \"<frozen importlib._bootstrap>\", line 491, in _call_with_frames_removed\n  File \"<frozen importlib._bootstrap>\", line 1389, in _gcd_import\n  File \"<frozen importlib._bootstrap>\", line 1353, in _find_and_load\n  File \"<frozen importlib._bootstrap>\", line 1249, in _find_and_load_unlocked\n  File \"<frozen importlib._bootstrap>\", line 857, in _load_unlocked\n  File \"<frozen importlib._bootstrap_external>\", line 751, in exec_module\n  File \"<frozen importlib._bootstrap>\", line 491, in _call_with_frames_removed\n  File \"/dev/shm/acr/work/3251998741/src/head/custom_components/dual_smart_thermostat/__init__.py\", line 3, in <module>\n    from homeassistant.const import Platform\nModuleNotFoundError: No module named 'homeassistant'\n"
+   },
+   "custom_components.dual_smart_thermostat.const": {
+    "ok": false,
+    "type": "ModuleNotFoundError",
+    "message": "No module named 'homeassistant'",
+    "missing_module": "homeassistant",
+    "file": "custom_components/dual_smart_thermostat/__init__.py",
+    "line": 3,
+    "traceback": "Traceback (most recent call last):\n  File \"<string>\", line 7, in <module>\n    importlib.import_module(m)\n    ~~~~~~~~~~~~~~~~~~~~~~~^^^\n  File \"/dev/shm/acr/work/_shared_cache/python/cpython-3.15.2-linux-x86_64-gnu/lib/python3.15/importlib/__init__.py\", line 88, in import_module\n    return _bootstrap._gcd_import(name[level:], package, level)\n           ~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"<frozen importlib._bootstrap>\", line 1389, in _gcd_import\n  File \"<frozen importlib._bootstrap>\", line 1338, in _find_and_load\n  File \"<frozen importlib._bootstrap>\", line 1299, in _resolve_parents\n  File \"<frozen importlib._bootstrap>\", line 491, in _call_with_frames_removed\n  File \"<frozen importlib._bootstrap>\", line 1389, in _gcd_import\n  File \"<frozen importlib._bootstrap>\", line 1353, in _find_and_load\n  File \"<frozen importlib._bootstrap>\", line 1249, in _find_and_load_unlocked\n  File \"<frozen importlib._bootstrap>\", line 857, in _load_unlocked\n  File \"<frozen importlib._bootstrap_external>\", line 751, in exec_module\n  File \"<frozen importlib._bootstrap>\", line 491, in _call_with_frames_removed\n  File \"/dev/shm/acr/work/3251998741/src/head/custom_components/dual_smart_thermostat/__init__.py\", line 3, in <module>\n    from homeassistant.const import Platform\nModuleNotFoundError: No module named 'homeassistant'\n"
+   },
+   "custom_components.dual_smart_thermostat.hvac_device.hvac_device_factory": {
+    "ok": false,
+    "type": "ModuleNotFoundError",
+    "message": "No module named 'homeassistant'",
+    "missing_module": "homeassistant",
+    "file": "custom_components/dual_smart_thermostat/__init__.py",
+    "line": 3,
+    "traceback": "~~^^^\n  File \"/dev/shm/acr/work/_shared_cache/python/cpython-3.15.2-linux-x86_64-gnu/lib/python3.15/importlib/__init__.py\", line 88, in import_module\n    return _bootstrap._gcd_import(name[level:], package, level)\n           ~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"<frozen importlib._bootstrap>\", line 1389, in _gcd_import\n  File \"<frozen importlib._bootstrap>\", line 1338, in _find_and_load\n  File \"<frozen importlib._bootstrap>\", line 1299, in _resolve_parents\n  File \"<frozen importlib._bootstrap>\", line 491, in _call_with_frames_removed\n  File \"<frozen importlib._bootstrap>\", line 1389, in _gcd_import\n  File \"<frozen importlib._bootstrap>\", line 1338, in _find_and_load\n  File \"<frozen importlib._bootstrap>\", line 1299, in _resolve_parents\n  File \"<frozen importlib._bootstrap>\", line 491, in _call_with_frames_removed\n  File \"<frozen importlib._bootstrap>\", line 1389, in _gcd_import\n  File \"<frozen importlib._bootstrap>\", line 1353, in _find_and_load\n  File \"<frozen importlib._bootstrap>\", line 1249, in _find_and_load_unlocked\n  File \"<frozen importlib._bootstrap>\", line 857, in _load_unlocked\n  File \"<frozen importlib._bootstrap_external>\", line 751, in exec_module\n  File \"<frozen importlib._bootstrap>\", line 491, in _call_with_frames_removed\n  File \"/dev/shm/acr/work/3251998741/src/head/custom_components/dual_smart_thermostat/__init__.py\", line 3, in <module>\n    from homeassistant.const import Platform\nModuleNotFoundError: No module named 'homeassistant'\n"
+   },
+   "custom_components.dual_smart_thermostat.hvac_device.multi_cooler_device": {
+    "ok": false,
+    "type": "ModuleNotFoundError",
+    "message": "No module named 'homeassistant'",
+    "missing_module": "homeassistant",
+    "file": "custom_components/dual_smart_thermostat/__init__.py",
+    "line": 3,
+    "traceback": "~~^^^\n  File \"/dev/shm/acr/work/_shared_cache/python/cpython-3.15.2-linux-x86_64-gnu/lib/python3.15/importlib/__init__.py\", line 88, in import_module\n    return _bootstrap._gcd_import(name[level:], package, level)\n           ~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"<frozen importlib._bootstrap>\", line 1389, in _gcd_import\n  File \"<frozen importlib._bootstrap>\", line 1338, in _find_and_load\n  File \"<frozen importlib._bootstrap>\", line 1299, in _resolve_parents\n  File \"<frozen importlib._bootstrap>\", line 491, in _call_with_frames_removed\n  File \"<frozen importlib._bootstrap>\", line 1389, in _gcd_import\n  File \"<frozen importlib._bootstrap>\", line 1338, in _find_and_load\n  File \"<frozen importlib._bootstrap>\", line 1299, in _resolve_parents\n  File \"<frozen importlib._bootstrap>\", line 491, in _call_with_frames_removed\n  File \"<frozen importlib._bootstrap>\", line 1389, in _gcd_import\n  File \"<frozen importlib._bootstrap>\", line 1353, in _find_and_load\n  File \"<frozen importlib._bootstrap>\", line 1249, in _find_and_load_unlocked\n  File \"<frozen importlib._bootstrap>\", line 857, in _load_unlocked\n  File \"<frozen importlib._bootstrap_external>\", line 751, in exec_module\n  File \"<frozen importlib._bootstrap>\", line 491, in _call_with_frames_removed\n  File \"/dev/shm/acr/work/3251998741/src/head/custom_components/dual_smart_thermostat/__init__.py\", line 3, in <module>\n    from homeassistant.const import Platform\nModuleNotFoundError: No module named 'homeassistant'\n"
+   },
+   "custom_components.dual_smart_thermostat.hvac_device.multi_heater_device": {
+    "ok": false,
+    "type": "ModuleNotFoundError",
+    "message": "No module named 'homeassistant'",
+    "missing_module": "homeassistant",
+    "file": "custom_components/dual_smart_thermostat/__init__.py",
+    "line": 3,
+    "traceback": "~~^^^\n  File \"/dev/shm/acr/work/_shared_cache/python/cpython-3.15.2-linux-x86_64-gnu/lib/python3.15/importlib/__init__.py\", line 88, in import_module\n    return _bootstrap._gcd_import(name[level:], package, level)\n           ~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"<frozen importlib._bootstrap>\", line 1389, in _gcd_import\n  File \"<frozen importlib._bootstrap>\", line 1338, in _find_and_load\n  File \"<frozen importlib._bootstrap>\", line 1299, in _resolve_parents\n  File \"<frozen importlib._bootstrap>\", line 491, in _call_with_frames_removed\n  File \"<frozen importlib._bootstrap>\", line 1389, in _gcd_import\n  File \"<frozen importlib._bootstrap>\", line 1338, in _find_and_load\n  File \"<frozen importlib._bootstrap>\", line 1299, in _resolve_parents\n  File \"<frozen importlib._bootstrap>\", line 491, in _call_with_frames_removed\n  File \"<frozen importlib._bootstrap>\", line 1389, in _gcd_import\n  File \"<frozen importlib._bootstrap>\", line 1353, in _find_and_load\n  File \"<frozen importlib._bootstrap>\", line 1249, in _find_and_load_unlocked\n  File \"<frozen importlib._bootstrap>\", line 857, in _load_unlocked\n  File \"<frozen importlib._bootstrap_external>\", line 751, in exec_module\n  File \"<frozen importlib._bootstrap>\", line 491, in _call_with_frames_removed\n  File \"/dev/shm/acr/work/3251998741/src/head/custom_components/dual_smart_thermostat/__init__.py\", line 3, in <module>\n    from homeassistant.const import Platform\nModuleNotFoundError: No module named 'homeassistant'\n"
+   },
+   "custom_components.dual_smart_thermostat.hvac_device.multi_switch_device": {
+    "ok": false,
+    "type": "ModuleNotFoundError",
+    "message": "No module named 'homeassistant'",
+    "missing_module": "homeassistant",
+    "file": "custom_components/dual_smart_thermostat/__init__.py",
+    "line": 3,
+    "traceback": "~~^^^\n  File \"/dev/shm/acr/work/_shared_cache/python/cpython-3.15.2-linux-x86_64-gnu/lib/python3.15/importlib/__init__.py\", line 88, in import_module\n    return _bootstrap._gcd_import(name[level:], package, level)\n           ~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"<frozen importlib._bootstrap>\", line 1389, in _gcd_import\n  File \"<frozen importlib._bootstrap>\", line 1338, in _find_and_load\n  File \"<frozen importlib._bootstrap>\", line 1299, in _resolve_parents\n  File \"<frozen importlib._bootstrap>\", line 491, in _call_with_frames_removed\n  File \"<frozen importlib._bootstrap>\", line 1389, in _gcd_import\n  File \"<frozen importlib._bootstrap>\", line 1338, in _find_and_load\n  File \"<frozen importlib._bootstrap>\", line 1299, in _resolve_parents\n  File \"<frozen importlib._bootstrap>\", line 491, in _call_with_frames_removed\n  File \"<frozen importlib._bootstrap>\", line 1389, in _gcd_import\n  File \"<frozen importlib._bootstrap>\", line 1353, in _find_and_load\n  File \"<frozen importlib._bootstrap>\", line 1249, in _find_and_load_unlocked\n  File \"<frozen importlib._bootstrap>\", line 857, in _load_unlocked\n  File \"<frozen importlib._bootstrap_external>\", line 751, in exec_module\n  File \"<frozen importlib._bootstrap>\", line 491, in _call_with_frames_removed\n  File \"/dev/shm/acr/work/3251998741/src/head/custom_components/dual_smart_thermostat/__init__.py\", line 3, in <module>\n    from homeassistant.const import Platform\nModuleNotFoundError: No module named 'homeassistant'\n"
+   }
+  },
+  "imports_base": {
+   "custom_components.dual_smart_thermostat.climate": {
+    "ok": false,
+    "type": "ModuleNotFoundError",
+    "message": "No module named 'homeassistant'",
+    "missing_module": "homeassistant",
+    "file": "custom_components/dual_smart_thermostat/__init__.py",
+    "line": 3,
+    "traceback": "Traceback (most recent call last):\n  File \"<string>\", line 7, in <module>\n    importlib.import_module(m)\n    ~~~~~~~~~~~~~~~~~~~~~~~^^^\n  File \"/dev/shm/acr/work/_shared_cache/python/cpython-3.15.2-linux-x86_64-gnu/lib/python3.15/importlib/__init__.py\", line 88, in import_module\n    return _bootstrap._gcd_import(name[level:], package, level)\n           ~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"<frozen importlib._bootstrap>\", line 1389, in _gcd_import\n  File \"<frozen importlib._bootstrap>\", line 1338, in _find_and_load\n  File \"<frozen importlib._bootstrap>\", line 1299, in _resolve_parents\n  File \"<frozen importlib._bootstrap>\", line 491, in _call_with_frames_removed\n  File \"<frozen importlib._bootstrap>\", line 1389, in _gcd_import\n  File \"<frozen importlib._bootstrap>\", line 1353, in _find_and_load\n  File \"<frozen importlib._bootstrap>\", line 1249, in _find_and_load_unlocked\n  File \"<frozen importlib._bootstrap>\", line 857, in _load_unlocked\n  File \"<frozen importlib._bootstrap_external>\", line 751, in exec_module\n  File \"<frozen importlib._bootstrap>\", line 491, in _call_with_frames_removed\n  File \"/dev/shm/acr/work/3251998741/src/base/custom_components/dual_smart_thermostat/__init__.py\", line 3, in <module>\n    from homeassistant.const import Platform\nModuleNotFoundError: No module named 'homeassistant'\n"
+   },
+   "custom_components.dual_smart_thermostat.const": {
+    "ok": false,
+    "type": "ModuleNotFoundError",
+    "message": "No module named 'homeassistant'",
+    "missing_module": "homeassistant",
+    "file": "custom_components/dual_smart_thermostat/__init__.py",
+    "line": 3,
+    "traceback": "Traceback (most recent call last):\n  File \"<string>\", line 7, in <module>\n    importlib.import_module(m)\n    ~~~~~~~~~~~~~~~~~~~~~~~^^^\n  File \"/dev/shm/acr/work/_shared_cache/python/cpython-3.15.2-linux-x86_64-gnu/lib/python3.15/importlib/__init__.py\", line 88, in import_module\n    return _bootstrap._gcd_import(name[level:], package, level)\n           ~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"<frozen importlib._bootstrap>\", line 1389, in _gcd_import\n  File \"<frozen importlib._bootstrap>\", line 1338, in _find_and_load\n  File \"<frozen importlib._bootstrap>\", line 1299, in _resolve_parents\n  File \"<frozen importlib._bootstrap>\", line 491, in _call_with_frames_removed\n  File \"<frozen importlib._bootstrap>\", line 1389, in _gcd_import\n  File \"<frozen importlib._bootstrap>\", line 1353, in _find_and_load\n  File \"<frozen importlib._bootstrap>\", line 1249, in _find_and_load_unlocked\n  File \"<frozen importlib._bootstrap>\", line 857, in _load_unlocked\n  File \"<frozen importlib._bootstrap_external>\", line 751, in exec_module\n  File \"<frozen importlib._bootstrap>\", line 491, in _call_with_frames_removed\n  File \"/dev/shm/acr/work/3251998741/src/base/custom_components/dual_smart_thermostat/__init__.py\", line 3, in <module>\n    from homeassistant.const import Platform\nModuleNotFoundError: No module named 'homeassistant'\n"
+   },
+   "custom_components.dual_smart_thermostat.hvac_device.hvac_device_factory": {
+    "ok": false,
+    "type": "ModuleNotFoundError",
+    "message": "No module named 'homeassistant'",
+    "missing_module": "homeassistant",
+    "file": "custom_components/dual_smart_thermostat/__init__.py",
+    "line": 3,
+    "traceback": "~~^^^\n  File \"/dev/shm/acr/work/_shared_cache/python/cpython-3.15.2-linux-x86_64-gnu/lib/python3.15/importlib/__init__.py\", line 88, in import_module\n    return _bootstrap._gcd_import(name[level:], package, level)\n           ~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"<frozen importlib._bootstrap>\", line 1389, in _gcd_import\n  File \"<frozen importlib._bootstrap>\", line 1338, in _find_and_load\n  File \"<frozen importlib._bootstrap>\", line 1299, in _resolve_parents\n  File \"<frozen importlib._bootstrap>\", line 491, in _call_with_frames_removed\n  File \"<frozen importlib._bootstrap>\", line 1389, in _gcd_import\n  File \"<frozen importlib._bootstrap>\", line 1338, in _find_and_load\n  File \"<frozen importlib._bootstrap>\", line 1299, in _resolve_parents\n  File \"<frozen importlib._bootstrap>\", line 491, in _call_with_frames_removed\n  File \"<frozen importlib._bootstrap>\", line 1389, in _gcd_import\n  File \"<frozen importlib._bootstrap>\", line 1353, in _find_and_load\n  File \"<frozen importlib._bootstrap>\", line 1249, in _find_and_load_unlocked\n  File \"<frozen importlib._bootstrap>\", line 857, in _load_unlocked\n  File \"<frozen importlib._bootstrap_external>\", line 751, in exec_module\n  File \"<frozen importlib._bootstrap>\", line 491, in _call_with_frames_removed\n  File \"/dev/shm/acr/work/3251998741/src/base/custom_components/dual_smart_thermostat/__init__.py\", line 3, in <module>\n    from homeassistant.const import Platform\nModuleNotFoundError: No module named 'homeassistant'\n"
+   },
+   "custom_components.dual_smart_thermostat.hvac_device.multi_cooler_device": {
+    "ok": false,
+    "type": "ModuleNotFoundError",
+    "message": "No module named 'homeassistant'",
+    "missing_module": "homeassistant",
+    "file": "custom_components/dual_smart_thermostat/__init__.py",
+    "line": 3,
+    "traceback": "~~^^^\n  File \"/dev/shm/acr/work/_shared_cache/python/cpython-3.15.2-linux-x86_64-gnu/lib/python3.15/importlib/__init__.py\", line 88, in import_module\n    return _bootstrap._gcd_import(name[level:], package, level)\n           ~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"<frozen importlib._bootstrap>\", line 1389, in _gcd_import\n  File \"<frozen importlib._bootstrap>\", line 1338, in _find_and_load\n  File \"<frozen importlib._bootstrap>\", line 1299, in _resolve_parents\n  File \"<frozen importlib._bootstrap>\", line 491, in _call_with_frames_removed\n  File \"<frozen importlib._bootstrap>\", line 1389, in _gcd_import\n  File \"<frozen importlib._bootstrap>\", line 1338, in _find_and_load\n  File \"<frozen importlib._bootstrap>\", line 1299, in _resolve_parents\n  File \"<frozen importlib._bootstrap>\", line 491, in _call_with_frames_removed\n  File \"<frozen importlib._bootstrap>\", line 1389, in _gcd_import\n  File \"<frozen importlib._bootstrap>\", line 1353, in _find_and_load\n  File \"<frozen importlib._bootstrap>\", line 1249, in _find_and_load_unlocked\n  File \"<frozen importlib._bootstrap>\", line 857, in _load_unlocked\n  File \"<frozen importlib._bootstrap_external>\", line 751, in exec_module\n  File \"<frozen importlib._bootstrap>\", line 491, in _call_with_frames_removed\n  File \"/dev/shm/acr/work/3251998741/src/base/custom_components/dual_smart_thermostat/__init__.py\", line 3, in <module>\n    from homeassistant.const import Platform\nModuleNotFoundError: No module named 'homeassistant'\n"
+   },
+   "custom_components.dual_smart_thermostat.hvac_device.multi_heater_device": {
+    "ok": false,
+    "type": "ModuleNotFoundError",
+    "message": "No module named 'homeassistant'",
+    "missing_module": "homeassistant",
+    "file": "custom_components/dual_smart_thermostat/__init__.py",
+    "line": 3,
+    "traceback": "~~^^^\n  File \"/dev/shm/acr/work/_shared_cache/python/cpython-3.15.2-linux-x86_64-gnu/lib/python3.15/importlib/__init__.py\", line 88, in import_module\n    return _bootstrap._gcd_import(name[level:], package, level)\n           ~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"<frozen importlib._bootstrap>\", line 1389, in _gcd_import\n  File \"<frozen importlib._bootstrap>\", line 1338, in _find_and_load\n  File \"<frozen importlib._bootstrap>\", line 1299, in _resolve_parents\n  File \"<frozen importlib._bootstrap>\", line 491, in _call_with_frames_removed\n  File \"<frozen importlib._bootstrap>\", line 1389, in _gcd_import\n  File \"<frozen importlib._bootstrap>\", line 1338, in _find_and_load\n  File \"<frozen importlib._bootstrap>\", line 1299, in _resolve_parents\n  File \"<frozen importlib._bootstrap>\", line 491, in _call_with_frames_removed\n  File \"<frozen importlib._bootstrap>\", line 1389, in _gcd_import\n  File \"<frozen importlib._bootstrap>\", line 1353, in _find_and_load\n  File \"<frozen importlib._bootstrap>\", line 1249, in _find_and_load_unlocked\n  File \"<frozen importlib._bootstrap>\", line 857, in _load_unlocked\n  File \"<frozen importlib._bootstrap_external>\", line 751, in exec_module\n  File \"<frozen importlib._bootstrap>\", line 491, in _call_with_frames_removed\n  File \"/dev/shm/acr/work/3251998741/src/base/custom_components/dual_smart_thermostat/__init__.py\", line 3, in <module>\n    from homeassistant.const import Platform\nModuleNotFoundError: No module named 'homeassistant'\n"
+   },
+   "custom_components.dual_smart_thermostat.hvac_device.multi_switch_device": {
+    "ok": false,
+    "type": "ModuleNotFoundError",
+    "message": "No module named 'homeassistant'",
+    "missing_module": "homeassistant",
+    "file": "custom_components/dual_smart_thermostat/__init__.py",
+    "line": 3,
+    "traceback": "~~^^^\n  File \"/dev/shm/acr/work/_shared_cache/python/cpython-3.15.2-linux-x86_64-gnu/lib/python3.15/importlib/__init__.py\", line 88, in import_module\n    return _bootstrap._gcd_import(name[level:], package, level)\n           ~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"<frozen importlib._bootstrap>\", line 1389, in _gcd_import\n  File \"<frozen importlib._bootstrap>\", line 1338, in _find_and_load\n  File \"<frozen importlib._bootstrap>\", line 1299, in _resolve_parents\n  File \"<frozen importlib._bootstrap>\", line 491, in _call_with_frames_removed\n  File \"<frozen importlib._bootstrap>\", line 1389, in _gcd_import\n  File \"<frozen importlib._bootstrap>\", line 1338, in _find_and_load\n  File \"<frozen importlib._bootstrap>\", line 1299, in _resolve_parents\n  File \"<frozen importlib._bootstrap>\", line 491, in _call_with_frames_removed\n  File \"<frozen importlib._bootstrap>\", line 1389, in _gcd_import\n  File \"<frozen importlib._bootstrap>\", line 1353, in _find_and_load\n  File \"<frozen importlib._bootstrap>\", line 1249, in _find_and_load_unlocked\n  File \"<frozen importlib._bootstrap>\", line 857, in _load_unlocked\n  File \"<frozen importlib._bootstrap_external>\", line 751, in exec_module\n  File \"<frozen importlib._bootstrap>\", line 491, in _call_with_frames_removed\n  File \"/dev/shm/acr/work/3251998741/src/base/custom_components/dual_smart_thermostat/__init__.py\", line 3, in <module>\n    from homeassistant.const import Platform\nModuleNotFoundError: No module named 'homeassistant'\n"
+   }
+  },
+  "status": "head_usage_error",
+  "dependency_cutoff": "2025-07-22T10:16:47Z",
+  "seconds": 5.9,
+  "head_failures": 0
+ },
+ "findings": [
+  {
+   "tool": "ruff",
+   "rule": "F401",
+   "category": "maintainability",
+   "severity": "low",
+   "confidence": "high",
+   "message": "`homeassistant.core.Context` imported but unused",
+   "file": "custom_components/dual_smart_thermostat/hvac_device/multi_switch_device.py",
+   "line": 15,
+   "end_line": 15,
+   "cwe": null,
+   "on_changed_line": true,
+   "evidence": {
+    "type": "static",
+    "source_line": "from homeassistant.core import DOMAIN as HA_DOMAIN, Context, HomeAssistant",
+    "url": "https://docs.astral.sh/ruff/rules/unused-import"
+   },
+   "sources": [
+    "ruff"
+   ],
+   "finding_id": "6ea6407e344a",
+   "score": 1.5
+  },
+  {
+   "tool": "ruff",
+   "rule": "F401",
+   "category": "maintainability",
+   "severity": "low",
+   "confidence": "high",
+   "message": "`pytest` imported but unused",
+   "file": "tests/test_multi_entity.py",
+   "line": 3,
+   "end_line": 3,
+   "cwe": null,
+   "on_changed_line": true,
+   "evidence": {
+    "type": "static",
+    "source_line": "import pytest",
+    "url": "https://docs.astral.sh/ruff/rules/unused-import"
+   },
+   "sources": [
+    "ruff"
+   ],
+   "finding_id": "74a5b052328e",
+   "score": 1.5
+  },
+  {
+   "tool": "ruff",
+   "rule": "RUF012",
+   "category": "correctness",
+   "severity": "low",
+   "confidence": "medium",
+   "message": "Mutable default value for class attribute",
+   "file": "custom_components/dual_smart_thermostat/hvac_device/multi_cooler_device.py",
+   "line": 35,
+   "end_line": 35,
+   "cwe": null,
+   "on_changed_line": true,
+   "evidence": {
+    "type": "static",
+    "source_line": "hvac_modes = [HVACMode.COOL, HVACMode.OFF]",
+    "url": "https://docs.astral.sh/ruff/rules/mutable-class-default"
+   },
+   "sources": [
+    "ruff"
+   ],
+   "finding_id": "a763368e769d",
+   "score": 1.2
+  },
+  {
+   "tool": "ruff",
+   "rule": "RUF012",
+   "category": "correctness",
+   "severity": "low",
+   "confidence": "medium",
+   "message": "Mutable default value for class attribute",
+   "file": "custom_components/dual_smart_thermostat/hvac_device/multi_heater_device.py",
+   "line": 35,
+   "end_line": 35,
+   "cwe": null,
+   "on_changed_line": true,
+   "evidence": {
+    "type": "static",
+    "source_line": "hvac_modes = [HVACMode.HEAT, HVACMode.OFF]",
+    "url": "https://docs.astral.sh/ruff/rules/mutable-class-default"
+   },
+   "sources": [
+    "ruff"
+   ],
+   "finding_id": "1bdcf1877416",
+   "score": 1.2
+  }
+ ],
+ "status": "ok",
+ "seconds": 9.4
+}

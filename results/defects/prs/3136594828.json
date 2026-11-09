@@ -1,0 +1,152 @@
+{
+ "pr_id": 3136594828,
+ "repository": "microsoft/Qcodes",
+ "pr_number": 7222,
+ "split": "development",
+ "agent": "Copilot",
+ "head_sha": "499c1c92f109ed7b2f8b872d1d10efd5010f9072",
+ "tool_versions": {
+  "ruff": "ruff 0.17.4",
+  "bandit": "__main__.py 1.9.4",
+  "python": "3.12.3"
+ },
+ "config": {
+  "run_tests": true,
+  "sandbox": true
+ },
+ "base_mode": "reverse_applied_diff",
+ "static": {
+  "files_analysed": 2,
+  "head_issues": 3,
+  "base_issues": 3,
+  "per_tool_head": {
+   "ruff": 3
+  },
+  "per_tool_base": {
+   "ruff": 3
+  },
+  "introduced": 0,
+  "seconds": 0.3
+ },
+ "tests": {
+  "env": {
+   "status": "partial",
+   "python": "3.12.10",
+   "steps": [
+    {
+     "step": "venv",
+     "ok": true,
+     "seconds": 0.0,
+     "timed_out": false,
+     "log_tail": ""
+    },
+    {
+     "step": "install -e .[test]",
+     "ok": false,
+     "seconds": 2.0,
+     "timed_out": false,
+     "log_tail": "error: No solution found when resolving dependencies\n  cause: Because zhinst-qcodes>=0.5.0 depends on qcodes>=0.30.0 and qcodes[test]==0.0 depends on zhinst-qcodes>=0.5, we can conclude that qcodes[test]==0.0 depends on qcodes>=0.30.0.\n         And because only qcodes[test]==0.0 is available and you require qcodes[test], we can conclude that your requirements are unsatisfiable.\n",
+     "superseded": true
+    },
+    {
+     "step": "install -e .",
+     "ok": true,
+     "seconds": 6.8,
+     "timed_out": false,
+     "log_tail": ""
+    },
+    {
+     "step": "install -r requirements.txt",
+     "ok": false,
+     "seconds": 0.4,
+     "timed_out": false,
+     "log_tail": "error: No solution found when resolving dependencies\n  cause: Because the current Python version (3.12.10) does not satisfy Python>=3.13 and pyyaml-ft==8.0.0 depends on Python>=3.13, we can conclude that pyyaml-ft==8.0.0 cannot be used.\n         And because only pyyaml-ft<=8.0.0 is available and you require pyyaml-ft==8.0.0, we can conclude that your requirements are unsatisfiable.\n"
+    },
+    {
+     "step": "install pytest",
+     "ok": true,
+     "seconds": 0.0,
+     "timed_out": false,
+     "log_tail": ""
+    },
+    {
+     "step": "repair: install hypothesis",
+     "ok": true,
+     "seconds": 0.1,
+     "timed_out": false,
+     "log_tail": ""
+    }
+   ]
+  },
+  "selected_tests": [
+   {
+    "path": "tests/dataset/test_dataset_in_memory.py",
+    "reason": "changed_in_pr",
+    "exists_at_base": true
+   }
+  ],
+  "head_run": {
+   "status": "completed",
+   "exit_code": 3,
+   "seconds": 2.1,
+   "addopts_overridden": true,
+   "counts": {
+    "passed": 0,
+    "failed": 0,
+    "error": 1,
+    "skipped": 0
+   },
+   "tests": {
+    "pytest::internal": {
+     "outcome": "error",
+     "detail": "\n    teardown.throw(exception)\n  File \"/dev/shm/acr/work/3136594828/venv/lib/python3.12/site-packages/_pytest/warnings.py\", line 99, in pytest_collection\n    return (yield)\n            ^^^^^\n  File \"/dev/shm/acr/work/3136594828/venv/lib/python3.12/site-packages/pluggy/_callers.py\", line 152, in _multicall\n    teardown.send(result)\n  File \"/dev/shm/acr/work/3136594828/venv/lib/python3.12/site-packages/_pytest/config/__init__.py\", line 1452, in pytest_collection\n    self._validate_config_options()\n  File \"/dev/shm/acr/work/3136594828/venv/lib/python3.12/site-packages/_pytest/config/__init__.py\", line 1474, in _validate_config_options\n    self._warn_or_fail_if_strict(f\"Unknown config option: {key}\\n\")\n  File \"/dev/shm/acr/work/3136594828/venv/lib/python3.12/site-packages/_pytest/config/__init__.py\", line 1513, in _warn_or_fail_if_strict\n    self.issue_config_time_warning(PytestConfigWarning(message), stacklevel=3)\n  File \"/dev/shm/acr/work/3136594828/venv/lib/python3.12/site-packages/_pytest/config/__init__.py\", line 1565, in issue_config_time_warning\n    warnings.warn(warning, stacklevel=stacklevel)\npytest.PytestConfigWarning: Unknown config option: asyncio_default_fixture_loop_scope"
+    }
+   },
+   "log_tail": ""
+  },
+  "base_run": {
+   "status": "completed",
+   "exit_code": 3,
+   "seconds": 2.3,
+   "addopts_overridden": true,
+   "counts": {
+    "passed": 0,
+    "failed": 0,
+    "error": 1,
+    "skipped": 0
+   },
+   "tests": {
+    "pytest::internal": {
+     "outcome": "error",
+     "detail": "\n    teardown.throw(exception)\n  File \"/dev/shm/acr/work/3136594828/venv/lib/python3.12/site-packages/_pytest/warnings.py\", line 99, in pytest_collection\n    return (yield)\n            ^^^^^\n  File \"/dev/shm/acr/work/3136594828/venv/lib/python3.12/site-packages/pluggy/_callers.py\", line 152, in _multicall\n    teardown.send(result)\n  File \"/dev/shm/acr/work/3136594828/venv/lib/python3.12/site-packages/_pytest/config/__init__.py\", line 1452, in pytest_collection\n    self._validate_config_options()\n  File \"/dev/shm/acr/work/3136594828/venv/lib/python3.12/site-packages/_pytest/config/__init__.py\", line 1474, in _validate_config_options\n    self._warn_or_fail_if_strict(f\"Unknown config option: {key}\\n\")\n  File \"/dev/shm/acr/work/3136594828/venv/lib/python3.12/site-packages/_pytest/config/__init__.py\", line 1513, in _warn_or_fail_if_strict\n    self.issue_config_time_warning(PytestConfigWarning(message), stacklevel=3)\n  File \"/dev/shm/acr/work/3136594828/venv/lib/python3.12/site-packages/_pytest/config/__init__.py\", line 1565, in issue_config_time_warning\n    warnings.warn(warning, stacklevel=stacklevel)\npytest.PytestConfigWarning: Unknown config option: asyncio_default_fixture_loop_scope"
+    }
+   },
+   "log_tail": ""
+  },
+  "comparison": {
+   "regressions": [],
+   "new_test_failures": [],
+   "fixed": [],
+   "persistent_failures": [
+    "pytest::internal"
+   ]
+  },
+  "imports_head": {
+   "qcodes.dataset.data_set_in_memory": {
+    "ok": true
+   }
+  },
+  "imports_base": {
+   "qcodes.dataset.data_set_in_memory": {
+    "ok": true
+   }
+  },
+  "status": "completed",
+  "dependency_cutoff": "2025-07-25T09:45:16Z",
+  "seconds": 23.1,
+  "head_failures": 1
+ },
+ "findings": [],
+ "status": "ok",
+ "seconds": 27.8
+}

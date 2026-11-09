@@ -1,0 +1,208 @@
+{
+ "pr_id": 3070423135,
+ "repository": "beowolx/rensa",
+ "pr_number": 21,
+ "split": "development",
+ "agent": "OpenAI_Codex",
+ "head_sha": "5aa6e8d9c8de7513c96d4906101fdc5dd71cee93",
+ "tool_versions": {
+  "ruff": "ruff 0.17.4",
+  "bandit": "__main__.py 1.9.4",
+  "python": "3.12.3"
+ },
+ "config": {
+  "run_tests": true,
+  "sandbox": true
+ },
+ "base_mode": "reverse_applied_diff",
+ "static": {
+  "files_analysed": 3,
+  "head_issues": 8,
+  "base_issues": 5,
+  "per_tool_head": {
+   "ruff": 2,
+   "bandit": 6
+  },
+  "per_tool_base": {
+   "ruff": 1,
+   "bandit": 4
+  },
+  "introduced": 3,
+  "seconds": 0.2
+ },
+ "tests": {
+  "env": {
+   "status": "partial",
+   "python": "3.15.2",
+   "steps": [
+    {
+     "step": "venv",
+     "ok": true,
+     "seconds": 0.0,
+     "timed_out": false,
+     "log_tail": ""
+    },
+    {
+     "step": "install -e .",
+     "ok": false,
+     "seconds": 16.8,
+     "timed_out": false,
+     "log_tail": "un-if-env-changed=PYO3_CROSS_PYTHON_IMPLEMENTATION\n           cargo:rerun-if-env-changed=PYO3_PRINT_CONFIG\n           cargo:rerun-if-env-changed=PYO3_USE_ABI3_FORWARD_COMPATIBILITY\n\n           --- stderr\n           error: the configured Python interpreter version (3.15) is newer than PyO3's maximum supported version (3.13)\n           = help: please check if an updated version of PyO3 is available. Current version: 0.24.1\n           = help: set PYO3_USE_ABI3_FORWARD_COMPATIBILITY=1 to suppress this check and build anyway using the stable ABI\n         warning: build failed, waiting for other jobs to finish...\n         💥 maturin failed\n           Caused by: Failed to build a native library through cargo\n           Caused by: Cargo build finished with \"exit status: 101\": `env -u CARGO PYO3_ENVIRONMENT_SIGNATURE=\"cpython-3.15-64bit\" PYO3_PYTHON=\"/dev/shm/acr/work/_shared_cache/uv/builds-v0/.tmpjA0LwU/bin/python\" PYTHON_SYS_EXECUTABLE=\"/dev/shm/acr/work/_shared_cache/uv/builds-v0/.tmpjA0LwU/bin/python\" \"cargo\" \"rustc\" \"--features\" \"pyo3/extension-module\" \"--message-format\" \"json-render-diagnostics\" \"--manifest-path\" \"/dev/shm/acr/work/3070423135/src/head/Cargo.toml\" \"--release\" \"--lib\"`\n         Error: command ['maturin', 'pep517', 'build-wheel', '-i', '/dev/shm/acr/work/_shared_cache/uv/builds-v0/.tmpjA0LwU/bin/python', '--compatibility', 'off', '--editable'] returned non-zero exit status 1\n\nhint: Build failures usually indicate a problem with the package or the build environment\n"
+    },
+    {
+     "step": "install -r requirements.txt",
+     "ok": false,
+     "seconds": 2.2,
+     "timed_out": false,
+     "log_tail": "HON_IMPLEMENTATION\n           cargo:rerun-if-env-changed=PYO3_PRINT_CONFIG\n           cargo:rerun-if-env-changed=PYO3_USE_ABI3_FORWARD_COMPATIBILITY\n\n           --- stderr\n           error: the configured Python interpreter version (3.15) is newer than PyO3's maximum supported version (3.13)\n           = help: please check if an updated version of PyO3 is available. Current version: 0.23.4\n           = help: set PYO3_USE_ABI3_FORWARD_COMPATIBILITY=1 to suppress this check and build anyway using the stable ABI\n         warning: build failed, waiting for other jobs to finish...\n         💥 maturin failed\n           Caused by: Failed to build a native library through cargo\n           Caused by: Cargo build finished with \"exit status: 101\": `env -u CARGO PYO3_ENVIRONMENT_SIGNATURE=\"cpython-3.15-64bit\" PYO3_PYTHON=\"/dev/shm/acr/work/_shared_cache/uv/builds-v0/.tmpwvogEo/bin/python\" PYTHON_SYS_EXECUTABLE=\"/dev/shm/acr/work/_shared_cache/uv/builds-v0/.tmpwvogEo/bin/python\" \"cargo\" \"rustc\" \"--features\" \"pyo3/extension-module\" \"--message-format\" \"json-render-diagnostics\" \"--manifest-path\" \"/dev/shm/acr/work/_shared_cache/uv/sdists-v10/pypi/rensa/0.2.0/R1Y4jvk3xl2Dlj44/src/Cargo.toml\" \"--release\" \"--lib\"`\n         Error: command ['maturin', 'pep517', 'build-wheel', '-i', '/dev/shm/acr/work/_shared_cache/uv/builds-v0/.tmpwvogEo/bin/python', '--compatibility', 'off'] returned non-zero exit status 1\n\nhint: Build failures usually indicate a problem with the package or the build environment\n"
+    },
+    {
+     "step": "install pytest",
+     "ok": true,
+     "seconds": 0.0,
+     "timed_out": false,
+     "log_tail": ""
+    },
+    {
+     "step": "repair: install rensa",
+     "ok": false,
+     "seconds": 1.5,
+     "timed_out": false,
+     "log_tail": "HON_IMPLEMENTATION\n           cargo:rerun-if-env-changed=PYO3_PRINT_CONFIG\n           cargo:rerun-if-env-changed=PYO3_USE_ABI3_FORWARD_COMPATIBILITY\n\n           --- stderr\n           error: the configured Python interpreter version (3.15) is newer than PyO3's maximum supported version (3.13)\n           = help: please check if an updated version of PyO3 is available. Current version: 0.23.4\n           = help: set PYO3_USE_ABI3_FORWARD_COMPATIBILITY=1 to suppress this check and build anyway using the stable ABI\n         warning: build failed, waiting for other jobs to finish...\n         💥 maturin failed\n           Caused by: Failed to build a native library through cargo\n           Caused by: Cargo build finished with \"exit status: 101\": `env -u CARGO PYO3_ENVIRONMENT_SIGNATURE=\"cpython-3.15-64bit\" PYO3_PYTHON=\"/dev/shm/acr/work/_shared_cache/uv/builds-v0/.tmpFp0jDQ/bin/python\" PYTHON_SYS_EXECUTABLE=\"/dev/shm/acr/work/_shared_cache/uv/builds-v0/.tmpFp0jDQ/bin/python\" \"cargo\" \"rustc\" \"--features\" \"pyo3/extension-module\" \"--message-format\" \"json-render-diagnostics\" \"--manifest-path\" \"/dev/shm/acr/work/_shared_cache/uv/sdists-v10/pypi/rensa/0.2.0/R1Y4jvk3xl2Dlj44/src/Cargo.toml\" \"--release\" \"--lib\"`\n         Error: command ['maturin', 'pep517', 'build-wheel', '-i', '/dev/shm/acr/work/_shared_cache/uv/builds-v0/.tmpFp0jDQ/bin/python', '--compatibility', 'off'] returned non-zero exit status 1\n\nhint: Build failures usually indicate a problem with the package or the build environment\n"
+    }
+   ]
+  },
+  "selected_tests": [
+   {
+    "path": "tests/test_rensa.py",
+    "reason": "changed_in_pr",
+    "exists_at_base": true
+   }
+  ],
+  "head_run": {
+   "status": "completed",
+   "exit_code": 2,
+   "seconds": 0.3,
+   "addopts_overridden": false,
+   "counts": {
+    "passed": 0,
+    "failed": 0,
+    "error": 1,
+    "skipped": 0
+   },
+   "tests": {
+    "::tests.test_rensa": {
+     "outcome": "error",
+     "detail": "collection failure\nImportError while importing test module '/dev/shm/acr/work/3070423135/src/head/tests/test_rensa.py'.\nHint: make sure your test modules/packages have valid Python names.\nTraceback:\n../../../_shared_cache/python/cpython-3.15.2-linux-x86_64-gnu/lib/python3.15/importlib/__init__.py:88: in import_module\n    return _bootstrap._gcd_import(name[level:], package, level)\ntests/test_rensa.py:1: in <module>\n    from rensa import RMinHash, RMinHashLSH, CMinHash\nE   ModuleNotFoundError: No module named 'rensa'"
+    }
+   },
+   "log_tail": ""
+  },
+  "base_run": {
+   "status": "completed",
+   "exit_code": 2,
+   "seconds": 0.3,
+   "addopts_overridden": false,
+   "counts": {
+    "passed": 0,
+    "failed": 0,
+    "error": 1,
+    "skipped": 0
+   },
+   "tests": {
+    "::tests.test_rensa": {
+     "outcome": "error",
+     "detail": "collection failure\nImportError while importing test module '/dev/shm/acr/work/3070423135/src/base/tests/test_rensa.py'.\nHint: make sure your test modules/packages have valid Python names.\nTraceback:\n../../../_shared_cache/python/cpython-3.15.2-linux-x86_64-gnu/lib/python3.15/importlib/__init__.py:88: in import_module\n    return _bootstrap._gcd_import(name[level:], package, level)\ntests/test_rensa.py:1: in <module>\n    from rensa import RMinHash, RMinHashLSH\nE   ModuleNotFoundError: No module named 'rensa'"
+    }
+   },
+   "log_tail": ""
+  },
+  "comparison": {
+   "regressions": [],
+   "new_test_failures": [],
+   "fixed": [],
+   "persistent_failures": [
+    "::tests.test_rensa"
+   ]
+  },
+  "imports_head": {},
+  "imports_base": {},
+  "status": "completed",
+  "dependency_cutoff": "2025-05-29T16:42:48Z",
+  "seconds": 21.2,
+  "head_failures": 1
+ },
+ "findings": [
+  {
+   "tool": "bandit",
+   "rule": "B403",
+   "category": "security",
+   "severity": "low",
+   "confidence": "high",
+   "message": "blacklist: Consider possible security implications associated with pickle module.",
+   "file": "tests/test_rensa.py",
+   "line": 85,
+   "end_line": 85,
+   "cwe": 502,
+   "on_changed_line": true,
+   "evidence": {
+    "type": "static",
+    "source_line": "import pickle",
+    "more_info": "https://bandit.readthedocs.io/en/1.9.4/blacklists/blacklist_imports.html#b403-import-pickle"
+   },
+   "sources": [
+    "bandit"
+   ],
+   "finding_id": "9125d9f07136",
+   "score": 1.5
+  },
+  {
+   "tool": "bandit",
+   "rule": "B301",
+   "category": "security",
+   "severity": "low",
+   "confidence": "high",
+   "message": "blacklist: Pickle and modules that wrap it can be unsafe when used to deserialize untrusted data, possible security issue.",
+   "file": "tests/test_rensa.py",
+   "line": 87,
+   "end_line": 87,
+   "cwe": 502,
+   "on_changed_line": true,
+   "evidence": {
+    "type": "static",
+    "source_line": "m2 = pickle.loads(data)",
+    "more_info": "https://bandit.readthedocs.io/en/1.9.4/blacklists/blacklist_calls.html#b301-pickle"
+   },
+   "sources": [
+    "bandit"
+   ],
+   "finding_id": "8e4be5ec4108",
+   "score": 1.5
+  },
+  {
+   "tool": "ruff",
+   "rule": "B007",
+   "category": "maintainability",
+   "severity": "low",
+   "confidence": "medium",
+   "message": "Loop control variable `lib_name` not used within loop body",
+   "file": "benchmarks/advanced_benchmark.py",
+   "line": 168,
+   "end_line": 168,
+   "cwe": null,
+   "on_changed_line": true,
+   "evidence": {
+    "type": "static",
+    "source_line": "for lib_name, minhash_func, display_name in minhash_methods:",
+    "url": "https://docs.astral.sh/ruff/rules/unused-loop-control-variable"
+   },
+   "sources": [
+    "ruff"
+   ],
+   "finding_id": "70aa65f0c217",
+   "score": 1.2
+  }
+ ],
+ "status": "ok",
+ "seconds": 23.5
+}

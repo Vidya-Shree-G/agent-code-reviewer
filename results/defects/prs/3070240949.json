@@ -1,0 +1,190 @@
+{
+ "pr_id": 3070240949,
+ "repository": "briangu/klongpy",
+ "pr_number": 11,
+ "split": "development",
+ "agent": "OpenAI_Codex",
+ "head_sha": "deb788500c6ae0fdb676c0618f17875a3722b5ef",
+ "tool_versions": {
+  "ruff": "ruff 0.17.4",
+  "bandit": "__main__.py 1.9.4",
+  "python": "3.12.3"
+ },
+ "config": {
+  "run_tests": true,
+  "sandbox": true
+ },
+ "base_mode": "reverse_applied_diff",
+ "static": {
+  "files_analysed": 1,
+  "head_issues": 6,
+  "base_issues": 6,
+  "per_tool_head": {
+   "ruff": 4,
+   "bandit": 2
+  },
+  "per_tool_base": {
+   "ruff": 4,
+   "bandit": 2
+  },
+  "introduced": 0,
+  "seconds": 0.2
+ },
+ "tests": {
+  "env": {
+   "status": "ok",
+   "python": "3.15.2",
+   "steps": [
+    {
+     "step": "venv",
+     "ok": true,
+     "seconds": 0.0,
+     "timed_out": false,
+     "log_tail": ""
+    },
+    {
+     "step": "install -e .",
+     "ok": true,
+     "seconds": 0.5,
+     "timed_out": false,
+     "log_tail": ""
+    },
+    {
+     "step": "install pytest",
+     "ok": true,
+     "seconds": 0.0,
+     "timed_out": false,
+     "log_tail": ""
+    },
+    {
+     "step": "repair: install pandas",
+     "ok": true,
+     "seconds": 75.8,
+     "timed_out": false,
+     "log_tail": ""
+    }
+   ]
+  },
+  "selected_tests": [
+   {
+    "path": "tests/test_sys_fn.py",
+    "reason": "matches_module:sys_fn",
+    "exists_at_base": true
+   },
+   {
+    "path": "tests/test_sys_fn_db.py",
+    "reason": "matches_module:sys_fn",
+    "exists_at_base": true
+   },
+   {
+    "path": "tests/test_sys_fn_ipc.py",
+    "reason": "matches_module:sys_fn",
+    "exists_at_base": true
+   },
+   {
+    "path": "tests/test_sys_fn_timer.py",
+    "reason": "matches_module:sys_fn",
+    "exists_at_base": true
+   }
+  ],
+  "head_run": {
+   "status": "completed",
+   "exit_code": 1,
+   "seconds": 5.2,
+   "addopts_overridden": false,
+   "counts": {
+    "passed": 74,
+    "failed": 5,
+    "error": 0,
+    "skipped": 0
+   },
+   "tests": {
+    "tests.test_sys_fn_db.TestTablePrint::test_long_table_print": {
+     "outcome": "failed",
+     "detail": "x.endswith(\"__init__.py\"):\n                module = import_directory_module(x)\n            elif os.path.isfile(x):\n                module = import_file_module(x)\n            elif x in sys.modules:\n                module = sys.modules[x]\n            else:\n                module = import_module_from_sys(x)\n    \n            export_items = module.__dict__.get(\"klongpy_exports\") or module.__dict__\n            ffn = (lambda p: p[0] in from_set) if from_set is not None else (lambda p: not p[0].startswith(\"__\"))\n    \n            ctx = klong._context.pop()\n            try:\n                for name, item in filter(ffn, export_items.items()):\n                    try:\n                        klong[name] = _handle_import(item)\n                    except Exception as e:\n                        # TODO: this should be logged\n                        print(f\"failed to import function: {name}\", e)\n            finally:\n                klong._context.push(ctx)\n    \n            return 1\n        except Exception as e:\n            print(f\".py: {e}\")\n>           raise RuntimeError(f\"failed to load module: {x}\")\nE           RuntimeError: failed to load module: klongpy.db\n\nklongpy/sys_fn.py:424: RuntimeError"
+    },
+    "tests.test_sys_fn_db.TestTablePrint::test_table_print": {
+     "outcome": "failed",
+     "detail": "x.endswith(\"__init__.py\"):\n                module = import_directory_module(x)\n            elif os.path.isfile(x):\n                module = import_file_module(x)\n            elif x in sys.modules:\n                module = sys.modules[x]\n            else:\n                module = import_module_from_sys(x)\n    \n            export_items = module.__dict__.get(\"klongpy_exports\") or module.__dict__\n            ffn = (lambda p: p[0] in from_set) if from_set is not None else (lambda p: not p[0].startswith(\"__\"))\n    \n            ctx = klong._context.pop()\n            try:\n                for name, item in filter(ffn, export_items.items()):\n                    try:\n                        klong[name] = _handle_import(item)\n                    except Exception as e:\n                        # TODO: this should be logged\n                        print(f\"failed to import function: {name}\", e)\n            finally:\n                klong._context.push(ctx)\n    \n            return 1\n        except Exception as e:\n            print(f\".py: {e}\")\n>           raise RuntimeError(f\"failed to load module: {x}\")\nE           RuntimeError: failed to load module: klongpy.db\n\nklongpy/sys_fn.py:424: RuntimeError"
+    },
+    "tests.test_sys_fn_db.TestTableDataFrame::test_table_from_a_df_with_one_column_many_rows": {
+     "outcome": "failed",
+     "detail": "x.endswith(\"__init__.py\"):\n                module = import_directory_module(x)\n            elif os.path.isfile(x):\n                module = import_file_module(x)\n            elif x in sys.modules:\n                module = sys.modules[x]\n            else:\n                module = import_module_from_sys(x)\n    \n            export_items = module.__dict__.get(\"klongpy_exports\") or module.__dict__\n            ffn = (lambda p: p[0] in from_set) if from_set is not None else (lambda p: not p[0].startswith(\"__\"))\n    \n            ctx = klong._context.pop()\n            try:\n                for name, item in filter(ffn, export_items.items()):\n                    try:\n                        klong[name] = _handle_import(item)\n                    except Exception as e:\n                        # TODO: this should be logged\n                        print(f\"failed to import function: {name}\", e)\n            finally:\n                klong._context.push(ctx)\n    \n            return 1\n        except Exception as e:\n            print(f\".py: {e}\")\n>           raise RuntimeError(f\"failed to load module: {x}\")\nE           RuntimeError: failed to load module: klongpy.db\n\nklongpy/sys_fn.py:424: RuntimeError"
+    },
+    "tests.test_sys_fn_db.TestTableDataFrame::test_table_from_a_df_with_single_row_and_two_columns": {
+     "outcome": "failed",
+     "detail": "x.endswith(\"__init__.py\"):\n                module = import_directory_module(x)\n            elif os.path.isfile(x):\n                module = import_file_module(x)\n            elif x in sys.modules:\n                module = sys.modules[x]\n            else:\n                module = import_module_from_sys(x)\n    \n            export_items = module.__dict__.get(\"klongpy_exports\") or module.__dict__\n            ffn = (lambda p: p[0] in from_set) if from_set is not None else (lambda p: not p[0].startswith(\"__\"))\n    \n            ctx = klong._context.pop()\n            try:\n                for name, item in filter(ffn, export_items.items()):\n                    try:\n                        klong[name] = _handle_import(item)\n                    except Exception as e:\n                        # TODO: this should be logged\n                        print(f\"failed to import function: {name}\", e)\n            finally:\n                klong._context.push(ctx)\n    \n            return 1\n        except Exception as e:\n            print(f\".py: {e}\")\n>           raise RuntimeError(f\"failed to load module: {x}\")\nE           RuntimeError: failed to load module: klongpy.db\n\nklongpy/sys_fn.py:424: RuntimeError"
+    },
+    "tests.test_sys_fn_db.TestTableDataFrame::test_table_from_empty_df": {
+     "outcome": "failed",
+     "detail": "x.endswith(\"__init__.py\"):\n                module = import_directory_module(x)\n            elif os.path.isfile(x):\n                module = import_file_module(x)\n            elif x in sys.modules:\n                module = sys.modules[x]\n            else:\n                module = import_module_from_sys(x)\n    \n            export_items = module.__dict__.get(\"klongpy_exports\") or module.__dict__\n            ffn = (lambda p: p[0] in from_set) if from_set is not None else (lambda p: not p[0].startswith(\"__\"))\n    \n            ctx = klong._context.pop()\n            try:\n                for name, item in filter(ffn, export_items.items()):\n                    try:\n                        klong[name] = _handle_import(item)\n                    except Exception as e:\n                        # TODO: this should be logged\n                        print(f\"failed to import function: {name}\", e)\n            finally:\n                klong._context.push(ctx)\n    \n            return 1\n        except Exception as e:\n            print(f\".py: {e}\")\n>           raise RuntimeError(f\"failed to load module: {x}\")\nE           RuntimeError: failed to load module: klongpy.db\n\nklongpy/sys_fn.py:424: RuntimeError"
+    }
+   },
+   "log_tail": ""
+  },
+  "base_run": {
+   "status": "completed",
+   "exit_code": 1,
+   "seconds": 5.2,
+   "addopts_overridden": false,
+   "counts": {
+    "passed": 74,
+    "failed": 5,
+    "error": 0,
+    "skipped": 0
+   },
+   "tests": {
+    "tests.test_sys_fn_db.TestTablePrint::test_long_table_print": {
+     "outcome": "failed",
+     "detail": " or x.endswith(\"__init__.py\"):\n                module = import_directory_module(x)\n            elif os.path.isfile(x):\n                module = import_file_module(x)\n            elif x in sys.modules:\n                module = sys.modules[x]\n            else:\n                module = import_module_from_sys(x)\n    \n            export_items = module.__dict__.get(\"klongpy_exports\") or module.__dict__\n            ffn = lambda p: p[0] in from_set if from_set is not None else lambda p: not p[0].startswith(\"__\")\n    \n            ctx = klong._context.pop()\n            try:\n                for name, item in filter(ffn, export_items.items()):\n                    try:\n                        klong[name] = _handle_import(item)\n                    except Exception as e:\n                        # TODO: this should be logged\n                        print(f\"failed to import function: {name}\", e)\n            finally:\n                klong._context.push(ctx)\n    \n            return 1\n        except Exception as e:\n            print(f\".py: {e}\")\n>           raise RuntimeError(f\"failed to load module: {x}\")\nE           RuntimeError: failed to load module: klongpy.db\n\nklongpy/sys_fn.py:424: RuntimeError"
+    },
+    "tests.test_sys_fn_db.TestTablePrint::test_table_print": {
+     "outcome": "failed",
+     "detail": " or x.endswith(\"__init__.py\"):\n                module = import_directory_module(x)\n            elif os.path.isfile(x):\n                module = import_file_module(x)\n            elif x in sys.modules:\n                module = sys.modules[x]\n            else:\n                module = import_module_from_sys(x)\n    \n            export_items = module.__dict__.get(\"klongpy_exports\") or module.__dict__\n            ffn = lambda p: p[0] in from_set if from_set is not None else lambda p: not p[0].startswith(\"__\")\n    \n            ctx = klong._context.pop()\n            try:\n                for name, item in filter(ffn, export_items.items()):\n                    try:\n                        klong[name] = _handle_import(item)\n                    except Exception as e:\n                        # TODO: this should be logged\n                        print(f\"failed to import function: {name}\", e)\n            finally:\n                klong._context.push(ctx)\n    \n            return 1\n        except Exception as e:\n            print(f\".py: {e}\")\n>           raise RuntimeError(f\"failed to load module: {x}\")\nE           RuntimeError: failed to load module: klongpy.db\n\nklongpy/sys_fn.py:424: RuntimeError"
+    },
+    "tests.test_sys_fn_db.TestTableDataFrame::test_table_from_a_df_with_one_column_many_rows": {
+     "outcome": "failed",
+     "detail": " or x.endswith(\"__init__.py\"):\n                module = import_directory_module(x)\n            elif os.path.isfile(x):\n                module = import_file_module(x)\n            elif x in sys.modules:\n                module = sys.modules[x]\n            else:\n                module = import_module_from_sys(x)\n    \n            export_items = module.__dict__.get(\"klongpy_exports\") or module.__dict__\n            ffn = lambda p: p[0] in from_set if from_set is not None else lambda p: not p[0].startswith(\"__\")\n    \n            ctx = klong._context.pop()\n            try:\n                for name, item in filter(ffn, export_items.items()):\n                    try:\n                        klong[name] = _handle_import(item)\n                    except Exception as e:\n                        # TODO: this should be logged\n                        print(f\"failed to import function: {name}\", e)\n            finally:\n                klong._context.push(ctx)\n    \n            return 1\n        except Exception as e:\n            print(f\".py: {e}\")\n>           raise RuntimeError(f\"failed to load module: {x}\")\nE           RuntimeError: failed to load module: klongpy.db\n\nklongpy/sys_fn.py:424: RuntimeError"
+    },
+    "tests.test_sys_fn_db.TestTableDataFrame::test_table_from_a_df_with_single_row_and_two_columns": {
+     "outcome": "failed",
+     "detail": " or x.endswith(\"__init__.py\"):\n                module = import_directory_module(x)\n            elif os.path.isfile(x):\n                module = import_file_module(x)\n            elif x in sys.modules:\n                module = sys.modules[x]\n            else:\n                module = import_module_from_sys(x)\n    \n            export_items = module.__dict__.get(\"klongpy_exports\") or module.__dict__\n            ffn = lambda p: p[0] in from_set if from_set is not None else lambda p: not p[0].startswith(\"__\")\n    \n            ctx = klong._context.pop()\n            try:\n                for name, item in filter(ffn, export_items.items()):\n                    try:\n                        klong[name] = _handle_import(item)\n                    except Exception as e:\n                        # TODO: this should be logged\n                        print(f\"failed to import function: {name}\", e)\n            finally:\n                klong._context.push(ctx)\n    \n            return 1\n        except Exception as e:\n            print(f\".py: {e}\")\n>           raise RuntimeError(f\"failed to load module: {x}\")\nE           RuntimeError: failed to load module: klongpy.db\n\nklongpy/sys_fn.py:424: RuntimeError"
+    },
+    "tests.test_sys_fn_db.TestTableDataFrame::test_table_from_empty_df": {
+     "outcome": "failed",
+     "detail": " or x.endswith(\"__init__.py\"):\n                module = import_directory_module(x)\n            elif os.path.isfile(x):\n                module = import_file_module(x)\n            elif x in sys.modules:\n                module = sys.modules[x]\n            else:\n                module = import_module_from_sys(x)\n    \n            export_items = module.__dict__.get(\"klongpy_exports\") or module.__dict__\n            ffn = lambda p: p[0] in from_set if from_set is not None else lambda p: not p[0].startswith(\"__\")\n    \n            ctx = klong._context.pop()\n            try:\n                for name, item in filter(ffn, export_items.items()):\n                    try:\n                        klong[name] = _handle_import(item)\n                    except Exception as e:\n                        # TODO: this should be logged\n                        print(f\"failed to import function: {name}\", e)\n            finally:\n                klong._context.push(ctx)\n    \n            return 1\n        except Exception as e:\n            print(f\".py: {e}\")\n>           raise RuntimeError(f\"failed to load module: {x}\")\nE           RuntimeError: failed to load module: klongpy.db\n\nklongpy/sys_fn.py:424: RuntimeError"
+    }
+   },
+   "log_tail": ""
+  },
+  "comparison": {
+   "regressions": [],
+   "new_test_failures": [],
+   "fixed": [],
+   "persistent_failures": [
+    "tests.test_sys_fn_db.TestTablePrint::test_long_table_print",
+    "tests.test_sys_fn_db.TestTablePrint::test_table_print",
+    "tests.test_sys_fn_db.TestTableDataFrame::test_table_from_a_df_with_one_column_many_rows",
+    "tests.test_sys_fn_db.TestTableDataFrame::test_table_from_a_df_with_single_row_and_two_columns",
+    "tests.test_sys_fn_db.TestTableDataFrame::test_table_from_empty_df"
+   ]
+  },
+  "imports_head": {
+   "klongpy.sys_fn": {
+    "ok": true
+   }
+  },
+  "imports_base": {
+   "klongpy.sys_fn": {
+    "ok": true
+   }
+  },
+  "status": "completed",
+  "dependency_cutoff": "2025-05-18T18:39:51Z",
+  "seconds": 88.6,
+  "head_failures": 5
+ },
+ "findings": [],
+ "status": "ok",
+ "seconds": 92.0
+}

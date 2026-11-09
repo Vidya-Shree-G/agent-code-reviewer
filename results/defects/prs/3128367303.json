@@ -1,0 +1,177 @@
+{
+ "pr_id": 3128367303,
+ "repository": "alirezamika/autoscraper",
+ "pr_number": 108,
+ "split": "development",
+ "agent": "OpenAI_Codex",
+ "head_sha": "eec33398f292bc0f29b35dbcc52b2f4a362ea160",
+ "tool_versions": {
+  "ruff": "ruff 0.17.4",
+  "bandit": "__main__.py 1.9.4",
+  "python": "3.12.3"
+ },
+ "config": {
+  "run_tests": true,
+  "sandbox": true
+ },
+ "base_mode": "reverse_applied_diff",
+ "static": {
+  "files_analysed": 2,
+  "head_issues": 10,
+  "base_issues": 11,
+  "per_tool_head": {
+   "ruff": 9,
+   "bandit": 1
+  },
+  "per_tool_base": {
+   "ruff": 9,
+   "bandit": 2
+  },
+  "introduced": 0,
+  "seconds": 0.2
+ },
+ "tests": {
+  "env": {
+   "status": "partial",
+   "python": "3.15.2",
+   "steps": [
+    {
+     "step": "venv",
+     "ok": true,
+     "seconds": 0.0,
+     "timed_out": false,
+     "log_tail": ""
+    },
+    {
+     "step": "install -e .",
+     "ok": false,
+     "seconds": 0.9,
+     "timed_out": false,
+     "log_tail": "error: Failed to build `lxml==5.4.0`\n  cause: The build backend returned an error\n  cause: Call to `setuptools.build_meta:__legacy__.get_requires_for_build_wheel` failed (exit status: 1)\n\n         [stdout]\n         Building lxml version 5.4.0.\n         Building without Cython.\n         Error: Please make sure the libxml2 and libxslt development packages are installed.\n\n         [stderr]\n         <string>:67: UserWarning: pkg_resources is deprecated as an API. See https://setuptools.pypa.io/en/latest/pkg_resources.html. The pkg_resources package is slated for removal as early as 2025-11-30. Refrain from using this package or pin to Setuptools<81.\n\nhint: `lxml` (v5.4.0) was included because `autoscraper` (v1.1.14) depends on `lxml`\n\nhint: Build failures usually indicate a problem with the package or the build environment\n"
+    },
+    {
+     "step": "install pytest",
+     "ok": true,
+     "seconds": 0.0,
+     "timed_out": false,
+     "log_tail": ""
+    },
+    {
+     "step": "repair: install requests",
+     "ok": true,
+     "seconds": 0.0,
+     "timed_out": false,
+     "log_tail": ""
+    }
+   ]
+  },
+  "selected_tests": [
+   {
+    "path": "tests/integration/test_complex_features.py",
+    "reason": "full_suite",
+    "exists_at_base": true
+   },
+   {
+    "path": "tests/integration/test_real_world.py",
+    "reason": "full_suite",
+    "exists_at_base": true
+   },
+   {
+    "path": "tests/unit/test_additional_features.py",
+    "reason": "full_suite",
+    "exists_at_base": true
+   },
+   {
+    "path": "tests/unit/test_build.py",
+    "reason": "full_suite",
+    "exists_at_base": true
+   },
+   {
+    "path": "tests/unit/test_features.py",
+    "reason": "full_suite",
+    "exists_at_base": true
+   }
+  ],
+  "head_run": {
+   "status": "completed",
+   "exit_code": 0,
+   "seconds": 0.4,
+   "addopts_overridden": false,
+   "counts": {
+    "passed": 23,
+    "failed": 0,
+    "error": 0,
+    "skipped": 0
+   },
+   "tests": {},
+   "log_tail": ""
+  },
+  "base_run": {
+   "status": "completed",
+   "exit_code": 0,
+   "seconds": 0.4,
+   "addopts_overridden": false,
+   "counts": {
+    "passed": 23,
+    "failed": 0,
+    "error": 0,
+    "skipped": 0
+   },
+   "tests": {},
+   "log_tail": ""
+  },
+  "comparison": {
+   "regressions": [],
+   "new_test_failures": [],
+   "fixed": [],
+   "persistent_failures": []
+  },
+  "imports_head": {
+   "autoscraper.auto_scraper": {
+    "ok": false,
+    "type": "ModuleNotFoundError",
+    "message": "No module named 'bs4'",
+    "missing_module": "bs4",
+    "file": "autoscraper/auto_scraper.py",
+    "line": 8,
+    "traceback": "Traceback (most recent call last):\n  File \"<string>\", line 7, in <module>\n    importlib.import_module(m)\n    ~~~~~~~~~~~~~~~~~~~~~~~^^^\n  File \"/dev/shm/acr/work/_shared_cache/python/cpython-3.15.2-linux-x86_64-gnu/lib/python3.15/importlib/__init__.py\", line 88, in import_module\n    return _bootstrap._gcd_import(name[level:], package, level)\n           ~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"<frozen importlib._bootstrap>\", line 1389, in _gcd_import\n  File \"<frozen importlib._bootstrap>\", line 1338, in _find_and_load\n  File \"<frozen importlib._bootstrap>\", line 1299, in _resolve_parents\n  File \"<frozen importlib._bootstrap>\", line 491, in _call_with_frames_removed\n  File \"<frozen importlib._bootstrap>\", line 1389, in _gcd_import\n  File \"<frozen importlib._bootstrap>\", line 1353, in _find_and_load\n  File \"<frozen importlib._bootstrap>\", line 1249, in _find_and_load_unlocked\n  File \"<frozen importlib._bootstrap>\", line 857, in _load_unlocked\n  File \"<frozen importlib._bootstrap_external>\", line 751, in exec_module\n  File \"<frozen importlib._bootstrap>\", line 491, in _call_with_frames_removed\n  File \"/dev/shm/acr/work/3128367303/src/head/autoscraper/__init__.py\", line 1, in <module>\n    from autoscraper.auto_scraper import AutoScraper\n  File \"/dev/shm/acr/work/3128367303/src/head/autoscraper/auto_scraper.py\", line 8, in <module>\n    from bs4 import BeautifulSoup\nModuleNotFoundError: No module named 'bs4'\n"
+   },
+   "autoscraper.utils": {
+    "ok": false,
+    "type": "ModuleNotFoundError",
+    "message": "No module named 'bs4'",
+    "missing_module": "bs4",
+    "file": "autoscraper/auto_scraper.py",
+    "line": 8,
+    "traceback": "Traceback (most recent call last):\n  File \"<string>\", line 7, in <module>\n    importlib.import_module(m)\n    ~~~~~~~~~~~~~~~~~~~~~~~^^^\n  File \"/dev/shm/acr/work/_shared_cache/python/cpython-3.15.2-linux-x86_64-gnu/lib/python3.15/importlib/__init__.py\", line 88, in import_module\n    return _bootstrap._gcd_import(name[level:], package, level)\n           ~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"<frozen importlib._bootstrap>\", line 1389, in _gcd_import\n  File \"<frozen importlib._bootstrap>\", line 1338, in _find_and_load\n  File \"<frozen importlib._bootstrap>\", line 1299, in _resolve_parents\n  File \"<frozen importlib._bootstrap>\", line 491, in _call_with_frames_removed\n  File \"<frozen importlib._bootstrap>\", line 1389, in _gcd_import\n  File \"<frozen importlib._bootstrap>\", line 1353, in _find_and_load\n  File \"<frozen importlib._bootstrap>\", line 1249, in _find_and_load_unlocked\n  File \"<frozen importlib._bootstrap>\", line 857, in _load_unlocked\n  File \"<frozen importlib._bootstrap_external>\", line 751, in exec_module\n  File \"<frozen importlib._bootstrap>\", line 491, in _call_with_frames_removed\n  File \"/dev/shm/acr/work/3128367303/src/head/autoscraper/__init__.py\", line 1, in <module>\n    from autoscraper.auto_scraper import AutoScraper\n  File \"/dev/shm/acr/work/3128367303/src/head/autoscraper/auto_scraper.py\", line 8, in <module>\n    from bs4 import BeautifulSoup\nModuleNotFoundError: No module named 'bs4'\n"
+   }
+  },
+  "imports_base": {
+   "autoscraper.auto_scraper": {
+    "ok": false,
+    "type": "ModuleNotFoundError",
+    "message": "No module named 'bs4'",
+    "missing_module": "bs4",
+    "file": "autoscraper/auto_scraper.py",
+    "line": 8,
+    "traceback": "Traceback (most recent call last):\n  File \"<string>\", line 7, in <module>\n    importlib.import_module(m)\n    ~~~~~~~~~~~~~~~~~~~~~~~^^^\n  File \"/dev/shm/acr/work/_shared_cache/python/cpython-3.15.2-linux-x86_64-gnu/lib/python3.15/importlib/__init__.py\", line 88, in import_module\n    return _bootstrap._gcd_import(name[level:], package, level)\n           ~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"<frozen importlib._bootstrap>\", line 1389, in _gcd_import\n  File \"<frozen importlib._bootstrap>\", line 1338, in _find_and_load\n  File \"<frozen importlib._bootstrap>\", line 1299, in _resolve_parents\n  File \"<frozen importlib._bootstrap>\", line 491, in _call_with_frames_removed\n  File \"<frozen importlib._bootstrap>\", line 1389, in _gcd_import\n  File \"<frozen importlib._bootstrap>\", line 1353, in _find_and_load\n  File \"<frozen importlib._bootstrap>\", line 1249, in _find_and_load_unlocked\n  File \"<frozen importlib._bootstrap>\", line 857, in _load_unlocked\n  File \"<frozen importlib._bootstrap_external>\", line 751, in exec_module\n  File \"<frozen importlib._bootstrap>\", line 491, in _call_with_frames_removed\n  File \"/dev/shm/acr/work/3128367303/src/base/autoscraper/__init__.py\", line 1, in <module>\n    from autoscraper.auto_scraper import AutoScraper\n  File \"/dev/shm/acr/work/3128367303/src/base/autoscraper/auto_scraper.py\", line 8, in <module>\n    from bs4 import BeautifulSoup\nModuleNotFoundError: No module named 'bs4'\n"
+   },
+   "autoscraper.utils": {
+    "ok": false,
+    "type": "ModuleNotFoundError",
+    "message": "No module named 'bs4'",
+    "missing_module": "bs4",
+    "file": "autoscraper/auto_scraper.py",
+    "line": 8,
+    "traceback": "Traceback (most recent call last):\n  File \"<string>\", line 7, in <module>\n    importlib.import_module(m)\n    ~~~~~~~~~~~~~~~~~~~~~~~^^^\n  File \"/dev/shm/acr/work/_shared_cache/python/cpython-3.15.2-linux-x86_64-gnu/lib/python3.15/importlib/__init__.py\", line 88, in import_module\n    return _bootstrap._gcd_import(name[level:], package, level)\n           ~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"<frozen importlib._bootstrap>\", line 1389, in _gcd_import\n  File \"<frozen importlib._bootstrap>\", line 1338, in _find_and_load\n  File \"<frozen importlib._bootstrap>\", line 1299, in _resolve_parents\n  File \"<frozen importlib._bootstrap>\", line 491, in _call_with_frames_removed\n  File \"<frozen importlib._bootstrap>\", line 1389, in _gcd_import\n  File \"<frozen importlib._bootstrap>\", line 1353, in _find_and_load\n  File \"<frozen importlib._bootstrap>\", line 1249, in _find_and_load_unlocked\n  File \"<frozen importlib._bootstrap>\", line 857, in _load_unlocked\n  File \"<frozen importlib._bootstrap_external>\", line 751, in exec_module\n  File \"<frozen importlib._bootstrap>\", line 491, in _call_with_frames_removed\n  File \"/dev/shm/acr/work/3128367303/src/base/autoscraper/__init__.py\", line 1, in <module>\n    from autoscraper.auto_scraper import AutoScraper\n  File \"/dev/shm/acr/work/3128367303/src/base/autoscraper/auto_scraper.py\", line 8, in <module>\n    from bs4 import BeautifulSoup\nModuleNotFoundError: No module named 'bs4'\n"
+   }
+  },
+  "status": "completed",
+  "dependency_cutoff": "2025-06-08T13:47:27Z",
+  "seconds": 2.9,
+  "head_failures": 0
+ },
+ "findings": [],
+ "status": "ok",
+ "seconds": 3.9
+}

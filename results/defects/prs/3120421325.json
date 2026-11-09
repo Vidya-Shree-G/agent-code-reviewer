@@ -1,0 +1,236 @@
+{
+ "pr_id": 3120421325,
+ "repository": "ai-forever/gigachat",
+ "pr_number": 66,
+ "split": "development",
+ "agent": "OpenAI_Codex",
+ "head_sha": "3514171c6ef11c881c64359a4aceaea1c0c8add3",
+ "tool_versions": {
+  "ruff": "ruff 0.17.4",
+  "bandit": "__main__.py 1.9.4",
+  "python": "3.12.3"
+ },
+ "config": {
+  "run_tests": true,
+  "sandbox": true
+ },
+ "base_mode": "reverse_applied_diff",
+ "static": {
+  "files_analysed": 5,
+  "head_issues": 1,
+  "base_issues": 0,
+  "per_tool_head": {
+   "ruff": 1
+  },
+  "per_tool_base": {},
+  "introduced": 1,
+  "seconds": 0.3
+ },
+ "tests": {
+  "env": {
+   "status": "ok",
+   "python": "3.12.3",
+   "steps": [
+    {
+     "step": "venv",
+     "ok": true,
+     "seconds": 0.0,
+     "timed_out": false,
+     "log_tail": ""
+    },
+    {
+     "step": "install -e .",
+     "ok": true,
+     "seconds": 0.5,
+     "timed_out": false,
+     "log_tail": ""
+    },
+    {
+     "step": "install poetry test/dev group",
+     "ok": true,
+     "seconds": 2.6,
+     "timed_out": false,
+     "log_tail": ""
+    },
+    {
+     "step": "install pytest",
+     "ok": true,
+     "seconds": 0.1,
+     "timed_out": false,
+     "log_tail": ""
+    }
+   ]
+  },
+  "selected_tests": [
+   {
+    "path": "tests/unit_tests/gigachat/test_client.py",
+    "reason": "changed_in_pr",
+    "exists_at_base": true
+   },
+   {
+    "path": "tests/unit_tests/gigachat/test_settings.py",
+    "reason": "matches_module:settings",
+    "exists_at_base": true
+   }
+  ],
+  "head_run": {
+   "status": "completed",
+   "exit_code": 1,
+   "seconds": 2.4,
+   "addopts_overridden": false,
+   "counts": {
+    "passed": 70,
+    "failed": 0,
+    "error": 7,
+    "skipped": 0
+   },
+   "tests": {
+    "tests.unit_tests.gigachat.test_client::test_chat_update_token_credentials": {
+     "outcome": "error",
+     "detail": "description = \"\\n\".join(\n                [\n                    f\"- {request.method} request on {request.url}\"\n                    for request in self._requests_not_matched\n                ]\n            )\n>           assert not self._requests_not_matched, (\n                f\"The following requests were not expected:\\n\"\n                f\"{requests_description}\\n\"\n                \"\\n\"\n                \"If this is on purpose, refer to https://github.com/Colin-b/pytest_httpx/blob/master/README.md#allow-to-not-register-responses-for-every-request\"\n            )\nE           AssertionError: The following requests were not expected:\nE             - POST request on http://base_url/chat/completions\nE             \nE             If this is on purpose, refer to https://github.com/Colin-b/pytest_httpx/blob/master/README.md#allow-to-not-register-responses-for-every-request\nE           assert not [<Request('POST', 'http://base_url/chat/completions')>]\nE            +  where [<Request('POST', 'http://base_url/chat/completions')>] = <pytest_httpx._httpx_mock.HTTPXMock object at 0x74c1cadc5610>._requests_not_matched\n\n../../venv/lib/python3.12/site-packages/pytest_httpx/_httpx_mock.py:333: AssertionError"
+    },
+    "tests.unit_tests.gigachat.test_client::test_chat_update_token_user_password": {
+     "outcome": "error",
+     "detail": "description = \"\\n\".join(\n                [\n                    f\"- {request.method} request on {request.url}\"\n                    for request in self._requests_not_matched\n                ]\n            )\n>           assert not self._requests_not_matched, (\n                f\"The following requests were not expected:\\n\"\n                f\"{requests_description}\\n\"\n                \"\\n\"\n                \"If this is on purpose, refer to https://github.com/Colin-b/pytest_httpx/blob/master/README.md#allow-to-not-register-responses-for-every-request\"\n            )\nE           AssertionError: The following requests were not expected:\nE             - POST request on http://base_url/chat/completions\nE             \nE             If this is on purpose, refer to https://github.com/Colin-b/pytest_httpx/blob/master/README.md#allow-to-not-register-responses-for-every-request\nE           assert not [<Request('POST', 'http://base_url/chat/completions')>]\nE            +  where [<Request('POST', 'http://base_url/chat/completions')>] = <pytest_httpx._httpx_mock.HTTPXMock object at 0x74c1cadf0b90>._requests_not_matched\n\n../../venv/lib/python3.12/site-packages/pytest_httpx/_httpx_mock.py:333: AssertionError"
+    },
+    "tests.unit_tests.gigachat.test_client::test_chat_update_token_error": {
+     "outcome": "error",
+     "detail": "description = \"\\n\".join(\n                [\n                    f\"- {request.method} request on {request.url}\"\n                    for request in self._requests_not_matched\n                ]\n            )\n>           assert not self._requests_not_matched, (\n                f\"The following requests were not expected:\\n\"\n                f\"{requests_description}\\n\"\n                \"\\n\"\n                \"If this is on purpose, refer to https://github.com/Colin-b/pytest_httpx/blob/master/README.md#allow-to-not-register-responses-for-every-request\"\n            )\nE           AssertionError: The following requests were not expected:\nE             - POST request on http://base_url/chat/completions\nE             \nE             If this is on purpose, refer to https://github.com/Colin-b/pytest_httpx/blob/master/README.md#allow-to-not-register-responses-for-every-request\nE           assert not [<Request('POST', 'http://base_url/chat/completions')>]\nE            +  where [<Request('POST', 'http://base_url/chat/completions')>] = <pytest_httpx._httpx_mock.HTTPXMock object at 0x74c1cbc90140>._requests_not_matched\n\n../../venv/lib/python3.12/site-packages/pytest_httpx/_httpx_mock.py:333: AssertionError"
+    },
+    "tests.unit_tests.gigachat.test_client::test_stream_update_token_error": {
+     "outcome": "error",
+     "detail": "description = \"\\n\".join(\n                [\n                    f\"- {request.method} request on {request.url}\"\n                    for request in self._requests_not_matched\n                ]\n            )\n>           assert not self._requests_not_matched, (\n                f\"The following requests were not expected:\\n\"\n                f\"{requests_description}\\n\"\n                \"\\n\"\n                \"If this is on purpose, refer to https://github.com/Colin-b/pytest_httpx/blob/master/README.md#allow-to-not-register-responses-for-every-request\"\n            )\nE           AssertionError: The following requests were not expected:\nE             - POST request on http://base_url/chat/completions\nE             \nE             If this is on purpose, refer to https://github.com/Colin-b/pytest_httpx/blob/master/README.md#allow-to-not-register-responses-for-every-request\nE           assert not [<Request('POST', 'http://base_url/chat/completions')>]\nE            +  where [<Request('POST', 'http://base_url/chat/completions')>] = <pytest_httpx._httpx_mock.HTTPXMock object at 0x74c1ca3f4b60>._requests_not_matched\n\n../../venv/lib/python3.12/site-packages/pytest_httpx/_httpx_mock.py:333: AssertionError"
+    },
+    "tests.unit_tests.gigachat.test_client::test_achat_update_token_credentials": {
+     "outcome": "error",
+     "detail": "description = \"\\n\".join(\n                [\n                    f\"- {request.method} request on {request.url}\"\n                    for request in self._requests_not_matched\n                ]\n            )\n>           assert not self._requests_not_matched, (\n                f\"The following requests were not expected:\\n\"\n                f\"{requests_description}\\n\"\n                \"\\n\"\n                \"If this is on purpose, refer to https://github.com/Colin-b/pytest_httpx/blob/master/README.md#allow-to-not-register-responses-for-every-request\"\n            )\nE           AssertionError: The following requests were not expected:\nE             - POST request on http://base_url/chat/completions\nE             \nE             If this is on purpose, refer to https://github.com/Colin-b/pytest_httpx/blob/master/README.md#allow-to-not-register-responses-for-every-request\nE           assert not [<Request('POST', 'http://base_url/chat/completions')>]\nE            +  where [<Request('POST', 'http://base_url/chat/completions')>] = <pytest_httpx._httpx_mock.HTTPXMock object at 0x74c1ca97b860>._requests_not_matched\n\n../../venv/lib/python3.12/site-packages/pytest_httpx/_httpx_mock.py:333: AssertionError"
+    },
+    "tests.unit_tests.gigachat.test_client::test_achat_update_token_user_password": {
+     "outcome": "error",
+     "detail": "description = \"\\n\".join(\n                [\n                    f\"- {request.method} request on {request.url}\"\n                    for request in self._requests_not_matched\n                ]\n            )\n>           assert not self._requests_not_matched, (\n                f\"The following requests were not expected:\\n\"\n                f\"{requests_description}\\n\"\n                \"\\n\"\n                \"If this is on purpose, refer to https://github.com/Colin-b/pytest_httpx/blob/master/README.md#allow-to-not-register-responses-for-every-request\"\n            )\nE           AssertionError: The following requests were not expected:\nE             - POST request on http://base_url/chat/completions\nE             \nE             If this is on purpose, refer to https://github.com/Colin-b/pytest_httpx/blob/master/README.md#allow-to-not-register-responses-for-every-request\nE           assert not [<Request('POST', 'http://base_url/chat/completions')>]\nE            +  where [<Request('POST', 'http://base_url/chat/completions')>] = <pytest_httpx._httpx_mock.HTTPXMock object at 0x74c1ca3f47a0>._requests_not_matched\n\n../../venv/lib/python3.12/site-packages/pytest_httpx/_httpx_mock.py:333: AssertionError"
+    },
+    "tests.unit_tests.gigachat.test_client::test_astream_update_token": {
+     "outcome": "error",
+     "detail": "description = \"\\n\".join(\n                [\n                    f\"- {request.method} request on {request.url}\"\n                    for request in self._requests_not_matched\n                ]\n            )\n>           assert not self._requests_not_matched, (\n                f\"The following requests were not expected:\\n\"\n                f\"{requests_description}\\n\"\n                \"\\n\"\n                \"If this is on purpose, refer to https://github.com/Colin-b/pytest_httpx/blob/master/README.md#allow-to-not-register-responses-for-every-request\"\n            )\nE           AssertionError: The following requests were not expected:\nE             - POST request on http://base_url/chat/completions\nE             \nE             If this is on purpose, refer to https://github.com/Colin-b/pytest_httpx/blob/master/README.md#allow-to-not-register-responses-for-every-request\nE           assert not [<Request('POST', 'http://base_url/chat/completions')>]\nE            +  where [<Request('POST', 'http://base_url/chat/completions')>] = <pytest_httpx._httpx_mock.HTTPXMock object at 0x74c1ca9b2600>._requests_not_matched\n\n../../venv/lib/python3.12/site-packages/pytest_httpx/_httpx_mock.py:333: AssertionError"
+    }
+   },
+   "log_tail": ""
+  },
+  "base_run": {
+   "status": "completed",
+   "exit_code": 1,
+   "seconds": 2.2,
+   "addopts_overridden": false,
+   "counts": {
+    "passed": 66,
+    "failed": 0,
+    "error": 7,
+    "skipped": 0
+   },
+   "tests": {
+    "tests.unit_tests.gigachat.test_client::test_chat_update_token_credentials": {
+     "outcome": "error",
+     "detail": "description = \"\\n\".join(\n                [\n                    f\"- {request.method} request on {request.url}\"\n                    for request in self._requests_not_matched\n                ]\n            )\n>           assert not self._requests_not_matched, (\n                f\"The following requests were not expected:\\n\"\n                f\"{requests_description}\\n\"\n                \"\\n\"\n                \"If this is on purpose, refer to https://github.com/Colin-b/pytest_httpx/blob/master/README.md#allow-to-not-register-responses-for-every-request\"\n            )\nE           AssertionError: The following requests were not expected:\nE             - POST request on http://base_url/chat/completions\nE             \nE             If this is on purpose, refer to https://github.com/Colin-b/pytest_httpx/blob/master/README.md#allow-to-not-register-responses-for-every-request\nE           assert not [<Request('POST', 'http://base_url/chat/completions')>]\nE            +  where [<Request('POST', 'http://base_url/chat/completions')>] = <pytest_httpx._httpx_mock.HTTPXMock object at 0x769f360db4d0>._requests_not_matched\n\n../../venv/lib/python3.12/site-packages/pytest_httpx/_httpx_mock.py:333: AssertionError"
+    },
+    "tests.unit_tests.gigachat.test_client::test_chat_update_token_user_password": {
+     "outcome": "error",
+     "detail": "description = \"\\n\".join(\n                [\n                    f\"- {request.method} request on {request.url}\"\n                    for request in self._requests_not_matched\n                ]\n            )\n>           assert not self._requests_not_matched, (\n                f\"The following requests were not expected:\\n\"\n                f\"{requests_description}\\n\"\n                \"\\n\"\n                \"If this is on purpose, refer to https://github.com/Colin-b/pytest_httpx/blob/master/README.md#allow-to-not-register-responses-for-every-request\"\n            )\nE           AssertionError: The following requests were not expected:\nE             - POST request on http://base_url/chat/completions\nE             \nE             If this is on purpose, refer to https://github.com/Colin-b/pytest_httpx/blob/master/README.md#allow-to-not-register-responses-for-every-request\nE           assert not [<Request('POST', 'http://base_url/chat/completions')>]\nE            +  where [<Request('POST', 'http://base_url/chat/completions')>] = <pytest_httpx._httpx_mock.HTTPXMock object at 0x769f3629e9f0>._requests_not_matched\n\n../../venv/lib/python3.12/site-packages/pytest_httpx/_httpx_mock.py:333: AssertionError"
+    },
+    "tests.unit_tests.gigachat.test_client::test_chat_update_token_error": {
+     "outcome": "error",
+     "detail": "description = \"\\n\".join(\n                [\n                    f\"- {request.method} request on {request.url}\"\n                    for request in self._requests_not_matched\n                ]\n            )\n>           assert not self._requests_not_matched, (\n                f\"The following requests were not expected:\\n\"\n                f\"{requests_description}\\n\"\n                \"\\n\"\n                \"If this is on purpose, refer to https://github.com/Colin-b/pytest_httpx/blob/master/README.md#allow-to-not-register-responses-for-every-request\"\n            )\nE           AssertionError: The following requests were not expected:\nE             - POST request on http://base_url/chat/completions\nE             \nE             If this is on purpose, refer to https://github.com/Colin-b/pytest_httpx/blob/master/README.md#allow-to-not-register-responses-for-every-request\nE           assert not [<Request('POST', 'http://base_url/chat/completions')>]\nE            +  where [<Request('POST', 'http://base_url/chat/completions')>] = <pytest_httpx._httpx_mock.HTTPXMock object at 0x769f361fdaf0>._requests_not_matched\n\n../../venv/lib/python3.12/site-packages/pytest_httpx/_httpx_mock.py:333: AssertionError"
+    },
+    "tests.unit_tests.gigachat.test_client::test_stream_update_token_error": {
+     "outcome": "error",
+     "detail": "description = \"\\n\".join(\n                [\n                    f\"- {request.method} request on {request.url}\"\n                    for request in self._requests_not_matched\n                ]\n            )\n>           assert not self._requests_not_matched, (\n                f\"The following requests were not expected:\\n\"\n                f\"{requests_description}\\n\"\n                \"\\n\"\n                \"If this is on purpose, refer to https://github.com/Colin-b/pytest_httpx/blob/master/README.md#allow-to-not-register-responses-for-every-request\"\n            )\nE           AssertionError: The following requests were not expected:\nE             - POST request on http://base_url/chat/completions\nE             \nE             If this is on purpose, refer to https://github.com/Colin-b/pytest_httpx/blob/master/README.md#allow-to-not-register-responses-for-every-request\nE           assert not [<Request('POST', 'http://base_url/chat/completions')>]\nE            +  where [<Request('POST', 'http://base_url/chat/completions')>] = <pytest_httpx._httpx_mock.HTTPXMock object at 0x769f361eb6b0>._requests_not_matched\n\n../../venv/lib/python3.12/site-packages/pytest_httpx/_httpx_mock.py:333: AssertionError"
+    },
+    "tests.unit_tests.gigachat.test_client::test_achat_update_token_credentials": {
+     "outcome": "error",
+     "detail": "description = \"\\n\".join(\n                [\n                    f\"- {request.method} request on {request.url}\"\n                    for request in self._requests_not_matched\n                ]\n            )\n>           assert not self._requests_not_matched, (\n                f\"The following requests were not expected:\\n\"\n                f\"{requests_description}\\n\"\n                \"\\n\"\n                \"If this is on purpose, refer to https://github.com/Colin-b/pytest_httpx/blob/master/README.md#allow-to-not-register-responses-for-every-request\"\n            )\nE           AssertionError: The following requests were not expected:\nE             - POST request on http://base_url/chat/completions\nE             \nE             If this is on purpose, refer to https://github.com/Colin-b/pytest_httpx/blob/master/README.md#allow-to-not-register-responses-for-every-request\nE           assert not [<Request('POST', 'http://base_url/chat/completions')>]\nE            +  where [<Request('POST', 'http://base_url/chat/completions')>] = <pytest_httpx._httpx_mock.HTTPXMock object at 0x769f3639aa50>._requests_not_matched\n\n../../venv/lib/python3.12/site-packages/pytest_httpx/_httpx_mock.py:333: AssertionError"
+    },
+    "tests.unit_tests.gigachat.test_client::test_achat_update_token_user_password": {
+     "outcome": "error",
+     "detail": "description = \"\\n\".join(\n                [\n                    f\"- {request.method} request on {request.url}\"\n                    for request in self._requests_not_matched\n                ]\n            )\n>           assert not self._requests_not_matched, (\n                f\"The following requests were not expected:\\n\"\n                f\"{requests_description}\\n\"\n                \"\\n\"\n                \"If this is on purpose, refer to https://github.com/Colin-b/pytest_httpx/blob/master/README.md#allow-to-not-register-responses-for-every-request\"\n            )\nE           AssertionError: The following requests were not expected:\nE             - POST request on http://base_url/chat/completions\nE             \nE             If this is on purpose, refer to https://github.com/Colin-b/pytest_httpx/blob/master/README.md#allow-to-not-register-responses-for-every-request\nE           assert not [<Request('POST', 'http://base_url/chat/completions')>]\nE            +  where [<Request('POST', 'http://base_url/chat/completions')>] = <pytest_httpx._httpx_mock.HTTPXMock object at 0x769f35a1fb30>._requests_not_matched\n\n../../venv/lib/python3.12/site-packages/pytest_httpx/_httpx_mock.py:333: AssertionError"
+    },
+    "tests.unit_tests.gigachat.test_client::test_astream_update_token": {
+     "outcome": "error",
+     "detail": "description = \"\\n\".join(\n                [\n                    f\"- {request.method} request on {request.url}\"\n                    for request in self._requests_not_matched\n                ]\n            )\n>           assert not self._requests_not_matched, (\n                f\"The following requests were not expected:\\n\"\n                f\"{requests_description}\\n\"\n                \"\\n\"\n                \"If this is on purpose, refer to https://github.com/Colin-b/pytest_httpx/blob/master/README.md#allow-to-not-register-responses-for-every-request\"\n            )\nE           AssertionError: The following requests were not expected:\nE             - POST request on http://base_url/chat/completions\nE             \nE             If this is on purpose, refer to https://github.com/Colin-b/pytest_httpx/blob/master/README.md#allow-to-not-register-responses-for-every-request\nE           assert not [<Request('POST', 'http://base_url/chat/completions')>]\nE            +  where [<Request('POST', 'http://base_url/chat/completions')>] = <pytest_httpx._httpx_mock.HTTPXMock object at 0x769f359ac770>._requests_not_matched\n\n../../venv/lib/python3.12/site-packages/pytest_httpx/_httpx_mock.py:333: AssertionError"
+    }
+   },
+   "log_tail": ""
+  },
+  "comparison": {
+   "regressions": [],
+   "new_test_failures": [],
+   "fixed": [],
+   "persistent_failures": [
+    "tests.unit_tests.gigachat.test_client::test_chat_update_token_credentials",
+    "tests.unit_tests.gigachat.test_client::test_chat_update_token_user_password",
+    "tests.unit_tests.gigachat.test_client::test_chat_update_token_error",
+    "tests.unit_tests.gigachat.test_client::test_stream_update_token_error",
+    "tests.unit_tests.gigachat.test_client::test_achat_update_token_credentials",
+    "tests.unit_tests.gigachat.test_client::test_achat_update_token_user_password",
+    "tests.unit_tests.gigachat.test_client::test_astream_update_token"
+   ]
+  },
+  "imports_head": {
+   "gigachat.api.utils": {
+    "ok": true
+   },
+   "gigachat.client": {
+    "ok": true
+   },
+   "gigachat.context": {
+    "ok": true
+   },
+   "gigachat.settings": {
+    "ok": true
+   }
+  },
+  "imports_base": {
+   "gigachat.api.utils": {
+    "ok": true
+   },
+   "gigachat.client": {
+    "ok": true
+   },
+   "gigachat.context": {
+    "ok": true
+   },
+   "gigachat.settings": {
+    "ok": true
+   }
+  },
+  "status": "completed",
+  "dependency_cutoff": "2025-07-21T14:46:22Z",
+  "seconds": 8.3,
+  "head_failures": 7
+ },
+ "findings": [
+  {
+   "tool": "ruff",
+   "rule": "B039",
+   "category": "correctness",
+   "severity": "medium",
+   "confidence": "high",
+   "message": "Do not use mutable data structures for `ContextVar` defaults",
+   "file": "src/gigachat/context.py",
+   "line": 14,
+   "end_line": 14,
+   "cwe": null,
+   "on_changed_line": true,
+   "evidence": {
+    "type": "static",
+    "source_line": "headers_cvar: ContextVar[Dict[str, str]] = ContextVar(\"headers_cvar\", default={})",
+    "url": "https://docs.astral.sh/ruff/rules/mutable-contextvar-default"
+   },
+   "sources": [
+    "ruff"
+   ],
+   "finding_id": "9b1046c61518",
+   "score": 2.5
+  }
+ ],
+ "status": "ok",
+ "seconds": 14.3
+}

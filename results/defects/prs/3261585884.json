@@ -1,0 +1,125 @@
+{
+ "pr_id": 3261585884,
+ "repository": "infosecB/LOOBins",
+ "pr_number": 226,
+ "split": "development",
+ "agent": "OpenAI_Codex",
+ "head_sha": "83f0bd76917bd7f675b4b367ebccab235a2d1457",
+ "tool_versions": {
+  "ruff": "ruff 0.17.4",
+  "bandit": "__main__.py 1.9.4",
+  "python": "3.12.3"
+ },
+ "config": {
+  "run_tests": true,
+  "sandbox": true
+ },
+ "base_mode": "reverse_applied_diff",
+ "static": {
+  "files_analysed": 2,
+  "head_issues": 1,
+  "base_issues": 1,
+  "per_tool_head": {
+   "ruff": 1
+  },
+  "per_tool_base": {
+   "ruff": 1
+  },
+  "introduced": 0,
+  "seconds": 0.2
+ },
+ "tests": {
+  "env": {
+   "status": "ok",
+   "python": "3.12.10",
+   "steps": [
+    {
+     "step": "venv",
+     "ok": true,
+     "seconds": 0.0,
+     "timed_out": false,
+     "log_tail": ""
+    },
+    {
+     "step": "install -e .",
+     "ok": true,
+     "seconds": 0.8,
+     "timed_out": false,
+     "log_tail": ""
+    },
+    {
+     "step": "install poetry test/dev group",
+     "ok": true,
+     "seconds": 0.6,
+     "timed_out": false,
+     "log_tail": ""
+    },
+    {
+     "step": "install pytest",
+     "ok": true,
+     "seconds": 0.0,
+     "timed_out": false,
+     "log_tail": ""
+    }
+   ]
+  },
+  "selected_tests": [
+   {
+    "path": "tests/test_data.py",
+    "reason": "changed_in_pr",
+    "exists_at_base": true
+   }
+  ],
+  "head_run": {
+   "status": "no_tests_collected",
+   "exit_code": 5,
+   "seconds": 1.0,
+   "addopts_overridden": false,
+   "counts": {
+    "passed": 0,
+    "failed": 0,
+    "error": 0,
+    "skipped": 0
+   },
+   "tests": {},
+   "log_tail": "\n=============================== warnings summary ===============================\n../../venv/lib/python3.12/site-packages/polyfactory/factories/base.py:246\n../../venv/lib/python3.12/site-packages/polyfactory/factories/base.py:246\n../../venv/lib/python3.12/site-packages/polyfactory/factories/base.py:246\n../../venv/lib/python3.12/site-packages/polyfactory/factories/base.py:246\n  /dev/shm/acr/work/3261585884/venv/lib/python3.12/site-packages/polyfactory/factories/base.py:246: DeprecationWarning: Use of deprecated default '__check_model__'. Deprecated in polyfactory v2.22.0. This default will be removed in the next major version. Use 'set to `False` explicitly to keep existing behaviour' instead\n    warn_deprecation(\n\n-- Docs: https://docs.pytest.org/en/stable/how-to/capture-warnings.html\n------- generated xml file: /dev/shm/acr/work/3261585884/junit-head.xml --------\n4 warnings in 0.53s\n\n"
+  },
+  "base_run": {
+   "status": "no_tests_collected",
+   "exit_code": 5,
+   "seconds": 1.0,
+   "addopts_overridden": false,
+   "counts": {
+    "passed": 0,
+    "failed": 0,
+    "error": 0,
+    "skipped": 0
+   },
+   "tests": {},
+   "log_tail": "\n=============================== warnings summary ===============================\n../../venv/lib/python3.12/site-packages/polyfactory/factories/base.py:246\n../../venv/lib/python3.12/site-packages/polyfactory/factories/base.py:246\n../../venv/lib/python3.12/site-packages/polyfactory/factories/base.py:246\n../../venv/lib/python3.12/site-packages/polyfactory/factories/base.py:246\n  /dev/shm/acr/work/3261585884/venv/lib/python3.12/site-packages/polyfactory/factories/base.py:246: DeprecationWarning: Use of deprecated default '__check_model__'. Deprecated in polyfactory v2.22.0. This default will be removed in the next major version. Use 'set to `False` explicitly to keep existing behaviour' instead\n    warn_deprecation(\n\n-- Docs: https://docs.pytest.org/en/stable/how-to/capture-warnings.html\n------- generated xml file: /dev/shm/acr/work/3261585884/junit-base.xml --------\n4 warnings in 0.53s\n\n"
+  },
+  "comparison": {
+   "regressions": [],
+   "new_test_failures": [],
+   "fixed": [],
+   "persistent_failures": []
+  },
+  "imports_head": {
+   "pyloobins.cli": {
+    "ok": true
+   }
+  },
+  "imports_base": {
+   "pyloobins.cli": {
+    "ok": true
+   }
+  },
+  "status": "head_no_tests_collected",
+  "dependency_cutoff": "2025-07-25T00:28:46Z",
+  "seconds": 4.5,
+  "head_failures": 0
+ },
+ "findings": [],
+ "status": "ok",
+ "seconds": 5.2
+}

@@ -1,0 +1,246 @@
+{
+ "pr_id": 3009733355,
+ "repository": "vladfi1/slippi-ai",
+ "pr_number": 39,
+ "split": "development",
+ "agent": "Devin",
+ "head_sha": "4440a753e2dd785c77afaa4f2c79a3ec2e7f8b68",
+ "tool_versions": {
+  "ruff": "ruff 0.17.4",
+  "bandit": "__main__.py 1.9.4",
+  "python": "3.12.3"
+ },
+ "config": {
+  "run_tests": true,
+  "sandbox": true
+ },
+ "base_mode": "reverse_applied_diff",
+ "static": {
+  "files_analysed": 11,
+  "head_issues": 70,
+  "base_issues": 77,
+  "per_tool_head": {
+   "ruff": 36,
+   "bandit": 34
+  },
+  "per_tool_base": {
+   "ruff": 39,
+   "bandit": 38
+  },
+  "introduced": 1,
+  "seconds": 0.5
+ },
+ "tests": {
+  "env": {
+   "status": "ok",
+   "python": "3.12.3",
+   "steps": [
+    {
+     "step": "venv",
+     "ok": true,
+     "seconds": 0.0,
+     "timed_out": false,
+     "log_tail": ""
+    },
+    {
+     "step": "install -e .",
+     "ok": true,
+     "seconds": 11.5,
+     "timed_out": false,
+     "log_tail": ""
+    },
+    {
+     "step": "install -r requirements.txt",
+     "ok": true,
+     "seconds": 188.5,
+     "timed_out": false,
+     "log_tail": ""
+    },
+    {
+     "step": "install pytest",
+     "ok": true,
+     "seconds": 0.0,
+     "timed_out": false,
+     "log_tail": ""
+    },
+    {
+     "step": "repair: install peppi_py ray",
+     "ok": true,
+     "seconds": 11.7,
+     "timed_out": false,
+     "log_tail": ""
+    }
+   ]
+  },
+  "selected_tests": [
+   {
+    "path": "scripts/test_ffw.py",
+    "reason": "imports_changed_module",
+    "exists_at_base": true
+   },
+   {
+    "path": "scripts/test_inputs.py",
+    "reason": "imports_changed_module",
+    "exists_at_base": true
+   },
+   {
+    "path": "slippi_db/scripts/test_same_parse.py",
+    "reason": "imports_changed_module",
+    "exists_at_base": true
+   },
+   {
+    "path": "tests/dataset_creation_test.py",
+    "reason": "imports_changed_module",
+    "exists_at_base": true
+   },
+   {
+    "path": "tests/replay_parser_test.py",
+    "reason": "imports_changed_module",
+    "exists_at_base": true
+   },
+   {
+    "path": "tests/slippi_db_test.py",
+    "reason": "imports_changed_module",
+    "exists_at_base": true
+   }
+  ],
+  "head_run": {
+   "status": "completed",
+   "exit_code": 2,
+   "seconds": 0.8,
+   "addopts_overridden": false,
+   "counts": {
+    "passed": 0,
+    "failed": 0,
+    "error": 2,
+    "skipped": 0
+   },
+   "tests": {
+    "::scripts.test_inputs": {
+     "outcome": "error",
+     "detail": "collection failure\nscripts/test_inputs.py:18: in <module>\n    DOLPHIN = ff.DEFINE_dict(\n../../venv/lib/python3.12/site-packages/fancyflags/_definitions.py:133: in DEFINE_dict\n    shared_dict = define_flags(flag_name, kwargs, flag_values=flag_values)\n../../venv/lib/python3.12/site-packages/fancyflags/_definitions.py:191: in define_flags\n    recursively_define_flags(namespace=(name, key), maybe_item=value)\n../../venv/lib/python3.12/site-packages/fancyflags/_definitions.py:188: in recursively_define_flags\n    maybe_item.define(namespace, {name: shared_dict}, flag_values)\n../../venv/lib/python3.12/site-packages/fancyflags/_definitions.py:285: in define\n    return flags.DEFINE_flag(\n../../venv/lib/python3.12/site-packages/absl/flags/_defines.py:183: in DEFINE_flag\n    fv[flag.name] = flag\n../../venv/lib/python3.12/site-packages/absl/flags/_flagvalues.py:456: in __setitem__\n    raise _exceptions.DuplicateFlagError.from_flag(name, self)\nE   absl.flags._exceptions.DuplicateFlagError: The flag 'dolphin.path' is defined twice. First from test_ffw, Second from test_inputs.  Description from first occurrence: dolphin.path"
+    },
+    "::tests.dataset_creation_test": {
+     "outcome": "error",
+     "detail": "collection failure\ntests/dataset_creation_test.py:17: in <module>\n    flags.DEFINE_integer(\"threads\", 1, \"Number of threads to use for parallel processing\")\n../../venv/lib/python3.12/site-packages/absl/flags/_defines.py:677: in DEFINE_integer\n    result = DEFINE(\n../../venv/lib/python3.12/site-packages/absl/flags/_defines.py:123: in DEFINE\n    return DEFINE_flag(\n../../venv/lib/python3.12/site-packages/absl/flags/_defines.py:183: in DEFINE_flag\n    fv[flag.name] = flag\n../../venv/lib/python3.12/site-packages/absl/flags/_flagvalues.py:456: in __setitem__\n    raise _exceptions.DuplicateFlagError.from_flag(name, self)\nE   absl.flags._exceptions.DuplicateFlagError: The flag 'threads' is defined twice. First from test_same_parse, Second from dataset_creation_test.  Description from first occurrence: number of threads"
+    }
+   },
+   "log_tail": ""
+  },
+  "base_run": {
+   "status": "completed",
+   "exit_code": 2,
+   "seconds": 0.7,
+   "addopts_overridden": false,
+   "counts": {
+    "passed": 0,
+    "failed": 0,
+    "error": 2,
+    "skipped": 0
+   },
+   "tests": {
+    "::scripts.test_inputs": {
+     "outcome": "error",
+     "detail": "collection failure\nscripts/test_inputs.py:18: in <module>\n    DOLPHIN = ff.DEFINE_dict(\n../../venv/lib/python3.12/site-packages/fancyflags/_definitions.py:133: in DEFINE_dict\n    shared_dict = define_flags(flag_name, kwargs, flag_values=flag_values)\n../../venv/lib/python3.12/site-packages/fancyflags/_definitions.py:191: in define_flags\n    recursively_define_flags(namespace=(name, key), maybe_item=value)\n../../venv/lib/python3.12/site-packages/fancyflags/_definitions.py:188: in recursively_define_flags\n    maybe_item.define(namespace, {name: shared_dict}, flag_values)\n../../venv/lib/python3.12/site-packages/fancyflags/_definitions.py:285: in define\n    return flags.DEFINE_flag(\n../../venv/lib/python3.12/site-packages/absl/flags/_defines.py:183: in DEFINE_flag\n    fv[flag.name] = flag\n../../venv/lib/python3.12/site-packages/absl/flags/_flagvalues.py:456: in __setitem__\n    raise _exceptions.DuplicateFlagError.from_flag(name, self)\nE   absl.flags._exceptions.DuplicateFlagError: The flag 'dolphin.path' is defined twice. First from test_ffw, Second from test_inputs.  Description from first occurrence: dolphin.path"
+    },
+    "::tests.dataset_creation_test": {
+     "outcome": "error",
+     "detail": "collection failure\ntests/dataset_creation_test.py:17: in <module>\n    flags.DEFINE_integer(\"threads\", 1, \"Number of threads to use for parallel processing\")\n../../venv/lib/python3.12/site-packages/absl/flags/_defines.py:677: in DEFINE_integer\n    result = DEFINE(\n../../venv/lib/python3.12/site-packages/absl/flags/_defines.py:123: in DEFINE\n    return DEFINE_flag(\n../../venv/lib/python3.12/site-packages/absl/flags/_defines.py:183: in DEFINE_flag\n    fv[flag.name] = flag\n../../venv/lib/python3.12/site-packages/absl/flags/_flagvalues.py:456: in __setitem__\n    raise _exceptions.DuplicateFlagError.from_flag(name, self)\nE   absl.flags._exceptions.DuplicateFlagError: The flag 'threads' is defined twice. First from test_same_parse, Second from dataset_creation_test.  Description from first occurrence: number of threads"
+    }
+   },
+   "log_tail": ""
+  },
+  "comparison": {
+   "regressions": [],
+   "new_test_failures": [],
+   "fixed": [],
+   "persistent_failures": [
+    "::scripts.test_inputs",
+    "::tests.dataset_creation_test"
+   ]
+  },
+  "imports_head": {
+   "slippi_ai.dolphin": {
+    "ok": true
+   },
+   "slippi_ai.embed": {
+    "ok": true
+   },
+   "slippi_ai.eval_lib": {
+    "ok": true
+   },
+   "slippi_ai.nametags": {
+    "ok": true
+   },
+   "slippi_ai.rl.run_lib": {
+    "ok": true
+   },
+   "slippi_ai.train_lib": {
+    "ok": true
+   },
+   "slippi_db.parse_local": {
+    "ok": true
+   },
+   "slippi_db.utils": {
+    "ok": true
+   }
+  },
+  "imports_base": {
+   "slippi_ai.dolphin": {
+    "ok": true
+   },
+   "slippi_ai.embed": {
+    "ok": true
+   },
+   "slippi_ai.eval_lib": {
+    "ok": true
+   },
+   "slippi_ai.nametags": {
+    "ok": true
+   },
+   "slippi_ai.rl.run_lib": {
+    "ok": true
+   },
+   "slippi_ai.train_lib": {
+    "ok": true
+   },
+   "slippi_db.parse_local": {
+    "ok": true
+   },
+   "slippi_db.utils": {
+    "ok": true
+   }
+  },
+  "status": "completed",
+  "dependency_cutoff": "2025-04-26T05:10:07Z",
+  "seconds": 240.1,
+  "head_failures": 2
+ },
+ "findings": [
+  {
+   "tool": "ruff",
+   "rule": "F401",
+   "category": "maintainability",
+   "severity": "low",
+   "confidence": "high",
+   "message": "`slippi_ai.saving` imported but unused",
+   "file": "scripts/run_evaluator.py",
+   "line": 14,
+   "end_line": 14,
+   "cwe": null,
+   "on_changed_line": true,
+   "evidence": {
+    "type": "static",
+    "source_line": "from slippi_ai import saving",
+    "url": "https://docs.astral.sh/ruff/rules/unused-import"
+   },
+   "sources": [
+    "ruff"
+   ],
+   "finding_id": "8d331a358703",
+   "score": 1.5
+  }
+ ],
+ "status": "ok",
+ "seconds": 243.6
+}

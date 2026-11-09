@@ -1,0 +1,184 @@
+{
+ "pr_id": 2862179936,
+ "repository": "bentoml/BentoML",
+ "pr_number": 5222,
+ "split": "development",
+ "agent": "Devin",
+ "head_sha": "be30f0cf4b99b1c82ba1ef9777dbc4f910da4fdb",
+ "tool_versions": {
+  "ruff": "ruff 0.17.4",
+  "bandit": "__main__.py 1.9.4",
+  "python": "3.12.3"
+ },
+ "config": {
+  "run_tests": true,
+  "sandbox": true
+ },
+ "base_mode": "reverse_applied_diff",
+ "static": {
+  "files_analysed": 2,
+  "head_issues": 0,
+  "base_issues": 0,
+  "per_tool_head": {},
+  "per_tool_base": {},
+  "introduced": 0,
+  "seconds": 0.2
+ },
+ "tests": {
+  "env": {
+   "status": "partial",
+   "python": "3.15.2",
+   "steps": [
+    {
+     "step": "venv",
+     "ok": true,
+     "seconds": 0.0,
+     "timed_out": false,
+     "log_tail": ""
+    },
+    {
+     "step": "install -e .",
+     "ok": false,
+     "seconds": 2.8,
+     "timed_out": false,
+     "log_tail": "error: Failed to build `watchfiles==1.0.4`\n  cause: The build backend returned an error\n  cause: Call to `maturin.build_wheel` failed (exit status: 1)\n\n         [stdout]\n         Running `maturin pep517 build-wheel -i /dev/shm/acr/work/_shared_cache/uv/builds-v0/.tmpPZcQ7d/bin/python --compatibility off`\n\n         [stderr]\n         💥 maturin failed\n           Caused by: Cargo metadata failed. Do you have cargo in your PATH?\n           Caused by: No such file or directory (os error 2)\n         Error: command ['maturin', 'pep517', 'build-wheel', '-i', '/dev/shm/acr/work/_shared_cache/uv/builds-v0/.tmpPZcQ7d/bin/python', '--compatibility', 'off'] returned non-zero exit status 1\n\nhint: `watchfiles` (v1.0.4) was included because `bentoml` (v0.0.post1+gbe30f0c) depends on `watchfiles`\n\nhint: Build failures usually indicate a problem with the package or the build environment\n"
+    },
+    {
+     "step": "install --group testing",
+     "ok": false,
+     "seconds": 0.1,
+     "timed_out": false,
+     "log_tail": "error: Failed to build `pydantic-core==2.27.2`\n  cause: The build backend returned an error\n  cause: Call to `maturin.build_wheel` failed (exit status: 1)\n\n         [stdout]\n         Running `maturin pep517 build-wheel -i /dev/shm/acr/work/_shared_cache/uv/builds-v0/.tmpf2retn/bin/python --compatibility off`\n\n         [stderr]\n         💥 maturin failed\n           Caused by: Cargo metadata failed. Do you have cargo in your PATH?\n           Caused by: No such file or directory (os error 2)\n         Error: command ['maturin', 'pep517', 'build-wheel', '-i', '/dev/shm/acr/work/_shared_cache/uv/builds-v0/.tmpf2retn/bin/python', '--compatibility', 'off'] returned non-zero exit status 1\n\nhint: `pydantic-core` (v2.27.2) was included because `fastapi` (v0.115.8) depends on `pydantic` (v2.10.6) which depends on `pydantic-core`\n\nhint: Build failures usually indicate a problem with the package or the build environment\n"
+    },
+    {
+     "step": "install pytest",
+     "ok": true,
+     "seconds": 0.0,
+     "timed_out": false,
+     "log_tail": ""
+    }
+   ]
+  },
+  "selected_tests": [
+   {
+    "path": "tests/unit/_internal/utils/test_metrics.py",
+    "reason": "changed_in_pr",
+    "exists_at_base": true
+   },
+   {
+    "path": "tests/e2e/bento_server_grpc/tests/test_metrics.py",
+    "reason": "matches_module:metrics",
+    "exists_at_base": true
+   },
+   {
+    "path": "tests/e2e/bento_server_grpc/tests/test_metrics_collection.py",
+    "reason": "matches_module:metrics",
+    "exists_at_base": true
+   }
+  ],
+  "head_run": {
+   "status": "completed",
+   "exit_code": 1,
+   "seconds": 0.2,
+   "addopts_overridden": false,
+   "counts": {
+    "passed": 0,
+    "failed": 0,
+    "error": 0,
+    "skipped": 0
+   },
+   "tests": {},
+   "log_tail": ""
+  },
+  "base_run": {
+   "status": "completed",
+   "exit_code": 1,
+   "seconds": 0.2,
+   "addopts_overridden": false,
+   "counts": {
+    "passed": 0,
+    "failed": 0,
+    "error": 0,
+    "skipped": 0
+   },
+   "tests": {},
+   "log_tail": ""
+  },
+  "comparison": {
+   "regressions": [],
+   "new_test_failures": [],
+   "fixed": [],
+   "persistent_failures": []
+  },
+  "imports_head": {
+   "bentoml._internal.utils.metrics": {
+    "ok": false,
+    "type": "ModuleNotFoundError",
+    "message": "No module named 'starlette'",
+    "missing_module": "starlette",
+    "file": "src/bentoml/_internal/types.py",
+    "line": 17,
+    "traceback": ">\", line 1299, in _resolve_parents\n  File \"<frozen importlib._bootstrap>\", line 491, in _call_with_frames_removed\n  File \"<frozen importlib._bootstrap>\", line 1389, in _gcd_import\n  File \"<frozen importlib._bootstrap>\", line 1338, in _find_and_load\n  File \"<frozen importlib._bootstrap>\", line 1299, in _resolve_parents\n  File \"<frozen importlib._bootstrap>\", line 491, in _call_with_frames_removed\n  File \"<frozen importlib._bootstrap>\", line 1389, in _gcd_import\n  File \"<frozen importlib._bootstrap>\", line 1353, in _find_and_load\n  File \"<frozen importlib._bootstrap>\", line 1249, in _find_and_load_unlocked\n  File \"<frozen importlib._bootstrap>\", line 857, in _load_unlocked\n  File \"<frozen importlib._bootstrap_external>\", line 751, in exec_module\n  File \"<frozen importlib._bootstrap>\", line 491, in _call_with_frames_removed\n  File \"/dev/shm/acr/work/2862179936/src/head/src/bentoml/__init__.py\", line 170, in <module>\n    from _bentoml_impl.frameworks.importer import FrameworkImporter\n  File \"/dev/shm/acr/work/2862179936/src/head/src/_bentoml_impl/frameworks/importer.py\", line 7, in <module>\n    from bentoml._internal.utils import warn_deprecated\n  File \"/dev/shm/acr/work/2862179936/src/head/src/bentoml/_internal/utils/__init__.py\", line 22, in <module>\n    from ..types import LazyType\n  File \"/dev/shm/acr/work/2862179936/src/head/src/bentoml/_internal/types.py\", line 17, in <module>\n    from starlette.applications import Starlette\nModuleNotFoundError: No module named 'starlette'\n"
+   }
+  },
+  "imports_base": {
+   "bentoml._internal.utils.metrics": {
+    "ok": false,
+    "type": "PackageNotFoundError",
+    "message": "No package metadata was found for bentoml",
+    "missing_module": "bentoml",
+    "file": "src/bentoml/_internal/configuration/__init__.py",
+    "line": 41,
+    "traceback": "n importlib._bootstrap>\", line 857, in _load_unlocked\n  File \"<frozen importlib._bootstrap_external>\", line 751, in exec_module\n  File \"<frozen importlib._bootstrap>\", line 491, in _call_with_frames_removed\n  File \"/dev/shm/acr/work/2862179936/src/base/src/bentoml/__init__.py\", line 20, in <module>\n    from ._internal.configuration import BENTOML_VERSION as __version__\n  File \"/dev/shm/acr/work/2862179936/src/base/src/bentoml/_internal/configuration/__init__.py\", line 46, in <module>\n    BENTOML_VERSION = get_bentoml_version()\n  File \"/dev/shm/acr/work/2862179936/src/base/src/bentoml/_internal/configuration/__init__.py\", line 41, in get_bentoml_version\n    __version__ = importlib.metadata.version(\"bentoml\")\n  File \"/dev/shm/acr/work/_shared_cache/python/cpython-3.15.2-linux-x86_64-gnu/lib/python3.15/importlib/metadata/__init__.py\", line 1101, in version\n    return distribution(distribution_name).version\n           ~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^\n  File \"/dev/shm/acr/work/_shared_cache/python/cpython-3.15.2-linux-x86_64-gnu/lib/python3.15/importlib/metadata/__init__.py\", line 1073, in distribution\n    return Distribution.from_name(distribution_name)\n           ~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^\n  File \"/dev/shm/acr/work/_shared_cache/python/cpython-3.15.2-linux-x86_64-gnu/lib/python3.15/importlib/metadata/__init__.py\", line 467, in from_name\n    raise PackageNotFoundError(name) from None\nimportlib.metadata.PackageNotFoundError: No package metadata was found for bentoml\n"
+   }
+  },
+  "status": "completed",
+  "dependency_cutoff": "2025-02-19T05:28:36Z",
+  "seconds": 3.5,
+  "head_failures": 0
+ },
+ "findings": [
+  {
+   "tool": "import_check",
+   "rule": "missing-dependency",
+   "category": "correctness",
+   "severity": "medium",
+   "confidence": "medium",
+   "message": "Importing bentoml._internal.utils.metrics fails at head (ModuleNotFoundError: No module named 'starlette') but succeeds at base",
+   "file": "src/bentoml/_internal/types.py",
+   "line": 17,
+   "end_line": null,
+   "cwe": null,
+   "on_changed_line": false,
+   "evidence": {
+    "type": "test",
+    "module": "bentoml._internal.utils.metrics",
+    "head": {
+     "ok": false,
+     "type": "ModuleNotFoundError",
+     "message": "No module named 'starlette'",
+     "missing_module": "starlette",
+     "file": "src/bentoml/_internal/types.py",
+     "line": 17,
+     "traceback": ">\", line 1299, in _resolve_parents\n  File \"<frozen importlib._bootstrap>\", line 491, in _call_with_frames_removed\n  File \"<frozen importlib._bootstrap>\", line 1389, in _gcd_import\n  File \"<frozen importlib._bootstrap>\", line 1338, in _find_and_load\n  File \"<frozen importlib._bootstrap>\", line 1299, in _resolve_parents\n  File \"<frozen importlib._bootstrap>\", line 491, in _call_with_frames_removed\n  File \"<frozen importlib._bootstrap>\", line 1389, in _gcd_import\n  File \"<frozen importlib._bootstrap>\", line 1353, in _find_and_load\n  File \"<frozen importlib._bootstrap>\", line 1249, in _find_and_load_unlocked\n  File \"<frozen importlib._bootstrap>\", line 857, in _load_unlocked\n  File \"<frozen importlib._bootstrap_external>\", line 751, in exec_module\n  File \"<frozen importlib._bootstrap>\", line 491, in _call_with_frames_removed\n  File \"/dev/shm/acr/work/2862179936/src/head/src/bentoml/__init__.py\", line 170, in <module>\n    from _bentoml_impl.frameworks.importer import FrameworkImporter\n  File \"/dev/shm/acr/work/2862179936/src/head/src/_bentoml_impl/frameworks/importer.py\", line 7, in <module>\n    from bentoml._internal.utils import warn_deprecated\n  File \"/dev/shm/acr/work/2862179936/src/head/src/bentoml/_internal/utils/__init__.py\", line 22, in <module>\n    from ..types import LazyType\n  File \"/dev/shm/acr/work/2862179936/src/head/src/bentoml/_internal/types.py\", line 17, in <module>\n    from starlette.applications import Starlette\nModuleNotFoundError: No module named 'starlette'\n"
+    },
+    "base": {
+     "ok": false,
+     "type": "PackageNotFoundError",
+     "message": "No package metadata was found for bentoml",
+     "missing_module": "bentoml",
+     "file": "src/bentoml/_internal/configuration/__init__.py",
+     "line": 41,
+     "traceback": "n importlib._bootstrap>\", line 857, in _load_unlocked\n  File \"<frozen importlib._bootstrap_external>\", line 751, in exec_module\n  File \"<frozen importlib._bootstrap>\", line 491, in _call_with_frames_removed\n  File \"/dev/shm/acr/work/2862179936/src/base/src/bentoml/__init__.py\", line 20, in <module>\n    from ._internal.configuration import BENTOML_VERSION as __version__\n  File \"/dev/shm/acr/work/2862179936/src/base/src/bentoml/_internal/configuration/__init__.py\", line 46, in <module>\n    BENTOML_VERSION = get_bentoml_version()\n  File \"/dev/shm/acr/work/2862179936/src/base/src/bentoml/_internal/configuration/__init__.py\", line 41, in get_bentoml_version\n    __version__ = importlib.metadata.version(\"bentoml\")\n  File \"/dev/shm/acr/work/_shared_cache/python/cpython-3.15.2-linux-x86_64-gnu/lib/python3.15/importlib/metadata/__init__.py\", line 1101, in version\n    return distribution(distribution_name).version\n           ~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^\n  File \"/dev/shm/acr/work/_shared_cache/python/cpython-3.15.2-linux-x86_64-gnu/lib/python3.15/importlib/metadata/__init__.py\", line 1073, in distribution\n    return Distribution.from_name(distribution_name)\n           ~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^\n  File \"/dev/shm/acr/work/_shared_cache/python/cpython-3.15.2-linux-x86_64-gnu/lib/python3.15/importlib/metadata/__init__.py\", line 467, in from_name\n    raise PackageNotFoundError(name) from None\nimportlib.metadata.PackageNotFoundError: No package metadata was found for bentoml\n"
+    }
+   },
+   "sources": [
+    "import_check"
+   ],
+   "finding_id": "348300743a8a",
+   "score": 1.4
+  }
+ ],
+ "status": "ok",
+ "seconds": 65.0
+}

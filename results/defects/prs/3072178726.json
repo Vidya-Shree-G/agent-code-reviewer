@@ -1,0 +1,207 @@
+{
+ "pr_id": 3072178726,
+ "repository": "NousResearch/atropos",
+ "pr_number": 71,
+ "split": "development",
+ "agent": "OpenAI_Codex",
+ "head_sha": "9c02ebc0548185b70866b31254481489e11fc02c",
+ "tool_versions": {
+  "ruff": "ruff 0.17.4",
+  "bandit": "__main__.py 1.9.4",
+  "python": "3.12.3"
+ },
+ "config": {
+  "run_tests": true,
+  "sandbox": true
+ },
+ "base_mode": "reverse_applied_diff",
+ "static": {
+  "files_analysed": 2,
+  "head_issues": 0,
+  "base_issues": 0,
+  "per_tool_head": {},
+  "per_tool_base": {},
+  "introduced": 0,
+  "seconds": 0.1
+ },
+ "tests": {
+  "env": {
+   "status": "partial",
+   "python": "3.15.2",
+   "steps": [
+    {
+     "step": "venv",
+     "ok": true,
+     "seconds": 0.0,
+     "timed_out": false,
+     "log_tail": ""
+    },
+    {
+     "step": "install -e .[dev]",
+     "ok": false,
+     "seconds": 4.2,
+     "timed_out": false,
+     "log_tail": "/latest/userguide/datafiles.html\n\n\n                 [^1]: For Python, any directory (with suitable naming) can be imported,\n                       even if it does not contain any `.py` files.\n                       On the other hand, currently there is no concept of package data\n                       directory, all directories are treated like packages.\n                 ********************************************************************************\n\n         !!\n           check.warn(importable)\n         CMake Error at CMakeLists.txt:289 (find_package):\n           By not providing \"FindArrow.cmake\" in CMAKE_MODULE_PATH this project has\n           asked CMake to find a package configuration file provided by \"Arrow\", but\n           CMake did not find one.\n\n           Could not find a package configuration file provided by \"Arrow\" with any of\n           the following names:\n\n             ArrowConfig.cmake\n             arrow-config.cmake\n\n           Add the installation prefix of \"Arrow\" to CMAKE_PREFIX_PATH or set\n           \"Arrow_DIR\" to a directory containing one of the above files.  If \"Arrow\"\n           provides a separate development package or SDK, be sure it has been\n           installed.\n\n\n         error: command '/usr/bin/cmake' failed with exit code 1\n\nhint: `pyarrow` (v20.0.0) was included because `atroposlib` (v0.2.1) depends on `datasets` (v3.6.0) which depends on `pyarrow`\n\nhint: Build failures usually indicate a problem with the package or the build environment\n",
+     "superseded": true
+    },
+    {
+     "step": "install -e .",
+     "ok": false,
+     "seconds": 0.5,
+     "timed_out": false,
+     "log_tail": "               ~~~~~~~~^^\n           File \"/dev/shm/acr/work/_shared_cache/uv/builds-v0/.tmpphcK4J/lib/python3.15/site-packages/maturin/__init__.py\", line 76, in _get_env\n             extra_env = setup_rust()\n           File \"/dev/shm/acr/work/_shared_cache/uv/builds-v0/.tmpphcK4J/lib/python3.15/site-packages/puccinialin/_setup_rust.py\", line 123, in setup_rust\n             install_rust(rustup_init, rustup_home, cargo_home, file)\n             ~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n           File \"/dev/shm/acr/work/_shared_cache/uv/builds-v0/.tmpphcK4J/lib/python3.15/site-packages/puccinialin/_setup_rust.py\", line 66, in install_rust\n             check_call(\n             ~~~~~~~~~~^\n                 [\n                 ^\n             ...<13 lines>...\n                 stderr=file,\n                 ^^^^^^^^^^^^\n             )\n             ^\n           File \"/dev/shm/acr/work/_shared_cache/python/cpython-3.15.2-linux-x86_64-gnu/lib/python3.15/subprocess.py\", line 534, in check_call\n             raise CalledProcessError(retcode, cmd)\n         subprocess.CalledProcessError: Command [PosixPath('/dev/shm/acr/work/3072178726/home/.cache/puccinialin/rustup-init/rustup-init'), '-y', '--no-modify-path', '--profile', 'minimal'] returned non-zero exit status 1.\n\nhint: `jiter` (v0.10.0) was included because `atroposlib` (v0.2.1) depends on `openai` (v1.82.0) which depends on `jiter`\n\nhint: Build failures usually indicate a problem with the package or the build environment\n"
+    },
+    {
+     "step": "install pytest",
+     "ok": true,
+     "seconds": 0.0,
+     "timed_out": false,
+     "log_tail": ""
+    },
+    {
+     "step": "repair: install fastapi numpy python-dotenv transformers",
+     "ok": false,
+     "seconds": 12.2,
+     "timed_out": false,
+     "log_tail": "line 3947, in __getattr__\n               raise AttributeError(f\"module {__name__!r} has no attribute {attr!r}\")\n           AttributeError: module 'typing' has no attribute 'no_type_check_decorator'\n\n           thread 'main' (1083) panicked at build.rs:29:9:\n           generate_self_schema.py failed with exit status: 1\n           note: run with `RUST_BACKTRACE=1` environment variable to display a backtrace\n         💥 maturin failed\n           Caused by: Failed to build a native library through cargo\n           Caused by: Cargo build finished with \"exit status: 101\": `env -u CARGO PYO3_ENVIRONMENT_SIGNATURE=\"cpython-3.15-64bit\" PYO3_PYTHON=\"/dev/shm/acr/work/_shared_cache/uv/builds-v0/.tmpxzvl4u/bin/python\" PYTHON_SYS_EXECUTABLE=\"/dev/shm/acr/work/_shared_cache/uv/builds-v0/.tmpxzvl4u/bin/python\" \"cargo\" \"rustc\" \"--features\" \"pyo3/extension-module\" \"--message-format\" \"json-render-diagnostics\" \"--manifest-path\" \"/dev/shm/acr/work/_shared_cache/uv/sdists-v10/pypi/pydantic-core/2.33.2/D5dNEOkhKV9CkE_G/src/Cargo.toml\" \"--release\" \"--lib\" \"--crate-type\" \"cdylib\"`\n         Error: command ['maturin', 'pep517', 'build-wheel', '-i', '/dev/shm/acr/work/_shared_cache/uv/builds-v0/.tmpxzvl4u/bin/python', '--compatibility', 'off'] returned non-zero exit status 1\n\nhint: `pydantic-core` (v2.33.2) was included because `fastapi` (v0.115.12) depends on `pydantic` (v2.11.5) which depends on `pydantic-core`\n\nhint: Build failures usually indicate a problem with the package or the build environment\n"
+    }
+   ]
+  },
+  "selected_tests": [
+   {
+    "path": "atroposlib/tests/test_advantages.py",
+    "reason": "full_suite",
+    "exists_at_base": true
+   },
+   {
+    "path": "atroposlib/tests/test_openai_api_workarounds.py",
+    "reason": "full_suite",
+    "exists_at_base": true
+   },
+   {
+    "path": "atroposlib/tests/test_utils/test_heterogeneous_batching.py",
+    "reason": "full_suite",
+    "exists_at_base": true
+   },
+   {
+    "path": "testing/utils/test_tokenize_for_trainer.py",
+    "reason": "full_suite",
+    "exists_at_base": true
+   }
+  ],
+  "head_run": {
+   "status": "completed",
+   "exit_code": 2,
+   "seconds": 0.3,
+   "addopts_overridden": false,
+   "counts": {
+    "passed": 0,
+    "failed": 0,
+    "error": 4,
+    "skipped": 0
+   },
+   "tests": {
+    "::atroposlib.tests.test_advantages": {
+     "outcome": "error",
+     "detail": "collection failure\nImportError while importing test module '/dev/shm/acr/work/3072178726/src/head/atroposlib/tests/test_advantages.py'.\nHint: make sure your test modules/packages have valid Python names.\nTraceback:\n../../../_shared_cache/python/cpython-3.15.2-linux-x86_64-gnu/lib/python3.15/importlib/__init__.py:88: in import_module\n    return _bootstrap._gcd_import(name[level:], package, level)\natroposlib/tests/test_advantages.py:3: in <module>\n    import numpy as np\nE   ModuleNotFoundError: No module named 'numpy'. Did you mean: 'runpy'?"
+    },
+    "::atroposlib.tests.test_openai_api_workarounds": {
+     "outcome": "error",
+     "detail": "collection failure\nImportError while importing test module '/dev/shm/acr/work/3072178726/src/head/atroposlib/tests/test_openai_api_workarounds.py'.\nHint: make sure your test modules/packages have valid Python names.\nTraceback:\n../../../_shared_cache/python/cpython-3.15.2-linux-x86_64-gnu/lib/python3.15/importlib/__init__.py:88: in import_module\n    return _bootstrap._gcd_import(name[level:], package, level)\natroposlib/tests/test_openai_api_workarounds.py:4: in <module>\n    import dotenv\nE   ModuleNotFoundError: No module named 'dotenv'"
+    },
+    "::atroposlib.tests.test_utils.test_heterogeneous_batching": {
+     "outcome": "error",
+     "detail": "collection failure\nImportError while importing test module '/dev/shm/acr/work/3072178726/src/head/atroposlib/tests/test_utils/test_heterogeneous_batching.py'.\nHint: make sure your test modules/packages have valid Python names.\nTraceback:\n../../../_shared_cache/python/cpython-3.15.2-linux-x86_64-gnu/lib/python3.15/importlib/__init__.py:88: in import_module\n    return _bootstrap._gcd_import(name[level:], package, level)\natroposlib/tests/test_utils/test_heterogeneous_batching.py:3: in <module>\n    from atroposlib.api.utils import grab_exact_from_heterogeneous_queue\natroposlib/api/__init__.py:1: in <module>\n    from .server import app\natroposlib/api/server.py:5: in <module>\n    from fastapi import FastAPI, status\nE   ModuleNotFoundError: No module named 'fastapi'"
+    },
+    "::testing.utils.test_tokenize_for_trainer": {
+     "outcome": "error",
+     "detail": "collection failure\nImportError while importing test module '/dev/shm/acr/work/3072178726/src/head/testing/utils/test_tokenize_for_trainer.py'.\nHint: make sure your test modules/packages have valid Python names.\nTraceback:\n../../../_shared_cache/python/cpython-3.15.2-linux-x86_64-gnu/lib/python3.15/importlib/__init__.py:88: in import_module\n    return _bootstrap._gcd_import(name[level:], package, level)\ntesting/utils/test_tokenize_for_trainer.py:5: in <module>\n    from transformers import AutoTokenizer\nE   ModuleNotFoundError: No module named 'transformers'"
+    }
+   },
+   "log_tail": ""
+  },
+  "base_run": {
+   "status": "completed",
+   "exit_code": 2,
+   "seconds": 0.3,
+   "addopts_overridden": false,
+   "counts": {
+    "passed": 0,
+    "failed": 0,
+    "error": 4,
+    "skipped": 0
+   },
+   "tests": {
+    "::atroposlib.tests.test_advantages": {
+     "outcome": "error",
+     "detail": "collection failure\nImportError while importing test module '/dev/shm/acr/work/3072178726/src/base/atroposlib/tests/test_advantages.py'.\nHint: make sure your test modules/packages have valid Python names.\nTraceback:\n../../../_shared_cache/python/cpython-3.15.2-linux-x86_64-gnu/lib/python3.15/importlib/__init__.py:88: in import_module\n    return _bootstrap._gcd_import(name[level:], package, level)\natroposlib/tests/test_advantages.py:3: in <module>\n    import numpy as np\nE   ModuleNotFoundError: No module named 'numpy'. Did you mean: 'runpy'?"
+    },
+    "::atroposlib.tests.test_openai_api_workarounds": {
+     "outcome": "error",
+     "detail": "collection failure\nImportError while importing test module '/dev/shm/acr/work/3072178726/src/base/atroposlib/tests/test_openai_api_workarounds.py'.\nHint: make sure your test modules/packages have valid Python names.\nTraceback:\n../../../_shared_cache/python/cpython-3.15.2-linux-x86_64-gnu/lib/python3.15/importlib/__init__.py:88: in import_module\n    return _bootstrap._gcd_import(name[level:], package, level)\natroposlib/tests/test_openai_api_workarounds.py:4: in <module>\n    import dotenv\nE   ModuleNotFoundError: No module named 'dotenv'"
+    },
+    "::atroposlib.tests.test_utils.test_heterogeneous_batching": {
+     "outcome": "error",
+     "detail": "collection failure\nImportError while importing test module '/dev/shm/acr/work/3072178726/src/base/atroposlib/tests/test_utils/test_heterogeneous_batching.py'.\nHint: make sure your test modules/packages have valid Python names.\nTraceback:\n../../../_shared_cache/python/cpython-3.15.2-linux-x86_64-gnu/lib/python3.15/importlib/__init__.py:88: in import_module\n    return _bootstrap._gcd_import(name[level:], package, level)\natroposlib/tests/test_utils/test_heterogeneous_batching.py:3: in <module>\n    from atroposlib.api.utils import grab_exact_from_heterogeneous_queue\natroposlib/api/__init__.py:1: in <module>\n    from .server import app\natroposlib/api/server.py:5: in <module>\n    from fastapi import FastAPI, status\nE   ModuleNotFoundError: No module named 'fastapi'"
+    },
+    "::testing.utils.test_tokenize_for_trainer": {
+     "outcome": "error",
+     "detail": "collection failure\nImportError while importing test module '/dev/shm/acr/work/3072178726/src/base/testing/utils/test_tokenize_for_trainer.py'.\nHint: make sure your test modules/packages have valid Python names.\nTraceback:\n../../../_shared_cache/python/cpython-3.15.2-linux-x86_64-gnu/lib/python3.15/importlib/__init__.py:88: in import_module\n    return _bootstrap._gcd_import(name[level:], package, level)\ntesting/utils/test_tokenize_for_trainer.py:5: in <module>\n    from transformers import AutoTokenizer\nE   ModuleNotFoundError: No module named 'transformers'"
+    }
+   },
+   "log_tail": ""
+  },
+  "comparison": {
+   "regressions": [],
+   "new_test_failures": [],
+   "fixed": [],
+   "persistent_failures": [
+    "::atroposlib.tests.test_advantages",
+    "::atroposlib.tests.test_openai_api_workarounds",
+    "::atroposlib.tests.test_utils.test_heterogeneous_batching",
+    "::testing.utils.test_tokenize_for_trainer"
+   ]
+  },
+  "imports_head": {
+   "atroposlib.envs.reward_fns.chandas_meter_reward": {
+    "ok": true
+   },
+   "environments.sanskrit_poetry_env": {
+    "ok": false,
+    "type": "ModuleNotFoundError",
+    "message": "No module named 'pydantic'",
+    "missing_module": "pydantic",
+    "file": "environments/sanskrit_poetry_env.py",
+    "line": 4,
+    "traceback": "Traceback (most recent call last):\n  File \"<string>\", line 7, in <module>\n    importlib.import_module(m)\n    ~~~~~~~~~~~~~~~~~~~~~~~^^^\n  File \"/dev/shm/acr/work/_shared_cache/python/cpython-3.15.2-linux-x86_64-gnu/lib/python3.15/importlib/__init__.py\", line 88, in import_module\n    return _bootstrap._gcd_import(name[level:], package, level)\n           ~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"<frozen importlib._bootstrap>\", line 1389, in _gcd_import\n  File \"<frozen importlib._bootstrap>\", line 1353, in _find_and_load\n  File \"<frozen importlib._bootstrap>\", line 1249, in _find_and_load_unlocked\n  File \"<frozen importlib._bootstrap>\", line 857, in _load_unlocked\n  File \"<frozen importlib._bootstrap_external>\", line 751, in exec_module\n  File \"<frozen importlib._bootstrap>\", line 491, in _call_with_frames_removed\n  File \"/dev/shm/acr/work/3072178726/src/head/environments/sanskrit_poetry_env.py\", line 4, in <module>\n    from pydantic import Field\nModuleNotFoundError: No module named 'pydantic'\n"
+   }
+  },
+  "imports_base": {
+   "atroposlib.envs.reward_fns.chandas_meter_reward": {
+    "ok": false,
+    "type": "ModuleNotFoundError",
+    "message": "No module named 'atroposlib.envs.reward_fns.chandas_meter_reward'",
+    "missing_module": "atroposlib.envs.reward_fns.chandas_meter_reward",
+    "file": null,
+    "line": null,
+    "traceback": "Traceback (most recent call last):\n  File \"<string>\", line 7, in <module>\n    importlib.import_module(m)\n    ~~~~~~~~~~~~~~~~~~~~~~~^^^\n  File \"/dev/shm/acr/work/_shared_cache/python/cpython-3.15.2-linux-x86_64-gnu/lib/python3.15/importlib/__init__.py\", line 88, in import_module\n    return _bootstrap._gcd_import(name[level:], package, level)\n           ~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"<frozen importlib._bootstrap>\", line 1389, in _gcd_import\n  File \"<frozen importlib._bootstrap>\", line 1353, in _find_and_load\n  File \"<frozen importlib._bootstrap>\", line 1242, in _find_and_load_unlocked\nModuleNotFoundError: No module named 'atroposlib.envs.reward_fns.chandas_meter_reward'. Did you mean: 'atroposlib.envs.reward_fns.cosine_scaled_reward'?\n"
+   },
+   "environments.sanskrit_poetry_env": {
+    "ok": false,
+    "type": "ModuleNotFoundError",
+    "message": "No module named 'environments.sanskrit_poetry_env'",
+    "missing_module": "environments.sanskrit_poetry_env",
+    "file": null,
+    "line": null,
+    "traceback": "Traceback (most recent call last):\n  File \"<string>\", line 7, in <module>\n    importlib.import_module(m)\n    ~~~~~~~~~~~~~~~~~~~~~~~^^^\n  File \"/dev/shm/acr/work/_shared_cache/python/cpython-3.15.2-linux-x86_64-gnu/lib/python3.15/importlib/__init__.py\", line 88, in import_module\n    return _bootstrap._gcd_import(name[level:], package, level)\n           ~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"<frozen importlib._bootstrap>\", line 1389, in _gcd_import\n  File \"<frozen importlib._bootstrap>\", line 1353, in _find_and_load\n  File \"<frozen importlib._bootstrap>\", line 1242, in _find_and_load_unlocked\nModuleNotFoundError: No module named 'environments.sanskrit_poetry_env'\n"
+   }
+  },
+  "status": "completed",
+  "dependency_cutoff": "2025-05-27T03:35:29Z",
+  "seconds": 17.8,
+  "head_failures": 4
+ },
+ "findings": [],
+ "status": "ok",
+ "seconds": 18.8
+}

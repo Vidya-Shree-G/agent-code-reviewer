@@ -1,0 +1,152 @@
+{
+ "pr_id": 3006639000,
+ "repository": "saturday06/VRM-Addon-for-Blender",
+ "pr_number": 802,
+ "split": "development",
+ "agent": "Devin",
+ "head_sha": "887cfc3d5f381e5e330dc06a9225bfeb388c9d0b",
+ "tool_versions": {
+  "ruff": "ruff 0.17.4",
+  "bandit": "__main__.py 1.9.4",
+  "python": "3.12.3"
+ },
+ "config": {
+  "run_tests": true,
+  "sandbox": true
+ },
+ "base_mode": "reverse_applied_diff",
+ "static": {
+  "files_analysed": 1,
+  "head_issues": 0,
+  "base_issues": 0,
+  "per_tool_head": {},
+  "per_tool_base": {},
+  "introduced": 0,
+  "seconds": 0.2
+ },
+ "tests": {
+  "env": {
+   "status": "partial",
+   "python": "3.10.22",
+   "steps": [
+    {
+     "step": "venv",
+     "ok": true,
+     "seconds": 1.7,
+     "timed_out": false,
+     "log_tail": ""
+    },
+    {
+     "step": "install -e .",
+     "ok": false,
+     "seconds": 0.2,
+     "timed_out": false,
+     "log_tail": "error: No solution found when resolving dependencies\n  cause: Because only bpy{platform_machine == 'x86_64' and sys_platform == 'linux'}>=4.2.0 is available and io-scene-vrm==1.0.0 depends on bpy{platform_machine == 'x86_64' and sys_platform == 'linux'}==3.6.*, we can conclude that io-scene-vrm==1.0.0 cannot be used.\n         And because only io-scene-vrm==1.0.0 is available and you require io-scene-vrm, we can conclude that your requirements are unsatisfiable.\n"
+    },
+    {
+     "step": "install pytest",
+     "ok": true,
+     "seconds": 0.1,
+     "timed_out": false,
+     "log_tail": ""
+    },
+    {
+     "step": "repair: install bpy",
+     "ok": false,
+     "seconds": 0.0,
+     "timed_out": false,
+     "log_tail": "error: No solution found when resolving dependencies\n  cause: Because all versions of bpy have no wheels with a matching Python implementation tag (e.g., `cp310`) and you require bpy, we can conclude that your requirements are unsatisfiable.\n\nhint: You require CPython 3.10 (`cp310`), but we only found wheels for `bpy` (v4.4.0) with the following Python implementation tag: `cp311`\n"
+    }
+   ]
+  },
+  "selected_tests": [
+   {
+    "path": "tests/test_common.py",
+    "reason": "imports_changed_module",
+    "exists_at_base": true
+   },
+   {
+    "path": "tests/test_importer.py",
+    "reason": "imports_changed_module",
+    "exists_at_base": true
+   },
+   {
+    "path": "tests/test_legacy_addon_init.py",
+    "reason": "imports_changed_module",
+    "exists_at_base": true
+   }
+  ],
+  "head_run": {
+   "status": "completed",
+   "exit_code": 2,
+   "seconds": 0.4,
+   "addopts_overridden": false,
+   "counts": {
+    "passed": 0,
+    "failed": 0,
+    "error": 2,
+    "skipped": 0
+   },
+   "tests": {
+    "::tests.test_common": {
+     "outcome": "error",
+     "detail": "collection failure\nImportError while importing test module '/dev/shm/acr/work/3006639000/src/head/tests/test_common.py'.\nHint: make sure your test modules/packages have valid Python names.\nTraceback:\n../../../_shared_cache/python/cpython-3.10-linux-x86_64-gnu/lib/python3.10/importlib/__init__.py:126: in import_module\n    return _bootstrap._gcd_import(name[level:], package, level)\ntests/test_common.py:13: in <module>\n    import bpy\nE   ModuleNotFoundError: No module named 'bpy'"
+    },
+    "::tests.test_legacy_addon_init": {
+     "outcome": "error",
+     "detail": "collection failure\nImportError while importing test module '/dev/shm/acr/work/3006639000/src/head/tests/test_legacy_addon_init.py'.\nHint: make sure your test modules/packages have valid Python names.\nTraceback:\n../../../_shared_cache/python/cpython-3.10-linux-x86_64-gnu/lib/python3.10/importlib/__init__.py:126: in import_module\n    return _bootstrap._gcd_import(name[level:], package, level)\ntests/test_legacy_addon_init.py:5: in <module>\n    from io_scene_vrm.common import version\nsrc/io_scene_vrm/common/version.py:7: in <module>\n    import bpy\nE   ModuleNotFoundError: No module named 'bpy'"
+    }
+   },
+   "log_tail": ""
+  },
+  "base_run": {
+   "status": "completed",
+   "exit_code": 2,
+   "seconds": 0.4,
+   "addopts_overridden": false,
+   "counts": {
+    "passed": 0,
+    "failed": 0,
+    "error": 2,
+    "skipped": 0
+   },
+   "tests": {
+    "::tests.test_common": {
+     "outcome": "error",
+     "detail": "collection failure\nImportError while importing test module '/dev/shm/acr/work/3006639000/src/base/tests/test_common.py'.\nHint: make sure your test modules/packages have valid Python names.\nTraceback:\n../../../_shared_cache/python/cpython-3.10-linux-x86_64-gnu/lib/python3.10/importlib/__init__.py:126: in import_module\n    return _bootstrap._gcd_import(name[level:], package, level)\ntests/test_common.py:13: in <module>\n    import bpy\nE   ModuleNotFoundError: No module named 'bpy'"
+    },
+    "::tests.test_legacy_addon_init": {
+     "outcome": "error",
+     "detail": "collection failure\nImportError while importing test module '/dev/shm/acr/work/3006639000/src/base/tests/test_legacy_addon_init.py'.\nHint: make sure your test modules/packages have valid Python names.\nTraceback:\n../../../_shared_cache/python/cpython-3.10-linux-x86_64-gnu/lib/python3.10/importlib/__init__.py:126: in import_module\n    return _bootstrap._gcd_import(name[level:], package, level)\ntests/test_legacy_addon_init.py:5: in <module>\n    from io_scene_vrm.common import version\nsrc/io_scene_vrm/common/version.py:7: in <module>\n    import bpy\nE   ModuleNotFoundError: No module named 'bpy'"
+    }
+   },
+   "log_tail": ""
+  },
+  "comparison": {
+   "regressions": [],
+   "new_test_failures": [],
+   "fixed": [],
+   "persistent_failures": [
+    "::tests.test_common",
+    "::tests.test_legacy_addon_init"
+   ]
+  },
+  "imports_head": {
+   "io_scene_vrm": {
+    "ok": true
+   }
+  },
+  "imports_base": {
+   "io_scene_vrm": {
+    "ok": true
+   }
+  },
+  "status": "completed",
+  "dependency_cutoff": "2025-04-19T20:44:24Z",
+  "seconds": 2.9,
+  "head_failures": 2
+ },
+ "findings": [],
+ "status": "ok",
+ "seconds": 199.6
+}

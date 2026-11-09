@@ -1,0 +1,227 @@
+{
+ "pr_id": 3115255271,
+ "repository": "TheAlgorithms/Python",
+ "pr_number": 12782,
+ "split": "development",
+ "agent": "OpenAI_Codex",
+ "head_sha": "7d098c46ef6dadd6203ccb5099edb0a46018c14c",
+ "tool_versions": {
+  "ruff": "ruff 0.17.4",
+  "bandit": "__main__.py 1.9.4",
+  "python": "3.12.3"
+ },
+ "config": {
+  "run_tests": true,
+  "sandbox": true
+ },
+ "base_mode": "reverse_applied_diff",
+ "static": {
+  "files_analysed": 1,
+  "head_issues": 0,
+  "base_issues": 0,
+  "per_tool_head": {},
+  "per_tool_base": {},
+  "introduced": 0,
+  "seconds": 1.0
+ },
+ "tests": {
+  "env": {
+   "status": "partial",
+   "python": "3.15.2",
+   "steps": [
+    {
+     "step": "venv",
+     "ok": true,
+     "seconds": 0.0,
+     "timed_out": false,
+     "log_tail": ""
+    },
+    {
+     "step": "install -e .",
+     "ok": false,
+     "seconds": 1.8,
+     "timed_out": false,
+     "log_tail": "error: Failed to build `lxml==5.4.0`\n  cause: The build backend returned an error\n  cause: Call to `setuptools.build_meta:__legacy__.get_requires_for_build_wheel` failed (exit status: 1)\n\n         [stdout]\n         Building lxml version 5.4.0.\n         Building without Cython.\n         Error: Please make sure the libxml2 and libxslt development packages are installed.\n\n         [stderr]\n         <string>:67: UserWarning: pkg_resources is deprecated as an API. See https://setuptools.pypa.io/en/latest/pkg_resources.html. The pkg_resources package is slated for removal as early as 2025-11-30. Refrain from using this package or pin to Setuptools<81.\n\nhint: `lxml` (v5.4.0) was included because `thealgorithms-python` (v0.0.1) depends on `lxml`\n\nhint: Build failures usually indicate a problem with the package or the build environment\n"
+    },
+    {
+     "step": "install --group test",
+     "ok": true,
+     "seconds": 0.1,
+     "timed_out": false,
+     "log_tail": ""
+    },
+    {
+     "step": "install -r requirements.txt",
+     "ok": false,
+     "seconds": 0.6,
+     "timed_out": false,
+     "log_tail": "error: Failed to build `lxml==5.4.0`\n  cause: The build backend returned an error\n  cause: Call to `setuptools.build_meta:__legacy__.get_requires_for_build_wheel` failed (exit status: 1)\n\n         [stdout]\n         Building lxml version 5.4.0.\n         Building without Cython.\n         Error: Please make sure the libxml2 and libxslt development packages are installed.\n\n         [stderr]\n         <string>:67: UserWarning: pkg_resources is deprecated as an API. See https://setuptools.pypa.io/en/latest/pkg_resources.html. The pkg_resources package is slated for removal as early as 2025-11-30. Refrain from using this package or pin to Setuptools<81.\n\nhint: Build failures usually indicate a problem with the package or the build environment\n"
+    },
+    {
+     "step": "install pytest",
+     "ok": true,
+     "seconds": 0.0,
+     "timed_out": false,
+     "log_tail": ""
+    },
+    {
+     "step": "repair: install httpx mpmath numpy",
+     "ok": true,
+     "seconds": 8.7,
+     "timed_out": false,
+     "log_tail": ""
+    }
+   ]
+  },
+  "selected_tests": [
+   {
+    "path": "data_structures/hashing/tests/test_hash_map.py",
+    "reason": "full_suite",
+    "exists_at_base": true
+   },
+   {
+    "path": "data_structures/kd_tree/tests/test_kdtree.py",
+    "reason": "full_suite",
+    "exists_at_base": true
+   },
+   {
+    "path": "data_structures/suffix_tree/tests/test_suffix_tree.py",
+    "reason": "full_suite",
+    "exists_at_base": true
+   },
+   {
+    "path": "digital_image_processing/test_digital_image_processing.py",
+    "reason": "full_suite",
+    "exists_at_base": true
+   },
+   {
+    "path": "file_transfer/tests/test_send_file.py",
+    "reason": "full_suite",
+    "exists_at_base": true
+   },
+   {
+    "path": "graphs/tests/test_min_spanning_tree_kruskal.py",
+    "reason": "full_suite",
+    "exists_at_base": true
+   },
+   {
+    "path": "graphs/tests/test_min_spanning_tree_prim.py",
+    "reason": "full_suite",
+    "exists_at_base": true
+   },
+   {
+    "path": "knapsack/tests/test_greedy_knapsack.py",
+    "reason": "full_suite",
+    "exists_at_base": true
+   },
+   {
+    "path": "knapsack/tests/test_knapsack.py",
+    "reason": "full_suite",
+    "exists_at_base": true
+   },
+   {
+    "path": "linear_algebra/src/test_linear_algebra.py",
+    "reason": "full_suite",
+    "exists_at_base": true
+   },
+   {
+    "path": "maths/lucas_lehmer_primality_test.py",
+    "reason": "full_suite",
+    "exists_at_base": true
+   },
+   {
+    "path": "maths/solovay_strassen_primality_test.py",
+    "reason": "full_suite",
+    "exists_at_base": true
+   },
+   {
+    "path": "maths/test_factorial.py",
+    "reason": "full_suite",
+    "exists_at_base": true
+   },
+   {
+    "path": "maths/test_prime_check.py",
+    "reason": "full_suite",
+    "exists_at_base": true
+   },
+   {
+    "path": "matrix/tests/test_matrix_operation.py",
+    "reason": "full_suite",
+    "exists_at_base": true
+   },
+   {
+    "path": "project_euler/problem_054/test_poker_hand.py",
+    "reason": "full_suite",
+    "exists_at_base": true
+   },
+   {
+    "path": "web_programming/test_fetch_github_info.py",
+    "reason": "full_suite",
+    "exists_at_base": true
+   }
+  ],
+  "head_run": {
+   "status": "completed",
+   "exit_code": 2,
+   "seconds": 0.7,
+   "addopts_overridden": false,
+   "counts": {
+    "passed": 0,
+    "failed": 0,
+    "error": 1,
+    "skipped": 0
+   },
+   "tests": {
+    "::digital_image_processing.test_digital_image_processing": {
+     "outcome": "error",
+     "detail": "collection failure\nImportError while importing test module '/dev/shm/acr/work/3115255271/src/head/digital_image_processing/test_digital_image_processing.py'.\nHint: make sure your test modules/packages have valid Python names.\nTraceback:\n../../../_shared_cache/python/cpython-3.15.2-linux-x86_64-gnu/lib/python3.15/importlib/__init__.py:88: in import_module\n    return _bootstrap._gcd_import(name[level:], package, level)\n           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\ndigital_image_processing/test_digital_image_processing.py:6: in <module>\n    from cv2 import COLOR_BGR2GRAY, cvtColor, imread\nE   ModuleNotFoundError: No module named 'cv2'"
+    }
+   },
+   "log_tail": ""
+  },
+  "base_run": {
+   "status": "completed",
+   "exit_code": 2,
+   "seconds": 0.7,
+   "addopts_overridden": false,
+   "counts": {
+    "passed": 0,
+    "failed": 0,
+    "error": 1,
+    "skipped": 0
+   },
+   "tests": {
+    "::digital_image_processing.test_digital_image_processing": {
+     "outcome": "error",
+     "detail": "collection failure\nImportError while importing test module '/dev/shm/acr/work/3115255271/src/base/digital_image_processing/test_digital_image_processing.py'.\nHint: make sure your test modules/packages have valid Python names.\nTraceback:\n../../../_shared_cache/python/cpython-3.15.2-linux-x86_64-gnu/lib/python3.15/importlib/__init__.py:88: in import_module\n    return _bootstrap._gcd_import(name[level:], package, level)\n           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\ndigital_image_processing/test_digital_image_processing.py:6: in <module>\n    from cv2 import COLOR_BGR2GRAY, cvtColor, imread\nE   ModuleNotFoundError: No module named 'cv2'"
+    }
+   },
+   "log_tail": ""
+  },
+  "comparison": {
+   "regressions": [],
+   "new_test_failures": [],
+   "fixed": [],
+   "persistent_failures": [
+    "::digital_image_processing.test_digital_image_processing"
+   ]
+  },
+  "imports_head": {
+   "maths.radix2_fft": {
+    "ok": true
+   }
+  },
+  "imports_base": {
+   "maths.radix2_fft": {
+    "ok": true
+   }
+  },
+  "status": "completed",
+  "dependency_cutoff": "2025-06-03T19:53:49Z",
+  "seconds": 15.8,
+  "head_failures": 1
+ },
+ "findings": [],
+ "status": "ok",
+ "seconds": 55.8
+}

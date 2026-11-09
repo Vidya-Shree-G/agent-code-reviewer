@@ -1,0 +1,232 @@
+{
+ "pr_id": 3151748196,
+ "repository": "MaiM-with-u/MaiBot",
+ "pr_number": 1045,
+ "split": "development",
+ "agent": "Cursor",
+ "head_sha": "45172e9dca2126f627b7dc2a8edf466bd8ba8fee",
+ "tool_versions": {
+  "ruff": "ruff 0.17.4",
+  "bandit": "__main__.py 1.9.4",
+  "python": "3.12.3"
+ },
+ "config": {
+  "run_tests": true,
+  "sandbox": true
+ },
+ "base_mode": "reverse_applied_diff",
+ "static": {
+  "files_analysed": 6,
+  "head_issues": 7,
+  "base_issues": 3,
+  "per_tool_head": {
+   "ruff": 4,
+   "bandit": 3
+  },
+  "per_tool_base": {
+   "bandit": 3
+  },
+  "introduced": 4,
+  "seconds": 0.4
+ },
+ "tests": {
+  "env": {
+   "status": "partial",
+   "python": "3.15.2",
+   "steps": [
+    {
+     "step": "venv",
+     "ok": true,
+     "seconds": 0.0,
+     "timed_out": false,
+     "log_tail": ""
+    },
+    {
+     "step": "install -e .",
+     "ok": true,
+     "seconds": 0.4,
+     "timed_out": false,
+     "log_tail": ""
+    },
+    {
+     "step": "install -r requirements.txt",
+     "ok": false,
+     "seconds": 2.7,
+     "timed_out": false,
+     "log_tail": "error: No solution found when resolving dependencies\n  cause: Because all versions of faiss-cpu have no wheels with a matching Python ABI tag (e.g., `cp315`) and you require faiss-cpu, we can conclude that your requirements are unsatisfiable.\n\nhint: You require CPython 3.15 (`cp315`), but we only found wheels for `faiss-cpu` (v1.11.0) with the following Python ABI tags: `cp39`, `cp310`, `cp311`, `cp312`, `cp313`\n"
+    },
+    {
+     "step": "install pytest",
+     "ok": true,
+     "seconds": 0.0,
+     "timed_out": false,
+     "log_tail": ""
+    }
+   ]
+  },
+  "selected_tests": [
+   {
+    "path": "tests/test_private_chat.py",
+    "reason": "changed_in_pr",
+    "exists_at_base": false
+   }
+  ],
+  "head_run": {
+   "status": "completed",
+   "exit_code": 2,
+   "seconds": 0.3,
+   "addopts_overridden": false,
+   "counts": {
+    "passed": 0,
+    "failed": 0,
+    "error": 1,
+    "skipped": 0
+   },
+   "tests": {
+    "::tests.test_private_chat": {
+     "outcome": "error",
+     "detail": "collection failure\nImportError while importing test module '/dev/shm/acr/work/3151748196/src/head/tests/test_private_chat.py'.\nHint: make sure your test modules/packages have valid Python names.\nTraceback:\n../../../_shared_cache/python/cpython-3.15.2-linux-x86_64-gnu/lib/python3.15/importlib/__init__.py:88: in import_module\n    return _bootstrap._gcd_import(name[level:], package, level)\n           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\ntests/test_private_chat.py:3: in <module>\n    from src.chat.heart_flow.sub_heartflow import SubHeartflow, ChatState\nsrc/chat/__init__.py:6: in <module>\n    from src.chat.message_receive.chat_stream import chat_manager\nsrc/chat/message_receive/__init__.py:1: in <module>\n    from src.chat.emoji_system.emoji_manager import emoji_manager\nsrc/chat/emoji_system/emoji_manager.py:9: in <module>\n    from PIL import Image\nE   ModuleNotFoundError: No module named 'PIL'"
+    }
+   },
+   "log_tail": ""
+  },
+  "base_run": {
+   "status": "not_run",
+   "tests": {}
+  },
+  "comparison": {
+   "regressions": [],
+   "new_test_failures": [
+    "::tests.test_private_chat"
+   ],
+   "fixed": [],
+   "persistent_failures": []
+  },
+  "imports_head": {},
+  "imports_base": {},
+  "status": "completed",
+  "dependency_cutoff": "2025-06-19T03:05:27Z",
+  "seconds": 3.5,
+  "head_failures": 1
+ },
+ "findings": [
+  {
+   "tool": "ruff",
+   "rule": "F401",
+   "category": "maintainability",
+   "severity": "low",
+   "confidence": "high",
+   "message": "`asyncio` imported but unused",
+   "file": "tests/test_private_chat.py",
+   "line": 2,
+   "end_line": 2,
+   "cwe": null,
+   "on_changed_line": true,
+   "evidence": {
+    "type": "static",
+    "source_line": "import asyncio",
+    "url": "https://docs.astral.sh/ruff/rules/unused-import"
+   },
+   "sources": [
+    "ruff"
+   ],
+   "finding_id": "78af601f2f36",
+   "score": 1.5
+  },
+  {
+   "tool": "ruff",
+   "rule": "F401",
+   "category": "maintainability",
+   "severity": "low",
+   "confidence": "high",
+   "message": "`src.chat.heart_flow.sub_heartflow.SubHeartflow` imported but unused",
+   "file": "tests/test_private_chat.py",
+   "line": 3,
+   "end_line": 3,
+   "cwe": null,
+   "on_changed_line": true,
+   "evidence": {
+    "type": "static",
+    "source_line": "from src.chat.heart_flow.sub_heartflow import SubHeartflow, ChatState",
+    "url": "https://docs.astral.sh/ruff/rules/unused-import"
+   },
+   "sources": [
+    "ruff"
+   ],
+   "finding_id": "95b8f5f8fd8b",
+   "score": 1.5
+  },
+  {
+   "tool": "ruff",
+   "rule": "F401",
+   "category": "maintainability",
+   "severity": "low",
+   "confidence": "high",
+   "message": "`unittest.mock.AsyncMock` imported but unused",
+   "file": "tests/test_private_chat.py",
+   "line": 7,
+   "end_line": 7,
+   "cwe": null,
+   "on_changed_line": true,
+   "evidence": {
+    "type": "static",
+    "source_line": "from unittest.mock import MagicMock, AsyncMock, patch",
+    "url": "https://docs.astral.sh/ruff/rules/unused-import"
+   },
+   "sources": [
+    "ruff"
+   ],
+   "finding_id": "7f0319365ae5",
+   "score": 1.5
+  },
+  {
+   "tool": "pytest",
+   "rule": "new-test-failure",
+   "category": "test",
+   "severity": "medium",
+   "confidence": "medium",
+   "message": "Test ::tests.test_private_chat added or changed by the PR fails at head: collection failure",
+   "file": "src/chat/emoji_system/emoji_manager.py",
+   "line": 9,
+   "end_line": null,
+   "cwe": null,
+   "on_changed_line": false,
+   "evidence": {
+    "type": "test",
+    "test_id": "::tests.test_private_chat",
+    "outcome": "error",
+    "detail": "collection failure\nImportError while importing test module '/dev/shm/acr/work/3151748196/src/head/tests/test_private_chat.py'.\nHint: make sure your test modules/packages have valid Python names.\nTraceback:\n../../../_shared_cache/python/cpython-3.15.2-linux-x86_64-gnu/lib/python3.15/importlib/__init__.py:88: in import_module\n    return _bootstrap._gcd_import(name[level:], package, level)\n           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\ntests/test_private_chat.py:3: in <module>\n    from src.chat.heart_flow.sub_heartflow import SubHeartflow, ChatState\nsrc/chat/__init__.py:6: in <module>\n    from src.chat.message_receive.chat_stream import chat_manager\nsrc/chat/message_receive/__init__.py:1: in <module>\n    from src.chat.emoji_system.emoji_manager import emoji_manager\nsrc/chat/emoji_system/emoji_manager.py:9: in <module>\n    from PIL import Image\nE   ModuleNotFoundError: No module named 'PIL'"
+   },
+   "sources": [
+    "pytest"
+   ],
+   "finding_id": "62c4ed6d191b",
+   "score": 1.4
+  },
+  {
+   "tool": "ruff",
+   "rule": "F401",
+   "category": "maintainability",
+   "severity": "low",
+   "confidence": "high",
+   "message": "`src.chat.focus_chat.working_memory.memory_manager.MemoryManager` imported but unused",
+   "file": "src/chat/focus_chat/working_memory/working_memory.py",
+   "line": 5,
+   "end_line": 5,
+   "cwe": null,
+   "on_changed_line": false,
+   "evidence": {
+    "type": "static",
+    "source_line": "from src.chat.focus_chat.working_memory.memory_manager import MemoryManager, MemoryItem",
+    "url": "https://docs.astral.sh/ruff/rules/unused-import"
+   },
+   "sources": [
+    "ruff"
+   ],
+   "finding_id": "9dbdaa022880",
+   "score": 1.0
+  }
+ ],
+ "status": "ok",
+ "seconds": 7.7
+}

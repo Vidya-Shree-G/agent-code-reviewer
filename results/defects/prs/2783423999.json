@@ -1,0 +1,250 @@
+{
+ "pr_id": 2783423999,
+ "repository": "patched-codes/patchwork",
+ "pr_number": 1192,
+ "split": "development",
+ "agent": "Devin",
+ "head_sha": "7535fccc8f1c2b9ca4e254346457908ac6a59e96",
+ "tool_versions": {
+  "ruff": "ruff 0.17.4",
+  "bandit": "__main__.py 1.9.4",
+  "python": "3.12.3"
+ },
+ "config": {
+  "run_tests": true,
+  "sandbox": true
+ },
+ "base_mode": "reverse_applied_diff",
+ "static": {
+  "files_analysed": 4,
+  "head_issues": 3,
+  "base_issues": 1,
+  "per_tool_head": {
+   "ruff": 3
+  },
+  "per_tool_base": {
+   "ruff": 1
+  },
+  "introduced": 2,
+  "seconds": 0.2
+ },
+ "tests": {
+  "env": {
+   "status": "ok",
+   "python": "3.12.3",
+   "steps": [
+    {
+     "step": "venv",
+     "ok": true,
+     "seconds": 0.0,
+     "timed_out": false,
+     "log_tail": ""
+    },
+    {
+     "step": "install -e .",
+     "ok": true,
+     "seconds": 16.3,
+     "timed_out": false,
+     "log_tail": ""
+    },
+    {
+     "step": "install poetry test/dev group",
+     "ok": true,
+     "seconds": 1.6,
+     "timed_out": false,
+     "log_tail": ""
+    },
+    {
+     "step": "install pytest",
+     "ok": true,
+     "seconds": 0.1,
+     "timed_out": false,
+     "log_tail": ""
+    }
+   ]
+  },
+  "selected_tests": [
+   {
+    "path": "tests/steps/test_ModifyCode.py",
+    "reason": "matches_module:ModifyCode",
+    "exists_at_base": true
+   }
+  ],
+  "head_run": {
+   "status": "completed",
+   "exit_code": 2,
+   "seconds": 1.8,
+   "addopts_overridden": false,
+   "counts": {
+    "passed": 0,
+    "failed": 0,
+    "error": 1,
+    "skipped": 0
+   },
+   "tests": {
+    "::tests.steps.test_ModifyCode": {
+     "outcome": "error",
+     "detail": "ib/python3.12/site-packages/tiktoken/load.py:63: in read_file_cached\n    contents = read_file(blobpath)\n../../venv/lib/python3.12/site-packages/tiktoken/load.py:24: in read_file\n    resp = requests.get(blobpath)\n../../venv/lib/python3.12/site-packages/requests/api.py:73: in get\n    return request(\"get\", url, params=params, **kwargs)\n../../venv/lib/python3.12/site-packages/requests/api.py:59: in request\n    return session.request(method=method, url=url, **kwargs)\n../../venv/lib/python3.12/site-packages/requests/sessions.py:589: in request\n    resp = self.send(prep, **send_kwargs)\n../../venv/lib/python3.12/site-packages/requests/sessions.py:703: in send\n    r = adapter.send(request, **kwargs)\n../../venv/lib/python3.12/site-packages/requests/adapters.py:700: in send\n    raise ConnectionError(e, request=request)\nE   requests.exceptions.ConnectionError: HTTPSConnectionPool(host='openaipublic.blob.core.windows.net', port=443): Max retries exceeded with url: /encodings/cl100k_base.tiktoken (Caused by NameResolutionError(\"<urllib3.connection.HTTPSConnection object at 0x7892ab2637a0>: Failed to resolve 'openaipublic.blob.core.windows.net' ([Errno -3] Temporary failure in name resolution)\"))"
+    }
+   },
+   "log_tail": ""
+  },
+  "base_run": {
+   "status": "completed",
+   "exit_code": 2,
+   "seconds": 1.7,
+   "addopts_overridden": false,
+   "counts": {
+    "passed": 0,
+    "failed": 0,
+    "error": 1,
+    "skipped": 0
+   },
+   "tests": {
+    "::tests.steps.test_ModifyCode": {
+     "outcome": "error",
+     "detail": "ib/python3.12/site-packages/tiktoken/load.py:63: in read_file_cached\n    contents = read_file(blobpath)\n../../venv/lib/python3.12/site-packages/tiktoken/load.py:24: in read_file\n    resp = requests.get(blobpath)\n../../venv/lib/python3.12/site-packages/requests/api.py:73: in get\n    return request(\"get\", url, params=params, **kwargs)\n../../venv/lib/python3.12/site-packages/requests/api.py:59: in request\n    return session.request(method=method, url=url, **kwargs)\n../../venv/lib/python3.12/site-packages/requests/sessions.py:589: in request\n    resp = self.send(prep, **send_kwargs)\n../../venv/lib/python3.12/site-packages/requests/sessions.py:703: in send\n    r = adapter.send(request, **kwargs)\n../../venv/lib/python3.12/site-packages/requests/adapters.py:700: in send\n    raise ConnectionError(e, request=request)\nE   requests.exceptions.ConnectionError: HTTPSConnectionPool(host='openaipublic.blob.core.windows.net', port=443): Max retries exceeded with url: /encodings/cl100k_base.tiktoken (Caused by NameResolutionError(\"<urllib3.connection.HTTPSConnection object at 0x7afc405403b0>: Failed to resolve 'openaipublic.blob.core.windows.net' ([Errno -3] Temporary failure in name resolution)\"))"
+    }
+   },
+   "log_tail": ""
+  },
+  "comparison": {
+   "regressions": [],
+   "new_test_failures": [],
+   "fixed": [],
+   "persistent_failures": [
+    "::tests.steps.test_ModifyCode"
+   ]
+  },
+  "imports_head": {
+   "patchwork.steps.FixIssue.FixIssue": {
+    "ok": false,
+    "type": "ConnectionError",
+    "message": "HTTPSConnectionPool(host='openaipublic.blob.core.windows.net', port=443): Max retries exceeded with url: /encodings/cl100k_base.tiktoken (Caused by NameResolutionError(\"<urllib3.connection.HTTPSConnection object at 0x7c8e30b6ffe0>: Failed to resolve 'openaipublic.blob.core.windows.net' ([Errno -3] Temporary failure in name resolution)\"))",
+    "missing_module": null,
+    "file": "patchwork/common/utils/utils.py",
+    "line": 107,
+    "traceback": "12/site-packages/tiktoken/load.py\", line 24, in read_file\n    resp = requests.get(blobpath)\n           ^^^^^^^^^^^^^^^^^^^^^^\n  File \"/dev/shm/acr/work/2783423999/venv/lib/python3.12/site-packages/requests/api.py\", line 73, in get\n    return request(\"get\", url, params=params, **kwargs)\n           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"/dev/shm/acr/work/2783423999/venv/lib/python3.12/site-packages/requests/api.py\", line 59, in request\n    return session.request(method=method, url=url, **kwargs)\n           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"/dev/shm/acr/work/2783423999/venv/lib/python3.12/site-packages/requests/sessions.py\", line 589, in request\n    resp = self.send(prep, **send_kwargs)\n           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"/dev/shm/acr/work/2783423999/venv/lib/python3.12/site-packages/requests/sessions.py\", line 703, in send\n    r = adapter.send(request, **kwargs)\n        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"/dev/shm/acr/work/2783423999/venv/lib/python3.12/site-packages/requests/adapters.py\", line 700, in send\n    raise ConnectionError(e, request=request)\nrequests.exceptions.ConnectionError: HTTPSConnectionPool(host='openaipublic.blob.core.windows.net', port=443): Max retries exceeded with url: /encodings/cl100k_base.tiktoken (Caused by NameResolutionError(\"<urllib3.connection.HTTPSConnection object at 0x7c8e30b6ffe0>: Failed to resolve 'openaipublic.blob.core.windows.net' ([Errno -3] Temporary failure in name resolution)\"))\n"
+   },
+   "patchwork.steps.FixIssue.typed": {
+    "ok": false,
+    "type": "ConnectionError",
+    "message": "HTTPSConnectionPool(host='openaipublic.blob.core.windows.net', port=443): Max retries exceeded with url: /encodings/cl100k_base.tiktoken (Caused by NameResolutionError(\"<urllib3.connection.HTTPSConnection object at 0x7c8e3087cfb0>: Failed to resolve 'openaipublic.blob.core.windows.net' ([Errno -3] Temporary failure in name resolution)\"))",
+    "missing_module": null,
+    "file": "patchwork/common/utils/utils.py",
+    "line": 107,
+    "traceback": "12/site-packages/tiktoken/load.py\", line 24, in read_file\n    resp = requests.get(blobpath)\n           ^^^^^^^^^^^^^^^^^^^^^^\n  File \"/dev/shm/acr/work/2783423999/venv/lib/python3.12/site-packages/requests/api.py\", line 73, in get\n    return request(\"get\", url, params=params, **kwargs)\n           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"/dev/shm/acr/work/2783423999/venv/lib/python3.12/site-packages/requests/api.py\", line 59, in request\n    return session.request(method=method, url=url, **kwargs)\n           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"/dev/shm/acr/work/2783423999/venv/lib/python3.12/site-packages/requests/sessions.py\", line 589, in request\n    resp = self.send(prep, **send_kwargs)\n           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"/dev/shm/acr/work/2783423999/venv/lib/python3.12/site-packages/requests/sessions.py\", line 703, in send\n    r = adapter.send(request, **kwargs)\n        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"/dev/shm/acr/work/2783423999/venv/lib/python3.12/site-packages/requests/adapters.py\", line 700, in send\n    raise ConnectionError(e, request=request)\nrequests.exceptions.ConnectionError: HTTPSConnectionPool(host='openaipublic.blob.core.windows.net', port=443): Max retries exceeded with url: /encodings/cl100k_base.tiktoken (Caused by NameResolutionError(\"<urllib3.connection.HTTPSConnection object at 0x7c8e3087cfb0>: Failed to resolve 'openaipublic.blob.core.windows.net' ([Errno -3] Temporary failure in name resolution)\"))\n"
+   },
+   "patchwork.steps.ModifyCode.ModifyCode": {
+    "ok": false,
+    "type": "ConnectionError",
+    "message": "HTTPSConnectionPool(host='openaipublic.blob.core.windows.net', port=443): Max retries exceeded with url: /encodings/cl100k_base.tiktoken (Caused by NameResolutionError(\"<urllib3.connection.HTTPSConnection object at 0x7c8e3087f7a0>: Failed to resolve 'openaipublic.blob.core.windows.net' ([Errno -3] Temporary failure in name resolution)\"))",
+    "missing_module": null,
+    "file": "patchwork/common/utils/utils.py",
+    "line": 107,
+    "traceback": "12/site-packages/tiktoken/load.py\", line 24, in read_file\n    resp = requests.get(blobpath)\n           ^^^^^^^^^^^^^^^^^^^^^^\n  File \"/dev/shm/acr/work/2783423999/venv/lib/python3.12/site-packages/requests/api.py\", line 73, in get\n    return request(\"get\", url, params=params, **kwargs)\n           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"/dev/shm/acr/work/2783423999/venv/lib/python3.12/site-packages/requests/api.py\", line 59, in request\n    return session.request(method=method, url=url, **kwargs)\n           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"/dev/shm/acr/work/2783423999/venv/lib/python3.12/site-packages/requests/sessions.py\", line 589, in request\n    resp = self.send(prep, **send_kwargs)\n           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"/dev/shm/acr/work/2783423999/venv/lib/python3.12/site-packages/requests/sessions.py\", line 703, in send\n    r = adapter.send(request, **kwargs)\n        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"/dev/shm/acr/work/2783423999/venv/lib/python3.12/site-packages/requests/adapters.py\", line 700, in send\n    raise ConnectionError(e, request=request)\nrequests.exceptions.ConnectionError: HTTPSConnectionPool(host='openaipublic.blob.core.windows.net', port=443): Max retries exceeded with url: /encodings/cl100k_base.tiktoken (Caused by NameResolutionError(\"<urllib3.connection.HTTPSConnection object at 0x7c8e3087f7a0>: Failed to resolve 'openaipublic.blob.core.windows.net' ([Errno -3] Temporary failure in name resolution)\"))\n"
+   },
+   "patchwork.steps.ModifyCode.typed": {
+    "ok": false,
+    "type": "ConnectionError",
+    "message": "HTTPSConnectionPool(host='openaipublic.blob.core.windows.net', port=443): Max retries exceeded with url: /encodings/cl100k_base.tiktoken (Caused by NameResolutionError(\"<urllib3.connection.HTTPSConnection object at 0x7c8e308882c0>: Failed to resolve 'openaipublic.blob.core.windows.net' ([Errno -3] Temporary failure in name resolution)\"))",
+    "missing_module": null,
+    "file": "patchwork/common/utils/utils.py",
+    "line": 107,
+    "traceback": "12/site-packages/tiktoken/load.py\", line 24, in read_file\n    resp = requests.get(blobpath)\n           ^^^^^^^^^^^^^^^^^^^^^^\n  File \"/dev/shm/acr/work/2783423999/venv/lib/python3.12/site-packages/requests/api.py\", line 73, in get\n    return request(\"get\", url, params=params, **kwargs)\n           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"/dev/shm/acr/work/2783423999/venv/lib/python3.12/site-packages/requests/api.py\", line 59, in request\n    return session.request(method=method, url=url, **kwargs)\n           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"/dev/shm/acr/work/2783423999/venv/lib/python3.12/site-packages/requests/sessions.py\", line 589, in request\n    resp = self.send(prep, **send_kwargs)\n           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"/dev/shm/acr/work/2783423999/venv/lib/python3.12/site-packages/requests/sessions.py\", line 703, in send\n    r = adapter.send(request, **kwargs)\n        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"/dev/shm/acr/work/2783423999/venv/lib/python3.12/site-packages/requests/adapters.py\", line 700, in send\n    raise ConnectionError(e, request=request)\nrequests.exceptions.ConnectionError: HTTPSConnectionPool(host='openaipublic.blob.core.windows.net', port=443): Max retries exceeded with url: /encodings/cl100k_base.tiktoken (Caused by NameResolutionError(\"<urllib3.connection.HTTPSConnection object at 0x7c8e308882c0>: Failed to resolve 'openaipublic.blob.core.windows.net' ([Errno -3] Temporary failure in name resolution)\"))\n"
+   }
+  },
+  "imports_base": {
+   "patchwork.steps.FixIssue.FixIssue": {
+    "ok": false,
+    "type": "ConnectionError",
+    "message": "HTTPSConnectionPool(host='openaipublic.blob.core.windows.net', port=443): Max retries exceeded with url: /encodings/cl100k_base.tiktoken (Caused by NameResolutionError(\"<urllib3.connection.HTTPSConnection object at 0x7f4e17f38a40>: Failed to resolve 'openaipublic.blob.core.windows.net' ([Errno -3] Temporary failure in name resolution)\"))",
+    "missing_module": null,
+    "file": "patchwork/common/utils/utils.py",
+    "line": 107,
+    "traceback": "12/site-packages/tiktoken/load.py\", line 24, in read_file\n    resp = requests.get(blobpath)\n           ^^^^^^^^^^^^^^^^^^^^^^\n  File \"/dev/shm/acr/work/2783423999/venv/lib/python3.12/site-packages/requests/api.py\", line 73, in get\n    return request(\"get\", url, params=params, **kwargs)\n           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"/dev/shm/acr/work/2783423999/venv/lib/python3.12/site-packages/requests/api.py\", line 59, in request\n    return session.request(method=method, url=url, **kwargs)\n           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"/dev/shm/acr/work/2783423999/venv/lib/python3.12/site-packages/requests/sessions.py\", line 589, in request\n    resp = self.send(prep, **send_kwargs)\n           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"/dev/shm/acr/work/2783423999/venv/lib/python3.12/site-packages/requests/sessions.py\", line 703, in send\n    r = adapter.send(request, **kwargs)\n        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"/dev/shm/acr/work/2783423999/venv/lib/python3.12/site-packages/requests/adapters.py\", line 700, in send\n    raise ConnectionError(e, request=request)\nrequests.exceptions.ConnectionError: HTTPSConnectionPool(host='openaipublic.blob.core.windows.net', port=443): Max retries exceeded with url: /encodings/cl100k_base.tiktoken (Caused by NameResolutionError(\"<urllib3.connection.HTTPSConnection object at 0x7f4e17f38a40>: Failed to resolve 'openaipublic.blob.core.windows.net' ([Errno -3] Temporary failure in name resolution)\"))\n"
+   },
+   "patchwork.steps.FixIssue.typed": {
+    "ok": false,
+    "type": "ConnectionError",
+    "message": "HTTPSConnectionPool(host='openaipublic.blob.core.windows.net', port=443): Max retries exceeded with url: /encodings/cl100k_base.tiktoken (Caused by NameResolutionError(\"<urllib3.connection.HTTPSConnection object at 0x7f4e17635040>: Failed to resolve 'openaipublic.blob.core.windows.net' ([Errno -3] Temporary failure in name resolution)\"))",
+    "missing_module": null,
+    "file": "patchwork/common/utils/utils.py",
+    "line": 107,
+    "traceback": "12/site-packages/tiktoken/load.py\", line 24, in read_file\n    resp = requests.get(blobpath)\n           ^^^^^^^^^^^^^^^^^^^^^^\n  File \"/dev/shm/acr/work/2783423999/venv/lib/python3.12/site-packages/requests/api.py\", line 73, in get\n    return request(\"get\", url, params=params, **kwargs)\n           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"/dev/shm/acr/work/2783423999/venv/lib/python3.12/site-packages/requests/api.py\", line 59, in request\n    return session.request(method=method, url=url, **kwargs)\n           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"/dev/shm/acr/work/2783423999/venv/lib/python3.12/site-packages/requests/sessions.py\", line 589, in request\n    resp = self.send(prep, **send_kwargs)\n           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"/dev/shm/acr/work/2783423999/venv/lib/python3.12/site-packages/requests/sessions.py\", line 703, in send\n    r = adapter.send(request, **kwargs)\n        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"/dev/shm/acr/work/2783423999/venv/lib/python3.12/site-packages/requests/adapters.py\", line 700, in send\n    raise ConnectionError(e, request=request)\nrequests.exceptions.ConnectionError: HTTPSConnectionPool(host='openaipublic.blob.core.windows.net', port=443): Max retries exceeded with url: /encodings/cl100k_base.tiktoken (Caused by NameResolutionError(\"<urllib3.connection.HTTPSConnection object at 0x7f4e17635040>: Failed to resolve 'openaipublic.blob.core.windows.net' ([Errno -3] Temporary failure in name resolution)\"))\n"
+   },
+   "patchwork.steps.ModifyCode.ModifyCode": {
+    "ok": false,
+    "type": "ConnectionError",
+    "message": "HTTPSConnectionPool(host='openaipublic.blob.core.windows.net', port=443): Max retries exceeded with url: /encodings/cl100k_base.tiktoken (Caused by NameResolutionError(\"<urllib3.connection.HTTPSConnection object at 0x7f4e17638380>: Failed to resolve 'openaipublic.blob.core.windows.net' ([Errno -3] Temporary failure in name resolution)\"))",
+    "missing_module": null,
+    "file": "patchwork/common/utils/utils.py",
+    "line": 107,
+    "traceback": "12/site-packages/tiktoken/load.py\", line 24, in read_file\n    resp = requests.get(blobpath)\n           ^^^^^^^^^^^^^^^^^^^^^^\n  File \"/dev/shm/acr/work/2783423999/venv/lib/python3.12/site-packages/requests/api.py\", line 73, in get\n    return request(\"get\", url, params=params, **kwargs)\n           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"/dev/shm/acr/work/2783423999/venv/lib/python3.12/site-packages/requests/api.py\", line 59, in request\n    return session.request(method=method, url=url, **kwargs)\n           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"/dev/shm/acr/work/2783423999/venv/lib/python3.12/site-packages/requests/sessions.py\", line 589, in request\n    resp = self.send(prep, **send_kwargs)\n           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"/dev/shm/acr/work/2783423999/venv/lib/python3.12/site-packages/requests/sessions.py\", line 703, in send\n    r = adapter.send(request, **kwargs)\n        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"/dev/shm/acr/work/2783423999/venv/lib/python3.12/site-packages/requests/adapters.py\", line 700, in send\n    raise ConnectionError(e, request=request)\nrequests.exceptions.ConnectionError: HTTPSConnectionPool(host='openaipublic.blob.core.windows.net', port=443): Max retries exceeded with url: /encodings/cl100k_base.tiktoken (Caused by NameResolutionError(\"<urllib3.connection.HTTPSConnection object at 0x7f4e17638380>: Failed to resolve 'openaipublic.blob.core.windows.net' ([Errno -3] Temporary failure in name resolution)\"))\n"
+   },
+   "patchwork.steps.ModifyCode.typed": {
+    "ok": false,
+    "type": "ConnectionError",
+    "message": "HTTPSConnectionPool(host='openaipublic.blob.core.windows.net', port=443): Max retries exceeded with url: /encodings/cl100k_base.tiktoken (Caused by NameResolutionError(\"<urllib3.connection.HTTPSConnection object at 0x7f4e17640c20>: Failed to resolve 'openaipublic.blob.core.windows.net' ([Errno -3] Temporary failure in name resolution)\"))",
+    "missing_module": null,
+    "file": "patchwork/common/utils/utils.py",
+    "line": 107,
+    "traceback": "12/site-packages/tiktoken/load.py\", line 24, in read_file\n    resp = requests.get(blobpath)\n           ^^^^^^^^^^^^^^^^^^^^^^\n  File \"/dev/shm/acr/work/2783423999/venv/lib/python3.12/site-packages/requests/api.py\", line 73, in get\n    return request(\"get\", url, params=params, **kwargs)\n           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"/dev/shm/acr/work/2783423999/venv/lib/python3.12/site-packages/requests/api.py\", line 59, in request\n    return session.request(method=method, url=url, **kwargs)\n           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"/dev/shm/acr/work/2783423999/venv/lib/python3.12/site-packages/requests/sessions.py\", line 589, in request\n    resp = self.send(prep, **send_kwargs)\n           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"/dev/shm/acr/work/2783423999/venv/lib/python3.12/site-packages/requests/sessions.py\", line 703, in send\n    r = adapter.send(request, **kwargs)\n        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"/dev/shm/acr/work/2783423999/venv/lib/python3.12/site-packages/requests/adapters.py\", line 700, in send\n    raise ConnectionError(e, request=request)\nrequests.exceptions.ConnectionError: HTTPSConnectionPool(host='openaipublic.blob.core.windows.net', port=443): Max retries exceeded with url: /encodings/cl100k_base.tiktoken (Caused by NameResolutionError(\"<urllib3.connection.HTTPSConnection object at 0x7f4e17640c20>: Failed to resolve 'openaipublic.blob.core.windows.net' ([Errno -3] Temporary failure in name resolution)\"))\n"
+   }
+  },
+  "status": "completed",
+  "dependency_cutoff": "2025-01-15T05:31:25Z",
+  "seconds": 24.3,
+  "head_failures": 1
+ },
+ "findings": [
+  {
+   "tool": "ruff",
+   "rule": "F401",
+   "category": "maintainability",
+   "severity": "low",
+   "confidence": "high",
+   "message": "`difflib` imported but unused",
+   "file": "patchwork/steps/FixIssue/FixIssue.py",
+   "line": 1,
+   "end_line": 1,
+   "cwe": null,
+   "on_changed_line": true,
+   "evidence": {
+    "type": "static",
+    "source_line": "import difflib",
+    "url": "https://docs.astral.sh/ruff/rules/unused-import"
+   },
+   "sources": [
+    "ruff"
+   ],
+   "finding_id": "e50e25a9569b",
+   "score": 1.5
+  },
+  {
+   "tool": "ruff",
+   "rule": "F401",
+   "category": "maintainability",
+   "severity": "low",
+   "confidence": "high",
+   "message": "`typing_extensions.Dict` imported but unused",
+   "file": "patchwork/steps/FixIssue/typed.py",
+   "line": 1,
+   "end_line": 1,
+   "cwe": null,
+   "on_changed_line": false,
+   "evidence": {
+    "type": "static",
+    "source_line": "from typing_extensions import Annotated, Dict, List, TypedDict",
+    "url": "https://docs.astral.sh/ruff/rules/unused-import"
+   },
+   "sources": [
+    "ruff"
+   ],
+   "finding_id": "72d1305ce8f8",
+   "score": 1.0
+  }
+ ],
+ "status": "ok",
+ "seconds": 39.6
+}

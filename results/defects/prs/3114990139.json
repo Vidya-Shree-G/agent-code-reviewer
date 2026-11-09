@@ -1,0 +1,125 @@
+{
+ "pr_id": 3114990139,
+ "repository": "neoneye/PlanExe",
+ "pr_number": 9,
+ "split": "development",
+ "agent": "OpenAI_Codex",
+ "head_sha": "940ca23b44a38007eac3f88fdcf57a8a2f91cceb",
+ "tool_versions": {
+  "ruff": "ruff 0.17.4",
+  "bandit": "__main__.py 1.9.4",
+  "python": "3.12.3"
+ },
+ "config": {
+  "run_tests": true,
+  "sandbox": true
+ },
+ "base_mode": "reverse_applied_diff",
+ "static": {
+  "files_analysed": 2,
+  "head_issues": 13,
+  "base_issues": 13,
+  "per_tool_head": {
+   "ruff": 13
+  },
+  "per_tool_base": {
+   "ruff": 13
+  },
+  "introduced": 0,
+  "seconds": 0.2
+ },
+ "tests": {
+  "env": {
+   "status": "partial",
+   "python": "3.15.2",
+   "steps": [
+    {
+     "step": "venv",
+     "ok": true,
+     "seconds": 0.0,
+     "timed_out": false,
+     "log_tail": ""
+    },
+    {
+     "step": "install -e .",
+     "ok": false,
+     "seconds": 1.1,
+     "timed_out": false,
+     "log_tail": "mple string containing a SPDX expression for `project.license`. You can also use `project.license-files`. (Both options available on setuptools>=77.0.0).\n\n                 This deprecation is overdue, please update your project and remove deprecated\n                 calls to avoid build errors in the future.\n\n                 See https://packaging.python.org/en/latest/guides/writing-pyproject-toml/#license for details.\n                 ********************************************************************************\n\n         !!\n           corresp(dist, value, root_dir)\n         warning: no files found matching 'Makefile'\n         error: can't find Rust compiler\n\n         If you are using an outdated pip version, it is possible a prebuilt wheel is available for this package but pip is not able to install from it. Installing from the wheel would avoid the need for a Rust compiler.\n\n         To update pip, run:\n\n             pip install --upgrade pip\n\n         and then retry package installation.\n\n         If you did intend to build this package from source, try installing a Rust compiler from your system package manager and ensure it is on the PATH during installation. Alternatively, rustup (available at https://rustup.rs) is the recommended way to download and update the Rust compiler toolchain.\n\nhint: `tiktoken` (v0.8.0) was included because `planexe` (v2025.5.20) depends on `tiktoken`\n\nhint: Build failures usually indicate a problem with the package or the build environment\n"
+    },
+    {
+     "step": "install pytest",
+     "ok": true,
+     "seconds": 0.0,
+     "timed_out": false,
+     "log_tail": ""
+    },
+    {
+     "step": "repair: install pandas",
+     "ok": true,
+     "seconds": 0.1,
+     "timed_out": false,
+     "log_tail": ""
+    }
+   ]
+  },
+  "selected_tests": [
+   {
+    "path": "src/schedule/tests/test_schedule.py",
+    "reason": "changed_in_pr",
+    "exists_at_base": true
+   }
+  ],
+  "head_run": {
+   "status": "completed",
+   "exit_code": 0,
+   "seconds": 1.0,
+   "addopts_overridden": false,
+   "counts": {
+    "passed": 13,
+    "failed": 0,
+    "error": 0,
+    "skipped": 0
+   },
+   "tests": {},
+   "log_tail": ""
+  },
+  "base_run": {
+   "status": "completed",
+   "exit_code": 0,
+   "seconds": 1.0,
+   "addopts_overridden": false,
+   "counts": {
+    "passed": 12,
+    "failed": 0,
+    "error": 0,
+    "skipped": 0
+   },
+   "tests": {},
+   "log_tail": ""
+  },
+  "comparison": {
+   "regressions": [],
+   "new_test_failures": [],
+   "fixed": [],
+   "persistent_failures": []
+  },
+  "imports_head": {
+   "schedule.schedule": {
+    "ok": true
+   }
+  },
+  "imports_base": {
+   "schedule.schedule": {
+    "ok": true
+   }
+  },
+  "status": "completed",
+  "dependency_cutoff": "2025-06-03T18:24:14Z",
+  "seconds": 4.0,
+  "head_failures": 0
+ },
+ "findings": [],
+ "status": "ok",
+ "seconds": 5.2
+}

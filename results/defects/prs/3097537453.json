@@ -1,0 +1,156 @@
+{
+ "pr_id": 3097537453,
+ "repository": "meilisearch/meilisearch-mcp",
+ "pr_number": 26,
+ "split": "evaluation",
+ "agent": "OpenAI_Codex",
+ "head_sha": "51925d8cd9b2b6e87d581b8924b24a93e44ccc8a",
+ "tool_versions": {
+  "ruff": "ruff 0.17.4",
+  "bandit": "__main__.py 1.9.4",
+  "python": "3.12.3"
+ },
+ "config": {
+  "run_tests": true,
+  "sandbox": true
+ },
+ "base_mode": "reverse_applied_diff",
+ "static": {
+  "files_analysed": 1,
+  "head_issues": 7,
+  "base_issues": 7,
+  "per_tool_head": {
+   "ruff": 7
+  },
+  "per_tool_base": {
+   "ruff": 7
+  },
+  "introduced": 0,
+  "seconds": 0.2
+ },
+ "tests": {
+  "env": {
+   "status": "partial",
+   "python": "3.15.2",
+   "steps": [
+    {
+     "step": "venv",
+     "ok": true,
+     "seconds": 0.0,
+     "timed_out": false,
+     "log_tail": ""
+    },
+    {
+     "step": "install -e .",
+     "ok": false,
+     "seconds": 18.0,
+     "timed_out": false,
+     "log_tail": "    error: the configured Python interpreter version (3.15) is newer than PyO3's maximum supported version (3.13)\n           = help: please check if an updated version of PyO3 is available. Current version: 0.24.1\n           = help: set PYO3_USE_ABI3_FORWARD_COMPATIBILITY=1 to suppress this check and build anyway using the stable ABI\n         warning: build failed, waiting for other jobs to finish...\n         💥 maturin failed\n           Caused by: Failed to build a native library through cargo\n           Caused by: Cargo build finished with \"exit status: 101\": `env -u CARGO PYO3_ENVIRONMENT_SIGNATURE=\"cpython-3.15-64bit\" PYO3_PYTHON=\"/dev/shm/acr/work/_shared_cache/uv/builds-v0/.tmpeC7wAn/bin/python\" PYTHON_SYS_EXECUTABLE=\"/dev/shm/acr/work/_shared_cache/uv/builds-v0/.tmpeC7wAn/bin/python\" \"cargo\" \"rustc\" \"--features\" \"pyo3/extension-module\" \"--message-format\" \"json-render-diagnostics\" \"--manifest-path\" \"/dev/shm/acr/work/_shared_cache/uv/sdists-v10/pypi/pydantic-core/2.33.2/D5dNEOkhKV9CkE_G/src/Cargo.toml\" \"--release\" \"--lib\" \"--crate-type\" \"cdylib\"`\n         Error: command ['maturin', 'pep517', 'build-wheel', '-i', '/dev/shm/acr/work/_shared_cache/uv/builds-v0/.tmpeC7wAn/bin/python', '--compatibility', 'off'] returned non-zero exit status 1\n\nhint: `pydantic-core` (v2.33.2) was included because `meilisearch-mcp` (v0.4.0) depends on `pydantic` (v2.11.5) which depends on `pydantic-core`\n\nhint: Build failures usually indicate a problem with the package or the build environment\n"
+    },
+    {
+     "step": "install -r requirements-dev.txt",
+     "ok": false,
+     "seconds": 3.2,
+     "timed_out": false,
+     "log_tail": "derr\n           error: the configured Python interpreter version (3.15) is newer than PyO3's maximum supported version (3.13)\n           = help: please check if an updated version of PyO3 is available. Current version: 0.24.1\n           = help: set PYO3_USE_ABI3_FORWARD_COMPATIBILITY=1 to suppress this check and build anyway using the stable ABI\n         warning: build failed, waiting for other jobs to finish...\n         💥 maturin failed\n           Caused by: Failed to build a native library through cargo\n           Caused by: Cargo build finished with \"exit status: 101\": `env -u CARGO PYO3_ENVIRONMENT_SIGNATURE=\"cpython-3.15-64bit\" PYO3_PYTHON=\"/dev/shm/acr/work/_shared_cache/uv/builds-v0/.tmpd8HVfZ/bin/python\" PYTHON_SYS_EXECUTABLE=\"/dev/shm/acr/work/_shared_cache/uv/builds-v0/.tmpd8HVfZ/bin/python\" \"cargo\" \"rustc\" \"--features\" \"pyo3/extension-module\" \"--message-format\" \"json-render-diagnostics\" \"--manifest-path\" \"/dev/shm/acr/work/_shared_cache/uv/sdists-v10/pypi/pydantic-core/2.33.2/D5dNEOkhKV9CkE_G/src/Cargo.toml\" \"--release\" \"--lib\" \"--crate-type\" \"cdylib\"`\n         Error: command ['maturin', 'pep517', 'build-wheel', '-i', '/dev/shm/acr/work/_shared_cache/uv/builds-v0/.tmpd8HVfZ/bin/python', '--compatibility', 'off'] returned non-zero exit status 1\n\nhint: `pydantic-core` (v2.33.2) was included because `mcp` (v1.9.3) depends on `pydantic` (v2.11.5) which depends on `pydantic-core`\n\nhint: Build failures usually indicate a problem with the package or the build environment\n"
+    },
+    {
+     "step": "install pytest",
+     "ok": true,
+     "seconds": 0.0,
+     "timed_out": false,
+     "log_tail": ""
+    },
+    {
+     "step": "repair: install mcp meilisearch",
+     "ok": false,
+     "seconds": 18.5,
+     "timed_out": false,
+     "log_tail": "derr\n           error: the configured Python interpreter version (3.15) is newer than PyO3's maximum supported version (3.13)\n           = help: please check if an updated version of PyO3 is available. Current version: 0.24.1\n           = help: set PYO3_USE_ABI3_FORWARD_COMPATIBILITY=1 to suppress this check and build anyway using the stable ABI\n         warning: build failed, waiting for other jobs to finish...\n         💥 maturin failed\n           Caused by: Failed to build a native library through cargo\n           Caused by: Cargo build finished with \"exit status: 101\": `env -u CARGO PYO3_ENVIRONMENT_SIGNATURE=\"cpython-3.15-64bit\" PYO3_PYTHON=\"/dev/shm/acr/work/_shared_cache/uv/builds-v0/.tmpgmhKtF/bin/python\" PYTHON_SYS_EXECUTABLE=\"/dev/shm/acr/work/_shared_cache/uv/builds-v0/.tmpgmhKtF/bin/python\" \"cargo\" \"rustc\" \"--features\" \"pyo3/extension-module\" \"--message-format\" \"json-render-diagnostics\" \"--manifest-path\" \"/dev/shm/acr/work/_shared_cache/uv/sdists-v10/pypi/pydantic-core/2.33.2/D5dNEOkhKV9CkE_G/src/Cargo.toml\" \"--release\" \"--lib\" \"--crate-type\" \"cdylib\"`\n         Error: command ['maturin', 'pep517', 'build-wheel', '-i', '/dev/shm/acr/work/_shared_cache/uv/builds-v0/.tmpgmhKtF/bin/python', '--compatibility', 'off'] returned non-zero exit status 1\n\nhint: `pydantic-core` (v2.33.2) was included because `mcp` (v1.9.3) depends on `pydantic` (v2.11.5) which depends on `pydantic-core`\n\nhint: Build failures usually indicate a problem with the package or the build environment\n"
+    }
+   ]
+  },
+  "selected_tests": [
+   {
+    "path": "tests/test_server.py",
+    "reason": "full_suite",
+    "exists_at_base": true
+   }
+  ],
+  "head_run": {
+   "status": "completed",
+   "exit_code": 2,
+   "seconds": 0.3,
+   "addopts_overridden": false,
+   "counts": {
+    "passed": 0,
+    "failed": 0,
+    "error": 1,
+    "skipped": 0
+   },
+   "tests": {
+    "::tests.test_server": {
+     "outcome": "error",
+     "detail": "collection failure\nImportError while importing test module '/dev/shm/acr/work/3097537453/src/head/tests/test_server.py'.\nHint: make sure your test modules/packages have valid Python names.\nTraceback:\n../../../_shared_cache/python/cpython-3.15.2-linux-x86_64-gnu/lib/python3.15/importlib/__init__.py:88: in import_module\n    return _bootstrap._gcd_import(name[level:], package, level)\n           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\ntests/test_server.py:2: in <module>\n    from src.meilisearch_mcp.server import create_server\nsrc/meilisearch_mcp/server.py:6: in <module>\n    import mcp.types as types\nE   ModuleNotFoundError: No module named 'mcp'"
+    }
+   },
+   "log_tail": ""
+  },
+  "base_run": {
+   "status": "completed",
+   "exit_code": 2,
+   "seconds": 0.3,
+   "addopts_overridden": false,
+   "counts": {
+    "passed": 0,
+    "failed": 0,
+    "error": 1,
+    "skipped": 0
+   },
+   "tests": {
+    "::tests.test_server": {
+     "outcome": "error",
+     "detail": "collection failure\nImportError while importing test module '/dev/shm/acr/work/3097537453/src/base/tests/test_server.py'.\nHint: make sure your test modules/packages have valid Python names.\nTraceback:\n../../../_shared_cache/python/cpython-3.15.2-linux-x86_64-gnu/lib/python3.15/importlib/__init__.py:88: in import_module\n    return _bootstrap._gcd_import(name[level:], package, level)\n           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\ntests/test_server.py:2: in <module>\n    from src.meilisearch_mcp.server import create_server\nsrc/meilisearch_mcp/server.py:6: in <module>\n    import mcp.types as types\nE   ModuleNotFoundError: No module named 'mcp'"
+    }
+   },
+   "log_tail": ""
+  },
+  "comparison": {
+   "regressions": [],
+   "new_test_failures": [],
+   "fixed": [],
+   "persistent_failures": [
+    "::tests.test_server"
+   ]
+  },
+  "imports_head": {
+   "meilisearch_mcp.documents": {
+    "ok": false,
+    "type": "ModuleNotFoundError",
+    "message": "No module named 'meilisearch'",
+    "missing_module": "meilisearch",
+    "file": "src/meilisearch_mcp/documents.py",
+    "line": 2,
+    "traceback": "Traceback (most recent call last):\n  File \"<string>\", line 7, in <module>\n    importlib.import_module(m)\n    ~~~~~~~~~~~~~~~~~~~~~~~^^^\n  File \"/dev/shm/acr/work/_shared_cache/python/cpython-3.15.2-linux-x86_64-gnu/lib/python3.15/importlib/__init__.py\", line 88, in import_module\n    return _bootstrap._gcd_import(name[level:], package, level)\n           ~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"<frozen importlib._bootstrap>\", line 1389, in _gcd_import\n  File \"<frozen importlib._bootstrap>\", line 1353, in _find_and_load\n  File \"<frozen importlib._bootstrap>\", line 1249, in _find_and_load_unlocked\n  File \"<frozen importlib._bootstrap>\", line 857, in _load_unlocked\n  File \"<frozen importlib._bootstrap_external>\", line 751, in exec_module\n  File \"<frozen importlib._bootstrap>\", line 491, in _call_with_frames_removed\n  File \"/dev/shm/acr/work/3097537453/src/head/src/meilisearch_mcp/documents.py\", line 2, in <module>\n    from meilisearch import Client\nModuleNotFoundError: No module named 'meilisearch'. Did you mean: 'meilisearch_mcp'?\n"
+   }
+  },
+  "imports_base": {
+   "meilisearch_mcp.documents": {
+    "ok": false,
+    "type": "ModuleNotFoundError",
+    "message": "No module named 'meilisearch'",
+    "missing_module": "meilisearch",
+    "file": "src/meilisearch_mcp/documents.py",
+    "line": 2,
+    "traceback": "Traceback (most recent call last):\n  File \"<string>\", line 7, in <module>\n    importlib.import_module(m)\n    ~~~~~~~~~~~~~~~~~~~~~~~^^^\n  File \"/dev/shm/acr/work/_shared_cache/python/cpython-3.15.2-linux-x86_64-gnu/lib/python3.15/importlib/__init__.py\", line 88, in import_module\n    return _bootstrap._gcd_import(name[level:], package, level)\n           ~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"<frozen importlib._bootstrap>\", line 1389, in _gcd_import\n  File \"<frozen importlib._bootstrap>\", line 1353, in _find_and_load\n  File \"<frozen importlib._bootstrap>\", line 1249, in _find_and_load_unlocked\n  File \"<frozen importlib._bootstrap>\", line 857, in _load_unlocked\n  File \"<frozen importlib._bootstrap_external>\", line 751, in exec_module\n  File \"<frozen importlib._bootstrap>\", line 491, in _call_with_frames_removed\n  File \"/dev/shm/acr/work/3097537453/src/base/src/meilisearch_mcp/documents.py\", line 2, in <module>\n    from meilisearch import Client\nModuleNotFoundError: No module named 'meilisearch'. Did you mean: 'meilisearch_mcp'?\n"
+   }
+  },
+  "status": "completed",
+  "dependency_cutoff": "2025-06-06T15:37:30Z",
+  "seconds": 40.5,
+  "head_failures": 1
+ },
+ "findings": [],
+ "status": "ok",
+ "seconds": 41.4
+}

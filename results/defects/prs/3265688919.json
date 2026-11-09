@@ -1,0 +1,290 @@
+{
+ "pr_id": 3265688919,
+ "repository": "lrzjason/T2ITrainer",
+ "pr_number": 63,
+ "split": "evaluation",
+ "agent": "OpenAI_Codex",
+ "head_sha": "c820fc5d347b5ac665d8cce7e7a53eebd25e42d3",
+ "tool_versions": {
+  "ruff": "ruff 0.17.4",
+  "bandit": "__main__.py 1.9.4",
+  "python": "3.12.3"
+ },
+ "config": {
+  "run_tests": true,
+  "sandbox": true
+ },
+ "base_mode": "reverse_applied_diff",
+ "static": {
+  "files_analysed": 2,
+  "head_issues": 39,
+  "base_issues": 39,
+  "per_tool_head": {
+   "ruff": 31,
+   "bandit": 8
+  },
+  "per_tool_base": {
+   "ruff": 31,
+   "bandit": 8
+  },
+  "introduced": 0,
+  "seconds": 0.4
+ },
+ "tests": {
+  "env": {
+   "status": "partial",
+   "python": "3.15.2",
+   "steps": [
+    {
+     "step": "venv",
+     "ok": true,
+     "seconds": 0.0,
+     "timed_out": false,
+     "log_tail": ""
+    },
+    {
+     "step": "install -r requirements.txt",
+     "ok": false,
+     "seconds": 0.4,
+     "timed_out": false,
+     "log_tail": "error: No solution found when resolving dependencies\n  cause: Because all versions of onnxruntime have no wheels with a matching Python ABI tag (e.g., `cp315`) and you require onnxruntime, we can conclude that your requirements are unsatisfiable.\n\nhint: You require CPython 3.15 (`cp315`), but we only found wheels for `onnxruntime` (v1.22.1) with the following Python ABI tags: `cp310`, `cp311`, `cp312`, `cp313`, `cp313t`\n"
+    },
+    {
+     "step": "install pytest",
+     "ok": true,
+     "seconds": 0.0,
+     "timed_out": false,
+     "log_tail": ""
+    },
+    {
+     "step": "repair: install captioner compel diffusers numpy opencv-python-headless pandas scikit-learn torch wandb",
+     "ok": false,
+     "seconds": 0.2,
+     "timed_out": false,
+     "log_tail": "error: No solution found when resolving dependencies\n  cause: Because captioner was not found in the package registry and you require captioner, we can conclude that your requirements are unsatisfiable.\n"
+    }
+   ]
+  },
+  "selected_tests": [
+   {
+    "path": "test/test_blip.py",
+    "reason": "full_suite",
+    "exists_at_base": true
+   },
+   {
+    "path": "test/test_captioner.py",
+    "reason": "full_suite",
+    "exists_at_base": true
+   },
+   {
+    "path": "test/test_compel.py",
+    "reason": "full_suite",
+    "exists_at_base": true
+   },
+   {
+    "path": "test/test_cv2.py",
+    "reason": "full_suite",
+    "exists_at_base": true
+   },
+   {
+    "path": "test/test_downscale.py",
+    "reason": "full_suite",
+    "exists_at_base": true
+   },
+   {
+    "path": "test/test_fill.py",
+    "reason": "full_suite",
+    "exists_at_base": true
+   },
+   {
+    "path": "test/test_function.py",
+    "reason": "full_suite",
+    "exists_at_base": true
+   },
+   {
+    "path": "test/test_md5.py",
+    "reason": "full_suite",
+    "exists_at_base": true
+   },
+   {
+    "path": "test/test_res.py",
+    "reason": "full_suite",
+    "exists_at_base": true
+   },
+   {
+    "path": "test/test_resize.py",
+    "reason": "full_suite",
+    "exists_at_base": true
+   },
+   {
+    "path": "test/test_vae.py",
+    "reason": "full_suite",
+    "exists_at_base": true
+   },
+   {
+    "path": "test/test_wandb.py",
+    "reason": "full_suite",
+    "exists_at_base": true
+   },
+   {
+    "path": "test/test_zip.py",
+    "reason": "full_suite",
+    "exists_at_base": true
+   }
+  ],
+  "head_run": {
+   "status": "completed",
+   "exit_code": 2,
+   "seconds": 0.5,
+   "addopts_overridden": false,
+   "counts": {
+    "passed": 0,
+    "failed": 0,
+    "error": 12,
+    "skipped": 0
+   },
+   "tests": {
+    "::test.test_blip": {
+     "outcome": "error",
+     "detail": "collection failure\nImportError while importing test module '/dev/shm/acr/work/3265688919/src/head/test/test_blip.py'.\nHint: make sure your test modules/packages have valid Python names.\nTraceback:\n../../../_shared_cache/python/cpython-3.15.2-linux-x86_64-gnu/lib/python3.15/importlib/__init__.py:88: in import_module\n    return _bootstrap._gcd_import(name[level:], package, level)\n           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\ntest/test_blip.py:1: in <module>\n    import torch\nE   ModuleNotFoundError: No module named 'torch'"
+    },
+    "::test.test_captioner": {
+     "outcome": "error",
+     "detail": "collection failure\nImportError while importing test module '/dev/shm/acr/work/3265688919/src/head/test/test_captioner.py'.\nHint: make sure your test modules/packages have valid Python names.\nTraceback:\n../../../_shared_cache/python/cpython-3.15.2-linux-x86_64-gnu/lib/python3.15/importlib/__init__.py:88: in import_module\n    return _bootstrap._gcd_import(name[level:], package, level)\n           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\ntest/test_captioner.py:2: in <module>\n    from captioner.florenceLargeFt import FlorenceLargeFtModelWrapper\nE   ModuleNotFoundError: No module named 'captioner.florenceLargeFt'"
+    },
+    "::test.test_compel": {
+     "outcome": "error",
+     "detail": "collection failure\nImportError while importing test module '/dev/shm/acr/work/3265688919/src/head/test/test_compel.py'.\nHint: make sure your test modules/packages have valid Python names.\nTraceback:\n../../../_shared_cache/python/cpython-3.15.2-linux-x86_64-gnu/lib/python3.15/importlib/__init__.py:88: in import_module\n    return _bootstrap._gcd_import(name[level:], package, level)\n           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\ntest/test_compel.py:2: in <module>\n    from compel import Compel, ReturnedEmbeddingsType\nE   ModuleNotFoundError: No module named 'compel'"
+    },
+    "::test.test_cv2": {
+     "outcome": "error",
+     "detail": "collection failure\nImportError while importing test module '/dev/shm/acr/work/3265688919/src/head/test/test_cv2.py'.\nHint: make sure your test modules/packages have valid Python names.\nTraceback:\n../../../_shared_cache/python/cpython-3.15.2-linux-x86_64-gnu/lib/python3.15/importlib/__init__.py:88: in import_module\n    return _bootstrap._gcd_import(name[level:], package, level)\n           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\ntest/test_cv2.py:1: in <module>\n    import cv2\nE   ModuleNotFoundError: No module named 'cv2'"
+    },
+    "::test.test_downscale": {
+     "outcome": "error",
+     "detail": "collection failure\nImportError while importing test module '/dev/shm/acr/work/3265688919/src/head/test/test_downscale.py'.\nHint: make sure your test modules/packages have valid Python names.\nTraceback:\n../../../_shared_cache/python/cpython-3.15.2-linux-x86_64-gnu/lib/python3.15/importlib/__init__.py:88: in import_module\n    return _bootstrap._gcd_import(name[level:], package, level)\n           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\ntest/test_downscale.py:1: in <module>\n    import cv2\nE   ModuleNotFoundError: No module named 'cv2'"
+    },
+    "::test.test_fill": {
+     "outcome": "error",
+     "detail": "collection failure\nImportError while importing test module '/dev/shm/acr/work/3265688919/src/head/test/test_fill.py'.\nHint: make sure your test modules/packages have valid Python names.\nTraceback:\n../../../_shared_cache/python/cpython-3.15.2-linux-x86_64-gnu/lib/python3.15/importlib/__init__.py:88: in import_module\n    return _bootstrap._gcd_import(name[level:], package, level)\n           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\ntest/test_fill.py:1: in <module>\n    import torch\nE   ModuleNotFoundError: No module named 'torch'"
+    },
+    "::test.test_function": {
+     "outcome": "error",
+     "detail": "collection failure\nImportError while importing test module '/dev/shm/acr/work/3265688919/src/head/test/test_function.py'.\nHint: make sure your test modules/packages have valid Python names.\nTraceback:\n../../../_shared_cache/python/cpython-3.15.2-linux-x86_64-gnu/lib/python3.15/importlib/__init__.py:88: in import_module\n    return _bootstrap._gcd_import(name[level:], package, level)\n           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\ntest/test_function.py:1: in <module>\n    from sklearn.model_selection import train_test_split\nE   ModuleNotFoundError: No module named 'sklearn'"
+    },
+    "::test.test_res": {
+     "outcome": "error",
+     "detail": "collection failure\nImportError while importing test module '/dev/shm/acr/work/3265688919/src/head/test/test_res.py'.\nHint: make sure your test modules/packages have valid Python names.\nTraceback:\n../../../_shared_cache/python/cpython-3.15.2-linux-x86_64-gnu/lib/python3.15/importlib/__init__.py:88: in import_module\n    return _bootstrap._gcd_import(name[level:], package, level)\n           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\ntest/test_res.py:1: in <module>\n    import pandas as pd\nE   ModuleNotFoundError: No module named 'pandas'"
+    },
+    "::test.test_resize": {
+     "outcome": "error",
+     "detail": "collection failure\nImportError while importing test module '/dev/shm/acr/work/3265688919/src/head/test/test_resize.py'.\nHint: make sure your test modules/packages have valid Python names.\nTraceback:\n../../../_shared_cache/python/cpython-3.15.2-linux-x86_64-gnu/lib/python3.15/importlib/__init__.py:88: in import_module\n    return _bootstrap._gcd_import(name[level:], package, level)\n           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\ntest/test_resize.py:1: in <module>\n    import numpy as np\nE   ModuleNotFoundError: No module named 'numpy'. Did you mean: 'runpy'?"
+    },
+    "::test.test_vae": {
+     "outcome": "error",
+     "detail": "collection failure\nImportError while importing test module '/dev/shm/acr/work/3265688919/src/head/test/test_vae.py'.\nHint: make sure your test modules/packages have valid Python names.\nTraceback:\n../../../_shared_cache/python/cpython-3.15.2-linux-x86_64-gnu/lib/python3.15/importlib/__init__.py:88: in import_module\n    return _bootstrap._gcd_import(name[level:], package, level)\n           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\ntest/test_vae.py:1: in <module>\n    from diffusers import AutoencoderKL\nE   ModuleNotFoundError: No module named 'diffusers'"
+    },
+    "::test.test_wandb": {
+     "outcome": "error",
+     "detail": "collection failure\nImportError while importing test module '/dev/shm/acr/work/3265688919/src/head/test/test_wandb.py'.\nHint: make sure your test modules/packages have valid Python names.\nTraceback:\n../../../_shared_cache/python/cpython-3.15.2-linux-x86_64-gnu/lib/python3.15/importlib/__init__.py:88: in import_module\n    return _bootstrap._gcd_import(name[level:], package, level)\n           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\ntest/test_wandb.py:1: in <module>\n    import wandb\nE   ModuleNotFoundError: No module named 'wandb'"
+    },
+    "::test.test_zip": {
+     "outcome": "error",
+     "detail": "collection failure\ntest/test_zip.py:5: in <module>\n    with open(metadata_path, \"r\", encoding='utf-8') as readfile:\n         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\nE   FileNotFoundError: [Errno 2] No such file or directory: 'F:/ImageSet/kolors_slider/metadata_kolors_slider.json'"
+    }
+   },
+   "log_tail": ""
+  },
+  "base_run": {
+   "status": "completed",
+   "exit_code": 2,
+   "seconds": 0.4,
+   "addopts_overridden": false,
+   "counts": {
+    "passed": 0,
+    "failed": 0,
+    "error": 12,
+    "skipped": 0
+   },
+   "tests": {
+    "::test.test_blip": {
+     "outcome": "error",
+     "detail": "collection failure\nImportError while importing test module '/dev/shm/acr/work/3265688919/src/base/test/test_blip.py'.\nHint: make sure your test modules/packages have valid Python names.\nTraceback:\n../../../_shared_cache/python/cpython-3.15.2-linux-x86_64-gnu/lib/python3.15/importlib/__init__.py:88: in import_module\n    return _bootstrap._gcd_import(name[level:], package, level)\n           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\ntest/test_blip.py:1: in <module>\n    import torch\nE   ModuleNotFoundError: No module named 'torch'"
+    },
+    "::test.test_captioner": {
+     "outcome": "error",
+     "detail": "collection failure\nImportError while importing test module '/dev/shm/acr/work/3265688919/src/base/test/test_captioner.py'.\nHint: make sure your test modules/packages have valid Python names.\nTraceback:\n../../../_shared_cache/python/cpython-3.15.2-linux-x86_64-gnu/lib/python3.15/importlib/__init__.py:88: in import_module\n    return _bootstrap._gcd_import(name[level:], package, level)\n           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\ntest/test_captioner.py:2: in <module>\n    from captioner.florenceLargeFt import FlorenceLargeFtModelWrapper\nE   ModuleNotFoundError: No module named 'captioner.florenceLargeFt'"
+    },
+    "::test.test_compel": {
+     "outcome": "error",
+     "detail": "collection failure\nImportError while importing test module '/dev/shm/acr/work/3265688919/src/base/test/test_compel.py'.\nHint: make sure your test modules/packages have valid Python names.\nTraceback:\n../../../_shared_cache/python/cpython-3.15.2-linux-x86_64-gnu/lib/python3.15/importlib/__init__.py:88: in import_module\n    return _bootstrap._gcd_import(name[level:], package, level)\n           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\ntest/test_compel.py:2: in <module>\n    from compel import Compel, ReturnedEmbeddingsType\nE   ModuleNotFoundError: No module named 'compel'"
+    },
+    "::test.test_cv2": {
+     "outcome": "error",
+     "detail": "collection failure\nImportError while importing test module '/dev/shm/acr/work/3265688919/src/base/test/test_cv2.py'.\nHint: make sure your test modules/packages have valid Python names.\nTraceback:\n../../../_shared_cache/python/cpython-3.15.2-linux-x86_64-gnu/lib/python3.15/importlib/__init__.py:88: in import_module\n    return _bootstrap._gcd_import(name[level:], package, level)\n           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\ntest/test_cv2.py:1: in <module>\n    import cv2\nE   ModuleNotFoundError: No module named 'cv2'"
+    },
+    "::test.test_downscale": {
+     "outcome": "error",
+     "detail": "collection failure\nImportError while importing test module '/dev/shm/acr/work/3265688919/src/base/test/test_downscale.py'.\nHint: make sure your test modules/packages have valid Python names.\nTraceback:\n../../../_shared_cache/python/cpython-3.15.2-linux-x86_64-gnu/lib/python3.15/importlib/__init__.py:88: in import_module\n    return _bootstrap._gcd_import(name[level:], package, level)\n           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\ntest/test_downscale.py:1: in <module>\n    import cv2\nE   ModuleNotFoundError: No module named 'cv2'"
+    },
+    "::test.test_fill": {
+     "outcome": "error",
+     "detail": "collection failure\nImportError while importing test module '/dev/shm/acr/work/3265688919/src/base/test/test_fill.py'.\nHint: make sure your test modules/packages have valid Python names.\nTraceback:\n../../../_shared_cache/python/cpython-3.15.2-linux-x86_64-gnu/lib/python3.15/importlib/__init__.py:88: in import_module\n    return _bootstrap._gcd_import(name[level:], package, level)\n           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\ntest/test_fill.py:1: in <module>\n    import torch\nE   ModuleNotFoundError: No module named 'torch'"
+    },
+    "::test.test_function": {
+     "outcome": "error",
+     "detail": "collection failure\nImportError while importing test module '/dev/shm/acr/work/3265688919/src/base/test/test_function.py'.\nHint: make sure your test modules/packages have valid Python names.\nTraceback:\n../../../_shared_cache/python/cpython-3.15.2-linux-x86_64-gnu/lib/python3.15/importlib/__init__.py:88: in import_module\n    return _bootstrap._gcd_import(name[level:], package, level)\n           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\ntest/test_function.py:1: in <module>\n    from sklearn.model_selection import train_test_split\nE   ModuleNotFoundError: No module named 'sklearn'"
+    },
+    "::test.test_res": {
+     "outcome": "error",
+     "detail": "collection failure\nImportError while importing test module '/dev/shm/acr/work/3265688919/src/base/test/test_res.py'.\nHint: make sure your test modules/packages have valid Python names.\nTraceback:\n../../../_shared_cache/python/cpython-3.15.2-linux-x86_64-gnu/lib/python3.15/importlib/__init__.py:88: in import_module\n    return _bootstrap._gcd_import(name[level:], package, level)\n           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\ntest/test_res.py:1: in <module>\n    import pandas as pd\nE   ModuleNotFoundError: No module named 'pandas'"
+    },
+    "::test.test_resize": {
+     "outcome": "error",
+     "detail": "collection failure\nImportError while importing test module '/dev/shm/acr/work/3265688919/src/base/test/test_resize.py'.\nHint: make sure your test modules/packages have valid Python names.\nTraceback:\n../../../_shared_cache/python/cpython-3.15.2-linux-x86_64-gnu/lib/python3.15/importlib/__init__.py:88: in import_module\n    return _bootstrap._gcd_import(name[level:], package, level)\n           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\ntest/test_resize.py:1: in <module>\n    import numpy as np\nE   ModuleNotFoundError: No module named 'numpy'. Did you mean: 'runpy'?"
+    },
+    "::test.test_vae": {
+     "outcome": "error",
+     "detail": "collection failure\nImportError while importing test module '/dev/shm/acr/work/3265688919/src/base/test/test_vae.py'.\nHint: make sure your test modules/packages have valid Python names.\nTraceback:\n../../../_shared_cache/python/cpython-3.15.2-linux-x86_64-gnu/lib/python3.15/importlib/__init__.py:88: in import_module\n    return _bootstrap._gcd_import(name[level:], package, level)\n           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\ntest/test_vae.py:1: in <module>\n    from diffusers import AutoencoderKL\nE   ModuleNotFoundError: No module named 'diffusers'"
+    },
+    "::test.test_wandb": {
+     "outcome": "error",
+     "detail": "collection failure\nImportError while importing test module '/dev/shm/acr/work/3265688919/src/base/test/test_wandb.py'.\nHint: make sure your test modules/packages have valid Python names.\nTraceback:\n../../../_shared_cache/python/cpython-3.15.2-linux-x86_64-gnu/lib/python3.15/importlib/__init__.py:88: in import_module\n    return _bootstrap._gcd_import(name[level:], package, level)\n           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\ntest/test_wandb.py:1: in <module>\n    import wandb\nE   ModuleNotFoundError: No module named 'wandb'"
+    },
+    "::test.test_zip": {
+     "outcome": "error",
+     "detail": "collection failure\ntest/test_zip.py:5: in <module>\n    with open(metadata_path, \"r\", encoding='utf-8') as readfile:\n         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\nE   FileNotFoundError: [Errno 2] No such file or directory: 'F:/ImageSet/kolors_slider/metadata_kolors_slider.json'"
+    }
+   },
+   "log_tail": ""
+  },
+  "comparison": {
+   "regressions": [],
+   "new_test_failures": [],
+   "fixed": [],
+   "persistent_failures": [
+    "::test.test_blip",
+    "::test.test_captioner",
+    "::test.test_compel",
+    "::test.test_cv2",
+    "::test.test_downscale",
+    "::test.test_fill",
+    "::test.test_function",
+    "::test.test_res",
+    "::test.test_resize",
+    "::test.test_vae",
+    "::test.test_wandb",
+    "::test.test_zip"
+   ]
+  },
+  "imports_head": {},
+  "imports_base": {},
+  "status": "completed",
+  "dependency_cutoff": "2025-07-26T13:57:05Z",
+  "seconds": 1.5,
+  "head_failures": 12
+ },
+ "findings": [],
+ "status": "ok",
+ "seconds": 32.3
+}

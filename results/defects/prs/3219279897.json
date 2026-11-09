@@ -1,0 +1,270 @@
+{
+ "pr_id": 3219279897,
+ "repository": "docling-project/docling",
+ "pr_number": 1925,
+ "split": "evaluation",
+ "agent": "Copilot",
+ "head_sha": "9d0c20057304967930c1be11eae34670d1ef777c",
+ "tool_versions": {
+  "ruff": "ruff 0.17.4",
+  "bandit": "__main__.py 1.9.4",
+  "python": "3.12.3"
+ },
+ "config": {
+  "run_tests": true,
+  "sandbox": true
+ },
+ "base_mode": "reverse_applied_diff",
+ "static": {
+  "files_analysed": 2,
+  "head_issues": 14,
+  "base_issues": 14,
+  "per_tool_head": {
+   "ruff": 13,
+   "bandit": 1
+  },
+  "per_tool_base": {
+   "ruff": 13,
+   "bandit": 1
+  },
+  "introduced": 0,
+  "seconds": 0.7
+ },
+ "tests": {
+  "env": {
+   "status": "partial",
+   "python": "3.15.2",
+   "steps": [
+    {
+     "step": "venv",
+     "ok": true,
+     "seconds": 0.0,
+     "timed_out": false,
+     "log_tail": ""
+    },
+    {
+     "step": "install -e .",
+     "ok": false,
+     "seconds": 1.2,
+     "timed_out": false,
+     "log_tail": "error: No solution found when resolving dependencies\n  cause: Because only the following versions of torch are available:\n             torch<2.7.0+cpu\n             torch>2.7.0+cpu,<2.7.1+cpu\n         and all of:\n             torch>=2.2.2,<=2.7.0\n             torch==2.7.1\n          have no wheels with a matching Python ABI tag (e.g., `cp315`), we can conclude that all of:\n             torch>=2.2.2,<=2.7.0\n             torch==2.7.1\n          cannot be used.\n         And because docling-ibm-models>=3.6.0 depends on torch>=2.2.2 and docling==2.40.0 depends on docling-ibm-models>=3.6.0, we can conclude that docling==2.40.0 cannot be used.\n         And because only docling==2.40.0 is available and you require docling, we can conclude that your requirements are unsatisfiable.\n\nhint: You require CPython 3.15 (`cp315`), but we only found wheels for `torch` (v2.7.1) with the following Python ABI tag: `cp313t`\n"
+    },
+    {
+     "step": "install --group dev",
+     "ok": false,
+     "seconds": 1.8,
+     "timed_out": false,
+     "log_tail": "dd the directory containing `libffi.pc'\n         to the PKG_CONFIG_PATH environment variable\n         Package 'libffi', required by 'virtual:world', not found\n         /dev/shm/acr/work/_shared_cache/uv/builds-v0/.tmpZs8zsl/lib/python3.15/site-packages/setuptools/dist.py:759: SetuptoolsDeprecationWarning: License classifiers are deprecated.\n         !!\n\n                 ********************************************************************************\n                 Please consider removing the following classifiers in favor of a SPDX license expression:\n\n                 License :: OSI Approved :: MIT License\n\n                 See https://packaging.python.org/en/latest/guides/writing-pyproject-toml/#license for details.\n                 ********************************************************************************\n\n         !!\n           self._finalize_license_expression()\n         src/c/_cffi_backend.c:15:10: fatal error: ffi.h: No such file or directory\n            15 | #include <ffi.h>\n               |          ^~~~~~~\n         compilation terminated.\n         error: command '/usr/bin/cc' failed with exit code 1\n\nhint: `cffi` (v1.17.1) was included because `python-semantic-release` (v7.34.6) depends on `twine` (v3.8.0) which depends on `keyring` (v25.6.0) which depends on `secretstorage` (v3.3.3) which depends on `cryptography` (v45.0.5) which depends on `cffi`\n\nhint: This error likely indicates that you need to install a library that provides `ffi.h` for `cffi@1.17.1`\n"
+    },
+    {
+     "step": "install pytest",
+     "ok": true,
+     "seconds": 0.1,
+     "timed_out": false,
+     "log_tail": ""
+    },
+    {
+     "step": "repair: install docling_core numpy pydantic pypdfium2",
+     "ok": false,
+     "seconds": 1.6,
+     "timed_out": false,
+     "log_tail": "            ~~~~~~~~~~~~~~~~~~~~~~~~~^\n                 cmd,\n                 ^^^^\n             ...<3 lines>...\n                 self._arbitrary_args(config_settings),\n                 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n             )\n             ^\n           File \"/dev/shm/acr/work/_shared_cache/uv/builds-v0/.tmpl6ShSG/lib/python3.15/site-packages/setuptools/build_meta.py\", line 404, in _build_with_temp_dir\n             self.run_setup()\n             ~~~~~~~~~~~~~~^^\n           File \"/dev/shm/acr/work/_shared_cache/uv/sdists-v10/pypi/pillow/11.3.0/AgqJ9gapM4SEsSui/src/_custom_build/backend.py\", line 20, in run_setup\n             return super().run_setup(setup_script)\n                    ~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^\n           File \"/dev/shm/acr/work/_shared_cache/uv/builds-v0/.tmpl6ShSG/lib/python3.15/site-packages/setuptools/build_meta.py\", line 317, in run_setup\n             exec(code, locals())\n             ~~~~^^^^^^^^^^^^^^^^\n           File \"<string>\", line 1108, in <module>\n         RequiredDependencyException: \n\n         The headers or library files could not be found for jpeg,\n         a required dependency when compiling Pillow from source.\n\n         Please see the install instructions at:\n            https://pillow.readthedocs.io/en/latest/installation/basic-installation.html\n\n\nhint: `pillow` (v11.3.0) was included because `docling-core` (v2.42.0) depends on `pillow`\n\nhint: Build failures usually indicate a problem with the package or the build environment\n"
+    }
+   ]
+  },
+  "selected_tests": [
+   {
+    "path": "tests/test_asr_pipeline.py",
+    "reason": "imports_changed_module",
+    "exists_at_base": true
+   },
+   {
+    "path": "tests/test_backend_webp.py",
+    "reason": "imports_changed_module",
+    "exists_at_base": true
+   },
+   {
+    "path": "tests/test_code_formula.py",
+    "reason": "imports_changed_module",
+    "exists_at_base": true
+   },
+   {
+    "path": "tests/test_document_picture_classifier.py",
+    "reason": "imports_changed_module",
+    "exists_at_base": true
+   },
+   {
+    "path": "tests/test_e2e_conversion.py",
+    "reason": "imports_changed_module",
+    "exists_at_base": true
+   },
+   {
+    "path": "tests/test_e2e_ocr_conversion.py",
+    "reason": "imports_changed_module",
+    "exists_at_base": true
+   },
+   {
+    "path": "tests/test_interfaces.py",
+    "reason": "imports_changed_module",
+    "exists_at_base": true
+   },
+   {
+    "path": "tests/test_legacy_format_transform.py",
+    "reason": "imports_changed_module",
+    "exists_at_base": true
+   },
+   {
+    "path": "tests/test_options.py",
+    "reason": "imports_changed_module",
+    "exists_at_base": true
+   }
+  ],
+  "head_run": {
+   "status": "completed",
+   "exit_code": 2,
+   "seconds": 1.1,
+   "addopts_overridden": false,
+   "counts": {
+    "passed": 0,
+    "failed": 0,
+    "error": 9,
+    "skipped": 0
+   },
+   "tests": {
+    "::tests.test_asr_pipeline": {
+     "outcome": "error",
+     "detail": "collection failure\nImportError while importing test module '/dev/shm/acr/work/3219279897/src/head/tests/test_asr_pipeline.py'.\nHint: make sure your test modules/packages have valid Python names.\nTraceback:\n../../../_shared_cache/python/cpython-3.15.2-linux-x86_64-gnu/lib/python3.15/importlib/__init__.py:88: in import_module\n    return _bootstrap._gcd_import(name[level:], package, level)\n           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\ntests/test_asr_pipeline.py:5: in <module>\n    from docling.datamodel import asr_model_specs\ndocling/datamodel/asr_model_specs.py:4: in <module>\n    from pydantic import (\nE   ModuleNotFoundError: No module named 'pydantic'"
+    },
+    "::tests.test_backend_webp": {
+     "outcome": "error",
+     "detail": "collection failure\nImportError while importing test module '/dev/shm/acr/work/3219279897/src/head/tests/test_backend_webp.py'.\nHint: make sure your test modules/packages have valid Python names.\nTraceback:\n../../../_shared_cache/python/cpython-3.15.2-linux-x86_64-gnu/lib/python3.15/importlib/__init__.py:88: in import_module\n    return _bootstrap._gcd_import(name[level:], package, level)\n           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\ntests/test_backend_webp.py:5: in <module>\n    from docling.datamodel.base_models import InputFormat\ndocling/datamodel/base_models.py:6: in <module>\n    import numpy as np\nE   ModuleNotFoundError: No module named 'numpy'. Did you mean: 'runpy'?"
+    },
+    "::tests.test_code_formula": {
+     "outcome": "error",
+     "detail": "collection failure\nImportError while importing test module '/dev/shm/acr/work/3219279897/src/head/tests/test_code_formula.py'.\nHint: make sure your test modules/packages have valid Python names.\nTraceback:\n../../../_shared_cache/python/cpython-3.15.2-linux-x86_64-gnu/lib/python3.15/importlib/__init__.py:88: in import_module\n    return _bootstrap._gcd_import(name[level:], package, level)\n           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\ntests/test_code_formula.py:3: in <module>\n    from docling_core.types.doc import CodeItem, TextItem\nE   ModuleNotFoundError: No module named 'docling_core'"
+    },
+    "::tests.test_document_picture_classifier": {
+     "outcome": "error",
+     "detail": "collection failure\nImportError while importing test module '/dev/shm/acr/work/3219279897/src/head/tests/test_document_picture_classifier.py'.\nHint: make sure your test modules/packages have valid Python names.\nTraceback:\n../../../_shared_cache/python/cpython-3.15.2-linux-x86_64-gnu/lib/python3.15/importlib/__init__.py:88: in import_module\n    return _bootstrap._gcd_import(name[level:], package, level)\n           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\ntests/test_document_picture_classifier.py:3: in <module>\n    from docling_core.types.doc import PictureClassificationData\nE   ModuleNotFoundError: No module named 'docling_core'"
+    },
+    "::tests.test_e2e_conversion": {
+     "outcome": "error",
+     "detail": "collection failure\nImportError while importing test module '/dev/shm/acr/work/3219279897/src/head/tests/test_e2e_conversion.py'.\nHint: make sure your test modules/packages have valid Python names.\nTraceback:\n../../../_shared_cache/python/cpython-3.15.2-linux-x86_64-gnu/lib/python3.15/importlib/__init__.py:88: in import_module\n    return _bootstrap._gcd_import(name[level:], package, level)\n           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\ntests/test_e2e_conversion.py:3: in <module>\n    from docling.backend.docling_parse_backend import DoclingParseDocumentBackend\ndocling/backend/docling_parse_backend.py:8: in <module>\n    import pypdfium2 as pdfium\nE   ModuleNotFoundError: No module named 'pypdfium2'"
+    },
+    "::tests.test_e2e_ocr_conversion": {
+     "outcome": "error",
+     "detail": "collection failure\nImportError while importing test module '/dev/shm/acr/work/3219279897/src/head/tests/test_e2e_ocr_conversion.py'.\nHint: make sure your test modules/packages have valid Python names.\nTraceback:\n../../../_shared_cache/python/cpython-3.15.2-linux-x86_64-gnu/lib/python3.15/importlib/__init__.py:88: in import_module\n    return _bootstrap._gcd_import(name[level:], package, level)\n           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\ntests/test_e2e_ocr_conversion.py:5: in <module>\n    from docling.backend.docling_parse_backend import DoclingParseDocumentBackend\ndocling/backend/docling_parse_backend.py:8: in <module>\n    import pypdfium2 as pdfium\nE   ModuleNotFoundError: No module named 'pypdfium2'"
+    },
+    "::tests.test_interfaces": {
+     "outcome": "error",
+     "detail": "collection failure\nImportError while importing test module '/dev/shm/acr/work/3219279897/src/head/tests/test_interfaces.py'.\nHint: make sure your test modules/packages have valid Python names.\nTraceback:\n../../../_shared_cache/python/cpython-3.15.2-linux-x86_64-gnu/lib/python3.15/importlib/__init__.py:88: in import_module\n    return _bootstrap._gcd_import(name[level:], package, level)\n           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\ntests/test_interfaces.py:6: in <module>\n    from docling.backend.docling_parse_backend import DoclingParseDocumentBackend\ndocling/backend/docling_parse_backend.py:8: in <module>\n    import pypdfium2 as pdfium\nE   ModuleNotFoundError: No module named 'pypdfium2'"
+    },
+    "::tests.test_legacy_format_transform": {
+     "outcome": "error",
+     "detail": "collection failure\nImportError while importing test module '/dev/shm/acr/work/3219279897/src/head/tests/test_legacy_format_transform.py'.\nHint: make sure your test modules/packages have valid Python names.\nTraceback:\n../../../_shared_cache/python/cpython-3.15.2-linux-x86_64-gnu/lib/python3.15/importlib/__init__.py:88: in import_module\n    return _bootstrap._gcd_import(name[level:], package, level)\n           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\ntests/test_legacy_format_transform.py:6: in <module>\n    from docling.datamodel.base_models import InputFormat\ndocling/datamodel/base_models.py:6: in <module>\n    import numpy as np\nE   ModuleNotFoundError: No module named 'numpy'. Did you mean: 'runpy'?"
+    },
+    "::tests.test_options": {
+     "outcome": "error",
+     "detail": "collection failure\nImportError while importing test module '/dev/shm/acr/work/3219279897/src/head/tests/test_options.py'.\nHint: make sure your test modules/packages have valid Python names.\nTraceback:\n../../../_shared_cache/python/cpython-3.15.2-linux-x86_64-gnu/lib/python3.15/importlib/__init__.py:88: in import_module\n    return _bootstrap._gcd_import(name[level:], package, level)\n           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\ntests/test_options.py:6: in <module>\n    from docling.backend.docling_parse_backend import DoclingParseDocumentBackend\ndocling/backend/docling_parse_backend.py:8: in <module>\n    import pypdfium2 as pdfium\nE   ModuleNotFoundError: No module named 'pypdfium2'"
+    }
+   },
+   "log_tail": ""
+  },
+  "base_run": {
+   "status": "completed",
+   "exit_code": 2,
+   "seconds": 1.0,
+   "addopts_overridden": false,
+   "counts": {
+    "passed": 0,
+    "failed": 0,
+    "error": 9,
+    "skipped": 0
+   },
+   "tests": {
+    "::tests.test_asr_pipeline": {
+     "outcome": "error",
+     "detail": "collection failure\nImportError while importing test module '/dev/shm/acr/work/3219279897/src/base/tests/test_asr_pipeline.py'.\nHint: make sure your test modules/packages have valid Python names.\nTraceback:\n../../../_shared_cache/python/cpython-3.15.2-linux-x86_64-gnu/lib/python3.15/importlib/__init__.py:88: in import_module\n    return _bootstrap._gcd_import(name[level:], package, level)\n           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\ntests/test_asr_pipeline.py:5: in <module>\n    from docling.datamodel import asr_model_specs\ndocling/datamodel/asr_model_specs.py:4: in <module>\n    from pydantic import (\nE   ModuleNotFoundError: No module named 'pydantic'"
+    },
+    "::tests.test_backend_webp": {
+     "outcome": "error",
+     "detail": "collection failure\nImportError while importing test module '/dev/shm/acr/work/3219279897/src/base/tests/test_backend_webp.py'.\nHint: make sure your test modules/packages have valid Python names.\nTraceback:\n../../../_shared_cache/python/cpython-3.15.2-linux-x86_64-gnu/lib/python3.15/importlib/__init__.py:88: in import_module\n    return _bootstrap._gcd_import(name[level:], package, level)\n           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\ntests/test_backend_webp.py:5: in <module>\n    from docling.datamodel.base_models import InputFormat\ndocling/datamodel/base_models.py:6: in <module>\n    import numpy as np\nE   ModuleNotFoundError: No module named 'numpy'. Did you mean: 'runpy'?"
+    },
+    "::tests.test_code_formula": {
+     "outcome": "error",
+     "detail": "collection failure\nImportError while importing test module '/dev/shm/acr/work/3219279897/src/base/tests/test_code_formula.py'.\nHint: make sure your test modules/packages have valid Python names.\nTraceback:\n../../../_shared_cache/python/cpython-3.15.2-linux-x86_64-gnu/lib/python3.15/importlib/__init__.py:88: in import_module\n    return _bootstrap._gcd_import(name[level:], package, level)\n           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\ntests/test_code_formula.py:3: in <module>\n    from docling_core.types.doc import CodeItem, TextItem\nE   ModuleNotFoundError: No module named 'docling_core'"
+    },
+    "::tests.test_document_picture_classifier": {
+     "outcome": "error",
+     "detail": "collection failure\nImportError while importing test module '/dev/shm/acr/work/3219279897/src/base/tests/test_document_picture_classifier.py'.\nHint: make sure your test modules/packages have valid Python names.\nTraceback:\n../../../_shared_cache/python/cpython-3.15.2-linux-x86_64-gnu/lib/python3.15/importlib/__init__.py:88: in import_module\n    return _bootstrap._gcd_import(name[level:], package, level)\n           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\ntests/test_document_picture_classifier.py:3: in <module>\n    from docling_core.types.doc import PictureClassificationData\nE   ModuleNotFoundError: No module named 'docling_core'"
+    },
+    "::tests.test_e2e_conversion": {
+     "outcome": "error",
+     "detail": "collection failure\nImportError while importing test module '/dev/shm/acr/work/3219279897/src/base/tests/test_e2e_conversion.py'.\nHint: make sure your test modules/packages have valid Python names.\nTraceback:\n../../../_shared_cache/python/cpython-3.15.2-linux-x86_64-gnu/lib/python3.15/importlib/__init__.py:88: in import_module\n    return _bootstrap._gcd_import(name[level:], package, level)\n           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\ntests/test_e2e_conversion.py:3: in <module>\n    from docling.backend.docling_parse_backend import DoclingParseDocumentBackend\ndocling/backend/docling_parse_backend.py:8: in <module>\n    import pypdfium2 as pdfium\nE   ModuleNotFoundError: No module named 'pypdfium2'"
+    },
+    "::tests.test_e2e_ocr_conversion": {
+     "outcome": "error",
+     "detail": "collection failure\nImportError while importing test module '/dev/shm/acr/work/3219279897/src/base/tests/test_e2e_ocr_conversion.py'.\nHint: make sure your test modules/packages have valid Python names.\nTraceback:\n../../../_shared_cache/python/cpython-3.15.2-linux-x86_64-gnu/lib/python3.15/importlib/__init__.py:88: in import_module\n    return _bootstrap._gcd_import(name[level:], package, level)\n           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\ntests/test_e2e_ocr_conversion.py:5: in <module>\n    from docling.backend.docling_parse_backend import DoclingParseDocumentBackend\ndocling/backend/docling_parse_backend.py:8: in <module>\n    import pypdfium2 as pdfium\nE   ModuleNotFoundError: No module named 'pypdfium2'"
+    },
+    "::tests.test_interfaces": {
+     "outcome": "error",
+     "detail": "collection failure\nImportError while importing test module '/dev/shm/acr/work/3219279897/src/base/tests/test_interfaces.py'.\nHint: make sure your test modules/packages have valid Python names.\nTraceback:\n../../../_shared_cache/python/cpython-3.15.2-linux-x86_64-gnu/lib/python3.15/importlib/__init__.py:88: in import_module\n    return _bootstrap._gcd_import(name[level:], package, level)\n           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\ntests/test_interfaces.py:6: in <module>\n    from docling.backend.docling_parse_backend import DoclingParseDocumentBackend\ndocling/backend/docling_parse_backend.py:8: in <module>\n    import pypdfium2 as pdfium\nE   ModuleNotFoundError: No module named 'pypdfium2'"
+    },
+    "::tests.test_legacy_format_transform": {
+     "outcome": "error",
+     "detail": "collection failure\nImportError while importing test module '/dev/shm/acr/work/3219279897/src/base/tests/test_legacy_format_transform.py'.\nHint: make sure your test modules/packages have valid Python names.\nTraceback:\n../../../_shared_cache/python/cpython-3.15.2-linux-x86_64-gnu/lib/python3.15/importlib/__init__.py:88: in import_module\n    return _bootstrap._gcd_import(name[level:], package, level)\n           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\ntests/test_legacy_format_transform.py:6: in <module>\n    from docling.datamodel.base_models import InputFormat\ndocling/datamodel/base_models.py:6: in <module>\n    import numpy as np\nE   ModuleNotFoundError: No module named 'numpy'. Did you mean: 'runpy'?"
+    },
+    "::tests.test_options": {
+     "outcome": "error",
+     "detail": "collection failure\nImportError while importing test module '/dev/shm/acr/work/3219279897/src/base/tests/test_options.py'.\nHint: make sure your test modules/packages have valid Python names.\nTraceback:\n../../../_shared_cache/python/cpython-3.15.2-linux-x86_64-gnu/lib/python3.15/importlib/__init__.py:88: in import_module\n    return _bootstrap._gcd_import(name[level:], package, level)\n           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\ntests/test_options.py:6: in <module>\n    from docling.backend.docling_parse_backend import DoclingParseDocumentBackend\ndocling/backend/docling_parse_backend.py:8: in <module>\n    import pypdfium2 as pdfium\nE   ModuleNotFoundError: No module named 'pypdfium2'"
+    }
+   },
+   "log_tail": ""
+  },
+  "comparison": {
+   "regressions": [],
+   "new_test_failures": [],
+   "fixed": [],
+   "persistent_failures": [
+    "::tests.test_asr_pipeline",
+    "::tests.test_backend_webp",
+    "::tests.test_code_formula",
+    "::tests.test_document_picture_classifier",
+    "::tests.test_e2e_conversion",
+    "::tests.test_e2e_ocr_conversion",
+    "::tests.test_interfaces",
+    "::tests.test_legacy_format_transform",
+    "::tests.test_options"
+   ]
+  },
+  "imports_head": {
+   "docling.datamodel.pipeline_options": {
+    "ok": false,
+    "type": "ModuleNotFoundError",
+    "message": "No module named 'pydantic'",
+    "missing_module": "pydantic",
+    "file": "docling/datamodel/pipeline_options.py",
+    "line": 7,
+    "traceback": "Traceback (most recent call last):\n  File \"<string>\", line 7, in <module>\n    importlib.import_module(m)\n    ~~~~~~~~~~~~~~~~~~~~~~~^^^\n  File \"/dev/shm/acr/work/_shared_cache/python/cpython-3.15.2-linux-x86_64-gnu/lib/python3.15/importlib/__init__.py\", line 88, in import_module\n    return _bootstrap._gcd_import(name[level:], package, level)\n           ~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"<frozen importlib._bootstrap>\", line 1389, in _gcd_import\n  File \"<frozen importlib._bootstrap>\", line 1353, in _find_and_load\n  File \"<frozen importlib._bootstrap>\", line 1249, in _find_and_load_unlocked\n  File \"<frozen importlib._bootstrap>\", line 857, in _load_unlocked\n  File \"<frozen importlib._bootstrap_external>\", line 751, in exec_module\n  File \"<frozen importlib._bootstrap>\", line 491, in _call_with_frames_removed\n  File \"/dev/shm/acr/work/3219279897/src/head/docling/datamodel/pipeline_options.py\", line 7, in <module>\n    from pydantic import (\n    ...<4 lines>...\n    )\nModuleNotFoundError: No module named 'pydantic'\n"
+   }
+  },
+  "imports_base": {
+   "docling.datamodel.pipeline_options": {
+    "ok": false,
+    "type": "ModuleNotFoundError",
+    "message": "No module named 'pydantic'",
+    "missing_module": "pydantic",
+    "file": "docling/datamodel/pipeline_options.py",
+    "line": 7,
+    "traceback": "Traceback (most recent call last):\n  File \"<string>\", line 7, in <module>\n    importlib.import_module(m)\n    ~~~~~~~~~~~~~~~~~~~~~~~^^^\n  File \"/dev/shm/acr/work/_shared_cache/python/cpython-3.15.2-linux-x86_64-gnu/lib/python3.15/importlib/__init__.py\", line 88, in import_module\n    return _bootstrap._gcd_import(name[level:], package, level)\n           ~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"<frozen importlib._bootstrap>\", line 1389, in _gcd_import\n  File \"<frozen importlib._bootstrap>\", line 1353, in _find_and_load\n  File \"<frozen importlib._bootstrap>\", line 1249, in _find_and_load_unlocked\n  File \"<frozen importlib._bootstrap>\", line 857, in _load_unlocked\n  File \"<frozen importlib._bootstrap_external>\", line 751, in exec_module\n  File \"<frozen importlib._bootstrap>\", line 491, in _call_with_frames_removed\n  File \"/dev/shm/acr/work/3219279897/src/base/docling/datamodel/pipeline_options.py\", line 7, in <module>\n    from pydantic import (\n    ...<4 lines>...\n    )\nModuleNotFoundError: No module named 'pydantic'\n"
+   }
+  },
+  "status": "completed",
+  "dependency_cutoff": "2025-07-11T06:46:04Z",
+  "seconds": 7.1,
+  "head_failures": 9
+ },
+ "findings": [],
+ "status": "ok",
+ "seconds": 182.9
+}

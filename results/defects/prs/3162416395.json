@@ -1,0 +1,240 @@
+{
+ "pr_id": 3162416395,
+ "repository": "netket/netket",
+ "pr_number": 2064,
+ "split": "development",
+ "agent": "OpenAI_Codex",
+ "head_sha": "8025a1834e651b1d8b9d5af795384c9791a29e07",
+ "tool_versions": {
+  "ruff": "ruff 0.17.4",
+  "bandit": "__main__.py 1.9.4",
+  "python": "3.12.3"
+ },
+ "config": {
+  "run_tests": true,
+  "sandbox": true
+ },
+ "base_mode": "reverse_applied_diff",
+ "static": {
+  "files_analysed": 18,
+  "head_issues": 2,
+  "base_issues": 2,
+  "per_tool_head": {
+   "ruff": 2
+  },
+  "per_tool_base": {
+   "ruff": 2
+  },
+  "introduced": 0,
+  "seconds": 0.5
+ },
+ "tests": {
+  "env": {
+   "status": "partial",
+   "python": "3.15.2",
+   "steps": [
+    {
+     "step": "venv",
+     "ok": true,
+     "seconds": 0.0,
+     "timed_out": false,
+     "log_tail": ""
+    },
+    {
+     "step": "install -e .[dev]",
+     "ok": false,
+     "seconds": 4.0,
+     "timed_out": false,
+     "log_tail": "       And because jaxlib==0.4.32 was yanked, we can conclude that all versions of jaxlib cannot be used.\n         And because optax==0.2.2 depends on jaxlib and only the following versions of optax are available:\n             optax<=0.2.2\n             optax>=0.2.3\n         we can conclude that optax>=0.2.2,<0.2.3 cannot be used. (1)\n\n         Because all of:\n             jaxlib>=0.4.27,<=0.4.31\n             jaxlib>=0.4.33\n          have no wheels with a matching Python ABI tag (e.g., `cp315`) and only the following versions of jaxlib are available:\n             jaxlib<=0.4.31\n             jaxlib==0.4.32\n             jaxlib>=0.4.33\n         we can conclude that all of:\n             jaxlib>=0.4.27,<0.4.32\n             jaxlib>0.4.32\n          cannot be used.\n         And because jaxlib==0.4.32 was yanked and optax>=0.2.3 depends on jaxlib>=0.4.27, we can conclude that optax>=0.2.3 cannot be used.\n         And because we know from (1) that optax>=0.2.2,<0.2.3 cannot be used, we can conclude that optax>=0.2.2 cannot be used.\n         And because netket==0.1.dev1+g8025a18 depends on optax>=0.2.2, we can conclude that netket==0.1.dev1+g8025a18 cannot be used.\n         And because only netket[dev]==0.1.dev1+g8025a18 is available and you require netket[dev], we can conclude that your requirements are unsatisfiable.\n\nhint: You require CPython 3.15 (`cp315`), but we only found wheels for `jaxlib` (v0.6.2) with the following Python ABI tags: `cp310`, `cp311`, `cp312`, `cp313`, `cp313t`\n",
+     "superseded": true
+    },
+    {
+     "step": "install -e .",
+     "ok": false,
+     "seconds": 1.1,
+     "timed_out": false,
+     "log_tail": "e used.\n         And because jaxlib==0.4.32 was yanked, we can conclude that all versions of jaxlib cannot be used.\n         And because optax==0.2.2 depends on jaxlib and only the following versions of optax are available:\n             optax<=0.2.2\n             optax>=0.2.3\n         we can conclude that optax>=0.2.2,<0.2.3 cannot be used. (1)\n\n         Because all of:\n             jaxlib>=0.4.27,<=0.4.31\n             jaxlib>=0.4.33\n          have no wheels with a matching Python ABI tag (e.g., `cp315`) and only the following versions of jaxlib are available:\n             jaxlib<=0.4.31\n             jaxlib==0.4.32\n             jaxlib>=0.4.33\n         we can conclude that all of:\n             jaxlib>=0.4.27,<0.4.32\n             jaxlib>0.4.32\n          cannot be used.\n         And because jaxlib==0.4.32 was yanked and optax>=0.2.3 depends on jaxlib>=0.4.27, we can conclude that optax>=0.2.3 cannot be used.\n         And because we know from (1) that optax>=0.2.2,<0.2.3 cannot be used, we can conclude that optax>=0.2.2 cannot be used.\n         And because netket==0.1.dev1+g8025a18 depends on optax>=0.2.2, we can conclude that netket==0.1.dev1+g8025a18 cannot be used.\n         And because only netket==0.1.dev1+g8025a18 is available and you require netket, we can conclude that your requirements are unsatisfiable.\n\nhint: You require CPython 3.15 (`cp315`), but we only found wheels for `jaxlib` (v0.6.2) with the following Python ABI tags: `cp310`, `cp311`, `cp312`, `cp313`, `cp313t`\n"
+    },
+    {
+     "step": "install pytest",
+     "ok": true,
+     "seconds": 0.2,
+     "timed_out": false,
+     "log_tail": ""
+    }
+   ]
+  },
+  "selected_tests": [
+   {
+    "path": "test/geometry/test_cell.py",
+    "reason": "changed_in_pr",
+    "exists_at_base": true
+   },
+   {
+    "path": "test/hilbert/test_hilbert.py",
+    "reason": "changed_in_pr",
+    "exists_at_base": true
+   },
+   {
+    "path": "test/hilbert/test_particleset.py",
+    "reason": "changed_in_pr",
+    "exists_at_base": false
+   },
+   {
+    "path": "test/models/test_deepset.py",
+    "reason": "changed_in_pr",
+    "exists_at_base": true
+   },
+   {
+    "path": "test/nn/test_blocks.py",
+    "reason": "changed_in_pr",
+    "exists_at_base": true
+   },
+   {
+    "path": "test/observable/renyi2/test_renyi2.py",
+    "reason": "changed_in_pr",
+    "exists_at_base": true
+   },
+   {
+    "path": "test/operator/test_continuous_operator.py",
+    "reason": "changed_in_pr",
+    "exists_at_base": true
+   },
+   {
+    "path": "test/sampler/test_sampler.py",
+    "reason": "changed_in_pr",
+    "exists_at_base": true
+   },
+   {
+    "path": "test/variational/test_continuous_expect.py",
+    "reason": "changed_in_pr",
+    "exists_at_base": true
+   },
+   {
+    "path": "test/variational/test_exact_state.py",
+    "reason": "changed_in_pr",
+    "exists_at_base": true
+   },
+   {
+    "path": "test/variational/test_variational.py",
+    "reason": "changed_in_pr",
+    "exists_at_base": true
+   }
+  ],
+  "head_run": {
+   "status": "completed",
+   "exit_code": 1,
+   "seconds": 0.5,
+   "addopts_overridden": false,
+   "counts": {
+    "passed": 0,
+    "failed": 0,
+    "error": 0,
+    "skipped": 0
+   },
+   "tests": {},
+   "log_tail": ""
+  },
+  "base_run": {
+   "status": "completed",
+   "exit_code": 1,
+   "seconds": 0.5,
+   "addopts_overridden": false,
+   "counts": {
+    "passed": 0,
+    "failed": 0,
+    "error": 0,
+    "skipped": 0
+   },
+   "tests": {},
+   "log_tail": ""
+  },
+  "comparison": {
+   "regressions": [],
+   "new_test_failures": [],
+   "fixed": [],
+   "persistent_failures": []
+  },
+  "imports_head": {
+   "netket.experimental.hilbert": {
+    "ok": null,
+    "type": "NoResult",
+    "message": "in exec_module\n  File \"<frozen importlib._bootstrap>\", line 491, in _call_with_frames_removed\n  File \"/dev/shm/acr/work/3162416395/src/head/netket/__init__.py\", line 15, in <module>\n    from ._version import version as __version__  # noqa: F401\nModuleNotFoundError: No module named 'netket._version'\n"
+   },
+   "netket.experimental.hilbert.continuous_hilbert": {
+    "ok": null,
+    "type": "NoResult",
+    "message": "in exec_module\n  File \"<frozen importlib._bootstrap>\", line 491, in _call_with_frames_removed\n  File \"/dev/shm/acr/work/3162416395/src/head/netket/__init__.py\", line 15, in <module>\n    from ._version import version as __version__  # noqa: F401\nModuleNotFoundError: No module named 'netket._version'\n"
+   },
+   "netket.experimental.hilbert.particle": {
+    "ok": null,
+    "type": "NoResult",
+    "message": "in exec_module\n  File \"<frozen importlib._bootstrap>\", line 491, in _call_with_frames_removed\n  File \"/dev/shm/acr/work/3162416395/src/head/netket/__init__.py\", line 15, in <module>\n    from ._version import version as __version__  # noqa: F401\nModuleNotFoundError: No module named 'netket._version'\n"
+   },
+   "netket.experimental.hilbert.particle_set": {
+    "ok": null,
+    "type": "NoResult",
+    "message": "in exec_module\n  File \"<frozen importlib._bootstrap>\", line 491, in _call_with_frames_removed\n  File \"/dev/shm/acr/work/3162416395/src/head/netket/__init__.py\", line 15, in <module>\n    from ._version import version as __version__  # noqa: F401\nModuleNotFoundError: No module named 'netket._version'\n"
+   },
+   "netket.experimental.hilbert.random.particle": {
+    "ok": null,
+    "type": "NoResult",
+    "message": "in exec_module\n  File \"<frozen importlib._bootstrap>\", line 491, in _call_with_frames_removed\n  File \"/dev/shm/acr/work/3162416395/src/head/netket/__init__.py\", line 15, in <module>\n    from ._version import version as __version__  # noqa: F401\nModuleNotFoundError: No module named 'netket._version'\n"
+   },
+   "netket.sampler.rules.continuous_gaussian": {
+    "ok": null,
+    "type": "NoResult",
+    "message": "in exec_module\n  File \"<frozen importlib._bootstrap>\", line 491, in _call_with_frames_removed\n  File \"/dev/shm/acr/work/3162416395/src/head/netket/__init__.py\", line 15, in <module>\n    from ._version import version as __version__  # noqa: F401\nModuleNotFoundError: No module named 'netket._version'\n"
+   },
+   "netket.sampler.rules.langevin": {
+    "ok": null,
+    "type": "NoResult",
+    "message": "in exec_module\n  File \"<frozen importlib._bootstrap>\", line 491, in _call_with_frames_removed\n  File \"/dev/shm/acr/work/3162416395/src/head/netket/__init__.py\", line 15, in <module>\n    from ._version import version as __version__  # noqa: F401\nModuleNotFoundError: No module named 'netket._version'\n"
+   }
+  },
+  "imports_base": {
+   "netket.experimental.hilbert": {
+    "ok": null,
+    "type": "NoResult",
+    "message": "in exec_module\n  File \"<frozen importlib._bootstrap>\", line 491, in _call_with_frames_removed\n  File \"/dev/shm/acr/work/3162416395/src/base/netket/__init__.py\", line 15, in <module>\n    from ._version import version as __version__  # noqa: F401\nModuleNotFoundError: No module named 'netket._version'\n"
+   },
+   "netket.experimental.hilbert.continuous_hilbert": {
+    "ok": null,
+    "type": "NoResult",
+    "message": "in exec_module\n  File \"<frozen importlib._bootstrap>\", line 491, in _call_with_frames_removed\n  File \"/dev/shm/acr/work/3162416395/src/base/netket/__init__.py\", line 15, in <module>\n    from ._version import version as __version__  # noqa: F401\nModuleNotFoundError: No module named 'netket._version'\n"
+   },
+   "netket.experimental.hilbert.particle": {
+    "ok": null,
+    "type": "NoResult",
+    "message": "in exec_module\n  File \"<frozen importlib._bootstrap>\", line 491, in _call_with_frames_removed\n  File \"/dev/shm/acr/work/3162416395/src/base/netket/__init__.py\", line 15, in <module>\n    from ._version import version as __version__  # noqa: F401\nModuleNotFoundError: No module named 'netket._version'\n"
+   },
+   "netket.experimental.hilbert.particle_set": {
+    "ok": null,
+    "type": "NoResult",
+    "message": "in exec_module\n  File \"<frozen importlib._bootstrap>\", line 491, in _call_with_frames_removed\n  File \"/dev/shm/acr/work/3162416395/src/base/netket/__init__.py\", line 15, in <module>\n    from ._version import version as __version__  # noqa: F401\nModuleNotFoundError: No module named 'netket._version'\n"
+   },
+   "netket.experimental.hilbert.random.particle": {
+    "ok": null,
+    "type": "NoResult",
+    "message": "in exec_module\n  File \"<frozen importlib._bootstrap>\", line 491, in _call_with_frames_removed\n  File \"/dev/shm/acr/work/3162416395/src/base/netket/__init__.py\", line 15, in <module>\n    from ._version import version as __version__  # noqa: F401\nModuleNotFoundError: No module named 'netket._version'\n"
+   },
+   "netket.sampler.rules.continuous_gaussian": {
+    "ok": null,
+    "type": "NoResult",
+    "message": "in exec_module\n  File \"<frozen importlib._bootstrap>\", line 491, in _call_with_frames_removed\n  File \"/dev/shm/acr/work/3162416395/src/base/netket/__init__.py\", line 15, in <module>\n    from ._version import version as __version__  # noqa: F401\nModuleNotFoundError: No module named 'netket._version'\n"
+   },
+   "netket.sampler.rules.langevin": {
+    "ok": null,
+    "type": "NoResult",
+    "message": "in exec_module\n  File \"<frozen importlib._bootstrap>\", line 491, in _call_with_frames_removed\n  File \"/dev/shm/acr/work/3162416395/src/base/netket/__init__.py\", line 15, in <module>\n    from ._version import version as __version__  # noqa: F401\nModuleNotFoundError: No module named 'netket._version'\n"
+   }
+  },
+  "status": "completed",
+  "dependency_cutoff": "2025-07-01T20:17:03Z",
+  "seconds": 6.6,
+  "head_failures": 0
+ },
+ "findings": [],
+ "status": "ok",
+ "seconds": 38.7
+}

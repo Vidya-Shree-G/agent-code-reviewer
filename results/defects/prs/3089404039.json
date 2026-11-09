@@ -1,0 +1,733 @@
+{
+ "pr_id": 3089404039,
+ "repository": "AdnaneKhan/gato-x",
+ "pr_number": 134,
+ "split": "development",
+ "agent": "Copilot",
+ "head_sha": "cc3d23c9abe2977e60c733cc96d97f627d3c4a9f",
+ "tool_versions": {
+  "ruff": "ruff 0.17.4",
+  "bandit": "__main__.py 1.9.4",
+  "python": "3.12.3"
+ },
+ "config": {
+  "run_tests": true,
+  "sandbox": true
+ },
+ "base_mode": "reverse_applied_diff",
+ "static": {
+  "files_analysed": 7,
+  "head_issues": 28,
+  "base_issues": 10,
+  "per_tool_head": {
+   "ruff": 28
+  },
+  "per_tool_base": {
+   "ruff": 10
+  },
+  "introduced": 20,
+  "seconds": 0.4
+ },
+ "tests": {
+  "env": {
+   "status": "partial",
+   "python": "3.15.2",
+   "steps": [
+    {
+     "step": "venv",
+     "ok": true,
+     "seconds": 0.0,
+     "timed_out": false,
+     "log_tail": ""
+    },
+    {
+     "step": "install -e .[test]",
+     "ok": false,
+     "seconds": 0.6,
+     "timed_out": false,
+     "log_tail": "ed by 'virtual:world', not found\n         Package libffi was not found in the pkg-config search path.\n         Perhaps you should add the directory containing `libffi.pc'\n         to the PKG_CONFIG_PATH environment variable\n         Package 'libffi', required by 'virtual:world', not found\n         /dev/shm/acr/work/_shared_cache/uv/builds-v0/.tmpyj6Ah3/lib/python3.15/site-packages/setuptools/dist.py:759: SetuptoolsDeprecationWarning: License classifiers are deprecated.\n         !!\n\n                 ********************************************************************************\n                 Please consider removing the following classifiers in favor of a SPDX license expression:\n\n                 License :: OSI Approved :: MIT License\n\n                 See https://packaging.python.org/en/latest/guides/writing-pyproject-toml/#license for details.\n                 ********************************************************************************\n\n         !!\n           self._finalize_license_expression()\n         src/c/_cffi_backend.c:15:10: fatal error: ffi.h: No such file or directory\n            15 | #include <ffi.h>\n               |          ^~~~~~~\n         compilation terminated.\n         error: command '/usr/bin/cc' failed with exit code 1\n\nhint: `cffi` (v1.17.1) was included because `gato-x` (v1.1.1) depends on `cryptography` (v45.0.3) which depends on `cffi`\n\nhint: This error likely indicates that you need to install a library that provides `ffi.h` for `cffi@1.17.1`\n",
+     "superseded": true
+    },
+    {
+     "step": "install -e .",
+     "ok": false,
+     "seconds": 0.5,
+     "timed_out": false,
+     "log_tail": "ed by 'virtual:world', not found\n         Package libffi was not found in the pkg-config search path.\n         Perhaps you should add the directory containing `libffi.pc'\n         to the PKG_CONFIG_PATH environment variable\n         Package 'libffi', required by 'virtual:world', not found\n         /dev/shm/acr/work/_shared_cache/uv/builds-v0/.tmpFVsQ1N/lib/python3.15/site-packages/setuptools/dist.py:759: SetuptoolsDeprecationWarning: License classifiers are deprecated.\n         !!\n\n                 ********************************************************************************\n                 Please consider removing the following classifiers in favor of a SPDX license expression:\n\n                 License :: OSI Approved :: MIT License\n\n                 See https://packaging.python.org/en/latest/guides/writing-pyproject-toml/#license for details.\n                 ********************************************************************************\n\n         !!\n           self._finalize_license_expression()\n         src/c/_cffi_backend.c:15:10: fatal error: ffi.h: No such file or directory\n            15 | #include <ffi.h>\n               |          ^~~~~~~\n         compilation terminated.\n         error: command '/usr/bin/cc' failed with exit code 1\n\nhint: `cffi` (v1.17.1) was included because `gato-x` (v1.1.1) depends on `cryptography` (v45.0.3) which depends on `cffi`\n\nhint: This error likely indicates that you need to install a library that provides `ffi.h` for `cffi@1.17.1`\n"
+    },
+    {
+     "step": "install pytest",
+     "ok": true,
+     "seconds": 0.0,
+     "timed_out": false,
+     "log_tail": ""
+    },
+    {
+     "step": "repair: install colorama httpx",
+     "ok": true,
+     "seconds": 0.0,
+     "timed_out": false,
+     "log_tail": ""
+    }
+   ]
+  },
+  "selected_tests": [
+   {
+    "path": "unit_test/test_app_enum.py",
+    "reason": "changed_in_pr",
+    "exists_at_base": false
+   },
+   {
+    "path": "unit_test/test_api.py",
+    "reason": "matches_module:api",
+    "exists_at_base": true
+   },
+   {
+    "path": "unit_test/test_cli.py",
+    "reason": "matches_module:cli",
+    "exists_at_base": true
+   }
+  ],
+  "head_run": {
+   "status": "completed",
+   "exit_code": 2,
+   "seconds": 0.5,
+   "addopts_overridden": true,
+   "counts": {
+    "passed": 0,
+    "failed": 0,
+    "error": 3,
+    "skipped": 0
+   },
+   "tests": {
+    "::unit_test.test_app_enum": {
+     "outcome": "error",
+     "detail": "collection failure\nImportError while importing test module '/dev/shm/acr/work/3089404039/src/head/unit_test/test_app_enum.py'.\nHint: make sure your test modules/packages have valid Python names.\nTraceback:\n../../../_shared_cache/python/cpython-3.15.2-linux-x86_64-gnu/lib/python3.15/importlib/__init__.py:88: in import_module\n    return _bootstrap._gcd_import(name[level:], package, level)\nunit_test/test_app_enum.py:9: in <module>\n    from gatox.github.api import Api\ngatox/github/api.py:13: in <module>\n    from gatox.enumerate.ingest.ingest import DataIngestor\ngatox/enumerate/ingest/ingest.py:24: in <module>\n    from gatox.caching.cache_manager import CacheManager\ngatox/caching/cache_manager.py:20: in <module>\n    from gatox.models.workflow import Workflow\ngatox/models/workflow.py:2: in <module>\n    import yaml\nE   ModuleNotFoundError: No module named 'yaml'"
+    },
+    "::unit_test.test_api": {
+     "outcome": "error",
+     "detail": "collection failure\nImportError while importing test module '/dev/shm/acr/work/3089404039/src/head/unit_test/test_api.py'.\nHint: make sure your test modules/packages have valid Python names.\nTraceback:\n../../../_shared_cache/python/cpython-3.15.2-linux-x86_64-gnu/lib/python3.15/importlib/__init__.py:88: in import_module\n    return _bootstrap._gcd_import(name[level:], package, level)\nunit_test/test_api.py:9: in <module>\n    from gatox.github.api import Api\ngatox/github/api.py:13: in <module>\n    from gatox.enumerate.ingest.ingest import DataIngestor\ngatox/enumerate/ingest/ingest.py:24: in <module>\n    from gatox.caching.cache_manager import CacheManager\ngatox/caching/cache_manager.py:20: in <module>\n    from gatox.models.workflow import Workflow\ngatox/models/workflow.py:2: in <module>\n    import yaml\nE   ModuleNotFoundError: No module named 'yaml'"
+    },
+    "::unit_test.test_cli": {
+     "outcome": "error",
+     "detail": "collection failure\nImportError while importing test module '/dev/shm/acr/work/3089404039/src/head/unit_test/test_cli.py'.\nHint: make sure your test modules/packages have valid Python names.\nTraceback:\n../../../_shared_cache/python/cpython-3.15.2-linux-x86_64-gnu/lib/python3.15/importlib/__init__.py:88: in import_module\n    return _bootstrap._gcd_import(name[level:], package, level)\nunit_test/test_cli.py:9: in <module>\n    from gatox.cli import cli\ngatox/cli/cli.py:10: in <module>\n    from gatox.caching.cache_manager import CacheManager\ngatox/caching/cache_manager.py:20: in <module>\n    from gatox.models.workflow import Workflow\ngatox/models/workflow.py:2: in <module>\n    import yaml\nE   ModuleNotFoundError: No module named 'yaml'"
+    }
+   },
+   "log_tail": ""
+  },
+  "base_run": {
+   "status": "completed",
+   "exit_code": 2,
+   "seconds": 0.4,
+   "addopts_overridden": true,
+   "counts": {
+    "passed": 0,
+    "failed": 0,
+    "error": 2,
+    "skipped": 0
+   },
+   "tests": {
+    "::unit_test.test_api": {
+     "outcome": "error",
+     "detail": "collection failure\nImportError while importing test module '/dev/shm/acr/work/3089404039/src/base/unit_test/test_api.py'.\nHint: make sure your test modules/packages have valid Python names.\nTraceback:\n../../../_shared_cache/python/cpython-3.15.2-linux-x86_64-gnu/lib/python3.15/importlib/__init__.py:88: in import_module\n    return _bootstrap._gcd_import(name[level:], package, level)\nunit_test/test_api.py:9: in <module>\n    from gatox.github.api import Api\ngatox/github/api.py:13: in <module>\n    from gatox.enumerate.ingest.ingest import DataIngestor\ngatox/enumerate/ingest/ingest.py:24: in <module>\n    from gatox.caching.cache_manager import CacheManager\ngatox/caching/cache_manager.py:20: in <module>\n    from gatox.models.workflow import Workflow\ngatox/models/workflow.py:2: in <module>\n    import yaml\nE   ModuleNotFoundError: No module named 'yaml'"
+    },
+    "::unit_test.test_cli": {
+     "outcome": "error",
+     "detail": "collection failure\nImportError while importing test module '/dev/shm/acr/work/3089404039/src/base/unit_test/test_cli.py'.\nHint: make sure your test modules/packages have valid Python names.\nTraceback:\n../../../_shared_cache/python/cpython-3.15.2-linux-x86_64-gnu/lib/python3.15/importlib/__init__.py:88: in import_module\n    return _bootstrap._gcd_import(name[level:], package, level)\nunit_test/test_cli.py:9: in <module>\n    from gatox.cli import cli\ngatox/cli/cli.py:10: in <module>\n    from gatox.caching.cache_manager import CacheManager\ngatox/caching/cache_manager.py:20: in <module>\n    from gatox.models.workflow import Workflow\ngatox/models/workflow.py:2: in <module>\n    import yaml\nE   ModuleNotFoundError: No module named 'yaml'"
+    }
+   },
+   "log_tail": ""
+  },
+  "comparison": {
+   "regressions": [],
+   "new_test_failures": [
+    "::unit_test.test_app_enum"
+   ],
+   "fixed": [],
+   "persistent_failures": [
+    "::unit_test.test_api",
+    "::unit_test.test_cli"
+   ]
+  },
+  "imports_head": {
+   "gatox.cli.app.config": {
+    "ok": true
+   },
+   "gatox.cli.cli": {
+    "ok": false,
+    "type": "ModuleNotFoundError",
+    "message": "No module named 'yaml'",
+    "missing_module": "yaml",
+    "file": "gatox/models/workflow.py",
+    "line": 2,
+    "traceback": "Traceback (most recent call last):\n  File \"<string>\", line 7, in <module>\n    importlib.import_module(m)\n    ~~~~~~~~~~~~~~~~~~~~~~~^^^\n  File \"/dev/shm/acr/work/_shared_cache/python/cpython-3.15.2-linux-x86_64-gnu/lib/python3.15/importlib/__init__.py\", line 88, in import_module\n    return _bootstrap._gcd_import(name[level:], package, level)\n           ~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"<frozen importlib._bootstrap>\", line 1389, in _gcd_import\n  File \"<frozen importlib._bootstrap>\", line 1353, in _find_and_load\n  File \"<frozen importlib._bootstrap>\", line 1249, in _find_and_load_unlocked\n  File \"<frozen importlib._bootstrap>\", line 857, in _load_unlocked\n  File \"<frozen importlib._bootstrap_external>\", line 751, in exec_module\n  File \"<frozen importlib._bootstrap>\", line 491, in _call_with_frames_removed\n  File \"/dev/shm/acr/work/3089404039/src/head/gatox/cli/cli.py\", line 10, in <module>\n    from gatox.caching.cache_manager import CacheManager\n  File \"/dev/shm/acr/work/3089404039/src/head/gatox/caching/cache_manager.py\", line 20, in <module>\n    from gatox.models.workflow import Workflow\n  File \"/dev/shm/acr/work/3089404039/src/head/gatox/models/workflow.py\", line 2, in <module>\n    import yaml\nModuleNotFoundError: No module named 'yaml'\n"
+   },
+   "gatox.enumerate.app_enumerate": {
+    "ok": false,
+    "type": "ModuleNotFoundError",
+    "message": "No module named 'yaml'",
+    "missing_module": "yaml",
+    "file": "gatox/models/workflow.py",
+    "line": 2,
+    "traceback": ".import_module(m)\n    ~~~~~~~~~~~~~~~~~~~~~~~^^^\n  File \"/dev/shm/acr/work/_shared_cache/python/cpython-3.15.2-linux-x86_64-gnu/lib/python3.15/importlib/__init__.py\", line 88, in import_module\n    return _bootstrap._gcd_import(name[level:], package, level)\n           ~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"<frozen importlib._bootstrap>\", line 1389, in _gcd_import\n  File \"<frozen importlib._bootstrap>\", line 1353, in _find_and_load\n  File \"<frozen importlib._bootstrap>\", line 1249, in _find_and_load_unlocked\n  File \"<frozen importlib._bootstrap>\", line 857, in _load_unlocked\n  File \"<frozen importlib._bootstrap_external>\", line 751, in exec_module\n  File \"<frozen importlib._bootstrap>\", line 491, in _call_with_frames_removed\n  File \"/dev/shm/acr/work/3089404039/src/head/gatox/enumerate/app_enumerate.py\", line 8, in <module>\n    from gatox.github.api import Api\n  File \"/dev/shm/acr/work/3089404039/src/head/gatox/github/api.py\", line 13, in <module>\n    from gatox.enumerate.ingest.ingest import DataIngestor\n  File \"/dev/shm/acr/work/3089404039/src/head/gatox/enumerate/ingest/ingest.py\", line 24, in <module>\n    from gatox.caching.cache_manager import CacheManager\n  File \"/dev/shm/acr/work/3089404039/src/head/gatox/caching/cache_manager.py\", line 20, in <module>\n    from gatox.models.workflow import Workflow\n  File \"/dev/shm/acr/work/3089404039/src/head/gatox/models/workflow.py\", line 2, in <module>\n    import yaml\nModuleNotFoundError: No module named 'yaml'\n"
+   },
+   "gatox.github.api": {
+    "ok": false,
+    "type": "ModuleNotFoundError",
+    "message": "No module named 'yaml'",
+    "missing_module": "yaml",
+    "file": "gatox/models/workflow.py",
+    "line": 2,
+    "traceback": "Traceback (most recent call last):\n  File \"<string>\", line 7, in <module>\n    importlib.import_module(m)\n    ~~~~~~~~~~~~~~~~~~~~~~~^^^\n  File \"/dev/shm/acr/work/_shared_cache/python/cpython-3.15.2-linux-x86_64-gnu/lib/python3.15/importlib/__init__.py\", line 88, in import_module\n    return _bootstrap._gcd_import(name[level:], package, level)\n           ~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"<frozen importlib._bootstrap>\", line 1389, in _gcd_import\n  File \"<frozen importlib._bootstrap>\", line 1353, in _find_and_load\n  File \"<frozen importlib._bootstrap>\", line 1249, in _find_and_load_unlocked\n  File \"<frozen importlib._bootstrap>\", line 857, in _load_unlocked\n  File \"<frozen importlib._bootstrap_external>\", line 751, in exec_module\n  File \"<frozen importlib._bootstrap>\", line 491, in _call_with_frames_removed\n  File \"/dev/shm/acr/work/3089404039/src/head/gatox/github/api.py\", line 13, in <module>\n    from gatox.enumerate.ingest.ingest import DataIngestor\n  File \"/dev/shm/acr/work/3089404039/src/head/gatox/enumerate/ingest/ingest.py\", line 24, in <module>\n    from gatox.caching.cache_manager import CacheManager\n  File \"/dev/shm/acr/work/3089404039/src/head/gatox/caching/cache_manager.py\", line 20, in <module>\n    from gatox.models.workflow import Workflow\n  File \"/dev/shm/acr/work/3089404039/src/head/gatox/models/workflow.py\", line 2, in <module>\n    import yaml\nModuleNotFoundError: No module named 'yaml'\n"
+   },
+   "gatox.github.app": {
+    "ok": false,
+    "type": "ModuleNotFoundError",
+    "message": "No module named 'jwt'",
+    "missing_module": "jwt",
+    "file": "gatox/github/app.py",
+    "line": 3,
+    "traceback": "Traceback (most recent call last):\n  File \"<string>\", line 7, in <module>\n    importlib.import_module(m)\n    ~~~~~~~~~~~~~~~~~~~~~~~^^^\n  File \"/dev/shm/acr/work/_shared_cache/python/cpython-3.15.2-linux-x86_64-gnu/lib/python3.15/importlib/__init__.py\", line 88, in import_module\n    return _bootstrap._gcd_import(name[level:], package, level)\n           ~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"<frozen importlib._bootstrap>\", line 1389, in _gcd_import\n  File \"<frozen importlib._bootstrap>\", line 1353, in _find_and_load\n  File \"<frozen importlib._bootstrap>\", line 1249, in _find_and_load_unlocked\n  File \"<frozen importlib._bootstrap>\", line 857, in _load_unlocked\n  File \"<frozen importlib._bootstrap_external>\", line 751, in exec_module\n  File \"<frozen importlib._bootstrap>\", line 491, in _call_with_frames_removed\n  File \"/dev/shm/acr/work/3089404039/src/head/gatox/github/app.py\", line 3, in <module>\n    import jwt\nModuleNotFoundError: No module named 'jwt'\n"
+   }
+  },
+  "imports_base": {
+   "gatox.cli.app.config": {
+    "ok": false,
+    "type": "ModuleNotFoundError",
+    "message": "No module named 'gatox.cli.app'",
+    "missing_module": "gatox.cli.app",
+    "file": null,
+    "line": null,
+    "traceback": "Traceback (most recent call last):\n  File \"<string>\", line 7, in <module>\n    importlib.import_module(m)\n    ~~~~~~~~~~~~~~~~~~~~~~~^^^\n  File \"/dev/shm/acr/work/_shared_cache/python/cpython-3.15.2-linux-x86_64-gnu/lib/python3.15/importlib/__init__.py\", line 88, in import_module\n    return _bootstrap._gcd_import(name[level:], package, level)\n           ~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"<frozen importlib._bootstrap>\", line 1389, in _gcd_import\n  File \"<frozen importlib._bootstrap>\", line 1338, in _find_and_load\n  File \"<frozen importlib._bootstrap>\", line 1299, in _resolve_parents\n  File \"<frozen importlib._bootstrap>\", line 491, in _call_with_frames_removed\n  File \"<frozen importlib._bootstrap>\", line 1389, in _gcd_import\n  File \"<frozen importlib._bootstrap>\", line 1353, in _find_and_load\n  File \"<frozen importlib._bootstrap>\", line 1242, in _find_and_load_unlocked\nModuleNotFoundError: No module named 'gatox.cli.app'. Did you mean: 'gatox.cli.cli'?\n"
+   },
+   "gatox.cli.cli": {
+    "ok": false,
+    "type": "ModuleNotFoundError",
+    "message": "No module named 'yaml'",
+    "missing_module": "yaml",
+    "file": "gatox/models/workflow.py",
+    "line": 2,
+    "traceback": "Traceback (most recent call last):\n  File \"<string>\", line 7, in <module>\n    importlib.import_module(m)\n    ~~~~~~~~~~~~~~~~~~~~~~~^^^\n  File \"/dev/shm/acr/work/_shared_cache/python/cpython-3.15.2-linux-x86_64-gnu/lib/python3.15/importlib/__init__.py\", line 88, in import_module\n    return _bootstrap._gcd_import(name[level:], package, level)\n           ~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"<frozen importlib._bootstrap>\", line 1389, in _gcd_import\n  File \"<frozen importlib._bootstrap>\", line 1353, in _find_and_load\n  File \"<frozen importlib._bootstrap>\", line 1249, in _find_and_load_unlocked\n  File \"<frozen importlib._bootstrap>\", line 857, in _load_unlocked\n  File \"<frozen importlib._bootstrap_external>\", line 751, in exec_module\n  File \"<frozen importlib._bootstrap>\", line 491, in _call_with_frames_removed\n  File \"/dev/shm/acr/work/3089404039/src/base/gatox/cli/cli.py\", line 10, in <module>\n    from gatox.caching.cache_manager import CacheManager\n  File \"/dev/shm/acr/work/3089404039/src/base/gatox/caching/cache_manager.py\", line 20, in <module>\n    from gatox.models.workflow import Workflow\n  File \"/dev/shm/acr/work/3089404039/src/base/gatox/models/workflow.py\", line 2, in <module>\n    import yaml\nModuleNotFoundError: No module named 'yaml'\n"
+   },
+   "gatox.enumerate.app_enumerate": {
+    "ok": false,
+    "type": "ModuleNotFoundError",
+    "message": "No module named 'gatox.enumerate.app_enumerate'",
+    "missing_module": "gatox.enumerate.app_enumerate",
+    "file": null,
+    "line": null,
+    "traceback": "Traceback (most recent call last):\n  File \"<string>\", line 7, in <module>\n    importlib.import_module(m)\n    ~~~~~~~~~~~~~~~~~~~~~~~^^^\n  File \"/dev/shm/acr/work/_shared_cache/python/cpython-3.15.2-linux-x86_64-gnu/lib/python3.15/importlib/__init__.py\", line 88, in import_module\n    return _bootstrap._gcd_import(name[level:], package, level)\n           ~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"<frozen importlib._bootstrap>\", line 1389, in _gcd_import\n  File \"<frozen importlib._bootstrap>\", line 1353, in _find_and_load\n  File \"<frozen importlib._bootstrap>\", line 1242, in _find_and_load_unlocked\nModuleNotFoundError: No module named 'gatox.enumerate.app_enumerate'. Did you mean: 'gatox.enumerate.enumerate'?\n"
+   },
+   "gatox.github.api": {
+    "ok": false,
+    "type": "ModuleNotFoundError",
+    "message": "No module named 'yaml'",
+    "missing_module": "yaml",
+    "file": "gatox/models/workflow.py",
+    "line": 2,
+    "traceback": "Traceback (most recent call last):\n  File \"<string>\", line 7, in <module>\n    importlib.import_module(m)\n    ~~~~~~~~~~~~~~~~~~~~~~~^^^\n  File \"/dev/shm/acr/work/_shared_cache/python/cpython-3.15.2-linux-x86_64-gnu/lib/python3.15/importlib/__init__.py\", line 88, in import_module\n    return _bootstrap._gcd_import(name[level:], package, level)\n           ~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"<frozen importlib._bootstrap>\", line 1389, in _gcd_import\n  File \"<frozen importlib._bootstrap>\", line 1353, in _find_and_load\n  File \"<frozen importlib._bootstrap>\", line 1249, in _find_and_load_unlocked\n  File \"<frozen importlib._bootstrap>\", line 857, in _load_unlocked\n  File \"<frozen importlib._bootstrap_external>\", line 751, in exec_module\n  File \"<frozen importlib._bootstrap>\", line 491, in _call_with_frames_removed\n  File \"/dev/shm/acr/work/3089404039/src/base/gatox/github/api.py\", line 13, in <module>\n    from gatox.enumerate.ingest.ingest import DataIngestor\n  File \"/dev/shm/acr/work/3089404039/src/base/gatox/enumerate/ingest/ingest.py\", line 24, in <module>\n    from gatox.caching.cache_manager import CacheManager\n  File \"/dev/shm/acr/work/3089404039/src/base/gatox/caching/cache_manager.py\", line 20, in <module>\n    from gatox.models.workflow import Workflow\n  File \"/dev/shm/acr/work/3089404039/src/base/gatox/models/workflow.py\", line 2, in <module>\n    import yaml\nModuleNotFoundError: No module named 'yaml'\n"
+   },
+   "gatox.github.app": {
+    "ok": false,
+    "type": "ModuleNotFoundError",
+    "message": "No module named 'gatox.github.app'",
+    "missing_module": "gatox.github.app",
+    "file": null,
+    "line": null,
+    "traceback": "Traceback (most recent call last):\n  File \"<string>\", line 7, in <module>\n    importlib.import_module(m)\n    ~~~~~~~~~~~~~~~~~~~~~~~^^^\n  File \"/dev/shm/acr/work/_shared_cache/python/cpython-3.15.2-linux-x86_64-gnu/lib/python3.15/importlib/__init__.py\", line 88, in import_module\n    return _bootstrap._gcd_import(name[level:], package, level)\n           ~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"<frozen importlib._bootstrap>\", line 1389, in _gcd_import\n  File \"<frozen importlib._bootstrap>\", line 1353, in _find_and_load\n  File \"<frozen importlib._bootstrap>\", line 1242, in _find_and_load_unlocked\nModuleNotFoundError: No module named 'gatox.github.app'. Did you mean: 'gatox.github.api'?\n"
+   }
+  },
+  "status": "completed",
+  "dependency_cutoff": "2025-05-31T14:04:15Z",
+  "seconds": 4.1,
+  "head_failures": 3
+ },
+ "findings": [
+  {
+   "tool": "ruff",
+   "rule": "F811",
+   "category": "correctness",
+   "severity": "medium",
+   "confidence": "medium",
+   "message": "Redefinition of unused `get_app_installations` from line 1824: `get_app_installations` redefined here",
+   "file": "gatox/github/api.py",
+   "line": 1879,
+   "end_line": 1879,
+   "cwe": null,
+   "on_changed_line": true,
+   "evidence": {
+    "type": "static",
+    "source_line": "async def get_app_installations(self) -> List[Dict]:",
+    "url": "https://docs.astral.sh/ruff/rules/redefined-while-unused"
+   },
+   "sources": [
+    "ruff"
+   ],
+   "finding_id": "d4fcc8e276e8",
+   "score": 1.9
+  },
+  {
+   "tool": "ruff",
+   "rule": "F811",
+   "category": "correctness",
+   "severity": "medium",
+   "confidence": "medium",
+   "message": "Redefinition of unused `get_installation_details` from line 1841: `get_installation_details` redefined here",
+   "file": "gatox/github/api.py",
+   "line": 1896,
+   "end_line": 1896,
+   "cwe": null,
+   "on_changed_line": true,
+   "evidence": {
+    "type": "static",
+    "source_line": "async def get_installation_details(self, installation_id: str) -> Dict:",
+    "url": "https://docs.astral.sh/ruff/rules/redefined-while-unused"
+   },
+   "sources": [
+    "ruff"
+   ],
+   "finding_id": "3a48756d520f",
+   "score": 1.9
+  },
+  {
+   "tool": "ruff",
+   "rule": "F811",
+   "category": "correctness",
+   "severity": "medium",
+   "confidence": "medium",
+   "message": "Redefinition of unused `get_installation_access_token` from line 1859: `get_installation_access_token` redefined here",
+   "file": "gatox/github/api.py",
+   "line": 1914,
+   "end_line": 1914,
+   "cwe": null,
+   "on_changed_line": true,
+   "evidence": {
+    "type": "static",
+    "source_line": "async def get_installation_access_token(",
+    "url": "https://docs.astral.sh/ruff/rules/redefined-while-unused"
+   },
+   "sources": [
+    "ruff"
+   ],
+   "finding_id": "b01a60b66e51",
+   "score": 1.9
+  },
+  {
+   "tool": "ruff",
+   "rule": "F401",
+   "category": "maintainability",
+   "severity": "low",
+   "confidence": "high",
+   "message": "`asyncio` imported but unused",
+   "file": "gatox/enumerate/app_enumerate.py",
+   "line": 4,
+   "end_line": 4,
+   "cwe": null,
+   "on_changed_line": true,
+   "evidence": {
+    "type": "static",
+    "source_line": "import asyncio",
+    "url": "https://docs.astral.sh/ruff/rules/unused-import"
+   },
+   "sources": [
+    "ruff"
+   ],
+   "finding_id": "21d8bc19dee4",
+   "score": 1.5
+  },
+  {
+   "tool": "ruff",
+   "rule": "F401",
+   "category": "maintainability",
+   "severity": "low",
+   "confidence": "high",
+   "message": "`typing.Tuple` imported but unused",
+   "file": "gatox/enumerate/app_enumerate.py",
+   "line": 5,
+   "end_line": 5,
+   "cwe": null,
+   "on_changed_line": true,
+   "evidence": {
+    "type": "static",
+    "source_line": "from typing import List, Dict, Optional, Tuple, Any",
+    "url": "https://docs.astral.sh/ruff/rules/unused-import"
+   },
+   "sources": [
+    "ruff"
+   ],
+   "finding_id": "1248e05faea1",
+   "score": 1.5
+  },
+  {
+   "tool": "ruff",
+   "rule": "F401",
+   "category": "maintainability",
+   "severity": "low",
+   "confidence": "high",
+   "message": "`typing.Any` imported but unused",
+   "file": "gatox/enumerate/app_enumerate.py",
+   "line": 5,
+   "end_line": 5,
+   "cwe": null,
+   "on_changed_line": true,
+   "evidence": {
+    "type": "static",
+    "source_line": "from typing import List, Dict, Optional, Tuple, Any",
+    "url": "https://docs.astral.sh/ruff/rules/unused-import"
+   },
+   "sources": [
+    "ruff"
+   ],
+   "finding_id": "0bfd9f718913",
+   "score": 1.5
+  },
+  {
+   "tool": "ruff",
+   "rule": "F401",
+   "category": "maintainability",
+   "severity": "low",
+   "confidence": "high",
+   "message": "`typing.Union` imported but unused",
+   "file": "gatox/github/api.py",
+   "line": 9,
+   "end_line": 9,
+   "cwe": null,
+   "on_changed_line": true,
+   "evidence": {
+    "type": "static",
+    "source_line": "from typing import Optional, Dict, Any, List, Union",
+    "url": "https://docs.astral.sh/ruff/rules/unused-import"
+   },
+   "sources": [
+    "ruff"
+   ],
+   "finding_id": "19f76c9c52d1",
+   "score": 1.5
+  },
+  {
+   "tool": "ruff",
+   "rule": "F401",
+   "category": "maintainability",
+   "severity": "low",
+   "confidence": "high",
+   "message": "`gatox.github.app.GitHubApp` imported but unused",
+   "file": "gatox/github/api.py",
+   "line": 16,
+   "end_line": 16,
+   "cwe": null,
+   "on_changed_line": true,
+   "evidence": {
+    "type": "static",
+    "source_line": "from gatox.github.app import GitHubApp",
+    "url": "https://docs.astral.sh/ruff/rules/unused-import"
+   },
+   "sources": [
+    "ruff"
+   ],
+   "finding_id": "753009bd06f4",
+   "score": 1.5
+  },
+  {
+   "tool": "ruff",
+   "rule": "F401",
+   "category": "maintainability",
+   "severity": "low",
+   "confidence": "high",
+   "message": "`datetime.datetime` imported but unused",
+   "file": "gatox/github/app.py",
+   "line": 6,
+   "end_line": 6,
+   "cwe": null,
+   "on_changed_line": true,
+   "evidence": {
+    "type": "static",
+    "source_line": "from datetime import datetime, timedelta",
+    "url": "https://docs.astral.sh/ruff/rules/unused-import"
+   },
+   "sources": [
+    "ruff"
+   ],
+   "finding_id": "6d97b8122b93",
+   "score": 1.5
+  },
+  {
+   "tool": "ruff",
+   "rule": "F401",
+   "category": "maintainability",
+   "severity": "low",
+   "confidence": "high",
+   "message": "`datetime.timedelta` imported but unused",
+   "file": "gatox/github/app.py",
+   "line": 6,
+   "end_line": 6,
+   "cwe": null,
+   "on_changed_line": true,
+   "evidence": {
+    "type": "static",
+    "source_line": "from datetime import datetime, timedelta",
+    "url": "https://docs.astral.sh/ruff/rules/unused-import"
+   },
+   "sources": [
+    "ruff"
+   ],
+   "finding_id": "07b0792d8906",
+   "score": 1.5
+  },
+  {
+   "tool": "ruff",
+   "rule": "F401",
+   "category": "maintainability",
+   "severity": "low",
+   "confidence": "high",
+   "message": "`os` imported but unused",
+   "file": "unit_test/test_app_enum.py",
+   "line": 1,
+   "end_line": 1,
+   "cwe": null,
+   "on_changed_line": true,
+   "evidence": {
+    "type": "static",
+    "source_line": "import os",
+    "url": "https://docs.astral.sh/ruff/rules/unused-import"
+   },
+   "sources": [
+    "ruff"
+   ],
+   "finding_id": "3f9ee3283b3f",
+   "score": 1.5
+  },
+  {
+   "tool": "ruff",
+   "rule": "F401",
+   "category": "maintainability",
+   "severity": "low",
+   "confidence": "high",
+   "message": "`pathlib` imported but unused",
+   "file": "unit_test/test_app_enum.py",
+   "line": 2,
+   "end_line": 2,
+   "cwe": null,
+   "on_changed_line": true,
+   "evidence": {
+    "type": "static",
+    "source_line": "import pathlib",
+    "url": "https://docs.astral.sh/ruff/rules/unused-import"
+   },
+   "sources": [
+    "ruff"
+   ],
+   "finding_id": "2c3a37887ed1",
+   "score": 1.5
+  },
+  {
+   "tool": "ruff",
+   "rule": "F401",
+   "category": "maintainability",
+   "severity": "low",
+   "confidence": "high",
+   "message": "`json` imported but unused",
+   "file": "unit_test/test_app_enum.py",
+   "line": 4,
+   "end_line": 4,
+   "cwe": null,
+   "on_changed_line": true,
+   "evidence": {
+    "type": "static",
+    "source_line": "import json",
+    "url": "https://docs.astral.sh/ruff/rules/unused-import"
+   },
+   "sources": [
+    "ruff"
+   ],
+   "finding_id": "b145af927ae0",
+   "score": 1.5
+  },
+  {
+   "tool": "ruff",
+   "rule": "F401",
+   "category": "maintainability",
+   "severity": "low",
+   "confidence": "high",
+   "message": "`tempfile` imported but unused",
+   "file": "unit_test/test_app_enum.py",
+   "line": 6,
+   "end_line": 6,
+   "cwe": null,
+   "on_changed_line": true,
+   "evidence": {
+    "type": "static",
+    "source_line": "import tempfile",
+    "url": "https://docs.astral.sh/ruff/rules/unused-import"
+   },
+   "sources": [
+    "ruff"
+   ],
+   "finding_id": "c26030ed7327",
+   "score": 1.5
+  },
+  {
+   "tool": "pytest",
+   "rule": "new-test-failure",
+   "category": "test",
+   "severity": "medium",
+   "confidence": "medium",
+   "message": "Test ::unit_test.test_app_enum added or changed by the PR fails at head: collection failure",
+   "file": "gatox/models/workflow.py",
+   "line": 2,
+   "end_line": null,
+   "cwe": null,
+   "on_changed_line": false,
+   "evidence": {
+    "type": "test",
+    "test_id": "::unit_test.test_app_enum",
+    "outcome": "error",
+    "detail": "collection failure\nImportError while importing test module '/dev/shm/acr/work/3089404039/src/head/unit_test/test_app_enum.py'.\nHint: make sure your test modules/packages have valid Python names.\nTraceback:\n../../../_shared_cache/python/cpython-3.15.2-linux-x86_64-gnu/lib/python3.15/importlib/__init__.py:88: in import_module\n    return _bootstrap._gcd_import(name[level:], package, level)\nunit_test/test_app_enum.py:9: in <module>\n    from gatox.github.api import Api\ngatox/github/api.py:13: in <module>\n    from gatox.enumerate.ingest.ingest import DataIngestor\ngatox/enumerate/ingest/ingest.py:24: in <module>\n    from gatox.caching.cache_manager import CacheManager\ngatox/caching/cache_manager.py:20: in <module>\n    from gatox.models.workflow import Workflow\ngatox/models/workflow.py:2: in <module>\n    import yaml\nE   ModuleNotFoundError: No module named 'yaml'"
+   },
+   "sources": [
+    "pytest"
+   ],
+   "finding_id": "55d1328151e2",
+   "score": 1.4
+  },
+  {
+   "tool": "ruff",
+   "rule": "F841",
+   "category": "maintainability",
+   "severity": "low",
+   "confidence": "medium",
+   "message": "Local variable `installation_api` is assigned to but never used",
+   "file": "gatox/enumerate/app_enumerate.py",
+   "line": 116,
+   "end_line": 116,
+   "cwe": null,
+   "on_changed_line": true,
+   "evidence": {
+    "type": "static",
+    "source_line": "installation_api = Api(",
+    "url": "https://docs.astral.sh/ruff/rules/unused-variable"
+   },
+   "sources": [
+    "ruff"
+   ],
+   "finding_id": "3dd82646dc3d",
+   "score": 1.2
+  },
+  {
+   "tool": "ruff",
+   "rule": "B904",
+   "category": "error-handling",
+   "severity": "low",
+   "confidence": "medium",
+   "message": "Within an `except` clause, raise exceptions with `raise ... from err` or `raise ... from None` to distinguish them from errors in exception handling",
+   "file": "gatox/github/app.py",
+   "line": 30,
+   "end_line": 30,
+   "cwe": null,
+   "on_changed_line": true,
+   "evidence": {
+    "type": "static",
+    "source_line": "raise ValueError(f\"Private key file not found: {private_key_path}\")",
+    "url": "https://docs.astral.sh/ruff/rules/raise-without-from-inside-except"
+   },
+   "sources": [
+    "ruff"
+   ],
+   "finding_id": "00623eeed772",
+   "score": 1.2
+  },
+  {
+   "tool": "ruff",
+   "rule": "B904",
+   "category": "error-handling",
+   "severity": "low",
+   "confidence": "medium",
+   "message": "Within an `except` clause, raise exceptions with `raise ... from err` or `raise ... from None` to distinguish them from errors in exception handling",
+   "file": "gatox/github/app.py",
+   "line": 33,
+   "end_line": 33,
+   "cwe": null,
+   "on_changed_line": true,
+   "evidence": {
+    "type": "static",
+    "source_line": "raise ValueError(f\"Error reading private key: {str(e)}\")",
+    "url": "https://docs.astral.sh/ruff/rules/raise-without-from-inside-except"
+   },
+   "sources": [
+    "ruff"
+   ],
+   "finding_id": "c4220f740563",
+   "score": 1.2
+  },
+  {
+   "tool": "ruff",
+   "rule": "B904",
+   "category": "error-handling",
+   "severity": "low",
+   "confidence": "medium",
+   "message": "Within an `except` clause, raise exceptions with `raise ... from err` or `raise ... from None` to distinguish them from errors in exception handling",
+   "file": "gatox/github/app.py",
+   "line": 57,
+   "end_line": 57,
+   "cwe": null,
+   "on_changed_line": true,
+   "evidence": {
+    "type": "static",
+    "source_line": "raise ValueError(f\"Error generating JWT: {str(e)}\")",
+    "url": "https://docs.astral.sh/ruff/rules/raise-without-from-inside-except"
+   },
+   "sources": [
+    "ruff"
+   ],
+   "finding_id": "90a71e9b40bb",
+   "score": 1.2
+  },
+  {
+   "tool": "ruff",
+   "rule": "F841",
+   "category": "maintainability",
+   "severity": "low",
+   "confidence": "medium",
+   "message": "Local variable `mock_enum` is assigned to but never used",
+   "file": "unit_test/test_app_enum.py",
+   "line": 234,
+   "end_line": 234,
+   "cwe": null,
+   "on_changed_line": true,
+   "evidence": {
+    "type": "static",
+    "source_line": ") as mock_enum:",
+    "url": "https://docs.astral.sh/ruff/rules/unused-variable"
+   },
+   "sources": [
+    "ruff"
+   ],
+   "finding_id": "fd1251c48e1b",
+   "score": 1.2
+  },
+  {
+   "tool": "ruff",
+   "rule": "F841",
+   "category": "maintainability",
+   "severity": "low",
+   "confidence": "medium",
+   "message": "Local variable `mock_enum` is assigned to but never used",
+   "file": "unit_test/test_app_enum.py",
+   "line": 276,
+   "end_line": 276,
+   "cwe": null,
+   "on_changed_line": true,
+   "evidence": {
+    "type": "static",
+    "source_line": ") as mock_enum:",
+    "url": "https://docs.astral.sh/ruff/rules/unused-variable"
+   },
+   "sources": [
+    "ruff"
+   ],
+   "finding_id": "26a5bcba3201",
+   "score": 1.2
+  }
+ ],
+ "status": "ok",
+ "seconds": 7.5
+}

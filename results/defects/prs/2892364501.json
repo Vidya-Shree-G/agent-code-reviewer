@@ -1,0 +1,175 @@
+{
+ "pr_id": 2892364501,
+ "repository": "livekit/agents",
+ "pr_number": 1592,
+ "split": "development",
+ "agent": "Claude_Code",
+ "head_sha": "e0fd005e4dcc88f8ce82cc2cd7d6b33f1930160b",
+ "tool_versions": {
+  "ruff": "ruff 0.17.4",
+  "bandit": "__main__.py 1.9.4",
+  "python": "3.12.3"
+ },
+ "config": {
+  "run_tests": true,
+  "sandbox": true
+ },
+ "base_mode": "reverse_applied_diff",
+ "static": {
+  "files_analysed": 1,
+  "head_issues": 2,
+  "base_issues": 2,
+  "per_tool_head": {
+   "ruff": 2
+  },
+  "per_tool_base": {
+   "ruff": 2
+  },
+  "introduced": 0,
+  "seconds": 0.3
+ },
+ "tests": {
+  "env": {
+   "status": "ok",
+   "python": "3.12.10",
+   "steps": [
+    {
+     "step": "venv",
+     "ok": true,
+     "seconds": 0.0,
+     "timed_out": false,
+     "log_tail": ""
+    },
+    {
+     "step": "install pytest",
+     "ok": true,
+     "seconds": 0.0,
+     "timed_out": false,
+     "log_tail": ""
+    },
+    {
+     "step": "repair: install livekit",
+     "ok": true,
+     "seconds": 1.7,
+     "timed_out": false,
+     "log_tail": ""
+    }
+   ]
+  },
+  "selected_tests": [
+   {
+    "path": "tests/test_aio.py",
+    "reason": "full_suite",
+    "exists_at_base": true
+   },
+   {
+    "path": "tests/test_build_func_desc.py",
+    "reason": "full_suite",
+    "exists_at_base": true
+   },
+   {
+    "path": "tests/test_connection_pool.py",
+    "reason": "full_suite",
+    "exists_at_base": true
+   },
+   {
+    "path": "tests/test_create_func.py",
+    "reason": "full_suite",
+    "exists_at_base": true
+   },
+   {
+    "path": "tests/test_decoder.py",
+    "reason": "full_suite",
+    "exists_at_base": true
+   },
+   {
+    "path": "tests/test_ipc.py",
+    "reason": "full_suite",
+    "exists_at_base": true
+   },
+   {
+    "path": "tests/test_llm.py",
+    "reason": "full_suite",
+    "exists_at_base": true
+   },
+   {
+    "path": "tests/test_message_change.py",
+    "reason": "full_suite",
+    "exists_at_base": true
+   },
+   {
+    "path": "tests/test_stt.py",
+    "reason": "full_suite",
+    "exists_at_base": true
+   },
+   {
+    "path": "tests/test_stt_fallback.py",
+    "reason": "full_suite",
+    "exists_at_base": true
+   },
+   {
+    "path": "tests/test_tokenizer.py",
+    "reason": "full_suite",
+    "exists_at_base": true
+   },
+   {
+    "path": "tests/test_tts.py",
+    "reason": "full_suite",
+    "exists_at_base": true
+   },
+   {
+    "path": "tests/test_tts_fallback.py",
+    "reason": "full_suite",
+    "exists_at_base": true
+   },
+   {
+    "path": "tests/test_vad.py",
+    "reason": "full_suite",
+    "exists_at_base": true
+   }
+  ],
+  "head_run": {
+   "status": "usage_error",
+   "exit_code": 4,
+   "seconds": 0.2,
+   "addopts_overridden": true,
+   "counts": {
+    "passed": 0,
+    "failed": 0,
+    "error": 0,
+    "skipped": 0
+   },
+   "tests": {},
+   "log_tail": "\nImportError while loading conftest '/dev/shm/acr/work/2892364501/src/head/tests/conftest.py'.\ntests/conftest.py:5: in <module>\n    from livekit.agents import DEFAULT_API_CONNECT_OPTIONS, utils\nE   ModuleNotFoundError: No module named 'livekit.agents'\n"
+  },
+  "base_run": {
+   "status": "usage_error",
+   "exit_code": 4,
+   "seconds": 0.2,
+   "addopts_overridden": true,
+   "counts": {
+    "passed": 0,
+    "failed": 0,
+    "error": 0,
+    "skipped": 0
+   },
+   "tests": {},
+   "log_tail": "\nImportError while loading conftest '/dev/shm/acr/work/2892364501/src/base/tests/conftest.py'.\ntests/conftest.py:5: in <module>\n    from livekit.agents import DEFAULT_API_CONNECT_OPTIONS, utils\nE   ModuleNotFoundError: No module named 'livekit.agents'\n"
+  },
+  "comparison": {
+   "regressions": [],
+   "new_test_failures": [],
+   "fixed": [],
+   "persistent_failures": []
+  },
+  "imports_head": {},
+  "imports_base": {},
+  "status": "head_usage_error",
+  "dependency_cutoff": "2025-03-03T21:33:32Z",
+  "seconds": 3.4,
+  "head_failures": 0
+ },
+ "findings": [],
+ "status": "ok",
+ "seconds": 5.5
+}

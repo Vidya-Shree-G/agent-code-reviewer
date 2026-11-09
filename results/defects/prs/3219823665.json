@@ -1,0 +1,210 @@
+{
+ "pr_id": 3219823665,
+ "repository": "arthurhenrique/cookiecutter-fastapi",
+ "pr_number": 160,
+ "split": "development",
+ "agent": "OpenAI_Codex",
+ "head_sha": "77bb052eca3f1fa1d37336d8a06923dc0f6f3d24",
+ "tool_versions": {
+  "ruff": "ruff 0.17.4",
+  "bandit": "__main__.py 1.9.4",
+  "python": "3.12.3"
+ },
+ "config": {
+  "run_tests": true,
+  "sandbox": true
+ },
+ "base_mode": "reverse_applied_diff",
+ "static": {
+  "files_analysed": 12,
+  "head_issues": 2,
+  "base_issues": 0,
+  "per_tool_head": {
+   "ruff": 2
+  },
+  "per_tool_base": {},
+  "introduced": 2,
+  "seconds": 0.2
+ },
+ "tests": {
+  "env": {
+   "status": "ok",
+   "python": "3.12.10",
+   "steps": [
+    {
+     "step": "venv",
+     "ok": true,
+     "seconds": 0.0,
+     "timed_out": false,
+     "log_tail": ""
+    },
+    {
+     "step": "install -e .",
+     "ok": true,
+     "seconds": 0.4,
+     "timed_out": false,
+     "log_tail": ""
+    },
+    {
+     "step": "install pytest",
+     "ok": true,
+     "seconds": 0.0,
+     "timed_out": false,
+     "log_tail": ""
+    }
+   ]
+  },
+  "selected_tests": [
+   {
+    "path": "sample/pregnancy-model/tests/test_database.py",
+    "reason": "changed_in_pr",
+    "exists_at_base": false
+   },
+   {
+    "path": "{{cookiecutter.project_slug}}/tests/test_database.py",
+    "reason": "changed_in_pr",
+    "exists_at_base": false
+   }
+  ],
+  "head_run": {
+   "status": "completed",
+   "exit_code": 2,
+   "seconds": 0.3,
+   "addopts_overridden": false,
+   "counts": {
+    "passed": 0,
+    "failed": 0,
+    "error": 2,
+    "skipped": 0
+   },
+   "tests": {
+    "::sample.pregnancy-model.tests.test_database": {
+     "outcome": "error",
+     "detail": "collection failure\nImportError while importing test module '/dev/shm/acr/work/3219823665/src/head/sample/pregnancy-model/tests/test_database.py'.\nHint: make sure your test modules/packages have valid Python names.\nTraceback:\n../../../_shared_cache/python/cpython-3.12-linux-x86_64-gnu/lib/python3.12/importlib/__init__.py:90: in import_module\n    return _bootstrap._gcd_import(name[level:], package, level)\n           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\nsample/pregnancy-model/tests/test_database.py:1: in <module>\n    from sqlalchemy import inspect\nE   ModuleNotFoundError: No module named 'sqlalchemy'"
+    },
+    "::{{cookiecutter.project_slug}}.tests.test_database": {
+     "outcome": "error",
+     "detail": "collection failure\nImportError while importing test module '/dev/shm/acr/work/3219823665/src/head/{{cookiecutter.project_slug}}/tests/test_database.py'.\nHint: make sure your test modules/packages have valid Python names.\nTraceback:\n../../../_shared_cache/python/cpython-3.12-linux-x86_64-gnu/lib/python3.12/importlib/__init__.py:90: in import_module\n    return _bootstrap._gcd_import(name[level:], package, level)\n           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\nsample/pregnancy-model/tests/test_database.py:1: in <module>\n    from sqlalchemy import inspect\nE   ModuleNotFoundError: No module named 'sqlalchemy'"
+    }
+   },
+   "log_tail": ""
+  },
+  "base_run": {
+   "status": "not_run",
+   "tests": {}
+  },
+  "comparison": {
+   "regressions": [],
+   "new_test_failures": [
+    "::sample.pregnancy-model.tests.test_database",
+    "::{{cookiecutter.project_slug}}.tests.test_database"
+   ],
+   "fixed": [],
+   "persistent_failures": []
+  },
+  "imports_head": {},
+  "imports_base": {},
+  "status": "completed",
+  "dependency_cutoff": "2025-07-11T02:04:38Z",
+  "seconds": 0.7,
+  "head_failures": 2
+ },
+ "findings": [
+  {
+   "tool": "ruff",
+   "rule": "F401",
+   "category": "maintainability",
+   "severity": "low",
+   "confidence": "high",
+   "message": "`models.item` imported but unused",
+   "file": "sample/pregnancy-model/migrations/env.py",
+   "line": 9,
+   "end_line": 9,
+   "cwe": null,
+   "on_changed_line": true,
+   "evidence": {
+    "type": "static",
+    "source_line": "from models import item",
+    "url": "https://docs.astral.sh/ruff/rules/unused-import"
+   },
+   "sources": [
+    "ruff"
+   ],
+   "finding_id": "c34966ba4843",
+   "score": 1.5
+  },
+  {
+   "tool": "ruff",
+   "rule": "F401",
+   "category": "maintainability",
+   "severity": "low",
+   "confidence": "high",
+   "message": "`models.item` imported but unused",
+   "file": "{{cookiecutter.project_slug}}/migrations/env.py",
+   "line": 9,
+   "end_line": 9,
+   "cwe": null,
+   "on_changed_line": true,
+   "evidence": {
+    "type": "static",
+    "source_line": "from models import item",
+    "url": "https://docs.astral.sh/ruff/rules/unused-import"
+   },
+   "sources": [
+    "ruff"
+   ],
+   "finding_id": "fb2332a4280d",
+   "score": 1.5
+  },
+  {
+   "tool": "pytest",
+   "rule": "new-test-failure",
+   "category": "test",
+   "severity": "medium",
+   "confidence": "medium",
+   "message": "Test ::sample.pregnancy-model.tests.test_database added or changed by the PR fails at head: collection failure",
+   "file": "sample/pregnancy-model/tests/test_database.py",
+   "line": 1,
+   "end_line": null,
+   "cwe": null,
+   "on_changed_line": false,
+   "evidence": {
+    "type": "test",
+    "test_id": "::sample.pregnancy-model.tests.test_database",
+    "outcome": "error",
+    "detail": "collection failure\nImportError while importing test module '/dev/shm/acr/work/3219823665/src/head/sample/pregnancy-model/tests/test_database.py'.\nHint: make sure your test modules/packages have valid Python names.\nTraceback:\n../../../_shared_cache/python/cpython-3.12-linux-x86_64-gnu/lib/python3.12/importlib/__init__.py:90: in import_module\n    return _bootstrap._gcd_import(name[level:], package, level)\n           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\nsample/pregnancy-model/tests/test_database.py:1: in <module>\n    from sqlalchemy import inspect\nE   ModuleNotFoundError: No module named 'sqlalchemy'"
+   },
+   "sources": [
+    "pytest"
+   ],
+   "finding_id": "c3157669c0fd",
+   "score": 1.4
+  },
+  {
+   "tool": "pytest",
+   "rule": "new-test-failure",
+   "category": "test",
+   "severity": "medium",
+   "confidence": "medium",
+   "message": "Test ::{{cookiecutter.project_slug}}.tests.test_database added or changed by the PR fails at head: collection failure",
+   "file": "sample/pregnancy-model/tests/test_database.py",
+   "line": 1,
+   "end_line": null,
+   "cwe": null,
+   "on_changed_line": false,
+   "evidence": {
+    "type": "test",
+    "test_id": "::{{cookiecutter.project_slug}}.tests.test_database",
+    "outcome": "error",
+    "detail": "collection failure\nImportError while importing test module '/dev/shm/acr/work/3219823665/src/head/{{cookiecutter.project_slug}}/tests/test_database.py'.\nHint: make sure your test modules/packages have valid Python names.\nTraceback:\n../../../_shared_cache/python/cpython-3.12-linux-x86_64-gnu/lib/python3.12/importlib/__init__.py:90: in import_module\n    return _bootstrap._gcd_import(name[level:], package, level)\n           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\nsample/pregnancy-model/tests/test_database.py:1: in <module>\n    from sqlalchemy import inspect\nE   ModuleNotFoundError: No module named 'sqlalchemy'"
+   },
+   "sources": [
+    "pytest"
+   ],
+   "finding_id": "bf3336468598",
+   "score": 1.4
+  }
+ ],
+ "status": "ok",
+ "seconds": 4.1
+}

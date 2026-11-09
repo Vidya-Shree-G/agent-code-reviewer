@@ -1,0 +1,225 @@
+{
+ "pr_id": 3116770548,
+ "repository": "janbjorge/pgqueuer",
+ "pr_number": 399,
+ "split": "development",
+ "agent": "OpenAI_Codex",
+ "head_sha": "779ef1b3f3eef97159da7ec9055088f77766b656",
+ "tool_versions": {
+  "ruff": "ruff 0.17.4",
+  "bandit": "__main__.py 1.9.4",
+  "python": "3.12.3"
+ },
+ "config": {
+  "run_tests": true,
+  "sandbox": true
+ },
+ "base_mode": "reverse_applied_diff",
+ "static": {
+  "files_analysed": 1,
+  "head_issues": 1,
+  "base_issues": 1,
+  "per_tool_head": {
+   "bandit": 1
+  },
+  "per_tool_base": {
+   "bandit": 1
+  },
+  "introduced": 0,
+  "seconds": 0.2
+ },
+ "tests": {
+  "env": {
+   "status": "partial",
+   "python": "3.15.2",
+   "steps": [
+    {
+     "step": "venv",
+     "ok": true,
+     "seconds": 0.0,
+     "timed_out": false,
+     "log_tail": ""
+    },
+    {
+     "step": "install -e .[dev]",
+     "ok": false,
+     "seconds": 18.4,
+     "timed_out": false,
+     "log_tail": "r\n           error: the configured Python interpreter version (3.15) is newer than PyO3's maximum supported version (3.13)\n           = help: please check if an updated version of PyO3 is available. Current version: 0.24.1\n           = help: set PYO3_USE_ABI3_FORWARD_COMPATIBILITY=1 to suppress this check and build anyway using the stable ABI\n         warning: build failed, waiting for other jobs to finish...\n         💥 maturin failed\n           Caused by: Failed to build a native library through cargo\n           Caused by: Cargo build finished with \"exit status: 101\": `env -u CARGO PYO3_ENVIRONMENT_SIGNATURE=\"cpython-3.15-64bit\" PYO3_PYTHON=\"/dev/shm/acr/work/_shared_cache/uv/builds-v0/.tmpVBaLYr/bin/python\" PYTHON_SYS_EXECUTABLE=\"/dev/shm/acr/work/_shared_cache/uv/builds-v0/.tmpVBaLYr/bin/python\" \"cargo\" \"rustc\" \"--features\" \"pyo3/extension-module\" \"--message-format\" \"json-render-diagnostics\" \"--manifest-path\" \"/dev/shm/acr/work/_shared_cache/uv/sdists-v10/pypi/pydantic-core/2.33.2/D5dNEOkhKV9CkE_G/src/Cargo.toml\" \"--release\" \"--lib\" \"--crate-type\" \"cdylib\"`\n         Error: command ['maturin', 'pep517', 'build-wheel', '-i', '/dev/shm/acr/work/_shared_cache/uv/builds-v0/.tmpVBaLYr/bin/python', '--compatibility', 'off'] returned non-zero exit status 1\n\nhint: `pydantic-core` (v2.33.2) was included because `pgqueuer` (v0.0) depends on `pydantic` (v2.11.5) which depends on `pydantic-core`\n\nhint: Build failures usually indicate a problem with the package or the build environment\n",
+     "superseded": true
+    },
+    {
+     "step": "install -e .",
+     "ok": false,
+     "seconds": 4.3,
+     "timed_out": false,
+     "log_tail": "r\n           error: the configured Python interpreter version (3.15) is newer than PyO3's maximum supported version (3.13)\n           = help: please check if an updated version of PyO3 is available. Current version: 0.24.1\n           = help: set PYO3_USE_ABI3_FORWARD_COMPATIBILITY=1 to suppress this check and build anyway using the stable ABI\n         warning: build failed, waiting for other jobs to finish...\n         💥 maturin failed\n           Caused by: Failed to build a native library through cargo\n           Caused by: Cargo build finished with \"exit status: 101\": `env -u CARGO PYO3_ENVIRONMENT_SIGNATURE=\"cpython-3.15-64bit\" PYO3_PYTHON=\"/dev/shm/acr/work/_shared_cache/uv/builds-v0/.tmp68JEba/bin/python\" PYTHON_SYS_EXECUTABLE=\"/dev/shm/acr/work/_shared_cache/uv/builds-v0/.tmp68JEba/bin/python\" \"cargo\" \"rustc\" \"--features\" \"pyo3/extension-module\" \"--message-format\" \"json-render-diagnostics\" \"--manifest-path\" \"/dev/shm/acr/work/_shared_cache/uv/sdists-v10/pypi/pydantic-core/2.33.2/D5dNEOkhKV9CkE_G/src/Cargo.toml\" \"--release\" \"--lib\" \"--crate-type\" \"cdylib\"`\n         Error: command ['maturin', 'pep517', 'build-wheel', '-i', '/dev/shm/acr/work/_shared_cache/uv/builds-v0/.tmp68JEba/bin/python', '--compatibility', 'off'] returned non-zero exit status 1\n\nhint: `pydantic-core` (v2.33.2) was included because `pgqueuer` (v0.0) depends on `pydantic` (v2.11.5) which depends on `pydantic-core`\n\nhint: Build failures usually indicate a problem with the package or the build environment\n"
+    },
+    {
+     "step": "install pytest",
+     "ok": true,
+     "seconds": 0.0,
+     "timed_out": false,
+     "log_tail": ""
+    },
+    {
+     "step": "repair: install asyncpg typing_extensions",
+     "ok": true,
+     "seconds": 24.5,
+     "timed_out": false,
+     "log_tail": ""
+    }
+   ]
+  },
+  "selected_tests": [
+   {
+    "path": "test/integration/test_fastapi.py",
+    "reason": "imports_changed_module",
+    "exists_at_base": true
+   },
+   {
+    "path": "test/integration/test_flask_sync.py",
+    "reason": "imports_changed_module",
+    "exists_at_base": true
+   },
+   {
+    "path": "test/test_cancellation.py",
+    "reason": "imports_changed_module",
+    "exists_at_base": true
+   },
+   {
+    "path": "test/test_completion.py",
+    "reason": "imports_changed_module",
+    "exists_at_base": true
+   },
+   {
+    "path": "test/test_concurrency_limit.py",
+    "reason": "imports_changed_module",
+    "exists_at_base": true
+   },
+   {
+    "path": "test/test_drivers.py",
+    "reason": "imports_changed_module",
+    "exists_at_base": true
+   },
+   {
+    "path": "test/test_execute_after.py",
+    "reason": "imports_changed_module",
+    "exists_at_base": true
+   },
+   {
+    "path": "test/test_executors.py",
+    "reason": "imports_changed_module",
+    "exists_at_base": true
+   },
+   {
+    "path": "test/test_listeners.py",
+    "reason": "imports_changed_module",
+    "exists_at_base": true
+   },
+   {
+    "path": "test/test_pgqueuer.py",
+    "reason": "imports_changed_module",
+    "exists_at_base": true
+   },
+   {
+    "path": "test/test_qm.py",
+    "reason": "imports_changed_module",
+    "exists_at_base": true
+   },
+   {
+    "path": "test/test_queries.py",
+    "reason": "imports_changed_module",
+    "exists_at_base": true
+   },
+   {
+    "path": "test/test_retry.py",
+    "reason": "imports_changed_module",
+    "exists_at_base": true
+   },
+   {
+    "path": "test/test_rps.py",
+    "reason": "imports_changed_module",
+    "exists_at_base": true
+   },
+   {
+    "path": "test/test_scheduler.py",
+    "reason": "imports_changed_module",
+    "exists_at_base": true
+   },
+   {
+    "path": "test/test_strict_serialized.py",
+    "reason": "imports_changed_module",
+    "exists_at_base": true
+   },
+   {
+    "path": "test/test_sync_queries.py",
+    "reason": "imports_changed_module",
+    "exists_at_base": true
+   }
+  ],
+  "head_run": {
+   "status": "usage_error",
+   "exit_code": 4,
+   "seconds": 0.3,
+   "addopts_overridden": true,
+   "counts": {
+    "passed": 0,
+    "failed": 0,
+    "error": 0,
+    "skipped": 0
+   },
+   "tests": {},
+   "log_tail": "\nImportError while loading conftest '/dev/shm/acr/work/3116770548/src/head/test/conftest.py'.\ntest/conftest.py:5: in <module>\n    import psycopg\nE   ModuleNotFoundError: No module named 'psycopg'\n"
+  },
+  "base_run": {
+   "status": "usage_error",
+   "exit_code": 4,
+   "seconds": 0.3,
+   "addopts_overridden": true,
+   "counts": {
+    "passed": 0,
+    "failed": 0,
+    "error": 0,
+    "skipped": 0
+   },
+   "tests": {},
+   "log_tail": "\nImportError while loading conftest '/dev/shm/acr/work/3116770548/src/base/test/conftest.py'.\ntest/conftest.py:5: in <module>\n    import psycopg\nE   ModuleNotFoundError: No module named 'psycopg'\n"
+  },
+  "comparison": {
+   "regressions": [],
+   "new_test_failures": [],
+   "fixed": [],
+   "persistent_failures": []
+  },
+  "imports_head": {
+   "pgqueuer.db": {
+    "ok": false,
+    "type": "ModuleNotFoundError",
+    "message": "No module named 'anyio'",
+    "missing_module": "anyio",
+    "file": "pgqueuer/executors.py",
+    "line": 21,
+    "traceback": "ortlib.import_module(m)\n    ~~~~~~~~~~~~~~~~~~~~~~~^^^\n  File \"/dev/shm/acr/work/_shared_cache/python/cpython-3.15.2-linux-x86_64-gnu/lib/python3.15/importlib/__init__.py\", line 88, in import_module\n    return _bootstrap._gcd_import(name[level:], package, level)\n           ~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"<frozen importlib._bootstrap>\", line 1389, in _gcd_import\n  File \"<frozen importlib._bootstrap>\", line 1338, in _find_and_load\n  File \"<frozen importlib._bootstrap>\", line 1299, in _resolve_parents\n  File \"<frozen importlib._bootstrap>\", line 491, in _call_with_frames_removed\n  File \"<frozen importlib._bootstrap>\", line 1389, in _gcd_import\n  File \"<frozen importlib._bootstrap>\", line 1353, in _find_and_load\n  File \"<frozen importlib._bootstrap>\", line 1249, in _find_and_load_unlocked\n  File \"<frozen importlib._bootstrap>\", line 857, in _load_unlocked\n  File \"<frozen importlib._bootstrap_external>\", line 751, in exec_module\n  File \"<frozen importlib._bootstrap>\", line 491, in _call_with_frames_removed\n  File \"/dev/shm/acr/work/3116770548/src/head/pgqueuer/__init__.py\", line 1, in <module>\n    from .applications import PgQueuer\n  File \"/dev/shm/acr/work/3116770548/src/head/pgqueuer/applications.py\", line 16, in <module>\n    from .executors import (\n    ...<6 lines>...\n    )\n  File \"/dev/shm/acr/work/3116770548/src/head/pgqueuer/executors.py\", line 21, in <module>\n    import anyio\nModuleNotFoundError: No module named 'anyio'. Did you mean: '_pyio'?\n"
+   }
+  },
+  "imports_base": {
+   "pgqueuer.db": {
+    "ok": false,
+    "type": "ModuleNotFoundError",
+    "message": "No module named 'anyio'",
+    "missing_module": "anyio",
+    "file": "pgqueuer/executors.py",
+    "line": 21,
+    "traceback": "ortlib.import_module(m)\n    ~~~~~~~~~~~~~~~~~~~~~~~^^^\n  File \"/dev/shm/acr/work/_shared_cache/python/cpython-3.15.2-linux-x86_64-gnu/lib/python3.15/importlib/__init__.py\", line 88, in import_module\n    return _bootstrap._gcd_import(name[level:], package, level)\n           ~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"<frozen importlib._bootstrap>\", line 1389, in _gcd_import\n  File \"<frozen importlib._bootstrap>\", line 1338, in _find_and_load\n  File \"<frozen importlib._bootstrap>\", line 1299, in _resolve_parents\n  File \"<frozen importlib._bootstrap>\", line 491, in _call_with_frames_removed\n  File \"<frozen importlib._bootstrap>\", line 1389, in _gcd_import\n  File \"<frozen importlib._bootstrap>\", line 1353, in _find_and_load\n  File \"<frozen importlib._bootstrap>\", line 1249, in _find_and_load_unlocked\n  File \"<frozen importlib._bootstrap>\", line 857, in _load_unlocked\n  File \"<frozen importlib._bootstrap_external>\", line 751, in exec_module\n  File \"<frozen importlib._bootstrap>\", line 491, in _call_with_frames_removed\n  File \"/dev/shm/acr/work/3116770548/src/base/pgqueuer/__init__.py\", line 1, in <module>\n    from .applications import PgQueuer\n  File \"/dev/shm/acr/work/3116770548/src/base/pgqueuer/applications.py\", line 16, in <module>\n    from .executors import (\n    ...<6 lines>...\n    )\n  File \"/dev/shm/acr/work/3116770548/src/base/pgqueuer/executors.py\", line 21, in <module>\n    import anyio\nModuleNotFoundError: No module named 'anyio'. Did you mean: '_pyio'?\n"
+   }
+  },
+  "status": "head_usage_error",
+  "dependency_cutoff": "2025-06-04T07:25:09Z",
+  "seconds": 50.4,
+  "head_failures": 0
+ },
+ "findings": [],
+ "status": "ok",
+ "seconds": 52.1
+}

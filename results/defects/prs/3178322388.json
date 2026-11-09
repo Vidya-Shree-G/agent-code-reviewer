@@ -1,0 +1,255 @@
+{
+ "pr_id": 3178322388,
+ "repository": "pgalko/BambooAI",
+ "pr_number": 46,
+ "split": "development",
+ "agent": "OpenAI_Codex",
+ "head_sha": "3d18d5314d242d3dee6bb250d75d098351f4aee4",
+ "tool_versions": {
+  "ruff": "ruff 0.17.4",
+  "bandit": "__main__.py 1.9.4",
+  "python": "3.12.3"
+ },
+ "config": {
+  "run_tests": true,
+  "sandbox": true
+ },
+ "base_mode": "base_branch_commit",
+ "static": {
+  "files_analysed": 7,
+  "head_issues": 37,
+  "base_issues": 37,
+  "per_tool_head": {
+   "ruff": 29,
+   "bandit": 8
+  },
+  "per_tool_base": {
+   "ruff": 29,
+   "bandit": 8
+  },
+  "introduced": 0,
+  "seconds": 2.1
+ },
+ "tests": {
+  "env": {
+   "status": "partial",
+   "python": "3.15.2",
+   "steps": [
+    {
+     "step": "venv",
+     "ok": true,
+     "seconds": 0.1,
+     "timed_out": false,
+     "log_tail": ""
+    },
+    {
+     "step": "install -e .",
+     "ok": false,
+     "seconds": 7.9,
+     "timed_out": false,
+     "log_tail": "error: Failed to build `lxml==5.4.0`\n  cause: The build backend returned an error\n  cause: Call to `setuptools.build_meta:__legacy__.get_requires_for_build_wheel` failed (exit status: 1)\n\n         [stdout]\n         Building lxml version 5.4.0.\n         Building without Cython.\n         Error: Please make sure the libxml2 and libxslt development packages are installed.\n\n         [stderr]\n         <string>:67: UserWarning: pkg_resources is deprecated as an API. See https://setuptools.pypa.io/en/latest/pkg_resources.html. The pkg_resources package is slated for removal as early as 2025-11-30. Refrain from using this package or pin to Setuptools<81.\n\nhint: `lxml` (v5.4.0) was included because `bambooai` (v0.4.22) depends on `newspaper3k` (v0.2.8) which depends on `lxml`\n\nhint: Build failures usually indicate a problem with the package or the build environment\n"
+    },
+    {
+     "step": "install -r requirements.txt",
+     "ok": false,
+     "seconds": 2.6,
+     "timed_out": false,
+     "log_tail": "************************************************************\n                 Please use a simple string containing a SPDX expression for `project.license`. You can also use `project.license-files`. (Both options available on setuptools>=77.0.0).\n\n                 This deprecation is overdue, please update your project and remove deprecated\n                 calls to avoid build errors in the future.\n\n                 See https://packaging.python.org/en/latest/guides/writing-pyproject-toml/#license for details.\n                 ********************************************************************************\n\n         !!\n           corresp(dist, value, root_dir)\n         warning: no files found matching 'Makefile'\n         error: can't find Rust compiler\n\n         If you are using an outdated pip version, it is possible a prebuilt wheel is available for this package but pip is not able to install from it. Installing from the wheel would avoid the need for a Rust compiler.\n\n         To update pip, run:\n\n             pip install --upgrade pip\n\n         and then retry package installation.\n\n         If you did intend to build this package from source, try installing a Rust compiler from your system package manager and ensure it is on the PATH during installation. Alternatively, rustup (available at https://rustup.rs) is the recommended way to download and update the Rust compiler toolchain.\n\nhint: Build failures usually indicate a problem with the package or the build environment\n"
+    },
+    {
+     "step": "install -r requirements-dev.txt",
+     "ok": true,
+     "seconds": 0.2,
+     "timed_out": false,
+     "log_tail": ""
+    },
+    {
+     "step": "install pytest",
+     "ok": true,
+     "seconds": 0.2,
+     "timed_out": false,
+     "log_tail": ""
+    },
+    {
+     "step": "repair: install pandas requests",
+     "ok": true,
+     "seconds": 140.4,
+     "timed_out": false,
+     "log_tail": ""
+    }
+   ]
+  },
+  "selected_tests": [
+   {
+    "path": "tests/unit/test_import.py",
+    "reason": "changed_in_pr",
+    "exists_at_base": true
+   }
+  ],
+  "head_run": {
+   "status": "completed",
+   "exit_code": 1,
+   "seconds": 1.3,
+   "addopts_overridden": false,
+   "counts": {
+    "passed": 0,
+    "failed": 1,
+    "error": 0,
+    "skipped": 0
+   },
+   "tests": {
+    "tests.unit.test_import::test_import": {
+     "outcome": "failed",
+     "detail": "ModuleNotFoundError: No module named 'matplotlib'\ndef test_import():\n>       from bambooai import BambooAI\n\ntests/unit/test_import.py:7: \n_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ \nbambooai/__init__.py:1: in <module>\n    from bambooai.bambooai import BambooAI\nbambooai/bambooai.py:9: in <module>\n    from bambooai import code_executor, models, template_formatting, qa_retrieval, log_manager, output_manager, web_output_manager, storage_manager, utils, executor_client\n_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ \n\n    import io\n    import os\n    import sys\n    import json\n    import traceback\n>   import matplotlib\nE   ModuleNotFoundError: No module named 'matplotlib'\n\nbambooai/code_executor.py:6: ModuleNotFoundError"
+    }
+   },
+   "log_tail": ""
+  },
+  "base_run": {
+   "status": "completed",
+   "exit_code": 1,
+   "seconds": 1.4,
+   "addopts_overridden": false,
+   "counts": {
+    "passed": 0,
+    "failed": 1,
+    "error": 0,
+    "skipped": 0
+   },
+   "tests": {
+    "tests.unit.test_import::test_import": {
+     "outcome": "failed",
+     "detail": "ModuleNotFoundError: No module named 'matplotlib'\ndef test_import():\n>       from bambooai import BambooAI\n\ntests/unit/test_import.py:4: \n_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ \nbambooai/__init__.py:1: in <module>\n    from bambooai.bambooai import BambooAI\nbambooai/bambooai.py:9: in <module>\n    from bambooai import code_executor, models, template_formatting, qa_retrieval, log_manager, output_manager, web_output_manager, storage_manager, utils, executor_client\n_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ \n\n    import io\n    import os\n    import sys\n    import json\n    import traceback\n>   import matplotlib\nE   ModuleNotFoundError: No module named 'matplotlib'\n\nbambooai/code_executor.py:6: ModuleNotFoundError"
+    }
+   },
+   "log_tail": ""
+  },
+  "comparison": {
+   "regressions": [],
+   "new_test_failures": [],
+   "fixed": [],
+   "persistent_failures": [
+    "tests.unit.test_import::test_import"
+   ]
+  },
+  "imports_head": {
+   "bambooai.bambooai": {
+    "ok": false,
+    "type": "ModuleNotFoundError",
+    "message": "No module named 'matplotlib'",
+    "missing_module": "matplotlib",
+    "file": "bambooai/code_executor.py",
+    "line": 6,
+    "traceback": "thon-3.15.2-linux-x86_64-gnu/lib/python3.15/importlib/__init__.py\", line 88, in import_module\n    return _bootstrap._gcd_import(name[level:], package, level)\n           ~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"<frozen importlib._bootstrap>\", line 1389, in _gcd_import\n  File \"<frozen importlib._bootstrap>\", line 1338, in _find_and_load\n  File \"<frozen importlib._bootstrap>\", line 1299, in _resolve_parents\n  File \"<frozen importlib._bootstrap>\", line 491, in _call_with_frames_removed\n  File \"<frozen importlib._bootstrap>\", line 1389, in _gcd_import\n  File \"<frozen importlib._bootstrap>\", line 1353, in _find_and_load\n  File \"<frozen importlib._bootstrap>\", line 1249, in _find_and_load_unlocked\n  File \"<frozen importlib._bootstrap>\", line 857, in _load_unlocked\n  File \"<frozen importlib._bootstrap_external>\", line 751, in exec_module\n  File \"<frozen importlib._bootstrap>\", line 491, in _call_with_frames_removed\n  File \"/dev/shm/acr/work/3178322388/src/head/bambooai/__init__.py\", line 1, in <module>\n    from bambooai.bambooai import BambooAI\n  File \"/dev/shm/acr/work/3178322388/src/head/bambooai/bambooai.py\", line 9, in <module>\n    from bambooai import code_executor, models, template_formatting, qa_retrieval, log_manager, output_manager, web_output_manager, storage_manager, utils, executor_client\n  File \"/dev/shm/acr/work/3178322388/src/head/bambooai/code_executor.py\", line 6, in <module>\n    import matplotlib\nModuleNotFoundError: No module named 'matplotlib'\n"
+   },
+   "bambooai.code_executor": {
+    "ok": false,
+    "type": "ModuleNotFoundError",
+    "message": "No module named 'matplotlib'",
+    "missing_module": "matplotlib",
+    "file": "bambooai/code_executor.py",
+    "line": 6,
+    "traceback": "thon-3.15.2-linux-x86_64-gnu/lib/python3.15/importlib/__init__.py\", line 88, in import_module\n    return _bootstrap._gcd_import(name[level:], package, level)\n           ~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"<frozen importlib._bootstrap>\", line 1389, in _gcd_import\n  File \"<frozen importlib._bootstrap>\", line 1338, in _find_and_load\n  File \"<frozen importlib._bootstrap>\", line 1299, in _resolve_parents\n  File \"<frozen importlib._bootstrap>\", line 491, in _call_with_frames_removed\n  File \"<frozen importlib._bootstrap>\", line 1389, in _gcd_import\n  File \"<frozen importlib._bootstrap>\", line 1353, in _find_and_load\n  File \"<frozen importlib._bootstrap>\", line 1249, in _find_and_load_unlocked\n  File \"<frozen importlib._bootstrap>\", line 857, in _load_unlocked\n  File \"<frozen importlib._bootstrap_external>\", line 751, in exec_module\n  File \"<frozen importlib._bootstrap>\", line 491, in _call_with_frames_removed\n  File \"/dev/shm/acr/work/3178322388/src/head/bambooai/__init__.py\", line 1, in <module>\n    from bambooai.bambooai import BambooAI\n  File \"/dev/shm/acr/work/3178322388/src/head/bambooai/bambooai.py\", line 9, in <module>\n    from bambooai import code_executor, models, template_formatting, qa_retrieval, log_manager, output_manager, web_output_manager, storage_manager, utils, executor_client\n  File \"/dev/shm/acr/work/3178322388/src/head/bambooai/code_executor.py\", line 6, in <module>\n    import matplotlib\nModuleNotFoundError: No module named 'matplotlib'\n"
+   },
+   "bambooai.log_manager": {
+    "ok": false,
+    "type": "ModuleNotFoundError",
+    "message": "No module named 'matplotlib'",
+    "missing_module": "matplotlib",
+    "file": "bambooai/code_executor.py",
+    "line": 6,
+    "traceback": "thon-3.15.2-linux-x86_64-gnu/lib/python3.15/importlib/__init__.py\", line 88, in import_module\n    return _bootstrap._gcd_import(name[level:], package, level)\n           ~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"<frozen importlib._bootstrap>\", line 1389, in _gcd_import\n  File \"<frozen importlib._bootstrap>\", line 1338, in _find_and_load\n  File \"<frozen importlib._bootstrap>\", line 1299, in _resolve_parents\n  File \"<frozen importlib._bootstrap>\", line 491, in _call_with_frames_removed\n  File \"<frozen importlib._bootstrap>\", line 1389, in _gcd_import\n  File \"<frozen importlib._bootstrap>\", line 1353, in _find_and_load\n  File \"<frozen importlib._bootstrap>\", line 1249, in _find_and_load_unlocked\n  File \"<frozen importlib._bootstrap>\", line 857, in _load_unlocked\n  File \"<frozen importlib._bootstrap_external>\", line 751, in exec_module\n  File \"<frozen importlib._bootstrap>\", line 491, in _call_with_frames_removed\n  File \"/dev/shm/acr/work/3178322388/src/head/bambooai/__init__.py\", line 1, in <module>\n    from bambooai.bambooai import BambooAI\n  File \"/dev/shm/acr/work/3178322388/src/head/bambooai/bambooai.py\", line 9, in <module>\n    from bambooai import code_executor, models, template_formatting, qa_retrieval, log_manager, output_manager, web_output_manager, storage_manager, utils, executor_client\n  File \"/dev/shm/acr/work/3178322388/src/head/bambooai/code_executor.py\", line 6, in <module>\n    import matplotlib\nModuleNotFoundError: No module named 'matplotlib'\n"
+   },
+   "bambooai.messages.message_manager": {
+    "ok": false,
+    "type": "ModuleNotFoundError",
+    "message": "No module named 'matplotlib'",
+    "missing_module": "matplotlib",
+    "file": "bambooai/code_executor.py",
+    "line": 6,
+    "traceback": "rt\n  File \"<frozen importlib._bootstrap>\", line 1338, in _find_and_load\n  File \"<frozen importlib._bootstrap>\", line 1299, in _resolve_parents\n  File \"<frozen importlib._bootstrap>\", line 491, in _call_with_frames_removed\n  File \"<frozen importlib._bootstrap>\", line 1389, in _gcd_import\n  File \"<frozen importlib._bootstrap>\", line 1338, in _find_and_load\n  File \"<frozen importlib._bootstrap>\", line 1299, in _resolve_parents\n  File \"<frozen importlib._bootstrap>\", line 491, in _call_with_frames_removed\n  File \"<frozen importlib._bootstrap>\", line 1389, in _gcd_import\n  File \"<frozen importlib._bootstrap>\", line 1353, in _find_and_load\n  File \"<frozen importlib._bootstrap>\", line 1249, in _find_and_load_unlocked\n  File \"<frozen importlib._bootstrap>\", line 857, in _load_unlocked\n  File \"<frozen importlib._bootstrap_external>\", line 751, in exec_module\n  File \"<frozen importlib._bootstrap>\", line 491, in _call_with_frames_removed\n  File \"/dev/shm/acr/work/3178322388/src/head/bambooai/__init__.py\", line 1, in <module>\n    from bambooai.bambooai import BambooAI\n  File \"/dev/shm/acr/work/3178322388/src/head/bambooai/bambooai.py\", line 9, in <module>\n    from bambooai import code_executor, models, template_formatting, qa_retrieval, log_manager, output_manager, web_output_manager, storage_manager, utils, executor_client\n  File \"/dev/shm/acr/work/3178322388/src/head/bambooai/code_executor.py\", line 6, in <module>\n    import matplotlib\nModuleNotFoundError: No module named 'matplotlib'\n"
+   },
+   "bambooai.storage_manager": {
+    "ok": false,
+    "type": "ModuleNotFoundError",
+    "message": "No module named 'matplotlib'",
+    "missing_module": "matplotlib",
+    "file": "bambooai/code_executor.py",
+    "line": 6,
+    "traceback": "thon-3.15.2-linux-x86_64-gnu/lib/python3.15/importlib/__init__.py\", line 88, in import_module\n    return _bootstrap._gcd_import(name[level:], package, level)\n           ~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"<frozen importlib._bootstrap>\", line 1389, in _gcd_import\n  File \"<frozen importlib._bootstrap>\", line 1338, in _find_and_load\n  File \"<frozen importlib._bootstrap>\", line 1299, in _resolve_parents\n  File \"<frozen importlib._bootstrap>\", line 491, in _call_with_frames_removed\n  File \"<frozen importlib._bootstrap>\", line 1389, in _gcd_import\n  File \"<frozen importlib._bootstrap>\", line 1353, in _find_and_load\n  File \"<frozen importlib._bootstrap>\", line 1249, in _find_and_load_unlocked\n  File \"<frozen importlib._bootstrap>\", line 857, in _load_unlocked\n  File \"<frozen importlib._bootstrap_external>\", line 751, in exec_module\n  File \"<frozen importlib._bootstrap>\", line 491, in _call_with_frames_removed\n  File \"/dev/shm/acr/work/3178322388/src/head/bambooai/__init__.py\", line 1, in <module>\n    from bambooai.bambooai import BambooAI\n  File \"/dev/shm/acr/work/3178322388/src/head/bambooai/bambooai.py\", line 9, in <module>\n    from bambooai import code_executor, models, template_formatting, qa_retrieval, log_manager, output_manager, web_output_manager, storage_manager, utils, executor_client\n  File \"/dev/shm/acr/work/3178322388/src/head/bambooai/code_executor.py\", line 6, in <module>\n    import matplotlib\nModuleNotFoundError: No module named 'matplotlib'\n"
+   },
+   "web_app.app": {
+    "ok": false,
+    "type": "ModuleNotFoundError",
+    "message": "No module named 'sweatstack'",
+    "missing_module": "sweatstack",
+    "file": "web_app/app.py",
+    "line": 12,
+    "traceback": "Traceback (most recent call last):\n  File \"<string>\", line 7, in <module>\n    importlib.import_module(m)\n    ~~~~~~~~~~~~~~~~~~~~~~~^^^\n  File \"/dev/shm/acr/work/_shared_cache/python/cpython-3.15.2-linux-x86_64-gnu/lib/python3.15/importlib/__init__.py\", line 88, in import_module\n    return _bootstrap._gcd_import(name[level:], package, level)\n           ~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"<frozen importlib._bootstrap>\", line 1389, in _gcd_import\n  File \"<frozen importlib._bootstrap>\", line 1353, in _find_and_load\n  File \"<frozen importlib._bootstrap>\", line 1249, in _find_and_load_unlocked\n  File \"<frozen importlib._bootstrap>\", line 857, in _load_unlocked\n  File \"<frozen importlib._bootstrap_external>\", line 751, in exec_module\n  File \"<frozen importlib._bootstrap>\", line 491, in _call_with_frames_removed\n  File \"/dev/shm/acr/work/3178322388/src/head/web_app/app.py\", line 12, in <module>\n    import sweatstack as ss\nModuleNotFoundError: No module named 'sweatstack'\n"
+   }
+  },
+  "imports_base": {
+   "bambooai.bambooai": {
+    "ok": false,
+    "type": "ModuleNotFoundError",
+    "message": "No module named 'matplotlib'",
+    "missing_module": "matplotlib",
+    "file": "bambooai/code_executor.py",
+    "line": 6,
+    "traceback": "thon-3.15.2-linux-x86_64-gnu/lib/python3.15/importlib/__init__.py\", line 88, in import_module\n    return _bootstrap._gcd_import(name[level:], package, level)\n           ~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"<frozen importlib._bootstrap>\", line 1389, in _gcd_import\n  File \"<frozen importlib._bootstrap>\", line 1338, in _find_and_load\n  File \"<frozen importlib._bootstrap>\", line 1299, in _resolve_parents\n  File \"<frozen importlib._bootstrap>\", line 491, in _call_with_frames_removed\n  File \"<frozen importlib._bootstrap>\", line 1389, in _gcd_import\n  File \"<frozen importlib._bootstrap>\", line 1353, in _find_and_load\n  File \"<frozen importlib._bootstrap>\", line 1249, in _find_and_load_unlocked\n  File \"<frozen importlib._bootstrap>\", line 857, in _load_unlocked\n  File \"<frozen importlib._bootstrap_external>\", line 751, in exec_module\n  File \"<frozen importlib._bootstrap>\", line 491, in _call_with_frames_removed\n  File \"/dev/shm/acr/work/3178322388/src/base/bambooai/__init__.py\", line 1, in <module>\n    from bambooai.bambooai import BambooAI\n  File \"/dev/shm/acr/work/3178322388/src/base/bambooai/bambooai.py\", line 9, in <module>\n    from bambooai import code_executor, models, template_formatting, qa_retrieval, log_manager, output_manager, web_output_manager, storage_manager, utils, executor_client\n  File \"/dev/shm/acr/work/3178322388/src/base/bambooai/code_executor.py\", line 6, in <module>\n    import matplotlib\nModuleNotFoundError: No module named 'matplotlib'\n"
+   },
+   "bambooai.code_executor": {
+    "ok": false,
+    "type": "ModuleNotFoundError",
+    "message": "No module named 'matplotlib'",
+    "missing_module": "matplotlib",
+    "file": "bambooai/code_executor.py",
+    "line": 6,
+    "traceback": "thon-3.15.2-linux-x86_64-gnu/lib/python3.15/importlib/__init__.py\", line 88, in import_module\n    return _bootstrap._gcd_import(name[level:], package, level)\n           ~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"<frozen importlib._bootstrap>\", line 1389, in _gcd_import\n  File \"<frozen importlib._bootstrap>\", line 1338, in _find_and_load\n  File \"<frozen importlib._bootstrap>\", line 1299, in _resolve_parents\n  File \"<frozen importlib._bootstrap>\", line 491, in _call_with_frames_removed\n  File \"<frozen importlib._bootstrap>\", line 1389, in _gcd_import\n  File \"<frozen importlib._bootstrap>\", line 1353, in _find_and_load\n  File \"<frozen importlib._bootstrap>\", line 1249, in _find_and_load_unlocked\n  File \"<frozen importlib._bootstrap>\", line 857, in _load_unlocked\n  File \"<frozen importlib._bootstrap_external>\", line 751, in exec_module\n  File \"<frozen importlib._bootstrap>\", line 491, in _call_with_frames_removed\n  File \"/dev/shm/acr/work/3178322388/src/base/bambooai/__init__.py\", line 1, in <module>\n    from bambooai.bambooai import BambooAI\n  File \"/dev/shm/acr/work/3178322388/src/base/bambooai/bambooai.py\", line 9, in <module>\n    from bambooai import code_executor, models, template_formatting, qa_retrieval, log_manager, output_manager, web_output_manager, storage_manager, utils, executor_client\n  File \"/dev/shm/acr/work/3178322388/src/base/bambooai/code_executor.py\", line 6, in <module>\n    import matplotlib\nModuleNotFoundError: No module named 'matplotlib'\n"
+   },
+   "bambooai.log_manager": {
+    "ok": false,
+    "type": "ModuleNotFoundError",
+    "message": "No module named 'matplotlib'",
+    "missing_module": "matplotlib",
+    "file": "bambooai/code_executor.py",
+    "line": 6,
+    "traceback": "thon-3.15.2-linux-x86_64-gnu/lib/python3.15/importlib/__init__.py\", line 88, in import_module\n    return _bootstrap._gcd_import(name[level:], package, level)\n           ~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"<frozen importlib._bootstrap>\", line 1389, in _gcd_import\n  File \"<frozen importlib._bootstrap>\", line 1338, in _find_and_load\n  File \"<frozen importlib._bootstrap>\", line 1299, in _resolve_parents\n  File \"<frozen importlib._bootstrap>\", line 491, in _call_with_frames_removed\n  File \"<frozen importlib._bootstrap>\", line 1389, in _gcd_import\n  File \"<frozen importlib._bootstrap>\", line 1353, in _find_and_load\n  File \"<frozen importlib._bootstrap>\", line 1249, in _find_and_load_unlocked\n  File \"<frozen importlib._bootstrap>\", line 857, in _load_unlocked\n  File \"<frozen importlib._bootstrap_external>\", line 751, in exec_module\n  File \"<frozen importlib._bootstrap>\", line 491, in _call_with_frames_removed\n  File \"/dev/shm/acr/work/3178322388/src/base/bambooai/__init__.py\", line 1, in <module>\n    from bambooai.bambooai import BambooAI\n  File \"/dev/shm/acr/work/3178322388/src/base/bambooai/bambooai.py\", line 9, in <module>\n    from bambooai import code_executor, models, template_formatting, qa_retrieval, log_manager, output_manager, web_output_manager, storage_manager, utils, executor_client\n  File \"/dev/shm/acr/work/3178322388/src/base/bambooai/code_executor.py\", line 6, in <module>\n    import matplotlib\nModuleNotFoundError: No module named 'matplotlib'\n"
+   },
+   "bambooai.messages.message_manager": {
+    "ok": false,
+    "type": "ModuleNotFoundError",
+    "message": "No module named 'matplotlib'",
+    "missing_module": "matplotlib",
+    "file": "bambooai/code_executor.py",
+    "line": 6,
+    "traceback": "rt\n  File \"<frozen importlib._bootstrap>\", line 1338, in _find_and_load\n  File \"<frozen importlib._bootstrap>\", line 1299, in _resolve_parents\n  File \"<frozen importlib._bootstrap>\", line 491, in _call_with_frames_removed\n  File \"<frozen importlib._bootstrap>\", line 1389, in _gcd_import\n  File \"<frozen importlib._bootstrap>\", line 1338, in _find_and_load\n  File \"<frozen importlib._bootstrap>\", line 1299, in _resolve_parents\n  File \"<frozen importlib._bootstrap>\", line 491, in _call_with_frames_removed\n  File \"<frozen importlib._bootstrap>\", line 1389, in _gcd_import\n  File \"<frozen importlib._bootstrap>\", line 1353, in _find_and_load\n  File \"<frozen importlib._bootstrap>\", line 1249, in _find_and_load_unlocked\n  File \"<frozen importlib._bootstrap>\", line 857, in _load_unlocked\n  File \"<frozen importlib._bootstrap_external>\", line 751, in exec_module\n  File \"<frozen importlib._bootstrap>\", line 491, in _call_with_frames_removed\n  File \"/dev/shm/acr/work/3178322388/src/base/bambooai/__init__.py\", line 1, in <module>\n    from bambooai.bambooai import BambooAI\n  File \"/dev/shm/acr/work/3178322388/src/base/bambooai/bambooai.py\", line 9, in <module>\n    from bambooai import code_executor, models, template_formatting, qa_retrieval, log_manager, output_manager, web_output_manager, storage_manager, utils, executor_client\n  File \"/dev/shm/acr/work/3178322388/src/base/bambooai/code_executor.py\", line 6, in <module>\n    import matplotlib\nModuleNotFoundError: No module named 'matplotlib'\n"
+   },
+   "bambooai.storage_manager": {
+    "ok": false,
+    "type": "ModuleNotFoundError",
+    "message": "No module named 'matplotlib'",
+    "missing_module": "matplotlib",
+    "file": "bambooai/code_executor.py",
+    "line": 6,
+    "traceback": "thon-3.15.2-linux-x86_64-gnu/lib/python3.15/importlib/__init__.py\", line 88, in import_module\n    return _bootstrap._gcd_import(name[level:], package, level)\n           ~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"<frozen importlib._bootstrap>\", line 1389, in _gcd_import\n  File \"<frozen importlib._bootstrap>\", line 1338, in _find_and_load\n  File \"<frozen importlib._bootstrap>\", line 1299, in _resolve_parents\n  File \"<frozen importlib._bootstrap>\", line 491, in _call_with_frames_removed\n  File \"<frozen importlib._bootstrap>\", line 1389, in _gcd_import\n  File \"<frozen importlib._bootstrap>\", line 1353, in _find_and_load\n  File \"<frozen importlib._bootstrap>\", line 1249, in _find_and_load_unlocked\n  File \"<frozen importlib._bootstrap>\", line 857, in _load_unlocked\n  File \"<frozen importlib._bootstrap_external>\", line 751, in exec_module\n  File \"<frozen importlib._bootstrap>\", line 491, in _call_with_frames_removed\n  File \"/dev/shm/acr/work/3178322388/src/base/bambooai/__init__.py\", line 1, in <module>\n    from bambooai.bambooai import BambooAI\n  File \"/dev/shm/acr/work/3178322388/src/base/bambooai/bambooai.py\", line 9, in <module>\n    from bambooai import code_executor, models, template_formatting, qa_retrieval, log_manager, output_manager, web_output_manager, storage_manager, utils, executor_client\n  File \"/dev/shm/acr/work/3178322388/src/base/bambooai/code_executor.py\", line 6, in <module>\n    import matplotlib\nModuleNotFoundError: No module named 'matplotlib'\n"
+   },
+   "web_app.app": {
+    "ok": false,
+    "type": "ModuleNotFoundError",
+    "message": "No module named 'sweatstack'",
+    "missing_module": "sweatstack",
+    "file": "web_app/app.py",
+    "line": 12,
+    "traceback": "Traceback (most recent call last):\n  File \"<string>\", line 7, in <module>\n    importlib.import_module(m)\n    ~~~~~~~~~~~~~~~~~~~~~~~^^^\n  File \"/dev/shm/acr/work/_shared_cache/python/cpython-3.15.2-linux-x86_64-gnu/lib/python3.15/importlib/__init__.py\", line 88, in import_module\n    return _bootstrap._gcd_import(name[level:], package, level)\n           ~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"<frozen importlib._bootstrap>\", line 1389, in _gcd_import\n  File \"<frozen importlib._bootstrap>\", line 1353, in _find_and_load\n  File \"<frozen importlib._bootstrap>\", line 1249, in _find_and_load_unlocked\n  File \"<frozen importlib._bootstrap>\", line 857, in _load_unlocked\n  File \"<frozen importlib._bootstrap_external>\", line 751, in exec_module\n  File \"<frozen importlib._bootstrap>\", line 491, in _call_with_frames_removed\n  File \"/dev/shm/acr/work/3178322388/src/base/web_app/app.py\", line 12, in <module>\n    import sweatstack as ss\nModuleNotFoundError: No module named 'sweatstack'\n"
+   }
+  },
+  "status": "completed",
+  "dependency_cutoff": "2025-06-26T09:27:14Z",
+  "seconds": 160.7,
+  "head_failures": 1
+ },
+ "findings": [],
+ "status": "ok",
+ "seconds": 167.9
+}

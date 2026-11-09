@@ -1,0 +1,175 @@
+{
+ "pr_id": 3081839872,
+ "repository": "pydata/pandas-datareader",
+ "pr_number": 1003,
+ "split": "development",
+ "agent": "OpenAI_Codex",
+ "head_sha": "c9fcfa1ea448bedcfa43baf73fbb128a78f014b6",
+ "tool_versions": {
+  "ruff": "ruff 0.17.4",
+  "bandit": "__main__.py 1.9.4",
+  "python": "3.12.3"
+ },
+ "config": {
+  "run_tests": true,
+  "sandbox": true
+ },
+ "base_mode": "reverse_applied_diff",
+ "static": {
+  "files_analysed": 2,
+  "head_issues": 2,
+  "base_issues": 0,
+  "per_tool_head": {
+   "ruff": 2
+  },
+  "per_tool_base": {},
+  "introduced": 2,
+  "seconds": 0.2
+ },
+ "tests": {
+  "env": {
+   "status": "partial",
+   "python": "3.15.2",
+   "steps": [
+    {
+     "step": "venv",
+     "ok": true,
+     "seconds": 0.0,
+     "timed_out": false,
+     "log_tail": ""
+    },
+    {
+     "step": "install -e .",
+     "ok": false,
+     "seconds": 0.8,
+     "timed_out": false,
+     "log_tail": "error: Failed to build `lxml==5.4.0`\n  cause: The build backend returned an error\n  cause: Call to `setuptools.build_meta:__legacy__.get_requires_for_build_wheel` failed (exit status: 1)\n\n         [stdout]\n         Building lxml version 5.4.0.\n         Building without Cython.\n         Error: Please make sure the libxml2 and libxslt development packages are installed.\n\n         [stderr]\n         <string>:67: DeprecationWarning: pkg_resources is deprecated as an API. See https://setuptools.pypa.io/en/latest/pkg_resources.html\n\nhint: `lxml` (v5.4.0) was included because `pandas-datareader` (v0.1.dev1+gc9fcfa1) depends on `lxml`\n\nhint: Build failures usually indicate a problem with the package or the build environment\n"
+    },
+    {
+     "step": "install -r requirements.txt",
+     "ok": false,
+     "seconds": 0.3,
+     "timed_out": false,
+     "log_tail": "error: Failed to build `lxml==5.4.0`\n  cause: The build backend returned an error\n  cause: Call to `setuptools.build_meta:__legacy__.get_requires_for_build_wheel` failed (exit status: 1)\n\n         [stdout]\n         Building lxml version 5.4.0.\n         Building without Cython.\n         Error: Please make sure the libxml2 and libxslt development packages are installed.\n\n         [stderr]\n         <string>:67: DeprecationWarning: pkg_resources is deprecated as an API. See https://setuptools.pypa.io/en/latest/pkg_resources.html\n\nhint: Build failures usually indicate a problem with the package or the build environment\n"
+    },
+    {
+     "step": "install -r requirements-dev.txt",
+     "ok": true,
+     "seconds": 0.6,
+     "timed_out": false,
+     "log_tail": ""
+    },
+    {
+     "step": "install pytest",
+     "ok": true,
+     "seconds": 0.0,
+     "timed_out": false,
+     "log_tail": ""
+    }
+   ]
+  },
+  "selected_tests": [
+   {
+    "path": "pandas_datareader/tests/test_compat_version.py",
+    "reason": "changed_in_pr",
+    "exists_at_base": false
+   }
+  ],
+  "head_run": {
+   "status": "usage_error",
+   "exit_code": 4,
+   "seconds": 0.3,
+   "addopts_overridden": true,
+   "counts": {
+    "passed": 0,
+    "failed": 0,
+    "error": 0,
+    "skipped": 0
+   },
+   "tests": {},
+   "log_tail": "\n/dev/shm/acr/work/3081839872/venv/lib/python3.15/site-packages/_pytest/config/__init__.py:331: PluggyTeardownRaisedWarning: A plugin raised an exception during an old-style hookwrapper teardown.\nPlugin: helpconfig, Hook: pytest_cmdline_parse\nConftestImportFailure: ModuleNotFoundError: No module named 'pandas' (from /dev/shm/acr/work/3081839872/src/head/pandas_datareader/conftest.py)\nFor more information see https://pluggy.readthedocs.io/en/stable/api_reference.html#pluggy.PluggyTeardownRaisedWarning\n  config = pluginmanager.hook.pytest_cmdline_parse(\nImportError while loading conftest '/dev/shm/acr/work/3081839872/src/head/pandas_datareader/conftest.py'.\npandas_datareader/__init__.py:5: in <module>\n    from .data import (\npandas_datareader/data.py:9: in <module>\n    from pandas.util._decorators import deprecate_kwarg\nE   ModuleNotFoundError: No module named 'pandas'\n"
+  },
+  "base_run": {
+   "status": "not_run",
+   "tests": {}
+  },
+  "comparison": {
+   "regressions": [],
+   "new_test_failures": [],
+   "fixed": [],
+   "persistent_failures": []
+  },
+  "imports_head": {
+   "pandas_datareader.compat": {
+    "ok": false,
+    "type": "ModuleNotFoundError",
+    "message": "No module named 'pandas'",
+    "missing_module": "pandas",
+    "file": "pandas_datareader/data.py",
+    "line": 9,
+    "traceback": "Traceback (most recent call last):\n  File \"<string>\", line 7, in <module>\n    importlib.import_module(m)\n    ~~~~~~~~~~~~~~~~~~~~~~~^^^\n  File \"/dev/shm/acr/work/_shared_cache/python/cpython-3.15.2-linux-x86_64-gnu/lib/python3.15/importlib/__init__.py\", line 88, in import_module\n    return _bootstrap._gcd_import(name[level:], package, level)\n           ~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"<frozen importlib._bootstrap>\", line 1389, in _gcd_import\n  File \"<frozen importlib._bootstrap>\", line 1338, in _find_and_load\n  File \"<frozen importlib._bootstrap>\", line 1299, in _resolve_parents\n  File \"<frozen importlib._bootstrap>\", line 491, in _call_with_frames_removed\n  File \"<frozen importlib._bootstrap>\", line 1389, in _gcd_import\n  File \"<frozen importlib._bootstrap>\", line 1353, in _find_and_load\n  File \"<frozen importlib._bootstrap>\", line 1249, in _find_and_load_unlocked\n  File \"<frozen importlib._bootstrap>\", line 857, in _load_unlocked\n  File \"<frozen importlib._bootstrap_external>\", line 751, in exec_module\n  File \"<frozen importlib._bootstrap>\", line 491, in _call_with_frames_removed\n  File \"/dev/shm/acr/work/3081839872/src/head/pandas_datareader/__init__.py\", line 5, in <module>\n    from .data import (\n    ...<26 lines>...\n    )\n  File \"/dev/shm/acr/work/3081839872/src/head/pandas_datareader/data.py\", line 9, in <module>\n    from pandas.util._decorators import deprecate_kwarg\nModuleNotFoundError: No module named 'pandas'\n"
+   }
+  },
+  "imports_base": {
+   "pandas_datareader.compat": {
+    "ok": null,
+    "type": "NoResult",
+    "message": "51, in exec_module\n  File \"<frozen importlib._bootstrap>\", line 491, in _call_with_frames_removed\n  File \"/dev/shm/acr/work/3081839872/src/base/pandas_datareader/__init__.py\", line 4, in <module>\n    from ._version import __version__\nModuleNotFoundError: No module named 'pandas_datareader._version'\n"
+   }
+  },
+  "status": "head_usage_error",
+  "dependency_cutoff": "2025-05-22T02:26:40Z",
+  "seconds": 2.5,
+  "head_failures": 0
+ },
+ "findings": [
+  {
+   "tool": "ruff",
+   "rule": "F401",
+   "category": "maintainability",
+   "severity": "low",
+   "confidence": "high",
+   "message": "`distutils.version.LooseVersion` imported but unused",
+   "file": "pandas_datareader/compat/__init__.py",
+   "line": 8,
+   "end_line": 8,
+   "cwe": null,
+   "on_changed_line": true,
+   "evidence": {
+    "type": "static",
+    "source_line": "from distutils.version import LooseVersion",
+    "url": "https://docs.astral.sh/ruff/rules/unused-import"
+   },
+   "sources": [
+    "ruff"
+   ],
+   "finding_id": "0909998cba0c",
+   "score": 1.5
+  },
+  {
+   "tool": "ruff",
+   "rule": "F401",
+   "category": "maintainability",
+   "severity": "low",
+   "confidence": "high",
+   "message": "`pytest` imported but unused",
+   "file": "pandas_datareader/tests/test_compat_version.py",
+   "line": 1,
+   "end_line": 1,
+   "cwe": null,
+   "on_changed_line": true,
+   "evidence": {
+    "type": "static",
+    "source_line": "import pytest",
+    "url": "https://docs.astral.sh/ruff/rules/unused-import"
+   },
+   "sources": [
+    "ruff"
+   ],
+   "finding_id": "07f566de05c2",
+   "score": 1.5
+  }
+ ],
+ "status": "ok",
+ "seconds": 3.2
+}

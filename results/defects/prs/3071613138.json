@@ -1,0 +1,297 @@
+{
+ "pr_id": 3071613138,
+ "repository": "Uberi/speech_recognition",
+ "pr_number": 846,
+ "split": "development",
+ "agent": "OpenAI_Codex",
+ "head_sha": "ddf10cb4576629ef7981db0fedcd91dde5c0e8bd",
+ "tool_versions": {
+  "ruff": "ruff 0.17.4",
+  "bandit": "__main__.py 1.9.4",
+  "python": "3.12.3"
+ },
+ "config": {
+  "run_tests": true,
+  "sandbox": true
+ },
+ "base_mode": "base_branch_commit",
+ "static": {
+  "files_analysed": 2,
+  "head_issues": 1,
+  "base_issues": 0,
+  "per_tool_head": {
+   "bandit": 1
+  },
+  "per_tool_base": {},
+  "introduced": 1,
+  "seconds": 0.2
+ },
+ "tests": {
+  "env": {
+   "status": "partial",
+   "python": "3.15.2",
+   "steps": [
+    {
+     "step": "venv",
+     "ok": true,
+     "seconds": 0.0,
+     "timed_out": false,
+     "log_tail": ""
+    },
+    {
+     "step": "install -e .",
+     "ok": false,
+     "seconds": 0.2,
+     "timed_out": false,
+     "log_tail": "ild_meta.py\", line 473, in get_requires_for_build_editable\n             return self.get_requires_for_build_wheel(config_settings)\n                    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^\n           File \"/dev/shm/acr/work/_shared_cache/uv/builds-v0/.tmprenJ3w/lib/python3.15/site-packages/setuptools/build_meta.py\", line 331, in get_requires_for_build_wheel\n             return self._get_build_requires(config_settings, requirements=[])\n                    ~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n           File \"/dev/shm/acr/work/_shared_cache/uv/builds-v0/.tmprenJ3w/lib/python3.15/site-packages/setuptools/build_meta.py\", line 301, in _get_build_requires\n             self.run_setup()\n             ~~~~~~~~~~~~~~^^\n           File \"/dev/shm/acr/work/_shared_cache/uv/builds-v0/.tmprenJ3w/lib/python3.15/site-packages/setuptools/build_meta.py\", line 512, in run_setup\n             super().run_setup(setup_script=setup_script)\n             ~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^\n           File \"/dev/shm/acr/work/_shared_cache/uv/builds-v0/.tmprenJ3w/lib/python3.15/site-packages/setuptools/build_meta.py\", line 317, in run_setup\n             exec(code, locals())\n             ~~~~^^^^^^^^^^^^^^^^\n           File \"<string>\", line 10, in <module>\n             import json\n           File \"/dev/shm/acr/work/3071613138/src/head/speech_recognition/__init__.py\", line 7, in <module>\n             import aifc\n         ModuleNotFoundError: No module named 'aifc'\n"
+    },
+    {
+     "step": "install pytest",
+     "ok": true,
+     "seconds": 0.0,
+     "timed_out": false,
+     "log_tail": ""
+    },
+    {
+     "step": "repair: install aifc google httpx numpy",
+     "ok": false,
+     "seconds": 0.2,
+     "timed_out": false,
+     "log_tail": "error: No solution found when resolving dependencies\n  cause: Because aifc was not found in the package registry and you require aifc, we can conclude that your requirements are unsatisfiable.\n"
+    }
+   ]
+  },
+  "selected_tests": [
+   {
+    "path": "tests/recognizers/test_google.py",
+    "reason": "full_suite",
+    "exists_at_base": true
+   },
+   {
+    "path": "tests/recognizers/test_google_cloud.py",
+    "reason": "full_suite",
+    "exists_at_base": true
+   },
+   {
+    "path": "tests/recognizers/test_vosk.py",
+    "reason": "full_suite",
+    "exists_at_base": true
+   },
+   {
+    "path": "tests/recognizers/whisper_api/test_groq.py",
+    "reason": "full_suite",
+    "exists_at_base": true
+   },
+   {
+    "path": "tests/recognizers/whisper_api/test_openai.py",
+    "reason": "full_suite",
+    "exists_at_base": true
+   },
+   {
+    "path": "tests/recognizers/whisper_local/test_faster_whisper.py",
+    "reason": "full_suite",
+    "exists_at_base": true
+   },
+   {
+    "path": "tests/recognizers/whisper_local/test_whisper.py",
+    "reason": "full_suite",
+    "exists_at_base": true
+   },
+   {
+    "path": "tests/test_audio.py",
+    "reason": "full_suite",
+    "exists_at_base": true
+   },
+   {
+    "path": "tests/test_recognition.py",
+    "reason": "full_suite",
+    "exists_at_base": true
+   },
+   {
+    "path": "tests/test_special_features.py",
+    "reason": "full_suite",
+    "exists_at_base": true
+   }
+  ],
+  "head_run": {
+   "status": "completed",
+   "exit_code": 2,
+   "seconds": 0.4,
+   "addopts_overridden": false,
+   "counts": {
+    "passed": 0,
+    "failed": 0,
+    "error": 10,
+    "skipped": 0
+   },
+   "tests": {
+    "::tests.recognizers.test_google": {
+     "outcome": "error",
+     "detail": "collection failure\nImportError while importing test module '/dev/shm/acr/work/3071613138/src/head/tests/recognizers/test_google.py'.\nHint: make sure your test modules/packages have valid Python names.\nTraceback:\n../../../_shared_cache/python/cpython-3.15.2-linux-x86_64-gnu/lib/python3.15/importlib/__init__.py:88: in import_module\n    return _bootstrap._gcd_import(name[level:], package, level)\ntests/recognizers/test_google.py:5: in <module>\n    from speech_recognition import Recognizer\nspeech_recognition/__init__.py:7: in <module>\n    import aifc\nE   ModuleNotFoundError: No module named 'aifc'"
+    },
+    "::tests.recognizers.test_google_cloud": {
+     "outcome": "error",
+     "detail": "collection failure\nImportError while importing test module '/dev/shm/acr/work/3071613138/src/head/tests/recognizers/test_google_cloud.py'.\nHint: make sure your test modules/packages have valid Python names.\nTraceback:\n../../../_shared_cache/python/cpython-3.15.2-linux-x86_64-gnu/lib/python3.15/importlib/__init__.py:88: in import_module\n    return _bootstrap._gcd_import(name[level:], package, level)\ntests/recognizers/test_google_cloud.py:3: in <module>\n    from google.cloud.speech import (\nE   ModuleNotFoundError: No module named 'google'"
+    },
+    "::tests.recognizers.test_vosk": {
+     "outcome": "error",
+     "detail": "collection failure\nImportError while importing test module '/dev/shm/acr/work/3071613138/src/head/tests/recognizers/test_vosk.py'.\nHint: make sure your test modules/packages have valid Python names.\nTraceback:\n../../../_shared_cache/python/cpython-3.15.2-linux-x86_64-gnu/lib/python3.15/importlib/__init__.py:88: in import_module\n    return _bootstrap._gcd_import(name[level:], package, level)\ntests/recognizers/test_vosk.py:3: in <module>\n    from speech_recognition import AudioData, Recognizer\nspeech_recognition/__init__.py:7: in <module>\n    import aifc\nE   ModuleNotFoundError: No module named 'aifc'"
+    },
+    "::tests.recognizers.whisper_api.test_groq": {
+     "outcome": "error",
+     "detail": "collection failure\nImportError while importing test module '/dev/shm/acr/work/3071613138/src/head/tests/recognizers/whisper_api/test_groq.py'.\nHint: make sure your test modules/packages have valid Python names.\nTraceback:\n../../../_shared_cache/python/cpython-3.15.2-linux-x86_64-gnu/lib/python3.15/importlib/__init__.py:88: in import_module\n    return _bootstrap._gcd_import(name[level:], package, level)\ntests/recognizers/whisper_api/test_groq.py:3: in <module>\n    import httpx\nE   ModuleNotFoundError: No module named 'httpx'. Did you mean: 'http'?"
+    },
+    "::tests.recognizers.whisper_api.test_openai": {
+     "outcome": "error",
+     "detail": "collection failure\nImportError while importing test module '/dev/shm/acr/work/3071613138/src/head/tests/recognizers/whisper_api/test_openai.py'.\nHint: make sure your test modules/packages have valid Python names.\nTraceback:\n../../../_shared_cache/python/cpython-3.15.2-linux-x86_64-gnu/lib/python3.15/importlib/__init__.py:88: in import_module\n    return _bootstrap._gcd_import(name[level:], package, level)\ntests/recognizers/whisper_api/test_openai.py:3: in <module>\n    import httpx\nE   ModuleNotFoundError: No module named 'httpx'. Did you mean: 'http'?"
+    },
+    "::tests.recognizers.whisper_local.test_faster_whisper": {
+     "outcome": "error",
+     "detail": "collection failure\nImportError while importing test module '/dev/shm/acr/work/3071613138/src/head/tests/recognizers/whisper_local/test_faster_whisper.py'.\nHint: make sure your test modules/packages have valid Python names.\nTraceback:\n../../../_shared_cache/python/cpython-3.15.2-linux-x86_64-gnu/lib/python3.15/importlib/__init__.py:88: in import_module\n    return _bootstrap._gcd_import(name[level:], package, level)\ntests/recognizers/whisper_local/test_faster_whisper.py:8: in <module>\n    import numpy as np\nE   ModuleNotFoundError: No module named 'numpy'. Did you mean: 'runpy'?"
+    },
+    "::tests.recognizers.whisper_local.test_whisper": {
+     "outcome": "error",
+     "detail": "collection failure\nImportError while importing test module '/dev/shm/acr/work/3071613138/src/head/tests/recognizers/whisper_local/test_whisper.py'.\nHint: make sure your test modules/packages have valid Python names.\nTraceback:\n../../../_shared_cache/python/cpython-3.15.2-linux-x86_64-gnu/lib/python3.15/importlib/__init__.py:88: in import_module\n    return _bootstrap._gcd_import(name[level:], package, level)\ntests/recognizers/whisper_local/test_whisper.py:5: in <module>\n    import numpy as np\nE   ModuleNotFoundError: No module named 'numpy'. Did you mean: 'runpy'?"
+    },
+    "::tests.test_audio": {
+     "outcome": "error",
+     "detail": "collection failure\nImportError while importing test module '/dev/shm/acr/work/3071613138/src/head/tests/test_audio.py'.\nHint: make sure your test modules/packages have valid Python names.\nTraceback:\n../../../_shared_cache/python/cpython-3.15.2-linux-x86_64-gnu/lib/python3.15/importlib/__init__.py:88: in import_module\n    return _bootstrap._gcd_import(name[level:], package, level)\ntests/test_audio.py:6: in <module>\n    import speech_recognition as sr\nspeech_recognition/__init__.py:7: in <module>\n    import aifc\nE   ModuleNotFoundError: No module named 'aifc'"
+    },
+    "::tests.test_recognition": {
+     "outcome": "error",
+     "detail": "collection failure\nImportError while importing test module '/dev/shm/acr/work/3071613138/src/head/tests/test_recognition.py'.\nHint: make sure your test modules/packages have valid Python names.\nTraceback:\n../../../_shared_cache/python/cpython-3.15.2-linux-x86_64-gnu/lib/python3.15/importlib/__init__.py:88: in import_module\n    return _bootstrap._gcd_import(name[level:], package, level)\ntests/test_recognition.py:8: in <module>\n    import speech_recognition as sr\nspeech_recognition/__init__.py:7: in <module>\n    import aifc\nE   ModuleNotFoundError: No module named 'aifc'"
+    },
+    "::tests.test_special_features": {
+     "outcome": "error",
+     "detail": "collection failure\nImportError while importing test module '/dev/shm/acr/work/3071613138/src/head/tests/test_special_features.py'.\nHint: make sure your test modules/packages have valid Python names.\nTraceback:\n../../../_shared_cache/python/cpython-3.15.2-linux-x86_64-gnu/lib/python3.15/importlib/__init__.py:88: in import_module\n    return _bootstrap._gcd_import(name[level:], package, level)\ntests/test_special_features.py:8: in <module>\n    import speech_recognition as sr\nspeech_recognition/__init__.py:7: in <module>\n    import aifc\nE   ModuleNotFoundError: No module named 'aifc'"
+    }
+   },
+   "log_tail": ""
+  },
+  "base_run": {
+   "status": "completed",
+   "exit_code": 2,
+   "seconds": 0.4,
+   "addopts_overridden": false,
+   "counts": {
+    "passed": 0,
+    "failed": 0,
+    "error": 10,
+    "skipped": 0
+   },
+   "tests": {
+    "::tests.recognizers.test_google": {
+     "outcome": "error",
+     "detail": "collection failure\nImportError while importing test module '/dev/shm/acr/work/3071613138/src/base/tests/recognizers/test_google.py'.\nHint: make sure your test modules/packages have valid Python names.\nTraceback:\n../../../_shared_cache/python/cpython-3.15.2-linux-x86_64-gnu/lib/python3.15/importlib/__init__.py:88: in import_module\n    return _bootstrap._gcd_import(name[level:], package, level)\ntests/recognizers/test_google.py:5: in <module>\n    from speech_recognition import Recognizer\nspeech_recognition/__init__.py:7: in <module>\n    import aifc\nE   ModuleNotFoundError: No module named 'aifc'"
+    },
+    "::tests.recognizers.test_google_cloud": {
+     "outcome": "error",
+     "detail": "collection failure\nImportError while importing test module '/dev/shm/acr/work/3071613138/src/base/tests/recognizers/test_google_cloud.py'.\nHint: make sure your test modules/packages have valid Python names.\nTraceback:\n../../../_shared_cache/python/cpython-3.15.2-linux-x86_64-gnu/lib/python3.15/importlib/__init__.py:88: in import_module\n    return _bootstrap._gcd_import(name[level:], package, level)\ntests/recognizers/test_google_cloud.py:3: in <module>\n    from google.cloud.speech import (\nE   ModuleNotFoundError: No module named 'google'"
+    },
+    "::tests.recognizers.test_vosk": {
+     "outcome": "error",
+     "detail": "collection failure\nImportError while importing test module '/dev/shm/acr/work/3071613138/src/base/tests/recognizers/test_vosk.py'.\nHint: make sure your test modules/packages have valid Python names.\nTraceback:\n../../../_shared_cache/python/cpython-3.15.2-linux-x86_64-gnu/lib/python3.15/importlib/__init__.py:88: in import_module\n    return _bootstrap._gcd_import(name[level:], package, level)\ntests/recognizers/test_vosk.py:5: in <module>\n    from speech_recognition import AudioData, Recognizer\nspeech_recognition/__init__.py:7: in <module>\n    import aifc\nE   ModuleNotFoundError: No module named 'aifc'"
+    },
+    "::tests.recognizers.whisper_api.test_groq": {
+     "outcome": "error",
+     "detail": "collection failure\nImportError while importing test module '/dev/shm/acr/work/3071613138/src/base/tests/recognizers/whisper_api/test_groq.py'.\nHint: make sure your test modules/packages have valid Python names.\nTraceback:\n../../../_shared_cache/python/cpython-3.15.2-linux-x86_64-gnu/lib/python3.15/importlib/__init__.py:88: in import_module\n    return _bootstrap._gcd_import(name[level:], package, level)\ntests/recognizers/whisper_api/test_groq.py:3: in <module>\n    import httpx\nE   ModuleNotFoundError: No module named 'httpx'. Did you mean: 'http'?"
+    },
+    "::tests.recognizers.whisper_api.test_openai": {
+     "outcome": "error",
+     "detail": "collection failure\nImportError while importing test module '/dev/shm/acr/work/3071613138/src/base/tests/recognizers/whisper_api/test_openai.py'.\nHint: make sure your test modules/packages have valid Python names.\nTraceback:\n../../../_shared_cache/python/cpython-3.15.2-linux-x86_64-gnu/lib/python3.15/importlib/__init__.py:88: in import_module\n    return _bootstrap._gcd_import(name[level:], package, level)\ntests/recognizers/whisper_api/test_openai.py:3: in <module>\n    import httpx\nE   ModuleNotFoundError: No module named 'httpx'. Did you mean: 'http'?"
+    },
+    "::tests.recognizers.whisper_local.test_faster_whisper": {
+     "outcome": "error",
+     "detail": "collection failure\nImportError while importing test module '/dev/shm/acr/work/3071613138/src/base/tests/recognizers/whisper_local/test_faster_whisper.py'.\nHint: make sure your test modules/packages have valid Python names.\nTraceback:\n../../../_shared_cache/python/cpython-3.15.2-linux-x86_64-gnu/lib/python3.15/importlib/__init__.py:88: in import_module\n    return _bootstrap._gcd_import(name[level:], package, level)\ntests/recognizers/whisper_local/test_faster_whisper.py:8: in <module>\n    import numpy as np\nE   ModuleNotFoundError: No module named 'numpy'. Did you mean: 'runpy'?"
+    },
+    "::tests.recognizers.whisper_local.test_whisper": {
+     "outcome": "error",
+     "detail": "collection failure\nImportError while importing test module '/dev/shm/acr/work/3071613138/src/base/tests/recognizers/whisper_local/test_whisper.py'.\nHint: make sure your test modules/packages have valid Python names.\nTraceback:\n../../../_shared_cache/python/cpython-3.15.2-linux-x86_64-gnu/lib/python3.15/importlib/__init__.py:88: in import_module\n    return _bootstrap._gcd_import(name[level:], package, level)\ntests/recognizers/whisper_local/test_whisper.py:5: in <module>\n    import numpy as np\nE   ModuleNotFoundError: No module named 'numpy'. Did you mean: 'runpy'?"
+    },
+    "::tests.test_audio": {
+     "outcome": "error",
+     "detail": "collection failure\nImportError while importing test module '/dev/shm/acr/work/3071613138/src/base/tests/test_audio.py'.\nHint: make sure your test modules/packages have valid Python names.\nTraceback:\n../../../_shared_cache/python/cpython-3.15.2-linux-x86_64-gnu/lib/python3.15/importlib/__init__.py:88: in import_module\n    return _bootstrap._gcd_import(name[level:], package, level)\ntests/test_audio.py:6: in <module>\n    import speech_recognition as sr\nspeech_recognition/__init__.py:7: in <module>\n    import aifc\nE   ModuleNotFoundError: No module named 'aifc'"
+    },
+    "::tests.test_recognition": {
+     "outcome": "error",
+     "detail": "collection failure\nImportError while importing test module '/dev/shm/acr/work/3071613138/src/base/tests/test_recognition.py'.\nHint: make sure your test modules/packages have valid Python names.\nTraceback:\n../../../_shared_cache/python/cpython-3.15.2-linux-x86_64-gnu/lib/python3.15/importlib/__init__.py:88: in import_module\n    return _bootstrap._gcd_import(name[level:], package, level)\ntests/test_recognition.py:8: in <module>\n    import speech_recognition as sr\nspeech_recognition/__init__.py:7: in <module>\n    import aifc\nE   ModuleNotFoundError: No module named 'aifc'"
+    },
+    "::tests.test_special_features": {
+     "outcome": "error",
+     "detail": "collection failure\nImportError while importing test module '/dev/shm/acr/work/3071613138/src/base/tests/test_special_features.py'.\nHint: make sure your test modules/packages have valid Python names.\nTraceback:\n../../../_shared_cache/python/cpython-3.15.2-linux-x86_64-gnu/lib/python3.15/importlib/__init__.py:88: in import_module\n    return _bootstrap._gcd_import(name[level:], package, level)\ntests/test_special_features.py:8: in <module>\n    import speech_recognition as sr\nspeech_recognition/__init__.py:7: in <module>\n    import aifc\nE   ModuleNotFoundError: No module named 'aifc'"
+    }
+   },
+   "log_tail": ""
+  },
+  "comparison": {
+   "regressions": [],
+   "new_test_failures": [],
+   "fixed": [],
+   "persistent_failures": [
+    "::tests.recognizers.test_google",
+    "::tests.recognizers.test_google_cloud",
+    "::tests.recognizers.test_vosk",
+    "::tests.recognizers.whisper_api.test_groq",
+    "::tests.recognizers.whisper_api.test_openai",
+    "::tests.recognizers.whisper_local.test_faster_whisper",
+    "::tests.recognizers.whisper_local.test_whisper",
+    "::tests.test_audio",
+    "::tests.test_recognition",
+    "::tests.test_special_features"
+   ]
+  },
+  "imports_head": {
+   "speech_recognition.cli": {
+    "ok": false,
+    "type": "ModuleNotFoundError",
+    "message": "No module named 'aifc'",
+    "missing_module": "aifc",
+    "file": "speech_recognition/__init__.py",
+    "line": 7,
+    "traceback": "Traceback (most recent call last):\n  File \"<string>\", line 7, in <module>\n    importlib.import_module(m)\n    ~~~~~~~~~~~~~~~~~~~~~~~^^^\n  File \"/dev/shm/acr/work/_shared_cache/python/cpython-3.15.2-linux-x86_64-gnu/lib/python3.15/importlib/__init__.py\", line 88, in import_module\n    return _bootstrap._gcd_import(name[level:], package, level)\n           ~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"<frozen importlib._bootstrap>\", line 1389, in _gcd_import\n  File \"<frozen importlib._bootstrap>\", line 1338, in _find_and_load\n  File \"<frozen importlib._bootstrap>\", line 1299, in _resolve_parents\n  File \"<frozen importlib._bootstrap>\", line 491, in _call_with_frames_removed\n  File \"<frozen importlib._bootstrap>\", line 1389, in _gcd_import\n  File \"<frozen importlib._bootstrap>\", line 1353, in _find_and_load\n  File \"<frozen importlib._bootstrap>\", line 1249, in _find_and_load_unlocked\n  File \"<frozen importlib._bootstrap>\", line 857, in _load_unlocked\n  File \"<frozen importlib._bootstrap_external>\", line 751, in exec_module\n  File \"<frozen importlib._bootstrap>\", line 491, in _call_with_frames_removed\n  File \"/dev/shm/acr/work/3071613138/src/head/speech_recognition/__init__.py\", line 7, in <module>\n    import aifc\nModuleNotFoundError: No module named 'aifc'\n"
+   }
+  },
+  "imports_base": {
+   "speech_recognition.cli": {
+    "ok": false,
+    "type": "ModuleNotFoundError",
+    "message": "No module named 'aifc'",
+    "missing_module": "aifc",
+    "file": "speech_recognition/__init__.py",
+    "line": 7,
+    "traceback": "Traceback (most recent call last):\n  File \"<string>\", line 7, in <module>\n    importlib.import_module(m)\n    ~~~~~~~~~~~~~~~~~~~~~~~^^^\n  File \"/dev/shm/acr/work/_shared_cache/python/cpython-3.15.2-linux-x86_64-gnu/lib/python3.15/importlib/__init__.py\", line 88, in import_module\n    return _bootstrap._gcd_import(name[level:], package, level)\n           ~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"<frozen importlib._bootstrap>\", line 1389, in _gcd_import\n  File \"<frozen importlib._bootstrap>\", line 1338, in _find_and_load\n  File \"<frozen importlib._bootstrap>\", line 1299, in _resolve_parents\n  File \"<frozen importlib._bootstrap>\", line 491, in _call_with_frames_removed\n  File \"<frozen importlib._bootstrap>\", line 1389, in _gcd_import\n  File \"<frozen importlib._bootstrap>\", line 1353, in _find_and_load\n  File \"<frozen importlib._bootstrap>\", line 1249, in _find_and_load_unlocked\n  File \"<frozen importlib._bootstrap>\", line 857, in _load_unlocked\n  File \"<frozen importlib._bootstrap_external>\", line 751, in exec_module\n  File \"<frozen importlib._bootstrap>\", line 491, in _call_with_frames_removed\n  File \"/dev/shm/acr/work/3071613138/src/base/speech_recognition/__init__.py\", line 7, in <module>\n    import aifc\nModuleNotFoundError: No module named 'aifc'\n"
+   }
+  },
+  "status": "completed",
+  "dependency_cutoff": "2025-05-18T15:01:35Z",
+  "seconds": 1.3,
+  "head_failures": 10
+ },
+ "findings": [
+  {
+   "tool": "bandit",
+   "rule": "B310",
+   "category": "security",
+   "severity": "medium",
+   "confidence": "high",
+   "message": "blacklist: Audit url open for permitted schemes. Allowing use of file:/ or custom schemes is often unexpected.",
+   "file": "speech_recognition/cli.py",
+   "line": 16,
+   "end_line": 16,
+   "cwe": 22,
+   "on_changed_line": true,
+   "evidence": {
+    "type": "static",
+    "source_line": "with urlopen(url) as response:",
+    "more_info": "https://bandit.readthedocs.io/en/1.9.4/blacklists/blacklist_calls.html#b310-urllib-urlopen"
+   },
+   "sources": [
+    "bandit"
+   ],
+   "finding_id": "b6c2c54b5b47",
+   "score": 2.5
+  }
+ ],
+ "status": "ok",
+ "seconds": 120.9
+}

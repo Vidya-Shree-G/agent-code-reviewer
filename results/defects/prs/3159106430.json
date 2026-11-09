@@ -1,0 +1,103 @@
+{
+ "pr_id": 3159106430,
+ "repository": "Maciek-roboblog/Claude-Code-Usage-Monitor",
+ "pr_number": 4,
+ "split": "development",
+ "agent": "OpenAI_Codex",
+ "head_sha": "217cf5f60fb17ea0df0890990a1238c8385ec263",
+ "tool_versions": {
+  "ruff": "ruff 0.17.4",
+  "bandit": "__main__.py 1.9.4",
+  "python": "3.12.3"
+ },
+ "config": {
+  "run_tests": true,
+  "sandbox": true
+ },
+ "base_mode": "reverse_applied_diff",
+ "static": {
+  "files_analysed": 1,
+  "head_issues": 12,
+  "base_issues": 11,
+  "per_tool_head": {
+   "ruff": 7,
+   "bandit": 5
+  },
+  "per_tool_base": {
+   "ruff": 6,
+   "bandit": 5
+  },
+  "introduced": 1,
+  "seconds": 0.3
+ },
+ "tests": {
+  "env": {
+   "status": "ok",
+   "python": "3.15.2",
+   "steps": [
+    {
+     "step": "venv",
+     "ok": true,
+     "seconds": 0.0,
+     "timed_out": false,
+     "log_tail": ""
+    },
+    {
+     "step": "install pytest",
+     "ok": true,
+     "seconds": 0.1,
+     "timed_out": false,
+     "log_tail": ""
+    }
+   ]
+  },
+  "selected_tests": [],
+  "head_run": {
+   "status": "not_run",
+   "tests": {}
+  },
+  "base_run": {
+   "status": "not_run",
+   "tests": {}
+  },
+  "comparison": {
+   "regressions": [],
+   "new_test_failures": [],
+   "fixed": [],
+   "persistent_failures": []
+  },
+  "imports_head": {},
+  "imports_base": {},
+  "status": "no_executable_checks",
+  "dependency_cutoff": "2025-06-19T06:20:50Z",
+  "seconds": 0.1,
+  "head_failures": 0
+ },
+ "findings": [
+  {
+   "tool": "ruff",
+   "rule": "F841",
+   "category": "maintainability",
+   "severity": "low",
+   "confidence": "medium",
+   "message": "Local variable `sessions_remaining` is assigned to but never used",
+   "file": "ccusage_monitor.py",
+   "line": 454,
+   "end_line": 454,
+   "cwe": null,
+   "on_changed_line": true,
+   "evidence": {
+    "type": "static",
+    "source_line": "monthly_sessions = sessions_remaining = 0",
+    "url": "https://docs.astral.sh/ruff/rules/unused-variable"
+   },
+   "sources": [
+    "ruff"
+   ],
+   "finding_id": "2012a43dd704",
+   "score": 1.2
+  }
+ ],
+ "status": "ok",
+ "seconds": 0.9
+}

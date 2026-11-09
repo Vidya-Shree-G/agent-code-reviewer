@@ -1,0 +1,149 @@
+{
+ "pr_id": 3134885336,
+ "repository": "pytorch/pytorch",
+ "pr_number": 155615,
+ "split": "evaluation",
+ "agent": "OpenAI_Codex",
+ "head_sha": "b3bf6f39b0c5a743f15e12552aaf6697336355c5",
+ "tool_versions": {
+  "ruff": "ruff 0.17.4",
+  "bandit": "__main__.py 1.9.4",
+  "python": "3.12.3"
+ },
+ "config": {
+  "run_tests": true,
+  "sandbox": true
+ },
+ "base_mode": "reverse_applied_diff",
+ "static": {
+  "files_analysed": 3,
+  "head_issues": 15,
+  "base_issues": 15,
+  "per_tool_head": {
+   "ruff": 15
+  },
+  "per_tool_base": {
+   "ruff": 15
+  },
+  "introduced": 0,
+  "seconds": 1.7
+ },
+ "tests": {
+  "env": {
+   "status": "partial",
+   "python": "3.15.2",
+   "steps": [
+    {
+     "step": "venv",
+     "ok": true,
+     "seconds": 0.0,
+     "timed_out": false,
+     "log_tail": ""
+    },
+    {
+     "step": "install -e .",
+     "ok": false,
+     "seconds": 600.1,
+     "timed_out": true,
+     "log_tail": ""
+    },
+    {
+     "step": "install -r requirements.txt",
+     "ok": true,
+     "seconds": 11.7,
+     "timed_out": false,
+     "log_tail": ""
+    },
+    {
+     "step": "install pytest",
+     "ok": true,
+     "seconds": 0.1,
+     "timed_out": false,
+     "log_tail": ""
+    }
+   ]
+  },
+  "selected_tests": [
+   {
+    "path": "test/onnx/exporter/test_ir_passes.py",
+    "reason": "matches_module:ir",
+    "exists_at_base": true
+   }
+  ],
+  "head_run": {
+   "status": "completed",
+   "exit_code": 1,
+   "seconds": 0.4,
+   "addopts_overridden": false,
+   "counts": {
+    "passed": 0,
+    "failed": 0,
+    "error": 0,
+    "skipped": 0
+   },
+   "tests": {},
+   "log_tail": ""
+  },
+  "base_run": {
+   "status": "completed",
+   "exit_code": 1,
+   "seconds": 0.4,
+   "addopts_overridden": false,
+   "counts": {
+    "passed": 0,
+    "failed": 0,
+    "error": 0,
+    "skipped": 0
+   },
+   "tests": {},
+   "log_tail": ""
+  },
+  "comparison": {
+   "regressions": [],
+   "new_test_failures": [],
+   "fixed": [],
+   "persistent_failures": []
+  },
+  "imports_head": {
+   "torch._inductor.ir": {
+    "ok": null,
+    "type": "NoResult",
+    "message": "it__.py\", line 75, in <module>\n    from torch.torch_version import __version__ as __version__\n  File \"/dev/shm/acr/work/3134885336/src/head/torch/torch_version.py\", line 5, in <module>\n    from torch.version import __version__ as internal_version\nModuleNotFoundError: No module named 'torch.version'\n"
+   },
+   "torch._inductor.lowering": {
+    "ok": null,
+    "type": "NoResult",
+    "message": "it__.py\", line 75, in <module>\n    from torch.torch_version import __version__ as __version__\n  File \"/dev/shm/acr/work/3134885336/src/head/torch/torch_version.py\", line 5, in <module>\n    from torch.version import __version__ as internal_version\nModuleNotFoundError: No module named 'torch.version'\n"
+   },
+   "torch._inductor.sizevars": {
+    "ok": null,
+    "type": "NoResult",
+    "message": "it__.py\", line 75, in <module>\n    from torch.torch_version import __version__ as __version__\n  File \"/dev/shm/acr/work/3134885336/src/head/torch/torch_version.py\", line 5, in <module>\n    from torch.version import __version__ as internal_version\nModuleNotFoundError: No module named 'torch.version'\n"
+   }
+  },
+  "imports_base": {
+   "torch._inductor.ir": {
+    "ok": null,
+    "type": "NoResult",
+    "message": "it__.py\", line 75, in <module>\n    from torch.torch_version import __version__ as __version__\n  File \"/dev/shm/acr/work/3134885336/src/base/torch/torch_version.py\", line 5, in <module>\n    from torch.version import __version__ as internal_version\nModuleNotFoundError: No module named 'torch.version'\n"
+   },
+   "torch._inductor.lowering": {
+    "ok": null,
+    "type": "NoResult",
+    "message": "it__.py\", line 75, in <module>\n    from torch.torch_version import __version__ as __version__\n  File \"/dev/shm/acr/work/3134885336/src/base/torch/torch_version.py\", line 5, in <module>\n    from torch.version import __version__ as internal_version\nModuleNotFoundError: No module named 'torch.version'\n"
+   },
+   "torch._inductor.sizevars": {
+    "ok": null,
+    "type": "NoResult",
+    "message": "it__.py\", line 75, in <module>\n    from torch.torch_version import __version__ as __version__\n  File \"/dev/shm/acr/work/3134885336/src/base/torch/torch_version.py\", line 5, in <module>\n    from torch.version import __version__ as internal_version\nModuleNotFoundError: No module named 'torch.version'\n"
+   }
+  },
+  "status": "completed",
+  "dependency_cutoff": "2025-06-16T20:46:53Z",
+  "seconds": 613.0,
+  "head_failures": 0
+ },
+ "findings": [],
+ "status": "ok",
+ "seconds": 732.8
+}

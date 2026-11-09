@@ -1,0 +1,165 @@
+{
+ "pr_id": 3097621471,
+ "repository": "wandb/wandb",
+ "pr_number": 9919,
+ "split": "development",
+ "agent": "Devin",
+ "head_sha": "abc49a16b8d324693b993055b3e589048b73a152",
+ "tool_versions": {
+  "ruff": "ruff 0.17.4",
+  "bandit": "__main__.py 1.9.4",
+  "python": "3.12.3"
+ },
+ "config": {
+  "run_tests": true,
+  "sandbox": true
+ },
+ "base_mode": "reverse_applied_diff",
+ "static": {
+  "files_analysed": 2,
+  "head_issues": 9,
+  "base_issues": 8,
+  "per_tool_head": {
+   "ruff": 9
+  },
+  "per_tool_base": {
+   "ruff": 8
+  },
+  "introduced": 1,
+  "seconds": 2.1
+ },
+ "tests": {
+  "env": {
+   "status": "partial",
+   "python": "3.15.2",
+   "steps": [
+    {
+     "step": "venv",
+     "ok": true,
+     "seconds": 0.1,
+     "timed_out": false,
+     "log_tail": ""
+    },
+    {
+     "step": "install -e .",
+     "ok": false,
+     "seconds": 2.4,
+     "timed_out": false,
+     "log_tail": "error: Failed to build `wandb @ file:///dev/shm/acr/work/3097621471/src/head`\n  cause: The build backend returned an error\n  cause: Call to `hatchling.build.build_editable` failed (exit status: 1)\n\n         [stderr]\n         Building wandb-core Go binary...\n         Did not find the 'go' binary. You need Go to build wandb from source. See https://go.dev/doc/install.\n\nhint: Build failures usually indicate a problem with the package or the build environment\n"
+    },
+    {
+     "step": "install -r requirements_dev.txt",
+     "ok": false,
+     "seconds": 6.2,
+     "timed_out": false,
+     "log_tail": "error: No solution found when resolving dependencies\n  cause: Because all versions of rdkit have no wheels with a matching Python ABI tag (e.g., `cp315`) and you require rdkit, we can conclude that your requirements are unsatisfiable.\n\nhint: You require CPython 3.15 (`cp315`), but we only found wheels for `rdkit` (v2025.3.2) with the following Python ABI tags: `cp39`, `cp310`, `cp311`, `cp312`, `cp313`\n"
+    },
+    {
+     "step": "install -r requirements_test.txt",
+     "ok": false,
+     "seconds": 36.9,
+     "timed_out": false,
+     "log_tail": "atest/userguide/datafiles.html\n\n\n                 [^1]: For Python, any directory (with suitable naming) can be imported,\n                       even if it does not contain any `.py` files.\n                       On the other hand, currently there is no concept of package data\n                       directory, all directories are treated like packages.\n                 ********************************************************************************\n\n         !!\n           check.warn(importable)\n         /dev/shm/acr/work/_shared_cache/uv/sdists-v10/pypi/memray/1.17.2/t0QMtxFhOCMNsxwJ/src/src/vendor/libbacktrace/elf.c:637:1: warning: no previous prototype for ‘elf_initialize_syminfo’ [-Wmissing-prototypes]\n           637 | elf_initialize_syminfo (struct backtrace_state *state,\n               | ^~~~~~~~~~~~~~~~~~~~~~\n         ar: `u' modifier ignored since `D' is the default (see `U')\n         In file included from src/memray/_memray/source.h:9,\n                          from src/memray/_memray.cpp:1222:\n         src/memray/_memray/lz4_stream.h:35:10: fatal error: lz4frame.h: No such file or directory\n            35 | #include <lz4frame.h>\n               |          ^~~~~~~~~~~~\n         compilation terminated.\n         error: command '/usr/bin/c++' failed with exit code 1\n\nhint: `memray` (v1.17.2) was included because `pytest-memray` (v1.7.0) depends on `memray`\n\nhint: This error likely indicates that you need to install a library that provides `lz4frame.h` for `memray@1.17.2`\n"
+    },
+    {
+     "step": "install pytest",
+     "ok": true,
+     "seconds": 0.3,
+     "timed_out": false,
+     "log_tail": ""
+    },
+    {
+     "step": "repair: install click",
+     "ok": true,
+     "seconds": 0.1,
+     "timed_out": false,
+     "log_tail": ""
+    }
+   ]
+  },
+  "selected_tests": [
+   {
+    "path": "tests/unit_tests/test_reports.py",
+    "reason": "changed_in_pr",
+    "exists_at_base": false
+   }
+  ],
+  "head_run": {
+   "status": "usage_error",
+   "exit_code": 4,
+   "seconds": 2.0,
+   "addopts_overridden": true,
+   "counts": {
+    "passed": 0,
+    "failed": 0,
+    "error": 0,
+    "skipped": 0
+   },
+   "tests": {},
+   "log_tail": "\nImportError while loading conftest '/dev/shm/acr/work/3097621471/src/head/tests/conftest.py'.\ntests/conftest.py:16: in <module>\n    import pyte\nE   ModuleNotFoundError: No module named 'pyte'. Did you mean: 'pytest'?\n"
+  },
+  "base_run": {
+   "status": "not_run",
+   "tests": {}
+  },
+  "comparison": {
+   "regressions": [],
+   "new_test_failures": [],
+   "fixed": [],
+   "persistent_failures": []
+  },
+  "imports_head": {
+   "wandb.apis.public.reports": {
+    "ok": false,
+    "type": "ModuleNotFoundError",
+    "message": "No module named 'google'",
+    "missing_module": "google",
+    "file": "wandb/proto/wandb_telemetry_pb2.py",
+    "line": 1,
+    "traceback": "p>\", line 1353, in _find_and_load\n  File \"<frozen importlib._bootstrap>\", line 1249, in _find_and_load_unlocked\n  File \"<frozen importlib._bootstrap>\", line 857, in _load_unlocked\n  File \"<frozen importlib._bootstrap_external>\", line 751, in exec_module\n  File \"<frozen importlib._bootstrap>\", line 491, in _call_with_frames_removed\n  File \"/dev/shm/acr/work/3097621471/src/head/wandb/__init__.py\", line 22, in <module>\n    from wandb.sdk.lib import wb_logging as _wb_logging\n  File \"/dev/shm/acr/work/3097621471/src/head/wandb/sdk/__init__.py\", line 24, in <module>\n    from . import wandb_helper as helper\n  File \"/dev/shm/acr/work/3097621471/src/head/wandb/sdk/wandb_helper.py\", line 6, in <module>\n    from .lib import config_util\n  File \"/dev/shm/acr/work/3097621471/src/head/wandb/sdk/lib/__init__.py\", line 2, in <module>\n    from .disabled import RunDisabled, SummaryDisabled\n  File \"/dev/shm/acr/work/3097621471/src/head/wandb/sdk/lib/disabled.py\", line 4, in <module>\n    from wandb.sdk.lib import deprecate\n  File \"/dev/shm/acr/work/3097621471/src/head/wandb/sdk/lib/deprecate.py\", line 7, in <module>\n    from wandb.sdk.lib import telemetry\n  File \"/dev/shm/acr/work/3097621471/src/head/wandb/sdk/lib/telemetry.py\", line 7, in <module>\n    from wandb.proto.wandb_telemetry_pb2 import Imports as TelemetryImports\n  File \"/dev/shm/acr/work/3097621471/src/head/wandb/proto/wandb_telemetry_pb2.py\", line 1, in <module>\n    import google.protobuf\nModuleNotFoundError: No module named 'google'\n"
+   }
+  },
+  "imports_base": {
+   "wandb.apis.public.reports": {
+    "ok": false,
+    "type": "ModuleNotFoundError",
+    "message": "No module named 'google'",
+    "missing_module": "google",
+    "file": "wandb/proto/wandb_telemetry_pb2.py",
+    "line": 1,
+    "traceback": "p>\", line 1353, in _find_and_load\n  File \"<frozen importlib._bootstrap>\", line 1249, in _find_and_load_unlocked\n  File \"<frozen importlib._bootstrap>\", line 857, in _load_unlocked\n  File \"<frozen importlib._bootstrap_external>\", line 751, in exec_module\n  File \"<frozen importlib._bootstrap>\", line 491, in _call_with_frames_removed\n  File \"/dev/shm/acr/work/3097621471/src/base/wandb/__init__.py\", line 22, in <module>\n    from wandb.sdk.lib import wb_logging as _wb_logging\n  File \"/dev/shm/acr/work/3097621471/src/base/wandb/sdk/__init__.py\", line 24, in <module>\n    from . import wandb_helper as helper\n  File \"/dev/shm/acr/work/3097621471/src/base/wandb/sdk/wandb_helper.py\", line 6, in <module>\n    from .lib import config_util\n  File \"/dev/shm/acr/work/3097621471/src/base/wandb/sdk/lib/__init__.py\", line 2, in <module>\n    from .disabled import RunDisabled, SummaryDisabled\n  File \"/dev/shm/acr/work/3097621471/src/base/wandb/sdk/lib/disabled.py\", line 4, in <module>\n    from wandb.sdk.lib import deprecate\n  File \"/dev/shm/acr/work/3097621471/src/base/wandb/sdk/lib/deprecate.py\", line 7, in <module>\n    from wandb.sdk.lib import telemetry\n  File \"/dev/shm/acr/work/3097621471/src/base/wandb/sdk/lib/telemetry.py\", line 7, in <module>\n    from wandb.proto.wandb_telemetry_pb2 import Imports as TelemetryImports\n  File \"/dev/shm/acr/work/3097621471/src/base/wandb/proto/wandb_telemetry_pb2.py\", line 1, in <module>\n    import google.protobuf\nModuleNotFoundError: No module named 'google'\n"
+   }
+  },
+  "status": "head_usage_error",
+  "dependency_cutoff": "2025-06-09T18:28:43Z",
+  "seconds": 53.2,
+  "head_failures": 0
+ },
+ "findings": [
+  {
+   "tool": "ruff",
+   "rule": "F401",
+   "category": "maintainability",
+   "severity": "low",
+   "confidence": "high",
+   "message": "`sys` imported but unused",
+   "file": "tests/unit_tests/test_reports.py",
+   "line": 1,
+   "end_line": 1,
+   "cwe": null,
+   "on_changed_line": true,
+   "evidence": {
+    "type": "static",
+    "source_line": "import sys",
+    "url": "https://docs.astral.sh/ruff/rules/unused-import"
+   },
+   "sources": [
+    "ruff"
+   ],
+   "finding_id": "4823100c63a3",
+   "score": 1.5
+  }
+ ],
+ "status": "ok",
+ "seconds": 123.3
+}

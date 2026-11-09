@@ -1,0 +1,86 @@
+{
+ "pr_id": 3172392581,
+ "repository": "TTPlanetPig/Comfyui_Object_Detect_QWen_VL",
+ "pr_number": 18,
+ "split": "development",
+ "agent": "OpenAI_Codex",
+ "head_sha": "a5041134a9e0170f0e2380aa2264c401443efb45",
+ "tool_versions": {
+  "ruff": "ruff 0.17.4",
+  "bandit": "__main__.py 1.9.4",
+  "python": "3.12.3"
+ },
+ "config": {
+  "run_tests": true,
+  "sandbox": true
+ },
+ "base_mode": "reverse_applied_diff",
+ "static": {
+  "files_analysed": 1,
+  "head_issues": 9,
+  "base_issues": 9,
+  "per_tool_head": {
+   "ruff": 1,
+   "bandit": 8
+  },
+  "per_tool_base": {
+   "ruff": 1,
+   "bandit": 8
+  },
+  "introduced": 0,
+  "seconds": 0.4
+ },
+ "tests": {
+  "env": {
+   "status": "partial",
+   "python": "3.15.2",
+   "steps": [
+    {
+     "step": "venv",
+     "ok": true,
+     "seconds": 0.0,
+     "timed_out": false,
+     "log_tail": ""
+    },
+    {
+     "step": "install -r requirements.txt",
+     "ok": false,
+     "seconds": 1.2,
+     "timed_out": false,
+     "log_tail": "/build_meta.py\", line 423, in _build\n             return self._build_with_temp_dir(\n                    ~~~~~~~~~~~~~~~~~~~~~~~~~^\n                 cmd,\n                 ^^^^\n             ...<3 lines>...\n                 self._arbitrary_args(config_settings),\n                 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n             )\n             ^\n           File \"/dev/shm/acr/work/_shared_cache/uv/builds-v0/.tmpq4ABPm/lib/python3.15/site-packages/setuptools/build_meta.py\", line 404, in _build_with_temp_dir\n             self.run_setup()\n             ~~~~~~~~~~~~~~^^\n           File \"/dev/shm/acr/work/_shared_cache/uv/sdists-v10/pypi/pillow/11.2.1/Kn7wU2KezNJvMQTT/src/_custom_build/backend.py\", line 20, in run_setup\n             return super().run_setup(setup_script)\n                    ~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^\n           File \"/dev/shm/acr/work/_shared_cache/uv/builds-v0/.tmpq4ABPm/lib/python3.15/site-packages/setuptools/build_meta.py\", line 317, in run_setup\n             exec(code, locals())\n             ~~~~^^^^^^^^^^^^^^^^\n           File \"<string>\", line 1069, in <module>\n         RequiredDependencyException: \n\n         The headers or library files could not be found for jpeg,\n         a required dependency when compiling Pillow from source.\n\n         Please see the install instructions at:\n            https://pillow.readthedocs.io/en/latest/installation/basic-installation.html\n\n\nhint: Build failures usually indicate a problem with the package or the build environment\n"
+    },
+    {
+     "step": "install pytest",
+     "ok": true,
+     "seconds": 0.1,
+     "timed_out": false,
+     "log_tail": ""
+    }
+   ]
+  },
+  "selected_tests": [],
+  "head_run": {
+   "status": "not_run",
+   "tests": {}
+  },
+  "base_run": {
+   "status": "not_run",
+   "tests": {}
+  },
+  "comparison": {
+   "regressions": [],
+   "new_test_failures": [],
+   "fixed": [],
+   "persistent_failures": []
+  },
+  "imports_head": {},
+  "imports_base": {},
+  "status": "no_executable_checks",
+  "dependency_cutoff": "2025-06-24T15:16:21Z",
+  "seconds": 1.4,
+  "head_failures": 0
+ },
+ "findings": [],
+ "status": "ok",
+ "seconds": 2.8
+}

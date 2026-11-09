@@ -1,0 +1,305 @@
+{
+ "pr_id": 3264933329,
+ "repository": "milvus-io/pymilvus",
+ "pr_number": 2911,
+ "split": "development",
+ "agent": "Claude_Code",
+ "head_sha": "f528ff4da627bba470791a66534fd47d7165ed8d",
+ "tool_versions": {
+  "ruff": "ruff 0.17.4",
+  "bandit": "__main__.py 1.9.4",
+  "python": "3.12.3"
+ },
+ "config": {
+  "run_tests": true,
+  "sandbox": true
+ },
+ "base_mode": "reverse_applied_diff",
+ "static": {
+  "files_analysed": 3,
+  "head_issues": 1,
+  "base_issues": 0,
+  "per_tool_head": {
+   "ruff": 1
+  },
+  "per_tool_base": {},
+  "introduced": 1,
+  "seconds": 0.6
+ },
+ "tests": {
+  "env": {
+   "status": "partial",
+   "python": "3.15.2",
+   "steps": [
+    {
+     "step": "venv",
+     "ok": true,
+     "seconds": 0.0,
+     "timed_out": false,
+     "log_tail": ""
+    },
+    {
+     "step": "install -e .[dev]",
+     "ok": true,
+     "seconds": 204.7,
+     "timed_out": false,
+     "log_tail": ""
+    },
+    {
+     "step": "install -r requirements.txt",
+     "ok": false,
+     "seconds": 1.2,
+     "timed_out": false,
+     "log_tail": ":world', not found\n         Package libffi was not found in the pkg-config search path.\n         Perhaps you should add the directory containing `libffi.pc'\n         to the PKG_CONFIG_PATH environment variable\n         Package 'libffi', required by 'virtual:world', not found\n         /dev/shm/acr/work/_shared_cache/uv/builds-v0/.tmpFMHZRV/lib/python3.15/site-packages/setuptools/dist.py:759: SetuptoolsDeprecationWarning: License classifiers are deprecated.\n         !!\n\n                 ********************************************************************************\n                 Please consider removing the following classifiers in favor of a SPDX license expression:\n\n                 License :: OSI Approved :: MIT License\n\n                 See https://packaging.python.org/en/latest/guides/writing-pyproject-toml/#license for details.\n                 ********************************************************************************\n\n         !!\n           self._finalize_license_expression()\n         src/c/_cffi_backend.c:15:10: fatal error: ffi.h: No such file or directory\n            15 | #include <ffi.h>\n               |          ^~~~~~~\n         compilation terminated.\n         error: command '/usr/bin/cc' failed with exit code 1\n\nhint: `cffi` (v1.17.1) was included because `azure-storage-blob` (v12.26.0) depends on `cryptography` (v45.0.5) which depends on `cffi`\n\nhint: This error likely indicates that you need to install a library that provides `ffi.h` for `cffi@1.17.1`\n"
+    },
+    {
+     "step": "install pytest",
+     "ok": true,
+     "seconds": 0.0,
+     "timed_out": false,
+     "log_tail": ""
+    }
+   ]
+  },
+  "selected_tests": [
+   {
+    "path": "tests/test_load_collection_unit.py",
+    "reason": "changed_in_pr",
+    "exists_at_base": false
+   },
+   {
+    "path": "tests/test_grpc_handler.py",
+    "reason": "matches_module:grpc_handler",
+    "exists_at_base": true
+   }
+  ],
+  "head_run": {
+   "status": "completed",
+   "exit_code": 1,
+   "seconds": 1.9,
+   "addopts_overridden": false,
+   "counts": {
+    "passed": 15,
+    "failed": 5,
+    "error": 0,
+    "skipped": 0
+   },
+   "tests": {
+    "test_load_collection_unit.TestAsyncLoadCollectionLogic::test_async_wait_for_loading_collection_checks_partition_states": {
+     "outcome": "failed",
+     "detail": "Failed: async def functions are not natively supported.\nYou need to install a suitable plugin for your async framework, for example:\n  - anyio\n  - pytest-asyncio\n  - pytest-tornasync\n  - pytest-trio\n  - pytest-twisted\nasync def functions are not natively supported.\nYou need to install a suitable plugin for your async framework, for example:\n  - anyio\n  - pytest-asyncio\n  - pytest-tornasync\n  - pytest-trio\n  - pytest-twisted"
+    },
+    "test_load_collection_unit.TestAsyncLoadCollectionLogic::test_async_wait_for_loading_collection_returns_when_all_loaded": {
+     "outcome": "failed",
+     "detail": "Failed: async def functions are not natively supported.\nYou need to install a suitable plugin for your async framework, for example:\n  - anyio\n  - pytest-asyncio\n  - pytest-tornasync\n  - pytest-trio\n  - pytest-twisted\nasync def functions are not natively supported.\nYou need to install a suitable plugin for your async framework, for example:\n  - anyio\n  - pytest-asyncio\n  - pytest-tornasync\n  - pytest-trio\n  - pytest-twisted"
+    },
+    "test_load_collection_unit.TestAsyncLoadCollectionLogic::test_async_wait_for_loading_collection_backward_compatibility": {
+     "outcome": "failed",
+     "detail": "Failed: async def functions are not natively supported.\nYou need to install a suitable plugin for your async framework, for example:\n  - anyio\n  - pytest-asyncio\n  - pytest-tornasync\n  - pytest-trio\n  - pytest-twisted\nasync def functions are not natively supported.\nYou need to install a suitable plugin for your async framework, for example:\n  - anyio\n  - pytest-asyncio\n  - pytest-tornasync\n  - pytest-trio\n  - pytest-twisted"
+    },
+    "test_load_collection_unit.TestAsyncLoadCollectionLogic::test_async_timeout_when_partition_still_loading": {
+     "outcome": "failed",
+     "detail": "Failed: async def functions are not natively supported.\nYou need to install a suitable plugin for your async framework, for example:\n  - anyio\n  - pytest-asyncio\n  - pytest-tornasync\n  - pytest-trio\n  - pytest-twisted\nasync def functions are not natively supported.\nYou need to install a suitable plugin for your async framework, for example:\n  - anyio\n  - pytest-asyncio\n  - pytest-tornasync\n  - pytest-trio\n  - pytest-twisted"
+    },
+    "test_load_collection_unit.TestLoadCollectionIntegration::test_async_load_collection_calls_list_partitions_before_load": {
+     "outcome": "failed",
+     "detail": "Failed: async def functions are not natively supported.\nYou need to install a suitable plugin for your async framework, for example:\n  - anyio\n  - pytest-asyncio\n  - pytest-tornasync\n  - pytest-trio\n  - pytest-twisted\nasync def functions are not natively supported.\nYou need to install a suitable plugin for your async framework, for example:\n  - anyio\n  - pytest-asyncio\n  - pytest-tornasync\n  - pytest-trio\n  - pytest-twisted"
+    }
+   },
+   "log_tail": ""
+  },
+  "base_run": {
+   "status": "completed",
+   "exit_code": 0,
+   "seconds": 1.2,
+   "addopts_overridden": false,
+   "counts": {
+    "passed": 8,
+    "failed": 0,
+    "error": 0,
+    "skipped": 0
+   },
+   "tests": {},
+   "log_tail": ""
+  },
+  "comparison": {
+   "regressions": [],
+   "new_test_failures": [
+    "test_load_collection_unit.TestAsyncLoadCollectionLogic::test_async_wait_for_loading_collection_checks_partition_states",
+    "test_load_collection_unit.TestAsyncLoadCollectionLogic::test_async_wait_for_loading_collection_returns_when_all_loaded",
+    "test_load_collection_unit.TestAsyncLoadCollectionLogic::test_async_wait_for_loading_collection_backward_compatibility",
+    "test_load_collection_unit.TestAsyncLoadCollectionLogic::test_async_timeout_when_partition_still_loading",
+    "test_load_collection_unit.TestLoadCollectionIntegration::test_async_load_collection_calls_list_partitions_before_load"
+   ],
+   "fixed": [],
+   "persistent_failures": []
+  },
+  "imports_head": {
+   "pymilvus.client.async_grpc_handler": {
+    "ok": true
+   },
+   "pymilvus.client.grpc_handler": {
+    "ok": true
+   }
+  },
+  "imports_base": {
+   "pymilvus.client.async_grpc_handler": {
+    "ok": true
+   },
+   "pymilvus.client.grpc_handler": {
+    "ok": true
+   }
+  },
+  "status": "completed",
+  "dependency_cutoff": "2025-07-29T07:01:20Z",
+  "seconds": 210.8,
+  "head_failures": 5
+ },
+ "findings": [
+  {
+   "tool": "ruff",
+   "rule": "F401",
+   "category": "maintainability",
+   "severity": "low",
+   "confidence": "high",
+   "message": "`asyncio` imported but unused",
+   "file": "tests/test_load_collection_unit.py",
+   "line": 6,
+   "end_line": 6,
+   "cwe": null,
+   "on_changed_line": true,
+   "evidence": {
+    "type": "static",
+    "source_line": "import asyncio",
+    "url": "https://docs.astral.sh/ruff/rules/unused-import"
+   },
+   "sources": [
+    "ruff"
+   ],
+   "finding_id": "3195a87892a5",
+   "score": 1.5
+  },
+  {
+   "tool": "pytest",
+   "rule": "new-test-failure",
+   "category": "test",
+   "severity": "medium",
+   "confidence": "medium",
+   "message": "Test test_load_collection_unit.TestAsyncLoadCollectionLogic::test_async_wait_for_loading_collection_checks_partition_states added or changed by the PR fails at head: Failed: async def functions are not natively supported.",
+   "file": null,
+   "line": null,
+   "end_line": null,
+   "cwe": null,
+   "on_changed_line": false,
+   "evidence": {
+    "type": "test",
+    "test_id": "test_load_collection_unit.TestAsyncLoadCollectionLogic::test_async_wait_for_loading_collection_checks_partition_states",
+    "outcome": "failed",
+    "detail": "Failed: async def functions are not natively supported.\nYou need to install a suitable plugin for your async framework, for example:\n  - anyio\n  - pytest-asyncio\n  - pytest-tornasync\n  - pytest-trio\n  - pytest-twisted\nasync def functions are not natively supported.\nYou need to install a suitable plugin for your async framework, for example:\n  - anyio\n  - pytest-asyncio\n  - pytest-tornasync\n  - pytest-trio\n  - pytest-twisted"
+   },
+   "sources": [
+    "pytest"
+   ],
+   "finding_id": "63f449035569",
+   "score": 1.4
+  },
+  {
+   "tool": "pytest",
+   "rule": "new-test-failure",
+   "category": "test",
+   "severity": "medium",
+   "confidence": "medium",
+   "message": "Test test_load_collection_unit.TestAsyncLoadCollectionLogic::test_async_wait_for_loading_collection_returns_when_all_loaded added or changed by the PR fails at head: Failed: async def functions are not natively supported.",
+   "file": null,
+   "line": null,
+   "end_line": null,
+   "cwe": null,
+   "on_changed_line": false,
+   "evidence": {
+    "type": "test",
+    "test_id": "test_load_collection_unit.TestAsyncLoadCollectionLogic::test_async_wait_for_loading_collection_returns_when_all_loaded",
+    "outcome": "failed",
+    "detail": "Failed: async def functions are not natively supported.\nYou need to install a suitable plugin for your async framework, for example:\n  - anyio\n  - pytest-asyncio\n  - pytest-tornasync\n  - pytest-trio\n  - pytest-twisted\nasync def functions are not natively supported.\nYou need to install a suitable plugin for your async framework, for example:\n  - anyio\n  - pytest-asyncio\n  - pytest-tornasync\n  - pytest-trio\n  - pytest-twisted"
+   },
+   "sources": [
+    "pytest"
+   ],
+   "finding_id": "9734dec3759d",
+   "score": 1.4
+  },
+  {
+   "tool": "pytest",
+   "rule": "new-test-failure",
+   "category": "test",
+   "severity": "medium",
+   "confidence": "medium",
+   "message": "Test test_load_collection_unit.TestAsyncLoadCollectionLogic::test_async_wait_for_loading_collection_backward_compatibility added or changed by the PR fails at head: Failed: async def functions are not natively supported.",
+   "file": null,
+   "line": null,
+   "end_line": null,
+   "cwe": null,
+   "on_changed_line": false,
+   "evidence": {
+    "type": "test",
+    "test_id": "test_load_collection_unit.TestAsyncLoadCollectionLogic::test_async_wait_for_loading_collection_backward_compatibility",
+    "outcome": "failed",
+    "detail": "Failed: async def functions are not natively supported.\nYou need to install a suitable plugin for your async framework, for example:\n  - anyio\n  - pytest-asyncio\n  - pytest-tornasync\n  - pytest-trio\n  - pytest-twisted\nasync def functions are not natively supported.\nYou need to install a suitable plugin for your async framework, for example:\n  - anyio\n  - pytest-asyncio\n  - pytest-tornasync\n  - pytest-trio\n  - pytest-twisted"
+   },
+   "sources": [
+    "pytest"
+   ],
+   "finding_id": "29698b10f7b5",
+   "score": 1.4
+  },
+  {
+   "tool": "pytest",
+   "rule": "new-test-failure",
+   "category": "test",
+   "severity": "medium",
+   "confidence": "medium",
+   "message": "Test test_load_collection_unit.TestAsyncLoadCollectionLogic::test_async_timeout_when_partition_still_loading added or changed by the PR fails at head: Failed: async def functions are not natively supported.",
+   "file": null,
+   "line": null,
+   "end_line": null,
+   "cwe": null,
+   "on_changed_line": false,
+   "evidence": {
+    "type": "test",
+    "test_id": "test_load_collection_unit.TestAsyncLoadCollectionLogic::test_async_timeout_when_partition_still_loading",
+    "outcome": "failed",
+    "detail": "Failed: async def functions are not natively supported.\nYou need to install a suitable plugin for your async framework, for example:\n  - anyio\n  - pytest-asyncio\n  - pytest-tornasync\n  - pytest-trio\n  - pytest-twisted\nasync def functions are not natively supported.\nYou need to install a suitable plugin for your async framework, for example:\n  - anyio\n  - pytest-asyncio\n  - pytest-tornasync\n  - pytest-trio\n  - pytest-twisted"
+   },
+   "sources": [
+    "pytest"
+   ],
+   "finding_id": "ae630e72b7d2",
+   "score": 1.4
+  },
+  {
+   "tool": "pytest",
+   "rule": "new-test-failure",
+   "category": "test",
+   "severity": "medium",
+   "confidence": "medium",
+   "message": "Test test_load_collection_unit.TestLoadCollectionIntegration::test_async_load_collection_calls_list_partitions_before_load added or changed by the PR fails at head: Failed: async def functions are not natively supported.",
+   "file": null,
+   "line": null,
+   "end_line": null,
+   "cwe": null,
+   "on_changed_line": false,
+   "evidence": {
+    "type": "test",
+    "test_id": "test_load_collection_unit.TestLoadCollectionIntegration::test_async_load_collection_calls_list_partitions_before_load",
+    "outcome": "failed",
+    "detail": "Failed: async def functions are not natively supported.\nYou need to install a suitable plugin for your async framework, for example:\n  - anyio\n  - pytest-asyncio\n  - pytest-tornasync\n  - pytest-trio\n  - pytest-twisted\nasync def functions are not natively supported.\nYou need to install a suitable plugin for your async framework, for example:\n  - anyio\n  - pytest-asyncio\n  - pytest-tornasync\n  - pytest-trio\n  - pytest-twisted"
+   },
+   "sources": [
+    "pytest"
+   ],
+   "finding_id": "fbb0f98afdca",
+   "score": 1.4
+  }
+ ],
+ "status": "ok",
+ "seconds": 214.2
+}

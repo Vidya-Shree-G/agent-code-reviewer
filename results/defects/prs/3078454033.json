@@ -1,0 +1,88 @@
+{
+ "pr_id": 3078454033,
+ "repository": "stanfordnlp/dspy",
+ "pr_number": 8249,
+ "split": "evaluation",
+ "agent": "OpenAI_Codex",
+ "head_sha": "3dedc2385056392a835c458e47a06ec9f81efddb",
+ "tool_versions": {
+  "ruff": "ruff 0.17.4",
+  "bandit": "__main__.py 1.9.4",
+  "python": "3.12.3"
+ },
+ "config": {
+  "run_tests": true,
+  "sandbox": true
+ },
+ "base_mode": "reverse_applied_diff",
+ "static": {
+  "files_analysed": 1,
+  "head_issues": 0,
+  "base_issues": 0,
+  "per_tool_head": {},
+  "per_tool_base": {},
+  "introduced": 0,
+  "seconds": 0.2
+ },
+ "tests": {
+  "env": {
+   "status": "ok",
+   "python": "3.12.10",
+   "steps": [
+    {
+     "step": "venv",
+     "ok": true,
+     "seconds": 0.0,
+     "timed_out": false,
+     "log_tail": ""
+    },
+    {
+     "step": "install -e .[dev]",
+     "ok": true,
+     "seconds": 3.7,
+     "timed_out": false,
+     "log_tail": ""
+    },
+    {
+     "step": "install pytest",
+     "ok": true,
+     "seconds": 0.0,
+     "timed_out": false,
+     "log_tail": ""
+    }
+   ]
+  },
+  "selected_tests": [],
+  "head_run": {
+   "status": "not_run",
+   "tests": {}
+  },
+  "base_run": {
+   "status": "not_run",
+   "tests": {}
+  },
+  "comparison": {
+   "regressions": [],
+   "new_test_failures": [],
+   "fixed": [],
+   "persistent_failures": []
+  },
+  "imports_head": {
+   "dspy.clients.provider": {
+    "ok": true
+   }
+  },
+  "imports_base": {
+   "dspy.clients.provider": {
+    "ok": true
+   }
+  },
+  "status": "imports_only",
+  "dependency_cutoff": "2025-05-20T23:40:48Z",
+  "seconds": 7.9,
+  "head_failures": 0
+ },
+ "findings": [],
+ "status": "ok",
+ "seconds": 115.7
+}

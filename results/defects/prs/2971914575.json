@@ -1,0 +1,218 @@
+{
+ "pr_id": 2971914575,
+ "repository": "ag2ai/fastagency",
+ "pr_number": 673,
+ "split": "development",
+ "agent": "Devin",
+ "head_sha": "94dcbaf42ae2b5132ba42e0918bd77804dba6e7b",
+ "tool_versions": {
+  "ruff": "ruff 0.17.4",
+  "bandit": "__main__.py 1.9.4",
+  "python": "3.12.3"
+ },
+ "config": {
+  "run_tests": true,
+  "sandbox": true
+ },
+ "base_mode": "reverse_applied_diff",
+ "static": {
+  "files_analysed": 3,
+  "head_issues": 2,
+  "base_issues": 0,
+  "per_tool_head": {
+   "ruff": 2
+  },
+  "per_tool_base": {},
+  "introduced": 2,
+  "seconds": 0.3
+ },
+ "tests": {
+  "env": {
+   "status": "partial",
+   "python": "3.15.2",
+   "steps": [
+    {
+     "step": "venv",
+     "ok": true,
+     "seconds": 0.0,
+     "timed_out": false,
+     "log_tail": ""
+    },
+    {
+     "step": "install -e .[testing,dev]",
+     "ok": false,
+     "seconds": 2.1,
+     "timed_out": false,
+     "log_tail": "Package libffi was not found in the pkg-config search path.\n         Perhaps you should add the directory containing `libffi.pc'\n         to the PKG_CONFIG_PATH environment variable\n         Package 'libffi', required by 'virtual:world', not found\n         /dev/shm/acr/work/_shared_cache/uv/builds-v0/.tmp21Rblp/lib/python3.15/site-packages/setuptools/dist.py:759: SetuptoolsDeprecationWarning: License classifiers are deprecated.\n         !!\n\n                 ********************************************************************************\n                 Please consider removing the following classifiers in favor of a SPDX license expression:\n\n                 License :: OSI Approved :: MIT License\n\n                 See https://packaging.python.org/en/latest/guides/writing-pyproject-toml/#license for details.\n                 ********************************************************************************\n\n         !!\n           self._finalize_license_expression()\n         src/c/_cffi_backend.c:15:10: fatal error: ffi.h: No such file or directory\n            15 | #include <ffi.h>\n               |          ^~~~~~~\n         compilation terminated.\n         error: command '/usr/bin/cc' failed with exit code 1\n\nhint: `cffi` (v1.17.1) was included because `fastagency[dev]` (v0.8.4) depends on `cairosvg` (v2.7.1) which depends on `cairocffi` (v1.7.1) which depends on `cffi`\n\nhint: This error likely indicates that you need to install a library that provides `ffi.h` for `cffi@1.17.1`\n",
+     "superseded": true
+    },
+    {
+     "step": "install -e .",
+     "ok": false,
+     "seconds": 0.6,
+     "timed_out": false,
+     "log_tail": "an also use `project.license-files`. (Both options available on setuptools>=77.0.0).\n\n                 This deprecation is overdue, please update your project and remove deprecated\n                 calls to avoid build errors in the future.\n\n                 See https://packaging.python.org/en/latest/guides/writing-pyproject-toml/#license for details.\n                 ********************************************************************************\n\n         !!\n           corresp(dist, value, root_dir)\n         warning: no files found matching 'Makefile'\n         error: can't find Rust compiler\n\n         If you are using an outdated pip version, it is possible a prebuilt wheel is available for this package but pip is not able to install from it. Installing from the wheel would avoid the need for a Rust compiler.\n\n         To update pip, run:\n\n             pip install --upgrade pip\n\n         and then retry package installation.\n\n         If you did intend to build this package from source, try installing a Rust compiler from your system package manager and ensure it is on the PATH during installation. Alternatively, rustup (available at https://rustup.rs) is the recommended way to download and update the Rust compiler toolchain.\n\nhint: `tiktoken` (v0.9.0) was included because `fastagency` (v0.8.4) depends on `ag2` (v0.8.5) which depends on `pyautogen` (v0.8.5) which depends on `tiktoken`\n\nhint: Build failures usually indicate a problem with the package or the build environment\n"
+    },
+    {
+     "step": "install pytest",
+     "ok": true,
+     "seconds": 0.0,
+     "timed_out": false,
+     "log_tail": ""
+    },
+    {
+     "step": "repair: install fastapi pydantic",
+     "ok": false,
+     "seconds": 0.6,
+     "timed_out": false,
+     "log_tail": "error: Failed to build `pydantic-core==2.33.1`\n  cause: The build backend returned an error\n  cause: Call to `maturin.build_wheel` failed (exit status: 1)\n\n         [stdout]\n         Running `maturin pep517 build-wheel -i /dev/shm/acr/work/_shared_cache/uv/builds-v0/.tmpKW7vW1/bin/python --compatibility off`\n\n         [stderr]\n         💥 maturin failed\n           Caused by: Cargo metadata failed. Do you have cargo in your PATH?\n           Caused by: No such file or directory (os error 2)\n         Error: command ['maturin', 'pep517', 'build-wheel', '-i', '/dev/shm/acr/work/_shared_cache/uv/builds-v0/.tmpKW7vW1/bin/python', '--compatibility', 'off'] returned non-zero exit status 1\n\nhint: `pydantic-core` (v2.33.1) was included because `pydantic` (v2.11.3) depends on `pydantic-core`\n\nhint: Build failures usually indicate a problem with the package or the build environment\n"
+    }
+   ]
+  },
+  "selected_tests": [
+   {
+    "path": "tests/runtime/ag2/test_autogen.py",
+    "reason": "changed_in_pr",
+    "exists_at_base": true
+   },
+   {
+    "path": "tests/docs_src/user_guide/runtimes/ag2/test_websurfer.py",
+    "reason": "matches_module:websurfer",
+    "exists_at_base": true
+   },
+   {
+    "path": "tests/docs_src/user_guide/runtimes/ag2/test_websurfer_tool.py",
+    "reason": "matches_module:websurfer",
+    "exists_at_base": true
+   }
+  ],
+  "head_run": {
+   "status": "usage_error",
+   "exit_code": 4,
+   "seconds": 0.2,
+   "addopts_overridden": true,
+   "counts": {
+    "passed": 0,
+    "failed": 0,
+    "error": 0,
+    "skipped": 0
+   },
+   "tests": {},
+   "log_tail": "\n/dev/shm/acr/work/2971914575/venv/lib/python3.15/site-packages/pluggy/_callers.py:141: SyntaxWarning: 'return' in a 'finally' block\n  return result\n/dev/shm/acr/work/2971914575/venv/lib/python3.15/site-packages/pluggy/_callers.py:182: SyntaxWarning: 'return' in a 'finally' block\n  return outcome.get_result()\nImportError while loading conftest '/dev/shm/acr/work/2971914575/src/head/tests/conftest.py'.\ntests/conftest.py:17: in <module>\n    import fastapi\nE   ModuleNotFoundError: No module named 'fastapi'\n"
+  },
+  "base_run": {
+   "status": "usage_error",
+   "exit_code": 4,
+   "seconds": 0.2,
+   "addopts_overridden": true,
+   "counts": {
+    "passed": 0,
+    "failed": 0,
+    "error": 0,
+    "skipped": 0
+   },
+   "tests": {},
+   "log_tail": "\n/dev/shm/acr/work/2971914575/venv/lib/python3.15/site-packages/pluggy/_callers.py:141: SyntaxWarning: 'return' in a 'finally' block\n  return result\n/dev/shm/acr/work/2971914575/venv/lib/python3.15/site-packages/pluggy/_callers.py:182: SyntaxWarning: 'return' in a 'finally' block\n  return outcome.get_result()\nImportError while loading conftest '/dev/shm/acr/work/2971914575/src/base/tests/conftest.py'.\ntests/conftest.py:17: in <module>\n    import fastapi\nE   ModuleNotFoundError: No module named 'fastapi'\n"
+  },
+  "comparison": {
+   "regressions": [],
+   "new_test_failures": [],
+   "fixed": [],
+   "persistent_failures": []
+  },
+  "imports_head": {
+   "fastagency.runtimes.ag2.ag2": {
+    "ok": false,
+    "type": "ModuleNotFoundError",
+    "message": "No module named 'pydantic'",
+    "missing_module": "pydantic",
+    "file": "fastagency/messages.py",
+    "line": 7,
+    "traceback": "tlib._bootstrap>\", line 1338, in _find_and_load\n  File \"<frozen importlib._bootstrap>\", line 1299, in _resolve_parents\n  File \"<frozen importlib._bootstrap>\", line 491, in _call_with_frames_removed\n  File \"<frozen importlib._bootstrap>\", line 1389, in _gcd_import\n  File \"<frozen importlib._bootstrap>\", line 1338, in _find_and_load\n  File \"<frozen importlib._bootstrap>\", line 1299, in _resolve_parents\n  File \"<frozen importlib._bootstrap>\", line 491, in _call_with_frames_removed\n  File \"<frozen importlib._bootstrap>\", line 1389, in _gcd_import\n  File \"<frozen importlib._bootstrap>\", line 1353, in _find_and_load\n  File \"<frozen importlib._bootstrap>\", line 1249, in _find_and_load_unlocked\n  File \"<frozen importlib._bootstrap>\", line 857, in _load_unlocked\n  File \"<frozen importlib._bootstrap_external>\", line 751, in exec_module\n  File \"<frozen importlib._bootstrap>\", line 491, in _call_with_frames_removed\n  File \"/dev/shm/acr/work/2971914575/src/head/fastagency/__init__.py\", line 4, in <module>\n    from .app import FastAgency\n  File \"/dev/shm/acr/work/2971914575/src/head/fastagency/app.py\", line 8, in <module>\n    from .base import (\n    ...<5 lines>...\n    )\n  File \"/dev/shm/acr/work/2971914575/src/head/fastagency/base.py\", line 16, in <module>\n    from .messages import IOMessage, MessageProcessorProtocol\n  File \"/dev/shm/acr/work/2971914575/src/head/fastagency/messages.py\", line 7, in <module>\n    from pydantic import BaseModel\nModuleNotFoundError: No module named 'pydantic'\n"
+   },
+   "fastagency.runtimes.ag2.tools.websurfer": {
+    "ok": false,
+    "type": "ModuleNotFoundError",
+    "message": "No module named 'pydantic'",
+    "missing_module": "pydantic",
+    "file": "fastagency/messages.py",
+    "line": 7,
+    "traceback": "tlib._bootstrap>\", line 1338, in _find_and_load\n  File \"<frozen importlib._bootstrap>\", line 1299, in _resolve_parents\n  File \"<frozen importlib._bootstrap>\", line 491, in _call_with_frames_removed\n  File \"<frozen importlib._bootstrap>\", line 1389, in _gcd_import\n  File \"<frozen importlib._bootstrap>\", line 1338, in _find_and_load\n  File \"<frozen importlib._bootstrap>\", line 1299, in _resolve_parents\n  File \"<frozen importlib._bootstrap>\", line 491, in _call_with_frames_removed\n  File \"<frozen importlib._bootstrap>\", line 1389, in _gcd_import\n  File \"<frozen importlib._bootstrap>\", line 1353, in _find_and_load\n  File \"<frozen importlib._bootstrap>\", line 1249, in _find_and_load_unlocked\n  File \"<frozen importlib._bootstrap>\", line 857, in _load_unlocked\n  File \"<frozen importlib._bootstrap_external>\", line 751, in exec_module\n  File \"<frozen importlib._bootstrap>\", line 491, in _call_with_frames_removed\n  File \"/dev/shm/acr/work/2971914575/src/head/fastagency/__init__.py\", line 4, in <module>\n    from .app import FastAgency\n  File \"/dev/shm/acr/work/2971914575/src/head/fastagency/app.py\", line 8, in <module>\n    from .base import (\n    ...<5 lines>...\n    )\n  File \"/dev/shm/acr/work/2971914575/src/head/fastagency/base.py\", line 16, in <module>\n    from .messages import IOMessage, MessageProcessorProtocol\n  File \"/dev/shm/acr/work/2971914575/src/head/fastagency/messages.py\", line 7, in <module>\n    from pydantic import BaseModel\nModuleNotFoundError: No module named 'pydantic'\n"
+   }
+  },
+  "imports_base": {
+   "fastagency.runtimes.ag2.ag2": {
+    "ok": false,
+    "type": "ModuleNotFoundError",
+    "message": "No module named 'pydantic'",
+    "missing_module": "pydantic",
+    "file": "fastagency/messages.py",
+    "line": 7,
+    "traceback": "tlib._bootstrap>\", line 1338, in _find_and_load\n  File \"<frozen importlib._bootstrap>\", line 1299, in _resolve_parents\n  File \"<frozen importlib._bootstrap>\", line 491, in _call_with_frames_removed\n  File \"<frozen importlib._bootstrap>\", line 1389, in _gcd_import\n  File \"<frozen importlib._bootstrap>\", line 1338, in _find_and_load\n  File \"<frozen importlib._bootstrap>\", line 1299, in _resolve_parents\n  File \"<frozen importlib._bootstrap>\", line 491, in _call_with_frames_removed\n  File \"<frozen importlib._bootstrap>\", line 1389, in _gcd_import\n  File \"<frozen importlib._bootstrap>\", line 1353, in _find_and_load\n  File \"<frozen importlib._bootstrap>\", line 1249, in _find_and_load_unlocked\n  File \"<frozen importlib._bootstrap>\", line 857, in _load_unlocked\n  File \"<frozen importlib._bootstrap_external>\", line 751, in exec_module\n  File \"<frozen importlib._bootstrap>\", line 491, in _call_with_frames_removed\n  File \"/dev/shm/acr/work/2971914575/src/base/fastagency/__init__.py\", line 4, in <module>\n    from .app import FastAgency\n  File \"/dev/shm/acr/work/2971914575/src/base/fastagency/app.py\", line 8, in <module>\n    from .base import (\n    ...<5 lines>...\n    )\n  File \"/dev/shm/acr/work/2971914575/src/base/fastagency/base.py\", line 16, in <module>\n    from .messages import IOMessage, MessageProcessorProtocol\n  File \"/dev/shm/acr/work/2971914575/src/base/fastagency/messages.py\", line 7, in <module>\n    from pydantic import BaseModel\nModuleNotFoundError: No module named 'pydantic'\n"
+   },
+   "fastagency.runtimes.ag2.tools.websurfer": {
+    "ok": false,
+    "type": "ModuleNotFoundError",
+    "message": "No module named 'pydantic'",
+    "missing_module": "pydantic",
+    "file": "fastagency/messages.py",
+    "line": 7,
+    "traceback": "tlib._bootstrap>\", line 1338, in _find_and_load\n  File \"<frozen importlib._bootstrap>\", line 1299, in _resolve_parents\n  File \"<frozen importlib._bootstrap>\", line 491, in _call_with_frames_removed\n  File \"<frozen importlib._bootstrap>\", line 1389, in _gcd_import\n  File \"<frozen importlib._bootstrap>\", line 1338, in _find_and_load\n  File \"<frozen importlib._bootstrap>\", line 1299, in _resolve_parents\n  File \"<frozen importlib._bootstrap>\", line 491, in _call_with_frames_removed\n  File \"<frozen importlib._bootstrap>\", line 1389, in _gcd_import\n  File \"<frozen importlib._bootstrap>\", line 1353, in _find_and_load\n  File \"<frozen importlib._bootstrap>\", line 1249, in _find_and_load_unlocked\n  File \"<frozen importlib._bootstrap>\", line 857, in _load_unlocked\n  File \"<frozen importlib._bootstrap_external>\", line 751, in exec_module\n  File \"<frozen importlib._bootstrap>\", line 491, in _call_with_frames_removed\n  File \"/dev/shm/acr/work/2971914575/src/base/fastagency/__init__.py\", line 4, in <module>\n    from .app import FastAgency\n  File \"/dev/shm/acr/work/2971914575/src/base/fastagency/app.py\", line 8, in <module>\n    from .base import (\n    ...<5 lines>...\n    )\n  File \"/dev/shm/acr/work/2971914575/src/base/fastagency/base.py\", line 16, in <module>\n    from .messages import IOMessage, MessageProcessorProtocol\n  File \"/dev/shm/acr/work/2971914575/src/base/fastagency/messages.py\", line 7, in <module>\n    from pydantic import BaseModel\nModuleNotFoundError: No module named 'pydantic'\n"
+   }
+  },
+  "status": "head_usage_error",
+  "dependency_cutoff": "2025-04-09T14:37:39Z",
+  "seconds": 4.4,
+  "head_failures": 0
+ },
+ "findings": [
+  {
+   "tool": "ruff",
+   "rule": "F401",
+   "category": "maintainability",
+   "severity": "low",
+   "confidence": "high",
+   "message": "`autogen.events.base_event.BaseEvent` imported but unused",
+   "file": "fastagency/runtimes/ag2/ag2.py",
+   "line": 16,
+   "end_line": 16,
+   "cwe": null,
+   "on_changed_line": true,
+   "evidence": {
+    "type": "static",
+    "source_line": "from autogen.events.base_event import BaseEvent",
+    "url": "https://docs.astral.sh/ruff/rules/unused-import"
+   },
+   "sources": [
+    "ruff"
+   ],
+   "finding_id": "65f6b2d30382",
+   "score": 1.5
+  },
+  {
+   "tool": "ruff",
+   "rule": "F401",
+   "category": "maintainability",
+   "severity": "low",
+   "confidence": "high",
+   "message": "`autogen.messages.BaseMessage` imported but unused",
+   "file": "fastagency/runtimes/ag2/ag2.py",
+   "line": 35,
+   "end_line": 35,
+   "cwe": null,
+   "on_changed_line": false,
+   "evidence": {
+    "type": "static",
+    "source_line": "from autogen.messages import BaseMessage",
+    "url": "https://docs.astral.sh/ruff/rules/unused-import"
+   },
+   "sources": [
+    "ruff"
+   ],
+   "finding_id": "3a43684b624a",
+   "score": 1.0
+  }
+ ],
+ "status": "ok",
+ "seconds": 5.5
+}

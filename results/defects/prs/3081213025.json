@@ -1,0 +1,167 @@
+{
+ "pr_id": 3081213025,
+ "repository": "wandb/weave",
+ "pr_number": 4549,
+ "split": "evaluation",
+ "agent": "OpenAI_Codex",
+ "head_sha": "26966bf40ee9cc70312dbc0c3e72f4cc19849db7",
+ "tool_versions": {
+  "ruff": "ruff 0.17.4",
+  "bandit": "__main__.py 1.9.4",
+  "python": "3.12.3"
+ },
+ "config": {
+  "run_tests": true,
+  "sandbox": true
+ },
+ "base_mode": "reverse_applied_diff",
+ "static": {
+  "files_analysed": 4,
+  "head_issues": 48,
+  "base_issues": 48,
+  "per_tool_head": {
+   "ruff": 41,
+   "bandit": 7
+  },
+  "per_tool_base": {
+   "ruff": 41,
+   "bandit": 7
+  },
+  "introduced": 0,
+  "seconds": 4.7
+ },
+ "tests": {
+  "env": {
+   "status": "partial",
+   "python": "3.15.2",
+   "steps": [
+    {
+     "step": "venv",
+     "ok": true,
+     "seconds": 0.1,
+     "timed_out": false,
+     "log_tail": ""
+    },
+    {
+     "step": "install -e .[test,dev]",
+     "ok": false,
+     "seconds": 6.8,
+     "timed_out": false,
+     "log_tail": " `project.license`. You can also use `project.license-files`. (Both options available on setuptools>=77.0.0).\n\n                 This deprecation is overdue, please update your project and remove deprecated\n                 calls to avoid build errors in the future.\n\n                 See https://packaging.python.org/en/latest/guides/writing-pyproject-toml/#license for details.\n                 ********************************************************************************\n\n         !!\n           corresp(dist, value, root_dir)\n         warning: no files found matching 'Makefile'\n         error: can't find Rust compiler\n\n         If you are using an outdated pip version, it is possible a prebuilt wheel is available for this package but pip is not able to install from it. Installing from the wheel would avoid the need for a Rust compiler.\n\n         To update pip, run:\n\n             pip install --upgrade pip\n\n         and then retry package installation.\n\n         If you did intend to build this package from source, try installing a Rust compiler from your system package manager and ensure it is on the PATH during installation. Alternatively, rustup (available at https://rustup.rs) is the recommended way to download and update the Rust compiler toolchain.\n\nhint: `tiktoken` (v0.9.0) was included because `weave[test]` (v0.51.48.dev0) depends on `litellm` (v1.72.1) which depends on `tiktoken`\n\nhint: Build failures usually indicate a problem with the package or the build environment\n",
+     "superseded": true
+    },
+    {
+     "step": "install -e .",
+     "ok": false,
+     "seconds": 6.9,
+     "timed_out": false,
+     "log_tail": "~~~^^\n           File \"/dev/shm/acr/work/_shared_cache/uv/builds-v0/.tmp4UcSis/lib/python3.15/site-packages/maturin/__init__.py\", line 76, in _get_env\n             extra_env = setup_rust()\n           File \"/dev/shm/acr/work/_shared_cache/uv/builds-v0/.tmp4UcSis/lib/python3.15/site-packages/puccinialin/_setup_rust.py\", line 123, in setup_rust\n             install_rust(rustup_init, rustup_home, cargo_home, file)\n             ~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n           File \"/dev/shm/acr/work/_shared_cache/uv/builds-v0/.tmp4UcSis/lib/python3.15/site-packages/puccinialin/_setup_rust.py\", line 66, in install_rust\n             check_call(\n             ~~~~~~~~~~^\n                 [\n                 ^\n             ...<13 lines>...\n                 stderr=file,\n                 ^^^^^^^^^^^^\n             )\n             ^\n           File \"/dev/shm/acr/work/_shared_cache/python/cpython-3.15.2-linux-x86_64-gnu/lib/python3.15/subprocess.py\", line 534, in check_call\n             raise CalledProcessError(retcode, cmd)\n         subprocess.CalledProcessError: Command [PosixPath('/dev/shm/acr/work/3081213025/home/.cache/puccinialin/rustup-init/rustup-init'), '-y', '--no-modify-path', '--profile', 'minimal'] returned non-zero exit status 1.\n\nhint: `pydantic-core` (v2.33.2) was included because `weave` (v0.51.48.dev0) depends on `pydantic` (v2.11.5) which depends on `pydantic-core`\n\nhint: Build failures usually indicate a problem with the package or the build environment\n"
+    },
+    {
+     "step": "install pytest",
+     "ok": true,
+     "seconds": 0.4,
+     "timed_out": false,
+     "log_tail": ""
+    },
+    {
+     "step": "repair: install requests typing_extensions",
+     "ok": true,
+     "seconds": 0.2,
+     "timed_out": false,
+     "log_tail": ""
+    }
+   ]
+  },
+  "selected_tests": [
+   {
+    "path": "tests/trace/test_client_trace.py",
+    "reason": "changed_in_pr",
+    "exists_at_base": true
+   },
+   {
+    "path": "tests/trace/test_current_call.py",
+    "reason": "changed_in_pr",
+    "exists_at_base": false
+   },
+   {
+    "path": "tests/trace/test_weave_client.py",
+    "reason": "matches_module:weave_client",
+    "exists_at_base": true
+   },
+   {
+    "path": "tests/trace/test_weave_client_mutations.py",
+    "reason": "matches_module:weave_client",
+    "exists_at_base": true
+   },
+   {
+    "path": "tests/trace/test_weave_client_threaded.py",
+    "reason": "matches_module:weave_client",
+    "exists_at_base": true
+   }
+  ],
+  "head_run": {
+   "status": "usage_error",
+   "exit_code": 4,
+   "seconds": 1.2,
+   "addopts_overridden": true,
+   "counts": {
+    "passed": 0,
+    "failed": 0,
+    "error": 0,
+    "skipped": 0
+   },
+   "tests": {},
+   "log_tail": "\nImportError while loading conftest '/dev/shm/acr/work/3081213025/src/head/tests/conftest.py'.\ntests/conftest.py:13: in <module>\n    from fastapi import FastAPI\nE   ModuleNotFoundError: No module named 'fastapi'\n"
+  },
+  "base_run": {
+   "status": "usage_error",
+   "exit_code": 4,
+   "seconds": 1.6,
+   "addopts_overridden": true,
+   "counts": {
+    "passed": 0,
+    "failed": 0,
+    "error": 0,
+    "skipped": 0
+   },
+   "tests": {},
+   "log_tail": "\nImportError while loading conftest '/dev/shm/acr/work/3081213025/src/base/tests/conftest.py'.\ntests/conftest.py:13: in <module>\n    from fastapi import FastAPI\nE   ModuleNotFoundError: No module named 'fastapi'\n"
+  },
+  "comparison": {
+   "regressions": [],
+   "new_test_failures": [],
+   "fixed": [],
+   "persistent_failures": []
+  },
+  "imports_head": {
+   "weave.trace.weave_client": {
+    "ok": false,
+    "type": "ModuleNotFoundError",
+    "message": "No module named 'numpy'",
+    "missing_module": "numpy",
+    "file": "weave/trace/box.py",
+    "line": 11,
+    "traceback": "ortlib._bootstrap>\", line 1389, in _gcd_import\n  File \"<frozen importlib._bootstrap>\", line 1353, in _find_and_load\n  File \"<frozen importlib._bootstrap>\", line 1249, in _find_and_load_unlocked\n  File \"<frozen importlib._bootstrap>\", line 857, in _load_unlocked\n  File \"<frozen importlib._bootstrap_external>\", line 751, in exec_module\n  File \"<frozen importlib._bootstrap>\", line 491, in _call_with_frames_removed\n  File \"/dev/shm/acr/work/3081213025/src/head/weave/__init__.py\", line 4, in <module>\n    from weave.trace.api import *\n  File \"/dev/shm/acr/work/3081213025/src/head/weave/trace/api.py\", line 12, in <module>\n    from weave import type_handlers  # noqa: F401\n    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"/dev/shm/acr/work/3081213025/src/head/weave/type_handlers/__init__.py\", line 1, in <module>\n    from weave.type_handlers.Audio import audio\n  File \"/dev/shm/acr/work/3081213025/src/head/weave/type_handlers/Audio/audio.py\", line 19, in <module>\n    from weave.trace.serialization.custom_objs import MemTraceFilesArtifact\n  File \"/dev/shm/acr/work/3081213025/src/head/weave/trace/serialization/custom_objs.py\", line 7, in <module>\n    from weave.trace.op import Op, is_op, op\n  File \"/dev/shm/acr/work/3081213025/src/head/weave/trace/op.py\", line 40, in <module>\n    from weave.trace import box, settings\n  File \"/dev/shm/acr/work/3081213025/src/head/weave/trace/box.py\", line 11, in <module>\n    import numpy as np\nModuleNotFoundError: No module named 'numpy'. Did you mean: 'runpy'?\n"
+   }
+  },
+  "imports_base": {
+   "weave.trace.weave_client": {
+    "ok": false,
+    "type": "ModuleNotFoundError",
+    "message": "No module named 'numpy'",
+    "missing_module": "numpy",
+    "file": "weave/trace/box.py",
+    "line": 11,
+    "traceback": "ortlib._bootstrap>\", line 1389, in _gcd_import\n  File \"<frozen importlib._bootstrap>\", line 1353, in _find_and_load\n  File \"<frozen importlib._bootstrap>\", line 1249, in _find_and_load_unlocked\n  File \"<frozen importlib._bootstrap>\", line 857, in _load_unlocked\n  File \"<frozen importlib._bootstrap_external>\", line 751, in exec_module\n  File \"<frozen importlib._bootstrap>\", line 491, in _call_with_frames_removed\n  File \"/dev/shm/acr/work/3081213025/src/base/weave/__init__.py\", line 4, in <module>\n    from weave.trace.api import *\n  File \"/dev/shm/acr/work/3081213025/src/base/weave/trace/api.py\", line 12, in <module>\n    from weave import type_handlers  # noqa: F401\n    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"/dev/shm/acr/work/3081213025/src/base/weave/type_handlers/__init__.py\", line 1, in <module>\n    from weave.type_handlers.Audio import audio\n  File \"/dev/shm/acr/work/3081213025/src/base/weave/type_handlers/Audio/audio.py\", line 19, in <module>\n    from weave.trace.serialization.custom_objs import MemTraceFilesArtifact\n  File \"/dev/shm/acr/work/3081213025/src/base/weave/trace/serialization/custom_objs.py\", line 7, in <module>\n    from weave.trace.op import Op, is_op, op\n  File \"/dev/shm/acr/work/3081213025/src/base/weave/trace/op.py\", line 40, in <module>\n    from weave.trace import box, settings\n  File \"/dev/shm/acr/work/3081213025/src/base/weave/trace/box.py\", line 11, in <module>\n    import numpy as np\nModuleNotFoundError: No module named 'numpy'. Did you mean: 'runpy'?\n"
+   }
+  },
+  "status": "head_usage_error",
+  "dependency_cutoff": "2025-06-04T23:23:20Z",
+  "seconds": 25.7,
+  "head_failures": 0
+ },
+ "findings": [],
+ "status": "ok",
+ "seconds": 139.4
+}

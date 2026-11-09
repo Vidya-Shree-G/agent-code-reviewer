@@ -1,0 +1,142 @@
+{
+ "pr_id": 3094551857,
+ "repository": "plastic-labs/honcho",
+ "pr_number": 113,
+ "split": "development",
+ "agent": "Devin",
+ "head_sha": "7a27495e8ba2b893265c22310d38ab48c38cb43c",
+ "tool_versions": {
+  "ruff": "ruff 0.17.4",
+  "bandit": "__main__.py 1.9.4",
+  "python": "3.12.3"
+ },
+ "config": {
+  "run_tests": true,
+  "sandbox": true
+ },
+ "base_mode": "reverse_applied_diff",
+ "static": {
+  "files_analysed": 3,
+  "head_issues": 6,
+  "base_issues": 6,
+  "per_tool_head": {
+   "ruff": 6
+  },
+  "per_tool_base": {
+   "ruff": 6
+  },
+  "introduced": 0,
+  "seconds": 0.8
+ },
+ "tests": {
+  "env": {
+   "status": "ok",
+   "python": "3.11.18",
+   "steps": [
+    {
+     "step": "venv",
+     "ok": true,
+     "seconds": 0.0,
+     "timed_out": false,
+     "log_tail": ""
+    },
+    {
+     "step": "install -e .",
+     "ok": true,
+     "seconds": 3.7,
+     "timed_out": false,
+     "log_tail": ""
+    },
+    {
+     "step": "install pytest",
+     "ok": true,
+     "seconds": 0.1,
+     "timed_out": false,
+     "log_tail": ""
+    },
+    {
+     "step": "repair: install pytest_asyncio",
+     "ok": true,
+     "seconds": 0.1,
+     "timed_out": false,
+     "log_tail": ""
+    }
+   ]
+  },
+  "selected_tests": [
+   {
+    "path": "tests/routes/test_session_context.py",
+    "reason": "changed_in_pr",
+    "exists_at_base": false
+   },
+   {
+    "path": "tests/routes/test_sessions.py",
+    "reason": "matches_module:sessions",
+    "exists_at_base": true
+   }
+  ],
+  "head_run": {
+   "status": "usage_error",
+   "exit_code": 4,
+   "seconds": 1.1,
+   "addopts_overridden": true,
+   "counts": {
+    "passed": 0,
+    "failed": 0,
+    "error": 0,
+    "skipped": 0
+   },
+   "tests": {},
+   "log_tail": "\nImportError while loading conftest '/dev/shm/acr/work/3094551857/src/head/tests/conftest.py'.\ntests/conftest.py:16: in <module>\n    from sqlalchemy_utils import create_database, database_exists, drop_database\nE   ModuleNotFoundError: No module named 'sqlalchemy_utils'\n"
+  },
+  "base_run": {
+   "status": "usage_error",
+   "exit_code": 4,
+   "seconds": 1.1,
+   "addopts_overridden": true,
+   "counts": {
+    "passed": 0,
+    "failed": 0,
+    "error": 0,
+    "skipped": 0
+   },
+   "tests": {},
+   "log_tail": "\nImportError while loading conftest '/dev/shm/acr/work/3094551857/src/base/tests/conftest.py'.\ntests/conftest.py:16: in <module>\n    from sqlalchemy_utils import create_database, database_exists, drop_database\nE   ModuleNotFoundError: No module named 'sqlalchemy_utils'\n"
+  },
+  "comparison": {
+   "regressions": [],
+   "new_test_failures": [],
+   "fixed": [],
+   "persistent_failures": []
+  },
+  "imports_head": {
+   "routers.sessions": {
+    "ok": false,
+    "type": "KeyError",
+    "message": "'CONNECTION_URI'",
+    "missing_module": null,
+    "file": "src/db.py",
+    "line": 17,
+    "traceback": "Traceback (most recent call last):\n  File \"<string>\", line 7, in <module>\n  File \"/dev/shm/acr/work/_shared_cache/python/cpython-3.11.18-linux-x86_64-gnu/lib/python3.11/importlib/__init__.py\", line 126, in import_module\n    return _bootstrap._gcd_import(name[level:], package, level)\n           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"<frozen importlib._bootstrap>\", line 1204, in _gcd_import\n  File \"<frozen importlib._bootstrap>\", line 1176, in _find_and_load\n  File \"<frozen importlib._bootstrap>\", line 1147, in _find_and_load_unlocked\n  File \"<frozen importlib._bootstrap>\", line 690, in _load_unlocked\n  File \"<frozen importlib._bootstrap_external>\", line 940, in exec_module\n  File \"<frozen importlib._bootstrap>\", line 241, in _call_with_frames_removed\n  File \"/dev/shm/acr/work/3094551857/src/head/src/routers/sessions.py\", line 11, in <module>\n    from src import agent, crud, schemas\n  File \"/dev/shm/acr/work/3094551857/src/head/src/agent.py\", line 16, in <module>\n    from src import crud, models, schemas\n  File \"/dev/shm/acr/work/3094551857/src/head/src/crud.py\", line 13, in <module>\n    from . import models, schemas\n  File \"/dev/shm/acr/work/3094551857/src/head/src/models.py\", line 21, in <module>\n    from .db import Base\n  File \"/dev/shm/acr/work/3094551857/src/head/src/db.py\", line 17, in <module>\n    os.environ[\"CONNECTION_URI\"],\n    ~~~~~~~~~~^^^^^^^^^^^^^^^^^^\n  File \"<frozen os>\", line 679, in __getitem__\nKeyError: 'CONNECTION_URI'\n"
+   }
+  },
+  "imports_base": {
+   "routers.sessions": {
+    "ok": false,
+    "type": "KeyError",
+    "message": "'CONNECTION_URI'",
+    "missing_module": null,
+    "file": "src/db.py",
+    "line": 17,
+    "traceback": "Traceback (most recent call last):\n  File \"<string>\", line 7, in <module>\n  File \"/dev/shm/acr/work/_shared_cache/python/cpython-3.11.18-linux-x86_64-gnu/lib/python3.11/importlib/__init__.py\", line 126, in import_module\n    return _bootstrap._gcd_import(name[level:], package, level)\n           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"<frozen importlib._bootstrap>\", line 1204, in _gcd_import\n  File \"<frozen importlib._bootstrap>\", line 1176, in _find_and_load\n  File \"<frozen importlib._bootstrap>\", line 1147, in _find_and_load_unlocked\n  File \"<frozen importlib._bootstrap>\", line 690, in _load_unlocked\n  File \"<frozen importlib._bootstrap_external>\", line 940, in exec_module\n  File \"<frozen importlib._bootstrap>\", line 241, in _call_with_frames_removed\n  File \"/dev/shm/acr/work/3094551857/src/base/src/routers/sessions.py\", line 11, in <module>\n    from src import agent, crud, schemas\n  File \"/dev/shm/acr/work/3094551857/src/base/src/agent.py\", line 16, in <module>\n    from src import crud, models, schemas\n  File \"/dev/shm/acr/work/3094551857/src/base/src/crud.py\", line 13, in <module>\n    from . import models, schemas\n  File \"/dev/shm/acr/work/3094551857/src/base/src/models.py\", line 21, in <module>\n    from .db import Base\n  File \"/dev/shm/acr/work/3094551857/src/base/src/db.py\", line 17, in <module>\n    os.environ[\"CONNECTION_URI\"],\n    ~~~~~~~~~~^^^^^^^^^^^^^^^^^^\n  File \"<frozen os>\", line 679, in __getitem__\nKeyError: 'CONNECTION_URI'\n"
+   }
+  },
+  "status": "head_usage_error",
+  "dependency_cutoff": "2025-05-29T15:26:42Z",
+  "seconds": 25.6,
+  "head_failures": 0
+ },
+ "findings": [],
+ "status": "ok",
+ "seconds": 28.4
+}

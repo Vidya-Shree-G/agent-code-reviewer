@@ -1,0 +1,239 @@
+{
+ "pr_id": 3007785025,
+ "repository": "Zipstack/unstract",
+ "pr_number": 1256,
+ "split": "development",
+ "agent": "Claude_Code",
+ "head_sha": "e61235a78f98ff90368f5c5b069d45eba2abfd6b",
+ "tool_versions": {
+  "ruff": "ruff 0.17.4",
+  "bandit": "__main__.py 1.9.4",
+  "python": "3.12.3"
+ },
+ "config": {
+  "run_tests": true,
+  "sandbox": true
+ },
+ "base_mode": "reverse_applied_diff",
+ "static": {
+  "files_analysed": 1,
+  "head_issues": 1,
+  "base_issues": 1,
+  "per_tool_head": {
+   "ruff": 1
+  },
+  "per_tool_base": {
+   "ruff": 1
+  },
+  "introduced": 0,
+  "seconds": 0.2
+ },
+ "tests": {
+  "env": {
+   "status": "partial",
+   "python": "3.12.9",
+   "steps": [
+    {
+     "step": "venv",
+     "ok": true,
+     "seconds": 0.9,
+     "timed_out": false,
+     "log_tail": ""
+    },
+    {
+     "step": "install -e .",
+     "ok": false,
+     "seconds": 0.7,
+     "timed_out": false,
+     "log_tail": "error: Failed to build `unstract @ file:///dev/shm/acr/work/3007785025/src/head`\n  cause: The build backend returned an error\n  cause: Call to `setuptools.build_meta:__legacy__.get_requires_for_build_editable` failed (exit status: 1)\n\n         [stderr]\n         error: Multiple top-level packages discovered in a flat-layout: ['runner', 'docker', 'backend', 'unstract', 'frontend'].\n\n         To avoid accidental inclusion of unwanted files or directories,\n         setuptools will not proceed with this build.\n\n         If you are trying to create a single distribution with multiple packages\n         on purpose, you should not rely on automatic discovery.\n         Instead, consider the following options:\n\n         1. set up custom discovery (`find` directive with `include` or `exclude`)\n         2. use a `src-layout`\n         3. explicitly set `py_modules` or `packages` with a list of names\n\n         To find more information, look for \"package discovery\" on setuptools docs.\n\nhint: Build failures usually indicate a problem with the package or the build environment\n"
+    },
+    {
+     "step": "install --group dev",
+     "ok": true,
+     "seconds": 2.3,
+     "timed_out": false,
+     "log_tail": ""
+    },
+    {
+     "step": "install pytest",
+     "ok": true,
+     "seconds": 0.0,
+     "timed_out": false,
+     "log_tail": ""
+    },
+    {
+     "step": "repair: install python-dotenv",
+     "ok": true,
+     "seconds": 0.0,
+     "timed_out": false,
+     "log_tail": ""
+    }
+   ]
+  },
+  "selected_tests": [
+   {
+    "path": "backend/workflow_manager/endpoint_v2/tests/test_database_utils/test_create_table_if_not_exists.py",
+    "reason": "full_suite",
+    "exists_at_base": true
+   },
+   {
+    "path": "backend/workflow_manager/endpoint_v2/tests/test_database_utils/test_execute_write_query.py",
+    "reason": "full_suite",
+    "exists_at_base": true
+   },
+   {
+    "path": "platform-service/tests/test_auth_middleware.py",
+    "reason": "full_suite",
+    "exists_at_base": true
+   },
+   {
+    "path": "prompt-service/src/unstract/prompt_service/tests/integration/test_api_endpoints.py",
+    "reason": "full_suite",
+    "exists_at_base": true
+   },
+   {
+    "path": "runner/src/unstract/runner/clients/test_docker.py",
+    "reason": "full_suite",
+    "exists_at_base": true
+   },
+   {
+    "path": "unstract/connectors/tests/databases/test_bigquery_db.py",
+    "reason": "full_suite",
+    "exists_at_base": true
+   },
+   {
+    "path": "unstract/connectors/tests/databases/test_mariadb.py",
+    "reason": "full_suite",
+    "exists_at_base": true
+   },
+   {
+    "path": "unstract/connectors/tests/databases/test_mssql_db.py",
+    "reason": "full_suite",
+    "exists_at_base": true
+   },
+   {
+    "path": "unstract/connectors/tests/databases/test_mysql_db.py",
+    "reason": "full_suite",
+    "exists_at_base": true
+   },
+   {
+    "path": "unstract/connectors/tests/databases/test_postgresql_db.py",
+    "reason": "full_suite",
+    "exists_at_base": true
+   },
+   {
+    "path": "unstract/connectors/tests/databases/test_redshift_db.py",
+    "reason": "full_suite",
+    "exists_at_base": true
+   },
+   {
+    "path": "unstract/connectors/tests/databases/test_snowflake_db.py",
+    "reason": "full_suite",
+    "exists_at_base": true
+   },
+   {
+    "path": "unstract/connectors/tests/filesystems/test_box_fs.py",
+    "reason": "full_suite",
+    "exists_at_base": true
+   },
+   {
+    "path": "unstract/connectors/tests/filesystems/test_google_drive_fs.py",
+    "reason": "full_suite",
+    "exists_at_base": true
+   },
+   {
+    "path": "unstract/connectors/tests/filesystems/test_http_fs.py",
+    "reason": "full_suite",
+    "exists_at_base": true
+   },
+   {
+    "path": "unstract/connectors/tests/filesystems/test_miniofs.py",
+    "reason": "full_suite",
+    "exists_at_base": true
+   },
+   {
+    "path": "unstract/connectors/tests/filesystems/test_pcs.py",
+    "reason": "full_suite",
+    "exists_at_base": true
+   },
+   {
+    "path": "unstract/connectors/tests/filesystems/test_zs_dropbox_fs.py",
+    "reason": "full_suite",
+    "exists_at_base": true
+   },
+   {
+    "path": "unstract/connectors/tests/test_connectorkit.py",
+    "reason": "full_suite",
+    "exists_at_base": true
+   },
+   {
+    "path": "unstract/core/tests/account_services/test_pandora_account.py",
+    "reason": "full_suite",
+    "exists_at_base": true
+   },
+   {
+    "path": "unstract/core/tests/test_pubsub_helper.py",
+    "reason": "full_suite",
+    "exists_at_base": true
+   },
+   {
+    "path": "unstract/flags/src/unstract/flags/tests/test_client.py",
+    "reason": "full_suite",
+    "exists_at_base": true
+   },
+   {
+    "path": "unstract/tool-registry/tests/test_tool_registry.py",
+    "reason": "full_suite",
+    "exists_at_base": true
+   },
+   {
+    "path": "unstract/workflow-execution/tests/workflow_test.py",
+    "reason": "full_suite",
+    "exists_at_base": true
+   }
+  ],
+  "head_run": {
+   "status": "usage_error",
+   "exit_code": 4,
+   "seconds": 0.2,
+   "addopts_overridden": true,
+   "counts": {
+    "passed": 0,
+    "failed": 0,
+    "error": 0,
+    "skipped": 0
+   },
+   "tests": {},
+   "log_tail": "\nImportError while loading conftest '/dev/shm/acr/work/3007785025/src/head/prompt-service/src/unstract/prompt_service/tests/conftest.py'.\nprompt-service/src/unstract/prompt_service/tests/conftest.py:3: in <module>\n    from flask import Flask\nE   ModuleNotFoundError: No module named 'flask'\n"
+  },
+  "base_run": {
+   "status": "usage_error",
+   "exit_code": 4,
+   "seconds": 0.2,
+   "addopts_overridden": true,
+   "counts": {
+    "passed": 0,
+    "failed": 0,
+    "error": 0,
+    "skipped": 0
+   },
+   "tests": {},
+   "log_tail": "\nImportError while loading conftest '/dev/shm/acr/work/3007785025/src/base/prompt-service/src/unstract/prompt_service/tests/conftest.py'.\nprompt-service/src/unstract/prompt_service/tests/conftest.py:3: in <module>\n    from flask import Flask\nE   ModuleNotFoundError: No module named 'flask'\n"
+  },
+  "comparison": {
+   "regressions": [],
+   "new_test_failures": [],
+   "fixed": [],
+   "persistent_failures": []
+  },
+  "imports_head": {},
+  "imports_base": {},
+  "status": "head_usage_error",
+  "dependency_cutoff": "2025-04-21T07:24:29Z",
+  "seconds": 5.8,
+  "head_failures": 0
+ },
+ "findings": [],
+ "status": "ok",
+ "seconds": 34.6
+}

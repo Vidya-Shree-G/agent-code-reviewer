@@ -1,0 +1,149 @@
+{
+ "pr_id": 3192198699,
+ "repository": "strnad/CrewAI-Studio",
+ "pr_number": 96,
+ "split": "development",
+ "agent": "OpenAI_Codex",
+ "head_sha": "a90499ecb216130f6442b1984671e6350353dc01",
+ "tool_versions": {
+  "ruff": "ruff 0.17.4",
+  "bandit": "__main__.py 1.9.4",
+  "python": "3.12.3"
+ },
+ "config": {
+  "run_tests": true,
+  "sandbox": true
+ },
+ "base_mode": "reverse_applied_diff",
+ "static": {
+  "files_analysed": 3,
+  "head_issues": 4,
+  "base_issues": 4,
+  "per_tool_head": {
+   "ruff": 3,
+   "bandit": 1
+  },
+  "per_tool_base": {
+   "ruff": 3,
+   "bandit": 1
+  },
+  "introduced": 0,
+  "seconds": 0.7
+ },
+ "tests": {
+  "env": {
+   "status": "partial",
+   "python": "3.15.2",
+   "steps": [
+    {
+     "step": "venv",
+     "ok": true,
+     "seconds": 0.0,
+     "timed_out": false,
+     "log_tail": ""
+    },
+    {
+     "step": "install -r requirements.txt",
+     "ok": false,
+     "seconds": 2.0,
+     "timed_out": false,
+     "log_tail": "ed.\n         And because crewai>=0.83.0,<=0.86.0 depends on chromadb>=0.5.18, we can conclude that crewai>=0.83.0,<=0.86.0 cannot be used.\n         And because we know from (30) that crewai<=0.80.0, all versions of langchain-community, all versions of langchain-ollama are incompatible, we can conclude that crewai<=0.86.0, all versions of langchain-community, all versions of langchain-ollama are incompatible. (31)\n\n         Because onnxruntime>=1.14.1 has no wheels with a matching Python ABI tag (e.g., `cp315`) and chromadb>=0.5.23 depends on onnxruntime>=1.14.1, we can conclude that chromadb>=0.5.23 cannot be used.\n         And because crewai>=0.95.0 depends on chromadb>=0.5.23, we can conclude that crewai>=0.95.0 cannot be used.\n         And because we know from (31) that crewai<=0.86.0, all versions of langchain-community, all versions of langchain-ollama are incompatible, we can conclude that all versions of crewai, all versions of langchain-community, all versions of langchain-ollama are incompatible.\n         And because you require crewai, we can conclude that your requirements, all versions of langchain-community, all versions of langchain-ollama are incompatible.\n         And because you require langchain-community and langchain-ollama, we can conclude that your requirements are unsatisfiable.\n\nhint: You require CPython 3.15 (`cp315`), but we only found wheels for `onnxruntime` (v1.22.0) with the following Python ABI tags: `cp310`, `cp311`, `cp312`, `cp313`, `cp313t`\n"
+    },
+    {
+     "step": "install pytest",
+     "ok": true,
+     "seconds": 0.1,
+     "timed_out": false,
+     "log_tail": ""
+    },
+    {
+     "step": "repair: install streamlit",
+     "ok": false,
+     "seconds": 1.8,
+     "timed_out": false,
+     "log_tail": "               ~~~~~~~~~~~~~~~~~~~~~~~~~^\n                 cmd,\n                 ^^^^\n             ...<3 lines>...\n                 self._arbitrary_args(config_settings),\n                 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n             )\n             ^\n           File \"/dev/shm/acr/work/_shared_cache/uv/builds-v0/.tmpdsUyhf/lib/python3.15/site-packages/setuptools/build_meta.py\", line 404, in _build_with_temp_dir\n             self.run_setup()\n             ~~~~~~~~~~~~~~^^\n           File \"/dev/shm/acr/work/_shared_cache/uv/sdists-v10/pypi/pillow/11.3.0/AgqJ9gapM4SEsSui/src/_custom_build/backend.py\", line 20, in run_setup\n             return super().run_setup(setup_script)\n                    ~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^\n           File \"/dev/shm/acr/work/_shared_cache/uv/builds-v0/.tmpdsUyhf/lib/python3.15/site-packages/setuptools/build_meta.py\", line 317, in run_setup\n             exec(code, locals())\n             ~~~~^^^^^^^^^^^^^^^^\n           File \"<string>\", line 1108, in <module>\n         RequiredDependencyException: \n\n         The headers or library files could not be found for jpeg,\n         a required dependency when compiling Pillow from source.\n\n         Please see the install instructions at:\n            https://pillow.readthedocs.io/en/latest/installation/basic-installation.html\n\n\nhint: `pillow` (v11.3.0) was included because `streamlit` (v1.46.1) depends on `pillow`\n\nhint: Build failures usually indicate a problem with the package or the build environment\n"
+    }
+   ]
+  },
+  "selected_tests": [],
+  "head_run": {
+   "status": "not_run",
+   "tests": {}
+  },
+  "base_run": {
+   "status": "not_run",
+   "tests": {}
+  },
+  "comparison": {
+   "regressions": [],
+   "new_test_failures": [],
+   "fixed": [],
+   "persistent_failures": []
+  },
+  "imports_head": {
+   "app.pg_crew_run": {
+    "ok": false,
+    "type": "ModuleNotFoundError",
+    "message": "No module named 'streamlit'",
+    "missing_module": "streamlit",
+    "file": "app/pg_crew_run.py",
+    "line": 2,
+    "traceback": "Traceback (most recent call last):\n  File \"<string>\", line 7, in <module>\n    importlib.import_module(m)\n    ~~~~~~~~~~~~~~~~~~~~~~~^^^\n  File \"/dev/shm/acr/work/_shared_cache/python/cpython-3.15.2-linux-x86_64-gnu/lib/python3.15/importlib/__init__.py\", line 88, in import_module\n    return _bootstrap._gcd_import(name[level:], package, level)\n           ~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"<frozen importlib._bootstrap>\", line 1389, in _gcd_import\n  File \"<frozen importlib._bootstrap>\", line 1353, in _find_and_load\n  File \"<frozen importlib._bootstrap>\", line 1249, in _find_and_load_unlocked\n  File \"<frozen importlib._bootstrap>\", line 857, in _load_unlocked\n  File \"<frozen importlib._bootstrap_external>\", line 751, in exec_module\n  File \"<frozen importlib._bootstrap>\", line 491, in _call_with_frames_removed\n  File \"/dev/shm/acr/work/3192198699/src/head/app/pg_crew_run.py\", line 2, in <module>\n    import streamlit as st\nModuleNotFoundError: No module named 'streamlit'\n"
+   },
+   "app.pg_results": {
+    "ok": false,
+    "type": "ModuleNotFoundError",
+    "message": "No module named 'streamlit'",
+    "missing_module": "streamlit",
+    "file": "app/pg_results.py",
+    "line": 1,
+    "traceback": "Traceback (most recent call last):\n  File \"<string>\", line 7, in <module>\n    importlib.import_module(m)\n    ~~~~~~~~~~~~~~~~~~~~~~~^^^\n  File \"/dev/shm/acr/work/_shared_cache/python/cpython-3.15.2-linux-x86_64-gnu/lib/python3.15/importlib/__init__.py\", line 88, in import_module\n    return _bootstrap._gcd_import(name[level:], package, level)\n           ~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"<frozen importlib._bootstrap>\", line 1389, in _gcd_import\n  File \"<frozen importlib._bootstrap>\", line 1353, in _find_and_load\n  File \"<frozen importlib._bootstrap>\", line 1249, in _find_and_load_unlocked\n  File \"<frozen importlib._bootstrap>\", line 857, in _load_unlocked\n  File \"<frozen importlib._bootstrap_external>\", line 751, in exec_module\n  File \"<frozen importlib._bootstrap>\", line 491, in _call_with_frames_removed\n  File \"/dev/shm/acr/work/3192198699/src/head/app/pg_results.py\", line 1, in <module>\n    import streamlit as st\nModuleNotFoundError: No module named 'streamlit'\n"
+   },
+   "app.utils": {
+    "ok": false,
+    "type": "ModuleNotFoundError",
+    "message": "No module named 'streamlit'",
+    "missing_module": "streamlit",
+    "file": "app/utils.py",
+    "line": 3,
+    "traceback": "Traceback (most recent call last):\n  File \"<string>\", line 7, in <module>\n    importlib.import_module(m)\n    ~~~~~~~~~~~~~~~~~~~~~~~^^^\n  File \"/dev/shm/acr/work/_shared_cache/python/cpython-3.15.2-linux-x86_64-gnu/lib/python3.15/importlib/__init__.py\", line 88, in import_module\n    return _bootstrap._gcd_import(name[level:], package, level)\n           ~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"<frozen importlib._bootstrap>\", line 1389, in _gcd_import\n  File \"<frozen importlib._bootstrap>\", line 1353, in _find_and_load\n  File \"<frozen importlib._bootstrap>\", line 1249, in _find_and_load_unlocked\n  File \"<frozen importlib._bootstrap>\", line 857, in _load_unlocked\n  File \"<frozen importlib._bootstrap_external>\", line 751, in exec_module\n  File \"<frozen importlib._bootstrap>\", line 491, in _call_with_frames_removed\n  File \"/dev/shm/acr/work/3192198699/src/head/app/utils.py\", line 3, in <module>\n    from streamlit import markdown\nModuleNotFoundError: No module named 'streamlit'\n"
+   }
+  },
+  "imports_base": {
+   "app.pg_crew_run": {
+    "ok": false,
+    "type": "ModuleNotFoundError",
+    "message": "No module named 'streamlit'",
+    "missing_module": "streamlit",
+    "file": "app/pg_crew_run.py",
+    "line": 2,
+    "traceback": "Traceback (most recent call last):\n  File \"<string>\", line 7, in <module>\n    importlib.import_module(m)\n    ~~~~~~~~~~~~~~~~~~~~~~~^^^\n  File \"/dev/shm/acr/work/_shared_cache/python/cpython-3.15.2-linux-x86_64-gnu/lib/python3.15/importlib/__init__.py\", line 88, in import_module\n    return _bootstrap._gcd_import(name[level:], package, level)\n           ~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"<frozen importlib._bootstrap>\", line 1389, in _gcd_import\n  File \"<frozen importlib._bootstrap>\", line 1353, in _find_and_load\n  File \"<frozen importlib._bootstrap>\", line 1249, in _find_and_load_unlocked\n  File \"<frozen importlib._bootstrap>\", line 857, in _load_unlocked\n  File \"<frozen importlib._bootstrap_external>\", line 751, in exec_module\n  File \"<frozen importlib._bootstrap>\", line 491, in _call_with_frames_removed\n  File \"/dev/shm/acr/work/3192198699/src/base/app/pg_crew_run.py\", line 2, in <module>\n    import streamlit as st\nModuleNotFoundError: No module named 'streamlit'\n"
+   },
+   "app.pg_results": {
+    "ok": false,
+    "type": "ModuleNotFoundError",
+    "message": "No module named 'streamlit'",
+    "missing_module": "streamlit",
+    "file": "app/pg_results.py",
+    "line": 1,
+    "traceback": "Traceback (most recent call last):\n  File \"<string>\", line 7, in <module>\n    importlib.import_module(m)\n    ~~~~~~~~~~~~~~~~~~~~~~~^^^\n  File \"/dev/shm/acr/work/_shared_cache/python/cpython-3.15.2-linux-x86_64-gnu/lib/python3.15/importlib/__init__.py\", line 88, in import_module\n    return _bootstrap._gcd_import(name[level:], package, level)\n           ~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"<frozen importlib._bootstrap>\", line 1389, in _gcd_import\n  File \"<frozen importlib._bootstrap>\", line 1353, in _find_and_load\n  File \"<frozen importlib._bootstrap>\", line 1249, in _find_and_load_unlocked\n  File \"<frozen importlib._bootstrap>\", line 857, in _load_unlocked\n  File \"<frozen importlib._bootstrap_external>\", line 751, in exec_module\n  File \"<frozen importlib._bootstrap>\", line 491, in _call_with_frames_removed\n  File \"/dev/shm/acr/work/3192198699/src/base/app/pg_results.py\", line 1, in <module>\n    import streamlit as st\nModuleNotFoundError: No module named 'streamlit'\n"
+   },
+   "app.utils": {
+    "ok": false,
+    "type": "ModuleNotFoundError",
+    "message": "No module named 'streamlit'",
+    "missing_module": "streamlit",
+    "file": "app/utils.py",
+    "line": 3,
+    "traceback": "Traceback (most recent call last):\n  File \"<string>\", line 7, in <module>\n    importlib.import_module(m)\n    ~~~~~~~~~~~~~~~~~~~~~~~^^^\n  File \"/dev/shm/acr/work/_shared_cache/python/cpython-3.15.2-linux-x86_64-gnu/lib/python3.15/importlib/__init__.py\", line 88, in import_module\n    return _bootstrap._gcd_import(name[level:], package, level)\n           ~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"<frozen importlib._bootstrap>\", line 1389, in _gcd_import\n  File \"<frozen importlib._bootstrap>\", line 1353, in _find_and_load\n  File \"<frozen importlib._bootstrap>\", line 1249, in _find_and_load_unlocked\n  File \"<frozen importlib._bootstrap>\", line 857, in _load_unlocked\n  File \"<frozen importlib._bootstrap_external>\", line 751, in exec_module\n  File \"<frozen importlib._bootstrap>\", line 491, in _call_with_frames_removed\n  File \"/dev/shm/acr/work/3192198699/src/base/app/utils.py\", line 3, in <module>\n    from streamlit import markdown\nModuleNotFoundError: No module named 'streamlit'\n"
+   }
+  },
+  "status": "imports_only",
+  "dependency_cutoff": "2025-07-01T13:26:09Z",
+  "seconds": 4.6,
+  "head_failures": 0
+ },
+ "findings": [],
+ "status": "ok",
+ "seconds": 7.6
+}

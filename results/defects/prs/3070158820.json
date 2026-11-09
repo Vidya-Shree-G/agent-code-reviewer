@@ -1,0 +1,205 @@
+{
+ "pr_id": 3070158820,
+ "repository": "Blaizzy/mlx-vlm",
+ "pr_number": 361,
+ "split": "evaluation",
+ "agent": "OpenAI_Codex",
+ "head_sha": "7aaba9fd0a640102f087bfa5f52b2927dddbb877",
+ "tool_versions": {
+  "ruff": "ruff 0.17.4",
+  "bandit": "__main__.py 1.9.4",
+  "python": "3.12.3"
+ },
+ "config": {
+  "run_tests": true,
+  "sandbox": true
+ },
+ "base_mode": "reverse_applied_diff",
+ "static": {
+  "files_analysed": 2,
+  "head_issues": 6,
+  "base_issues": 4,
+  "per_tool_head": {
+   "ruff": 4,
+   "bandit": 2
+  },
+  "per_tool_base": {
+   "ruff": 2,
+   "bandit": 2
+  },
+  "introduced": 2,
+  "seconds": 0.3
+ },
+ "tests": {
+  "env": {
+   "status": "partial",
+   "python": "3.15.2",
+   "steps": [
+    {
+     "step": "venv",
+     "ok": true,
+     "seconds": 0.0,
+     "timed_out": false,
+     "log_tail": ""
+    },
+    {
+     "step": "install -e .",
+     "ok": false,
+     "seconds": 0.4,
+     "timed_out": false,
+     "log_tail": "error: No solution found when resolving dependencies\n  cause: Because mlx==0.25.2 has no wheels with a matching Python ABI tag (e.g., `cp315`) and only the following versions of mlx are available:\n             mlx<0.25.0\n             mlx==0.25.2\n         we can conclude that mlx>=0.25.0 cannot be used.\n         And because mlx-vlm==0.1.26 depends on mlx>=0.25.0, we can conclude that mlx-vlm==0.1.26 cannot be used.\n         And because only mlx-vlm==0.1.26 is available and you require mlx-vlm, we can conclude that your requirements are unsatisfiable.\n\nhint: You require CPython 3.15 (`cp315`), but we only found wheels for `mlx` (v0.25.2) with the following Python ABI tags: `cp39`, `cp310`, `cp311`, `cp312`, `cp313`\n\nhint: `mlx` was filtered by `exclude-newer` to only include packages uploaded before 2025-05-17T01:51:11Z. The latest version satisfying the requirement is v0.32.4, published at 2026-10-14T21:15:37.06Z. Consider using `exclude-newer-package` to override the cutoff for this package.\n"
+    },
+    {
+     "step": "install -r requirements.txt",
+     "ok": false,
+     "seconds": 0.0,
+     "timed_out": false,
+     "log_tail": "error: No solution found when resolving dependencies\n  cause: Because mlx==0.25.2 has no wheels with a matching Python ABI tag (e.g., `cp315`) and only the following versions of mlx are available:\n             mlx<0.25.0\n             mlx==0.25.2\n         we can conclude that mlx>=0.25.0 cannot be used.\n         And because you require mlx>=0.25.0, we can conclude that your requirements are unsatisfiable.\n\nhint: You require CPython 3.15 (`cp315`), but we only found wheels for `mlx` (v0.25.2) with the following Python ABI tags: `cp39`, `cp310`, `cp311`, `cp312`, `cp313`\n\nhint: `mlx` was filtered by `exclude-newer` to only include packages uploaded before 2025-05-17T01:51:11Z. The latest version satisfying the requirement is v0.32.4, published at 2026-10-14T21:15:37.06Z. Consider using `exclude-newer-package` to override the cutoff for this package.\n"
+    },
+    {
+     "step": "install pytest",
+     "ok": true,
+     "seconds": 0.0,
+     "timed_out": false,
+     "log_tail": ""
+    },
+    {
+     "step": "repair: install mlx",
+     "ok": false,
+     "seconds": 0.0,
+     "timed_out": false,
+     "log_tail": "error: No solution found when resolving dependencies\n  cause: Because all versions of mlx have no wheels with a matching Python ABI tag (e.g., `cp315`) and you require mlx, we can conclude that your requirements are unsatisfiable.\n\nhint: You require CPython 3.15 (`cp315`), but we only found wheels for `mlx` (v0.25.2) with the following Python ABI tags: `cp39`, `cp310`, `cp311`, `cp312`, `cp313`\n"
+    }
+   ]
+  },
+  "selected_tests": [
+   {
+    "path": "mlx_vlm/tests/test_utils.py",
+    "reason": "changed_in_pr",
+    "exists_at_base": true
+   }
+  ],
+  "head_run": {
+   "status": "completed",
+   "exit_code": 2,
+   "seconds": 0.3,
+   "addopts_overridden": false,
+   "counts": {
+    "passed": 0,
+    "failed": 0,
+    "error": 1,
+    "skipped": 0
+   },
+   "tests": {
+    "::mlx_vlm.tests.test_utils": {
+     "outcome": "error",
+     "detail": "collection failure\nImportError while importing test module '/dev/shm/acr/work/3070158820/src/head/mlx_vlm/tests/test_utils.py'.\nHint: make sure your test modules/packages have valid Python names.\nTraceback:\n../../../_shared_cache/python/cpython-3.15.2-linux-x86_64-gnu/lib/python3.15/importlib/__init__.py:88: in import_module\n    return _bootstrap._gcd_import(name[level:], package, level)\nmlx_vlm/tests/test_utils.py:4: in <module>\n    import mlx.core as mx\nE   ModuleNotFoundError: No module named 'mlx'"
+    }
+   },
+   "log_tail": ""
+  },
+  "base_run": {
+   "status": "completed",
+   "exit_code": 2,
+   "seconds": 0.3,
+   "addopts_overridden": false,
+   "counts": {
+    "passed": 0,
+    "failed": 0,
+    "error": 1,
+    "skipped": 0
+   },
+   "tests": {
+    "::mlx_vlm.tests.test_utils": {
+     "outcome": "error",
+     "detail": "collection failure\nImportError while importing test module '/dev/shm/acr/work/3070158820/src/base/mlx_vlm/tests/test_utils.py'.\nHint: make sure your test modules/packages have valid Python names.\nTraceback:\n../../../_shared_cache/python/cpython-3.15.2-linux-x86_64-gnu/lib/python3.15/importlib/__init__.py:88: in import_module\n    return _bootstrap._gcd_import(name[level:], package, level)\nmlx_vlm/tests/test_utils.py:1: in <module>\n    import mlx.core as mx\nE   ModuleNotFoundError: No module named 'mlx'"
+    }
+   },
+   "log_tail": ""
+  },
+  "comparison": {
+   "regressions": [],
+   "new_test_failures": [],
+   "fixed": [],
+   "persistent_failures": [
+    "::mlx_vlm.tests.test_utils"
+   ]
+  },
+  "imports_head": {
+   "mlx_vlm.utils": {
+    "ok": false,
+    "type": "ModuleNotFoundError",
+    "message": "No module named 'mlx'",
+    "missing_module": "mlx",
+    "file": "mlx_vlm/utils.py",
+    "line": 15,
+    "traceback": "Traceback (most recent call last):\n  File \"<string>\", line 7, in <module>\n    importlib.import_module(m)\n    ~~~~~~~~~~~~~~~~~~~~~~~^^^\n  File \"/dev/shm/acr/work/_shared_cache/python/cpython-3.15.2-linux-x86_64-gnu/lib/python3.15/importlib/__init__.py\", line 88, in import_module\n    return _bootstrap._gcd_import(name[level:], package, level)\n           ~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"<frozen importlib._bootstrap>\", line 1389, in _gcd_import\n  File \"<frozen importlib._bootstrap>\", line 1338, in _find_and_load\n  File \"<frozen importlib._bootstrap>\", line 1299, in _resolve_parents\n  File \"<frozen importlib._bootstrap>\", line 491, in _call_with_frames_removed\n  File \"<frozen importlib._bootstrap>\", line 1389, in _gcd_import\n  File \"<frozen importlib._bootstrap>\", line 1353, in _find_and_load\n  File \"<frozen importlib._bootstrap>\", line 1249, in _find_and_load_unlocked\n  File \"<frozen importlib._bootstrap>\", line 857, in _load_unlocked\n  File \"<frozen importlib._bootstrap_external>\", line 751, in exec_module\n  File \"<frozen importlib._bootstrap>\", line 491, in _call_with_frames_removed\n  File \"/dev/shm/acr/work/3070158820/src/head/mlx_vlm/__init__.py\", line 2, in <module>\n    from .utils import (\n    ...<8 lines>...\n    )\n  File \"/dev/shm/acr/work/3070158820/src/head/mlx_vlm/utils.py\", line 15, in <module>\n    import mlx.core as mx\nModuleNotFoundError: No module named 'mlx'\n"
+   }
+  },
+  "imports_base": {
+   "mlx_vlm.utils": {
+    "ok": false,
+    "type": "ModuleNotFoundError",
+    "message": "No module named 'mlx'",
+    "missing_module": "mlx",
+    "file": "mlx_vlm/utils.py",
+    "line": 15,
+    "traceback": "Traceback (most recent call last):\n  File \"<string>\", line 7, in <module>\n    importlib.import_module(m)\n    ~~~~~~~~~~~~~~~~~~~~~~~^^^\n  File \"/dev/shm/acr/work/_shared_cache/python/cpython-3.15.2-linux-x86_64-gnu/lib/python3.15/importlib/__init__.py\", line 88, in import_module\n    return _bootstrap._gcd_import(name[level:], package, level)\n           ~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"<frozen importlib._bootstrap>\", line 1389, in _gcd_import\n  File \"<frozen importlib._bootstrap>\", line 1338, in _find_and_load\n  File \"<frozen importlib._bootstrap>\", line 1299, in _resolve_parents\n  File \"<frozen importlib._bootstrap>\", line 491, in _call_with_frames_removed\n  File \"<frozen importlib._bootstrap>\", line 1389, in _gcd_import\n  File \"<frozen importlib._bootstrap>\", line 1353, in _find_and_load\n  File \"<frozen importlib._bootstrap>\", line 1249, in _find_and_load_unlocked\n  File \"<frozen importlib._bootstrap>\", line 857, in _load_unlocked\n  File \"<frozen importlib._bootstrap_external>\", line 751, in exec_module\n  File \"<frozen importlib._bootstrap>\", line 491, in _call_with_frames_removed\n  File \"/dev/shm/acr/work/3070158820/src/base/mlx_vlm/__init__.py\", line 2, in <module>\n    from .utils import (\n    ...<8 lines>...\n    )\n  File \"/dev/shm/acr/work/3070158820/src/base/mlx_vlm/utils.py\", line 15, in <module>\n    import mlx.core as mx\nModuleNotFoundError: No module named 'mlx'\n"
+   }
+  },
+  "status": "completed",
+  "dependency_cutoff": "2025-05-17T01:51:11Z",
+  "seconds": 1.2,
+  "head_failures": 1
+ },
+ "findings": [
+  {
+   "tool": "ruff",
+   "rule": "F841",
+   "category": "maintainability",
+   "severity": "low",
+   "confidence": "medium",
+   "message": "Local variable `mock_load_model` is assigned to but never used",
+   "file": "mlx_vlm/tests/test_utils.py",
+   "line": 252,
+   "end_line": 252,
+   "cwe": null,
+   "on_changed_line": true,
+   "evidence": {
+    "type": "static",
+    "source_line": ") as mock_load_model, patch(",
+    "url": "https://docs.astral.sh/ruff/rules/unused-variable"
+   },
+   "sources": [
+    "ruff"
+   ],
+   "finding_id": "8008af1fb34b",
+   "score": 1.2
+  },
+  {
+   "tool": "ruff",
+   "rule": "F841",
+   "category": "maintainability",
+   "severity": "low",
+   "confidence": "medium",
+   "message": "Local variable `mock_load_processor` is assigned to but never used",
+   "file": "mlx_vlm/tests/test_utils.py",
+   "line": 255,
+   "end_line": 255,
+   "cwe": null,
+   "on_changed_line": true,
+   "evidence": {
+    "type": "static",
+    "source_line": ") as mock_load_processor, patch(",
+    "url": "https://docs.astral.sh/ruff/rules/unused-variable"
+   },
+   "sources": [
+    "ruff"
+   ],
+   "finding_id": "c337043fcf7b",
+   "score": 1.2
+  }
+ ],
+ "status": "ok",
+ "seconds": 111.3
+}

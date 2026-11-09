@@ -1,0 +1,671 @@
+{
+ "pr_id": 3006276172,
+ "repository": "tumf/mcp-text-editor",
+ "pr_number": 9,
+ "split": "development",
+ "agent": "Devin",
+ "head_sha": "ea7c16e1a415be471b672ba4a6dca531b3c1344a",
+ "tool_versions": {
+  "ruff": "ruff 0.17.4",
+  "bandit": "__main__.py 1.9.4",
+  "python": "3.12.3"
+ },
+ "config": {
+  "run_tests": true,
+  "sandbox": true
+ },
+ "base_mode": "reverse_applied_diff",
+ "static": {
+  "files_analysed": 4,
+  "head_issues": 17,
+  "base_issues": 8,
+  "per_tool_head": {
+   "ruff": 15,
+   "bandit": 2
+  },
+  "per_tool_base": {
+   "ruff": 8
+  },
+  "introduced": 9,
+  "seconds": 0.3
+ },
+ "tests": {
+  "env": {
+   "status": "ok",
+   "python": "3.13.18",
+   "steps": [
+    {
+     "step": "venv",
+     "ok": true,
+     "seconds": 0.9,
+     "timed_out": false,
+     "log_tail": ""
+    },
+    {
+     "step": "install -e .[test,dev]",
+     "ok": true,
+     "seconds": 2.7,
+     "timed_out": false,
+     "log_tail": ""
+    },
+    {
+     "step": "install pytest",
+     "ok": true,
+     "seconds": 0.0,
+     "timed_out": false,
+     "log_tail": ""
+    }
+   ]
+  },
+  "selected_tests": [
+   {
+    "path": "tests/test_validator.py",
+    "reason": "changed_in_pr",
+    "exists_at_base": false
+   },
+   {
+    "path": "tests/test_server.py",
+    "reason": "matches_module:server",
+    "exists_at_base": true
+   },
+   {
+    "path": "tests/test_text_editor.py",
+    "reason": "matches_module:text_editor",
+    "exists_at_base": true
+   }
+  ],
+  "head_run": {
+   "status": "completed",
+   "exit_code": 1,
+   "seconds": 1.0,
+   "addopts_overridden": false,
+   "counts": {
+    "passed": 41,
+    "failed": 11,
+    "error": 0,
+    "skipped": 0
+   },
+   "tests": {
+    "tests.test_server::test_list_tools": {
+     "outcome": "failed",
+     "detail": "assert 0 == 6\n +  where 0 = len([])\n@pytest.mark.asyncio\n    async def test_list_tools():\n        \"\"\"Test tool listing.\"\"\"\n        tools: List[Tool] = await list_tools()\n>       assert len(tools) == 6\nE       assert 0 == 6\nE        +  where 0 = len([])\n\ntests/test_server.py:31: AssertionError"
+    },
+    "tests.test_server::test_get_contents_empty_files": {
+     "outcome": "failed",
+     "detail": "AttributeError: 'NoneType' object has no attribute 'run_tool'\n@pytest.mark.asyncio\n    async def test_get_contents_empty_files():\n        \"\"\"Test get_contents handler with empty files list.\"\"\"\n        arguments = {\"files\": []}\n>       result = await get_contents_handler.run_tool(arguments)\nE       AttributeError: 'NoneType' object has no attribute 'run_tool'\n\ntests/test_server.py:46: AttributeError"
+    },
+    "tests.test_server::test_get_contents_handler": {
+     "outcome": "failed",
+     "detail": "AttributeError: 'NoneType' object has no attribute 'run_tool'\ntest_file = '/tmp/tmp9x_ih8mg'\n\n    @pytest.mark.asyncio\n    async def test_get_contents_handler(test_file):\n        \"\"\"Test GetTextFileContents handler.\"\"\"\n        args = {\"files\": [{\"file_path\": test_file, \"ranges\": [{\"start\": 1, \"end\": 3}]}]}\n>       result = await get_contents_handler.run_tool(args)\nE       AttributeError: 'NoneType' object has no attribute 'run_tool'\n\ntests/test_server.py:65: AttributeError"
+    },
+    "tests.test_server::test_get_contents_handler_invalid_file": {
+     "outcome": "failed",
+     "detail": "AttributeError: 'NoneType' object has no attribute 'run_tool'\ntest_file = '/tmp/tmpttw3ov9d'\n\n    @pytest.mark.asyncio\n    async def test_get_contents_handler_invalid_file(test_file):\n        \"\"\"Test GetTextFileContents handler with invalid file.\"\"\"\n        # Convert relative path to absolute\n        nonexistent_path = str(Path(\"nonexistent.txt\").absolute())\n        args = {\"files\": [{\"file_path\": nonexistent_path, \"ranges\": [{\"start\": 1}]}]}\n        with pytest.raises(RuntimeError) as exc_info:\n>           await get_contents_handler.run_tool(args)\nE           AttributeError: 'NoneType' object has no attribute 'run_tool'\n\ntests/test_server.py:86: AttributeError"
+    },
+    "tests.test_server::test_call_tool_get_contents": {
+     "outcome": "failed",
+     "detail": ": str, arguments: Any) -> Sequence[TextContent]:\n        \"\"\"Handle tool calls.\"\"\"\n        logger.info(f\"Calling tool: {name}\")\n        try:\n            if get_contents_handler and name == get_contents_handler.name:\n                return await get_contents_handler.run_tool(arguments)\n            elif create_file_handler and name == create_file_handler.name:\n                return await create_file_handler.run_tool(arguments)\n            elif append_file_handler and name == append_file_handler.name:\n                return await append_file_handler.run_tool(arguments)\n            elif delete_contents_handler and name == delete_contents_handler.name:\n                return await delete_contents_handler.run_tool(arguments)\n            elif insert_file_handler and name == insert_file_handler.name:\n                return await insert_file_handler.run_tool(arguments)\n            elif patch_file_handler and name == patch_file_handler.name:\n                return await patch_file_handler.run_tool(arguments)\n            else:\n>               raise ValueError(f\"Unknown tool: {name}\")\nE               ValueError: Unknown tool: get_text_file_contents\n\nsrc/mcp_text_editor/server.py:75: ValueError"
+    },
+    "tests.test_server::test_call_tool_error_handling": {
+     "outcome": "failed",
+     "detail": ": str, arguments: Any) -> Sequence[TextContent]:\n        \"\"\"Handle tool calls.\"\"\"\n        logger.info(f\"Calling tool: {name}\")\n        try:\n            if get_contents_handler and name == get_contents_handler.name:\n                return await get_contents_handler.run_tool(arguments)\n            elif create_file_handler and name == create_file_handler.name:\n                return await create_file_handler.run_tool(arguments)\n            elif append_file_handler and name == append_file_handler.name:\n                return await append_file_handler.run_tool(arguments)\n            elif delete_contents_handler and name == delete_contents_handler.name:\n                return await delete_contents_handler.run_tool(arguments)\n            elif insert_file_handler and name == insert_file_handler.name:\n                return await insert_file_handler.run_tool(arguments)\n            elif patch_file_handler and name == patch_file_handler.name:\n                return await patch_file_handler.run_tool(arguments)\n            else:\n>               raise ValueError(f\"Unknown tool: {name}\")\nE               ValueError: Unknown tool: get_text_file_contents\n\nsrc/mcp_text_editor/server.py:75: ValueError"
+    },
+    "tests.test_server::test_get_contents_handler_legacy_missing_args": {
+     "outcome": "failed",
+     "detail": "AttributeError: 'NoneType' object has no attribute 'run_tool'\n@pytest.mark.asyncio\n    async def test_get_contents_handler_legacy_missing_args():\n        \"\"\"Test GetTextFileContents handler with legacy single file request missing arguments.\"\"\"\n        with pytest.raises(RuntimeError) as exc_info:\n>           await get_contents_handler.run_tool({})\nE           AttributeError: 'NoneType' object has no attribute 'run_tool'\n\ntests/test_server.py:138: AttributeError"
+    },
+    "tests.test_server::test_main_stdio_server_error": {
+     "outcome": "failed",
+     "detail": "_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ \nsrc/mcp_text_editor/server.py:92: in main\n    args = parser.parse_args()\n../../../_shared_cache/python/cpython-3.13.18-linux-x86_64-gnu/lib/python3.13/argparse.py:1930: in parse_args\n    self.error(msg)\n../../../_shared_cache/python/cpython-3.13.18-linux-x86_64-gnu/lib/python3.13/argparse.py:2686: in error\n    self.exit(2, _('%(prog)s: error: %(message)s\\n') % args)\n_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ \n\nself = ArgumentParser(prog='__main__.py', usage=None, description='MCP Text Editor Server', formatter_class=<class 'argparse.HelpFormatter'>, conflict_handler='error', add_help=True)\nstatus = 2\nmessage = '__main__.py: error: unrecognized arguments: -p no:cacheprovider -q --timeout=120 -o junit_family=xunit1 --junitxml=/dev/shm/acr/work/3006276172/junit-head.xml tests/test_validator.py tests/test_server.py tests/test_text_editor.py\\n'\n\n    def exit(self, status=0, message=None):\n        if message:\n            self._print_message(message, _sys.stderr)\n>       _sys.exit(status)\nE       SystemExit: 2\n\n../../../_shared_cache/python/cpython-3.13.18-linux-x86_64-gnu/lib/python3.13/argparse.py:2673: SystemExit"
+    },
+    "tests.test_server::test_main_run_error": {
+     "outcome": "failed",
+     "detail": "_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ \nsrc/mcp_text_editor/server.py:92: in main\n    args = parser.parse_args()\n../../../_shared_cache/python/cpython-3.13.18-linux-x86_64-gnu/lib/python3.13/argparse.py:1930: in parse_args\n    self.error(msg)\n../../../_shared_cache/python/cpython-3.13.18-linux-x86_64-gnu/lib/python3.13/argparse.py:2686: in error\n    self.exit(2, _('%(prog)s: error: %(message)s\\n') % args)\n_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ \n\nself = ArgumentParser(prog='__main__.py', usage=None, description='MCP Text Editor Server', formatter_class=<class 'argparse.HelpFormatter'>, conflict_handler='error', add_help=True)\nstatus = 2\nmessage = '__main__.py: error: unrecognized arguments: -p no:cacheprovider -q --timeout=120 -o junit_family=xunit1 --junitxml=/dev/shm/acr/work/3006276172/junit-head.xml tests/test_validator.py tests/test_server.py tests/test_text_editor.py\\n'\n\n    def exit(self, status=0, message=None):\n        if message:\n            self._print_message(message, _sys.stderr)\n>       _sys.exit(status)\nE       SystemExit: 2\n\n../../../_shared_cache/python/cpython-3.13.18-linux-x86_64-gnu/lib/python3.13/argparse.py:2673: SystemExit"
+    },
+    "tests.test_server::test_call_tool_general_exception": {
+     "outcome": "failed",
+     "detail": "AttributeError: 'NoneType' object has no attribute 'run_tool'\n@pytest.mark.asyncio\n    async def test_call_tool_general_exception():\n        \"\"\"Test call_tool with a general exception.\"\"\"\n        # Patch get_contents_handler.run_tool to raise a general exception\n>       original_run_tool = get_contents_handler.run_tool\nE       AttributeError: 'NoneType' object has no attribute 'run_tool'\n\ntests/test_server.py:209: AttributeError"
+    },
+    "tests.test_server::test_call_tool_all_handlers": {
+     "outcome": "failed",
+     "detail": ".13.18-linux-x86_64-gnu/lib/python3.13/unittest/mock.py:1660: in start\n    result = self.__enter__()\n../../../_shared_cache/python/cpython-3.13.18-linux-x86_64-gnu/lib/python3.13/unittest/mock.py:1503: in __enter__\n    original, local = self.get_original()\n_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ \n\nself = <unittest.mock._patch object at 0x7994d9d0faf0>\n\n    def get_original(self):\n        target = self.getter()\n        name = self.attribute\n    \n        original = DEFAULT\n        local = False\n    \n        try:\n            original = target.__dict__[name]\n        except (AttributeError, KeyError):\n            original = getattr(target, name, DEFAULT)\n        else:\n            local = True\n    \n        if name in _builtins and isinstance(target, ModuleType):\n            self.create = True\n    \n        if not self.create and original is DEFAULT:\n>           raise AttributeError(\n                \"%s does not have the attribute %r\" % (target, name)\n            )\nE           AttributeError: None does not have the attribute 'run_tool'\n\n../../../_shared_cache/python/cpython-3.13.18-linux-x86_64-gnu/lib/python3.13/unittest/mock.py:1473: AttributeError"
+    }
+   },
+   "log_tail": ""
+  },
+  "base_run": {
+   "status": "completed",
+   "exit_code": 0,
+   "seconds": 0.9,
+   "addopts_overridden": false,
+   "counts": {
+    "passed": 51,
+    "failed": 0,
+    "error": 0,
+    "skipped": 0
+   },
+   "tests": {},
+   "log_tail": ""
+  },
+  "comparison": {
+   "regressions": [
+    "tests.test_server::test_list_tools",
+    "tests.test_server::test_get_contents_empty_files",
+    "tests.test_server::test_get_contents_handler",
+    "tests.test_server::test_get_contents_handler_invalid_file",
+    "tests.test_server::test_call_tool_get_contents",
+    "tests.test_server::test_call_tool_error_handling",
+    "tests.test_server::test_get_contents_handler_legacy_missing_args",
+    "tests.test_server::test_main_stdio_server_error",
+    "tests.test_server::test_main_run_error",
+    "tests.test_server::test_call_tool_general_exception",
+    "tests.test_server::test_call_tool_all_handlers"
+   ],
+   "new_test_failures": [],
+   "fixed": [],
+   "persistent_failures": [],
+   "flaky_regressions": []
+  },
+  "imports_head": {
+   "mcp_text_editor": {
+    "ok": true
+   },
+   "mcp_text_editor.server": {
+    "ok": true
+   },
+   "mcp_text_editor.text_editor": {
+    "ok": true
+   }
+  },
+  "imports_base": {
+   "mcp_text_editor": {
+    "ok": true
+   },
+   "mcp_text_editor.server": {
+    "ok": true
+   },
+   "mcp_text_editor.text_editor": {
+    "ok": true
+   }
+  },
+  "status": "completed",
+  "dependency_cutoff": "2025-04-27T14:51:55Z",
+  "seconds": 8.4,
+  "head_failures": 11
+ },
+ "findings": [
+  {
+   "tool": "pytest",
+   "rule": "test-regression",
+   "category": "test",
+   "severity": "high",
+   "confidence": "high",
+   "message": "Test tests.test_server::test_call_tool_all_handlers passes at base but fails at head: .13.18-linux-x86_64-gnu/lib/python3.13/unittest/mock.py:1660: in start",
+   "file": ".13.18-linux-x86_64-gnu/lib/python3.13/unittest/mock.py",
+   "line": 1660,
+   "end_line": null,
+   "cwe": null,
+   "on_changed_line": false,
+   "evidence": {
+    "type": "test",
+    "test_id": "tests.test_server::test_call_tool_all_handlers",
+    "outcome": "failed",
+    "detail": ".13.18-linux-x86_64-gnu/lib/python3.13/unittest/mock.py:1660: in start\n    result = self.__enter__()\n../../../_shared_cache/python/cpython-3.13.18-linux-x86_64-gnu/lib/python3.13/unittest/mock.py:1503: in __enter__\n    original, local = self.get_original()\n_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ \n\nself = <unittest.mock._patch object at 0x7994d9d0faf0>\n\n    def get_original(self):\n        target = self.getter()\n        name = self.attribute\n    \n        original = DEFAULT\n        local = False\n    \n        try:\n            original = target.__dict__[name]\n        except (AttributeError, KeyError):\n            original = getattr(target, name, DEFAULT)\n        else:\n            local = True\n    \n        if name in _builtins and isinstance(target, ModuleType):\n            self.create = True\n    \n        if not self.create and original is DEFAULT:\n>           raise AttributeError(\n                \"%s does not have the attribute %r\" % (target, name)\n            )\nE           AttributeError: None does not have the attribute 'run_tool'\n\n../../../_shared_cache/python/cpython-3.13.18-linux-x86_64-gnu/lib/python3.13/unittest/mock.py:1473: AttributeError"
+   },
+   "sources": [
+    "pytest"
+   ],
+   "finding_id": "136241914c82",
+   "score": 3.0
+  },
+  {
+   "tool": "pytest",
+   "rule": "test-regression",
+   "category": "test",
+   "severity": "high",
+   "confidence": "high",
+   "message": "Test tests.test_server::test_call_tool_get_contents passes at base but fails at head: : str, arguments: Any) -> Sequence[TextContent]:",
+   "file": "src/mcp_text_editor/server.py",
+   "line": 75,
+   "end_line": null,
+   "cwe": null,
+   "on_changed_line": false,
+   "evidence": {
+    "type": "test",
+    "test_id": "tests.test_server::test_call_tool_get_contents",
+    "outcome": "failed",
+    "detail": ": str, arguments: Any) -> Sequence[TextContent]:\n        \"\"\"Handle tool calls.\"\"\"\n        logger.info(f\"Calling tool: {name}\")\n        try:\n            if get_contents_handler and name == get_contents_handler.name:\n                return await get_contents_handler.run_tool(arguments)\n            elif create_file_handler and name == create_file_handler.name:\n                return await create_file_handler.run_tool(arguments)\n            elif append_file_handler and name == append_file_handler.name:\n                return await append_file_handler.run_tool(arguments)\n            elif delete_contents_handler and name == delete_contents_handler.name:\n                return await delete_contents_handler.run_tool(arguments)\n            elif insert_file_handler and name == insert_file_handler.name:\n                return await insert_file_handler.run_tool(arguments)\n            elif patch_file_handler and name == patch_file_handler.name:\n                return await patch_file_handler.run_tool(arguments)\n            else:\n>               raise ValueError(f\"Unknown tool: {name}\")\nE               ValueError: Unknown tool: get_text_file_contents\n\nsrc/mcp_text_editor/server.py:75: ValueError"
+   },
+   "sources": [
+    "pytest"
+   ],
+   "finding_id": "ac5923441303",
+   "score": 3.0
+  },
+  {
+   "tool": "pytest",
+   "rule": "test-regression",
+   "category": "test",
+   "severity": "high",
+   "confidence": "high",
+   "message": "Test tests.test_server::test_call_tool_error_handling passes at base but fails at head: : str, arguments: Any) -> Sequence[TextContent]:",
+   "file": "src/mcp_text_editor/server.py",
+   "line": 75,
+   "end_line": null,
+   "cwe": null,
+   "on_changed_line": false,
+   "evidence": {
+    "type": "test",
+    "test_id": "tests.test_server::test_call_tool_error_handling",
+    "outcome": "failed",
+    "detail": ": str, arguments: Any) -> Sequence[TextContent]:\n        \"\"\"Handle tool calls.\"\"\"\n        logger.info(f\"Calling tool: {name}\")\n        try:\n            if get_contents_handler and name == get_contents_handler.name:\n                return await get_contents_handler.run_tool(arguments)\n            elif create_file_handler and name == create_file_handler.name:\n                return await create_file_handler.run_tool(arguments)\n            elif append_file_handler and name == append_file_handler.name:\n                return await append_file_handler.run_tool(arguments)\n            elif delete_contents_handler and name == delete_contents_handler.name:\n                return await delete_contents_handler.run_tool(arguments)\n            elif insert_file_handler and name == insert_file_handler.name:\n                return await insert_file_handler.run_tool(arguments)\n            elif patch_file_handler and name == patch_file_handler.name:\n                return await patch_file_handler.run_tool(arguments)\n            else:\n>               raise ValueError(f\"Unknown tool: {name}\")\nE               ValueError: Unknown tool: get_text_file_contents\n\nsrc/mcp_text_editor/server.py:75: ValueError"
+   },
+   "sources": [
+    "pytest"
+   ],
+   "finding_id": "506167d66b29",
+   "score": 3.0
+  },
+  {
+   "tool": "pytest",
+   "rule": "test-regression",
+   "category": "test",
+   "severity": "high",
+   "confidence": "high",
+   "message": "Test tests.test_server::test_main_stdio_server_error passes at base but fails at head: _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ ",
+   "file": "src/mcp_text_editor/server.py",
+   "line": 92,
+   "end_line": null,
+   "cwe": null,
+   "on_changed_line": false,
+   "evidence": {
+    "type": "test",
+    "test_id": "tests.test_server::test_main_stdio_server_error",
+    "outcome": "failed",
+    "detail": "_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ \nsrc/mcp_text_editor/server.py:92: in main\n    args = parser.parse_args()\n../../../_shared_cache/python/cpython-3.13.18-linux-x86_64-gnu/lib/python3.13/argparse.py:1930: in parse_args\n    self.error(msg)\n../../../_shared_cache/python/cpython-3.13.18-linux-x86_64-gnu/lib/python3.13/argparse.py:2686: in error\n    self.exit(2, _('%(prog)s: error: %(message)s\\n') % args)\n_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ \n\nself = ArgumentParser(prog='__main__.py', usage=None, description='MCP Text Editor Server', formatter_class=<class 'argparse.HelpFormatter'>, conflict_handler='error', add_help=True)\nstatus = 2\nmessage = '__main__.py: error: unrecognized arguments: -p no:cacheprovider -q --timeout=120 -o junit_family=xunit1 --junitxml=/dev/shm/acr/work/3006276172/junit-head.xml tests/test_validator.py tests/test_server.py tests/test_text_editor.py\\n'\n\n    def exit(self, status=0, message=None):\n        if message:\n            self._print_message(message, _sys.stderr)\n>       _sys.exit(status)\nE       SystemExit: 2\n\n../../../_shared_cache/python/cpython-3.13.18-linux-x86_64-gnu/lib/python3.13/argparse.py:2673: SystemExit"
+   },
+   "sources": [
+    "pytest"
+   ],
+   "finding_id": "ae4242efd780",
+   "score": 3.0
+  },
+  {
+   "tool": "pytest",
+   "rule": "test-regression",
+   "category": "test",
+   "severity": "high",
+   "confidence": "high",
+   "message": "Test tests.test_server::test_main_run_error passes at base but fails at head: _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ ",
+   "file": "src/mcp_text_editor/server.py",
+   "line": 92,
+   "end_line": null,
+   "cwe": null,
+   "on_changed_line": false,
+   "evidence": {
+    "type": "test",
+    "test_id": "tests.test_server::test_main_run_error",
+    "outcome": "failed",
+    "detail": "_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ \nsrc/mcp_text_editor/server.py:92: in main\n    args = parser.parse_args()\n../../../_shared_cache/python/cpython-3.13.18-linux-x86_64-gnu/lib/python3.13/argparse.py:1930: in parse_args\n    self.error(msg)\n../../../_shared_cache/python/cpython-3.13.18-linux-x86_64-gnu/lib/python3.13/argparse.py:2686: in error\n    self.exit(2, _('%(prog)s: error: %(message)s\\n') % args)\n_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ \n\nself = ArgumentParser(prog='__main__.py', usage=None, description='MCP Text Editor Server', formatter_class=<class 'argparse.HelpFormatter'>, conflict_handler='error', add_help=True)\nstatus = 2\nmessage = '__main__.py: error: unrecognized arguments: -p no:cacheprovider -q --timeout=120 -o junit_family=xunit1 --junitxml=/dev/shm/acr/work/3006276172/junit-head.xml tests/test_validator.py tests/test_server.py tests/test_text_editor.py\\n'\n\n    def exit(self, status=0, message=None):\n        if message:\n            self._print_message(message, _sys.stderr)\n>       _sys.exit(status)\nE       SystemExit: 2\n\n../../../_shared_cache/python/cpython-3.13.18-linux-x86_64-gnu/lib/python3.13/argparse.py:2673: SystemExit"
+   },
+   "sources": [
+    "pytest"
+   ],
+   "finding_id": "0dabf210c06d",
+   "score": 3.0
+  },
+  {
+   "tool": "pytest",
+   "rule": "test-regression",
+   "category": "test",
+   "severity": "high",
+   "confidence": "high",
+   "message": "Test tests.test_server::test_list_tools passes at base but fails at head: assert 0 == 6",
+   "file": "tests/test_server.py",
+   "line": 31,
+   "end_line": null,
+   "cwe": null,
+   "on_changed_line": false,
+   "evidence": {
+    "type": "test",
+    "test_id": "tests.test_server::test_list_tools",
+    "outcome": "failed",
+    "detail": "assert 0 == 6\n +  where 0 = len([])\n@pytest.mark.asyncio\n    async def test_list_tools():\n        \"\"\"Test tool listing.\"\"\"\n        tools: List[Tool] = await list_tools()\n>       assert len(tools) == 6\nE       assert 0 == 6\nE        +  where 0 = len([])\n\ntests/test_server.py:31: AssertionError"
+   },
+   "sources": [
+    "pytest"
+   ],
+   "finding_id": "a384ef8833fd",
+   "score": 3.0
+  },
+  {
+   "tool": "pytest",
+   "rule": "test-regression",
+   "category": "test",
+   "severity": "high",
+   "confidence": "high",
+   "message": "Test tests.test_server::test_get_contents_empty_files passes at base but fails at head: AttributeError: 'NoneType' object has no attribute 'run_tool'",
+   "file": "tests/test_server.py",
+   "line": 46,
+   "end_line": null,
+   "cwe": null,
+   "on_changed_line": false,
+   "evidence": {
+    "type": "test",
+    "test_id": "tests.test_server::test_get_contents_empty_files",
+    "outcome": "failed",
+    "detail": "AttributeError: 'NoneType' object has no attribute 'run_tool'\n@pytest.mark.asyncio\n    async def test_get_contents_empty_files():\n        \"\"\"Test get_contents handler with empty files list.\"\"\"\n        arguments = {\"files\": []}\n>       result = await get_contents_handler.run_tool(arguments)\nE       AttributeError: 'NoneType' object has no attribute 'run_tool'\n\ntests/test_server.py:46: AttributeError"
+   },
+   "sources": [
+    "pytest"
+   ],
+   "finding_id": "00498146a746",
+   "score": 3.0
+  },
+  {
+   "tool": "pytest",
+   "rule": "test-regression",
+   "category": "test",
+   "severity": "high",
+   "confidence": "high",
+   "message": "Test tests.test_server::test_get_contents_handler passes at base but fails at head: AttributeError: 'NoneType' object has no attribute 'run_tool'",
+   "file": "tests/test_server.py",
+   "line": 65,
+   "end_line": null,
+   "cwe": null,
+   "on_changed_line": false,
+   "evidence": {
+    "type": "test",
+    "test_id": "tests.test_server::test_get_contents_handler",
+    "outcome": "failed",
+    "detail": "AttributeError: 'NoneType' object has no attribute 'run_tool'\ntest_file = '/tmp/tmp9x_ih8mg'\n\n    @pytest.mark.asyncio\n    async def test_get_contents_handler(test_file):\n        \"\"\"Test GetTextFileContents handler.\"\"\"\n        args = {\"files\": [{\"file_path\": test_file, \"ranges\": [{\"start\": 1, \"end\": 3}]}]}\n>       result = await get_contents_handler.run_tool(args)\nE       AttributeError: 'NoneType' object has no attribute 'run_tool'\n\ntests/test_server.py:65: AttributeError"
+   },
+   "sources": [
+    "pytest"
+   ],
+   "finding_id": "73d0b280064b",
+   "score": 3.0
+  },
+  {
+   "tool": "pytest",
+   "rule": "test-regression",
+   "category": "test",
+   "severity": "high",
+   "confidence": "high",
+   "message": "Test tests.test_server::test_get_contents_handler_invalid_file passes at base but fails at head: AttributeError: 'NoneType' object has no attribute 'run_tool'",
+   "file": "tests/test_server.py",
+   "line": 86,
+   "end_line": null,
+   "cwe": null,
+   "on_changed_line": false,
+   "evidence": {
+    "type": "test",
+    "test_id": "tests.test_server::test_get_contents_handler_invalid_file",
+    "outcome": "failed",
+    "detail": "AttributeError: 'NoneType' object has no attribute 'run_tool'\ntest_file = '/tmp/tmpttw3ov9d'\n\n    @pytest.mark.asyncio\n    async def test_get_contents_handler_invalid_file(test_file):\n        \"\"\"Test GetTextFileContents handler with invalid file.\"\"\"\n        # Convert relative path to absolute\n        nonexistent_path = str(Path(\"nonexistent.txt\").absolute())\n        args = {\"files\": [{\"file_path\": nonexistent_path, \"ranges\": [{\"start\": 1}]}]}\n        with pytest.raises(RuntimeError) as exc_info:\n>           await get_contents_handler.run_tool(args)\nE           AttributeError: 'NoneType' object has no attribute 'run_tool'\n\ntests/test_server.py:86: AttributeError"
+   },
+   "sources": [
+    "pytest"
+   ],
+   "finding_id": "b08f7144885f",
+   "score": 3.0
+  },
+  {
+   "tool": "pytest",
+   "rule": "test-regression",
+   "category": "test",
+   "severity": "high",
+   "confidence": "high",
+   "message": "Test tests.test_server::test_get_contents_handler_legacy_missing_args passes at base but fails at head: AttributeError: 'NoneType' object has no attribute 'run_tool'",
+   "file": "tests/test_server.py",
+   "line": 138,
+   "end_line": null,
+   "cwe": null,
+   "on_changed_line": false,
+   "evidence": {
+    "type": "test",
+    "test_id": "tests.test_server::test_get_contents_handler_legacy_missing_args",
+    "outcome": "failed",
+    "detail": "AttributeError: 'NoneType' object has no attribute 'run_tool'\n@pytest.mark.asyncio\n    async def test_get_contents_handler_legacy_missing_args():\n        \"\"\"Test GetTextFileContents handler with legacy single file request missing arguments.\"\"\"\n        with pytest.raises(RuntimeError) as exc_info:\n>           await get_contents_handler.run_tool({})\nE           AttributeError: 'NoneType' object has no attribute 'run_tool'\n\ntests/test_server.py:138: AttributeError"
+   },
+   "sources": [
+    "pytest"
+   ],
+   "finding_id": "097bdba667dd",
+   "score": 3.0
+  },
+  {
+   "tool": "pytest",
+   "rule": "test-regression",
+   "category": "test",
+   "severity": "high",
+   "confidence": "high",
+   "message": "Test tests.test_server::test_call_tool_general_exception passes at base but fails at head: AttributeError: 'NoneType' object has no attribute 'run_tool'",
+   "file": "tests/test_server.py",
+   "line": 209,
+   "end_line": null,
+   "cwe": null,
+   "on_changed_line": false,
+   "evidence": {
+    "type": "test",
+    "test_id": "tests.test_server::test_call_tool_general_exception",
+    "outcome": "failed",
+    "detail": "AttributeError: 'NoneType' object has no attribute 'run_tool'\n@pytest.mark.asyncio\n    async def test_call_tool_general_exception():\n        \"\"\"Test call_tool with a general exception.\"\"\"\n        # Patch get_contents_handler.run_tool to raise a general exception\n>       original_run_tool = get_contents_handler.run_tool\nE       AttributeError: 'NoneType' object has no attribute 'run_tool'\n\ntests/test_server.py:209: AttributeError"
+   },
+   "sources": [
+    "pytest"
+   ],
+   "finding_id": "4fd0bc5aa5f1",
+   "score": 3.0
+  },
+  {
+   "tool": "ruff",
+   "rule": "ASYNC230",
+   "category": "concurrency",
+   "severity": "medium",
+   "confidence": "medium",
+   "message": "Async functions should not open files with blocking methods like `open`",
+   "file": "tests/test_validator.py",
+   "line": 29,
+   "end_line": 29,
+   "cwe": null,
+   "on_changed_line": true,
+   "evidence": {
+    "type": "static",
+    "source_line": "with open(temp_file, \"r\") as f:",
+    "url": "https://docs.astral.sh/ruff/rules/blocking-open-call-in-async-function"
+   },
+   "sources": [
+    "ruff"
+   ],
+   "finding_id": "5bd7e298d113",
+   "score": 1.9
+  },
+  {
+   "tool": "bandit",
+   "rule": "B404",
+   "category": "security",
+   "severity": "low",
+   "confidence": "high",
+   "message": "blacklist: Consider possible security implications associated with the subprocess module.",
+   "file": "src/mcp_text_editor/text_editor.py",
+   "line": 795,
+   "end_line": 795,
+   "cwe": 78,
+   "on_changed_line": true,
+   "evidence": {
+    "type": "static",
+    "source_line": "import subprocess",
+    "more_info": "https://bandit.readthedocs.io/en/1.9.4/blacklists/blacklist_imports.html#b404-import-subprocess"
+   },
+   "sources": [
+    "bandit"
+   ],
+   "finding_id": "1001514dbb7c",
+   "score": 1.5
+  },
+  {
+   "tool": "bandit",
+   "rule": "B603",
+   "category": "security",
+   "severity": "low",
+   "confidence": "high",
+   "message": "subprocess_without_shell_equals_true: subprocess call - check for execution of untrusted input.",
+   "file": "src/mcp_text_editor/text_editor.py",
+   "line": 800,
+   "end_line": 805,
+   "cwe": 78,
+   "on_changed_line": true,
+   "evidence": {
+    "type": "static",
+    "source_line": "result = subprocess.run(",
+    "more_info": "https://bandit.readthedocs.io/en/1.9.4/plugins/b603_subprocess_without_shell_equals_true.html"
+   },
+   "sources": [
+    "bandit"
+   ],
+   "finding_id": "584a245814cc",
+   "score": 1.5
+  },
+  {
+   "tool": "ruff",
+   "rule": "PLW0603",
+   "category": "maintainability",
+   "severity": "low",
+   "confidence": "low",
+   "message": "Using the global statement to update `get_contents_handler` is discouraged",
+   "file": "src/mcp_text_editor/server.py",
+   "line": 100,
+   "end_line": 100,
+   "cwe": null,
+   "on_changed_line": true,
+   "evidence": {
+    "type": "static",
+    "source_line": "global get_contents_handler, patch_file_handler, create_file_handler",
+    "url": "https://docs.astral.sh/ruff/rules/global-statement"
+   },
+   "sources": [
+    "ruff"
+   ],
+   "finding_id": "d61a8fa057c1",
+   "score": 0.9
+  },
+  {
+   "tool": "ruff",
+   "rule": "PLW0603",
+   "category": "maintainability",
+   "severity": "low",
+   "confidence": "low",
+   "message": "Using the global statement to update `patch_file_handler` is discouraged",
+   "file": "src/mcp_text_editor/server.py",
+   "line": 100,
+   "end_line": 100,
+   "cwe": null,
+   "on_changed_line": true,
+   "evidence": {
+    "type": "static",
+    "source_line": "global get_contents_handler, patch_file_handler, create_file_handler",
+    "url": "https://docs.astral.sh/ruff/rules/global-statement"
+   },
+   "sources": [
+    "ruff"
+   ],
+   "finding_id": "93c29322dc0c",
+   "score": 0.9
+  },
+  {
+   "tool": "ruff",
+   "rule": "PLW0603",
+   "category": "maintainability",
+   "severity": "low",
+   "confidence": "low",
+   "message": "Using the global statement to update `create_file_handler` is discouraged",
+   "file": "src/mcp_text_editor/server.py",
+   "line": 100,
+   "end_line": 100,
+   "cwe": null,
+   "on_changed_line": true,
+   "evidence": {
+    "type": "static",
+    "source_line": "global get_contents_handler, patch_file_handler, create_file_handler",
+    "url": "https://docs.astral.sh/ruff/rules/global-statement"
+   },
+   "sources": [
+    "ruff"
+   ],
+   "finding_id": "3c663319c16e",
+   "score": 0.9
+  },
+  {
+   "tool": "ruff",
+   "rule": "PLW0603",
+   "category": "maintainability",
+   "severity": "low",
+   "confidence": "low",
+   "message": "Using the global statement to update `append_file_handler` is discouraged",
+   "file": "src/mcp_text_editor/server.py",
+   "line": 101,
+   "end_line": 101,
+   "cwe": null,
+   "on_changed_line": true,
+   "evidence": {
+    "type": "static",
+    "source_line": "global append_file_handler, delete_contents_handler, insert_file_handler",
+    "url": "https://docs.astral.sh/ruff/rules/global-statement"
+   },
+   "sources": [
+    "ruff"
+   ],
+   "finding_id": "c051ee4392c1",
+   "score": 0.9
+  },
+  {
+   "tool": "ruff",
+   "rule": "PLW0603",
+   "category": "maintainability",
+   "severity": "low",
+   "confidence": "low",
+   "message": "Using the global statement to update `delete_contents_handler` is discouraged",
+   "file": "src/mcp_text_editor/server.py",
+   "line": 101,
+   "end_line": 101,
+   "cwe": null,
+   "on_changed_line": true,
+   "evidence": {
+    "type": "static",
+    "source_line": "global append_file_handler, delete_contents_handler, insert_file_handler",
+    "url": "https://docs.astral.sh/ruff/rules/global-statement"
+   },
+   "sources": [
+    "ruff"
+   ],
+   "finding_id": "be0a2340fb48",
+   "score": 0.9
+  },
+  {
+   "tool": "ruff",
+   "rule": "PLW0603",
+   "category": "maintainability",
+   "severity": "low",
+   "confidence": "low",
+   "message": "Using the global statement to update `insert_file_handler` is discouraged",
+   "file": "src/mcp_text_editor/server.py",
+   "line": 101,
+   "end_line": 101,
+   "cwe": null,
+   "on_changed_line": true,
+   "evidence": {
+    "type": "static",
+    "source_line": "global append_file_handler, delete_contents_handler, insert_file_handler",
+    "url": "https://docs.astral.sh/ruff/rules/global-statement"
+   },
+   "sources": [
+    "ruff"
+   ],
+   "finding_id": "38bf91d43ec1",
+   "score": 0.9
+  }
+ ],
+ "status": "ok",
+ "seconds": 10.2
+}

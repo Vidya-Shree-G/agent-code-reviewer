@@ -1,0 +1,187 @@
+{
+ "pr_id": 3134889774,
+ "repository": "langchain-ai/langsmith-sdk",
+ "pr_number": 1781,
+ "split": "development",
+ "agent": "OpenAI_Codex",
+ "head_sha": "4d8aacb6b36774cc9862699dfc8217318ad1f354",
+ "tool_versions": {
+  "ruff": "ruff 0.17.4",
+  "bandit": "__main__.py 1.9.4",
+  "python": "3.12.3"
+ },
+ "config": {
+  "run_tests": true,
+  "sandbox": true
+ },
+ "base_mode": "reverse_applied_diff",
+ "static": {
+  "files_analysed": 29,
+  "head_issues": 88,
+  "base_issues": 96,
+  "per_tool_head": {
+   "ruff": 75,
+   "bandit": 13
+  },
+  "per_tool_base": {
+   "ruff": 83,
+   "bandit": 13
+  },
+  "introduced": 0,
+  "seconds": 3.6
+ },
+ "tests": {
+  "env": {
+   "status": "ok",
+   "python": "3.15.2",
+   "steps": [
+    {
+     "step": "venv",
+     "ok": true,
+     "seconds": 0.0,
+     "timed_out": false,
+     "log_tail": ""
+    },
+    {
+     "step": "install pytest",
+     "ok": true,
+     "seconds": 0.2,
+     "timed_out": false,
+     "log_tail": ""
+    },
+    {
+     "step": "repair: install toml vcr",
+     "ok": false,
+     "seconds": 0.2,
+     "timed_out": false,
+     "log_tail": "error: No solution found when resolving dependencies\n  cause: Because vcr was not found in the package registry and you require vcr, we can conclude that your requirements are unsatisfiable.\n"
+    }
+   ]
+  },
+  "selected_tests": [
+   {
+    "path": "python/tests/evaluation/test_decorator.py",
+    "reason": "changed_in_pr",
+    "exists_at_base": true
+   },
+   {
+    "path": "python/tests/evaluation/test_evaluation.py",
+    "reason": "changed_in_pr",
+    "exists_at_base": true
+   },
+   {
+    "path": "python/tests/integration_tests/test_async_client.py",
+    "reason": "changed_in_pr",
+    "exists_at_base": true
+   },
+   {
+    "path": "python/tests/integration_tests/test_client.py",
+    "reason": "changed_in_pr",
+    "exists_at_base": true
+   },
+   {
+    "path": "python/tests/unit_tests/evaluation/test_runner.py",
+    "reason": "changed_in_pr",
+    "exists_at_base": true
+   },
+   {
+    "path": "python/tests/unit_tests/test_client.py",
+    "reason": "changed_in_pr",
+    "exists_at_base": true
+   },
+   {
+    "path": "python/tests/unit_tests/test_env.py",
+    "reason": "changed_in_pr",
+    "exists_at_base": true
+   },
+   {
+    "path": "python/tests/unit_tests/test_hybrid_tracing.py",
+    "reason": "changed_in_pr",
+    "exists_at_base": true
+   },
+   {
+    "path": "python/tests/unit_tests/test_operations.py",
+    "reason": "changed_in_pr",
+    "exists_at_base": true
+   },
+   {
+    "path": "python/tests/unit_tests/test_run_helpers.py",
+    "reason": "changed_in_pr",
+    "exists_at_base": true
+   },
+   {
+    "path": "python/tests/unit_tests/test_run_trees.py",
+    "reason": "changed_in_pr",
+    "exists_at_base": true
+   },
+   {
+    "path": "python/tests/unit_tests/test_utils.py",
+    "reason": "changed_in_pr",
+    "exists_at_base": true
+   }
+  ],
+  "head_run": {
+   "status": "usage_error",
+   "exit_code": 4,
+   "seconds": 1.7,
+   "addopts_overridden": true,
+   "counts": {
+    "passed": 0,
+    "failed": 0,
+    "error": 0,
+    "skipped": 0
+   },
+   "tests": {},
+   "log_tail": "\nImportError while loading conftest '/dev/shm/acr/work/3134889774/src/head/python/conftest.py'.\npython/conftest.py:9: in <module>\n    import vcr\nE   ModuleNotFoundError: No module named 'vcr'\n"
+  },
+  "base_run": {
+   "status": "usage_error",
+   "exit_code": 4,
+   "seconds": 1.7,
+   "addopts_overridden": true,
+   "counts": {
+    "passed": 0,
+    "failed": 0,
+    "error": 0,
+    "skipped": 0
+   },
+   "tests": {},
+   "log_tail": "\nImportError while loading conftest '/dev/shm/acr/work/3134889774/src/base/python/conftest.py'.\npython/conftest.py:9: in <module>\n    import vcr\nE   ModuleNotFoundError: No module named 'vcr'\n"
+  },
+  "comparison": {
+   "regressions": [],
+   "new_test_failures": [],
+   "fixed": [],
+   "persistent_failures": []
+  },
+  "imports_head": {
+   "python.docs.create_api_rst": {
+    "ok": false,
+    "type": "ModuleNotFoundError",
+    "message": "No module named 'toml'",
+    "missing_module": "toml",
+    "file": "python/docs/create_api_rst.py",
+    "line": 15,
+    "traceback": "Traceback (most recent call last):\n  File \"<string>\", line 7, in <module>\n    importlib.import_module(m)\n    ~~~~~~~~~~~~~~~~~~~~~~~^^^\n  File \"/dev/shm/acr/work/_shared_cache/python/cpython-3.15.2-linux-x86_64-gnu/lib/python3.15/importlib/__init__.py\", line 88, in import_module\n    return _bootstrap._gcd_import(name[level:], package, level)\n           ~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"<frozen importlib._bootstrap>\", line 1389, in _gcd_import\n  File \"<frozen importlib._bootstrap>\", line 1353, in _find_and_load\n  File \"<frozen importlib._bootstrap>\", line 1249, in _find_and_load_unlocked\n  File \"<frozen importlib._bootstrap>\", line 857, in _load_unlocked\n  File \"<frozen importlib._bootstrap_external>\", line 751, in exec_module\n  File \"<frozen importlib._bootstrap>\", line 491, in _call_with_frames_removed\n  File \"/dev/shm/acr/work/3134889774/src/head/python/docs/create_api_rst.py\", line 15, in <module>\n    import toml\nModuleNotFoundError: No module named 'toml'\n"
+   }
+  },
+  "imports_base": {
+   "python.docs.create_api_rst": {
+    "ok": false,
+    "type": "ModuleNotFoundError",
+    "message": "No module named 'toml'",
+    "missing_module": "toml",
+    "file": "python/docs/create_api_rst.py",
+    "line": 15,
+    "traceback": "Traceback (most recent call last):\n  File \"<string>\", line 7, in <module>\n    importlib.import_module(m)\n    ~~~~~~~~~~~~~~~~~~~~~~~^^^\n  File \"/dev/shm/acr/work/_shared_cache/python/cpython-3.15.2-linux-x86_64-gnu/lib/python3.15/importlib/__init__.py\", line 88, in import_module\n    return _bootstrap._gcd_import(name[level:], package, level)\n           ~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"<frozen importlib._bootstrap>\", line 1389, in _gcd_import\n  File \"<frozen importlib._bootstrap>\", line 1353, in _find_and_load\n  File \"<frozen importlib._bootstrap>\", line 1249, in _find_and_load_unlocked\n  File \"<frozen importlib._bootstrap>\", line 857, in _load_unlocked\n  File \"<frozen importlib._bootstrap_external>\", line 751, in exec_module\n  File \"<frozen importlib._bootstrap>\", line 491, in _call_with_frames_removed\n  File \"/dev/shm/acr/work/3134889774/src/base/python/docs/create_api_rst.py\", line 15, in <module>\n    import toml\nModuleNotFoundError: No module named 'toml'\n"
+   }
+  },
+  "status": "head_usage_error",
+  "dependency_cutoff": "2025-06-10T21:30:07Z",
+  "seconds": 6.0,
+  "head_failures": 0
+ },
+ "findings": [],
+ "status": "ok",
+ "seconds": 17.1
+}

@@ -1,0 +1,271 @@
+{
+ "pr_id": 2889835337,
+ "repository": "mrwadams/stride-gpt",
+ "pr_number": 60,
+ "split": "development",
+ "agent": "Claude_Code",
+ "head_sha": "aa0ec37f198e450253c6e53df4acb3324b7cfa4d",
+ "tool_versions": {
+  "ruff": "ruff 0.17.4",
+  "bandit": "__main__.py 1.9.4",
+  "python": "3.12.3"
+ },
+ "config": {
+  "run_tests": true,
+  "sandbox": true
+ },
+ "base_mode": "reverse_applied_diff",
+ "static": {
+  "files_analysed": 4,
+  "head_issues": 7,
+  "base_issues": 1,
+  "per_tool_head": {
+   "ruff": 5,
+   "bandit": 2
+  },
+  "per_tool_base": {
+   "bandit": 1
+  },
+  "introduced": 6,
+  "seconds": 0.4
+ },
+ "tests": {
+  "env": {
+   "status": "partial",
+   "python": "3.15.2",
+   "steps": [
+    {
+     "step": "venv",
+     "ok": true,
+     "seconds": 0.0,
+     "timed_out": false,
+     "log_tail": ""
+    },
+    {
+     "step": "install -r requirements.txt",
+     "ok": false,
+     "seconds": 0.8,
+     "timed_out": false,
+     "log_tail": "      Package libffi was not found in the pkg-config search path.\n         Perhaps you should add the directory containing `libffi.pc'\n         to the PKG_CONFIG_PATH environment variable\n         Package 'libffi', required by 'virtual:world', not found\n         Package libffi was not found in the pkg-config search path.\n         Perhaps you should add the directory containing `libffi.pc'\n         to the PKG_CONFIG_PATH environment variable\n         Package 'libffi', required by 'virtual:world', not found\n         Package libffi was not found in the pkg-config search path.\n         Perhaps you should add the directory containing `libffi.pc'\n         to the PKG_CONFIG_PATH environment variable\n         Package 'libffi', required by 'virtual:world', not found\n         Package libffi was not found in the pkg-config search path.\n         Perhaps you should add the directory containing `libffi.pc'\n         to the PKG_CONFIG_PATH environment variable\n         Package 'libffi', required by 'virtual:world', not found\n         src/c/_cffi_backend.c:15:10: fatal error: ffi.h: No such file or directory\n            15 | #include <ffi.h>\n               |          ^~~~~~~\n         compilation terminated.\n         error: command '/usr/bin/cc' failed with exit code 1\n\nhint: `cffi` (v1.17.1) was included because `pygithub` (v2.6.1) depends on `pynacl` (v1.5.0) which depends on `cffi`\n\nhint: This error likely indicates that you need to install a library that provides `ffi.h` for `cffi@1.17.1`\n"
+    },
+    {
+     "step": "install pytest",
+     "ok": true,
+     "seconds": 0.0,
+     "timed_out": false,
+     "log_tail": ""
+    }
+   ]
+  },
+  "selected_tests": [
+   {
+    "path": "test_bedrock.py",
+    "reason": "changed_in_pr",
+    "exists_at_base": false
+   }
+  ],
+  "head_run": {
+   "status": "completed",
+   "exit_code": 2,
+   "seconds": 0.3,
+   "addopts_overridden": false,
+   "counts": {
+    "passed": 0,
+    "failed": 0,
+    "error": 1,
+    "skipped": 0
+   },
+   "tests": {
+    "::test_bedrock": {
+     "outcome": "error",
+     "detail": "collection failure\nImportError while importing test module '/dev/shm/acr/work/2889835337/src/head/test_bedrock.py'.\nHint: make sure your test modules/packages have valid Python names.\nTraceback:\n../../../_shared_cache/python/cpython-3.15.2-linux-x86_64-gnu/lib/python3.15/importlib/__init__.py:88: in import_module\n    return _bootstrap._gcd_import(name[level:], package, level)\ntest_bedrock.py:16: in <module>\n    import boto3\nE   ModuleNotFoundError: No module named 'boto3'"
+    }
+   },
+   "log_tail": ""
+  },
+  "base_run": {
+   "status": "not_run",
+   "tests": {}
+  },
+  "comparison": {
+   "regressions": [],
+   "new_test_failures": [
+    "::test_bedrock"
+   ],
+   "fixed": [],
+   "persistent_failures": []
+  },
+  "imports_head": {},
+  "imports_base": {},
+  "status": "completed",
+  "dependency_cutoff": "2025-03-02T22:43:53Z",
+  "seconds": 1.2,
+  "head_failures": 1
+ },
+ "findings": [
+  {
+   "tool": "ruff",
+   "rule": "F401",
+   "category": "maintainability",
+   "severity": "low",
+   "confidence": "high",
+   "message": "`json` imported but unused",
+   "file": "example_bedrock_usage.py",
+   "line": 14,
+   "end_line": 14,
+   "cwe": null,
+   "on_changed_line": true,
+   "evidence": {
+    "type": "static",
+    "source_line": "import json",
+    "url": "https://docs.astral.sh/ruff/rules/unused-import"
+   },
+   "sources": [
+    "ruff"
+   ],
+   "finding_id": "b17d99d0ca25",
+   "score": 1.5
+  },
+  {
+   "tool": "ruff",
+   "rule": "F541",
+   "category": "maintainability",
+   "severity": "low",
+   "confidence": "high",
+   "message": "f-string without any placeholders",
+   "file": "main.py",
+   "line": 91,
+   "end_line": 94,
+   "cwe": null,
+   "on_changed_line": true,
+   "evidence": {
+    "type": "static",
+    "source_line": "st.error(f\"\"\"Access denied to Amazon Bedrock. Please ensure:",
+    "url": "https://docs.astral.sh/ruff/rules/f-string-missing-placeholders"
+   },
+   "sources": [
+    "ruff"
+   ],
+   "finding_id": "6f0ca2a5218c",
+   "score": 1.5
+  },
+  {
+   "tool": "ruff",
+   "rule": "F401",
+   "category": "maintainability",
+   "severity": "low",
+   "confidence": "high",
+   "message": "`boto3` imported but unused",
+   "file": "test_bedrock.py",
+   "line": 16,
+   "end_line": 16,
+   "cwe": null,
+   "on_changed_line": true,
+   "evidence": {
+    "type": "static",
+    "source_line": "import boto3",
+    "url": "https://docs.astral.sh/ruff/rules/unused-import"
+   },
+   "sources": [
+    "ruff"
+   ],
+   "finding_id": "e4395b22348d",
+   "score": 1.5
+  },
+  {
+   "tool": "ruff",
+   "rule": "F401",
+   "category": "maintainability",
+   "severity": "low",
+   "confidence": "high",
+   "message": "`botocore.exceptions.BotoCoreError` imported but unused",
+   "file": "test_bedrock.py",
+   "line": 17,
+   "end_line": 17,
+   "cwe": null,
+   "on_changed_line": true,
+   "evidence": {
+    "type": "static",
+    "source_line": "from botocore.exceptions import ClientError, BotoCoreError",
+    "url": "https://docs.astral.sh/ruff/rules/unused-import"
+   },
+   "sources": [
+    "ruff"
+   ],
+   "finding_id": "768a8a82337c",
+   "score": 1.5
+  },
+  {
+   "tool": "bandit",
+   "rule": "B110",
+   "category": "security",
+   "severity": "low",
+   "confidence": "high",
+   "message": "try_except_pass: Try, Except, Pass detected.",
+   "file": "test_bedrock.py",
+   "line": 63,
+   "end_line": 64,
+   "cwe": 703,
+   "on_changed_line": true,
+   "evidence": {
+    "type": "static",
+    "source_line": "except Exception:",
+    "more_info": "https://bandit.readthedocs.io/en/1.9.4/plugins/b110_try_except_pass.html"
+   },
+   "sources": [
+    "bandit"
+   ],
+   "finding_id": "25a0118991fb",
+   "score": 1.5
+  },
+  {
+   "tool": "pytest",
+   "rule": "new-test-failure",
+   "category": "test",
+   "severity": "medium",
+   "confidence": "medium",
+   "message": "Test ::test_bedrock added or changed by the PR fails at head: collection failure",
+   "file": "test_bedrock.py",
+   "line": 16,
+   "end_line": null,
+   "cwe": null,
+   "on_changed_line": false,
+   "evidence": {
+    "type": "test",
+    "test_id": "::test_bedrock",
+    "outcome": "error",
+    "detail": "collection failure\nImportError while importing test module '/dev/shm/acr/work/2889835337/src/head/test_bedrock.py'.\nHint: make sure your test modules/packages have valid Python names.\nTraceback:\n../../../_shared_cache/python/cpython-3.15.2-linux-x86_64-gnu/lib/python3.15/importlib/__init__.py:88: in import_module\n    return _bootstrap._gcd_import(name[level:], package, level)\ntest_bedrock.py:16: in <module>\n    import boto3\nE   ModuleNotFoundError: No module named 'boto3'"
+   },
+   "sources": [
+    "pytest"
+   ],
+   "finding_id": "de71b4704251",
+   "score": 1.4
+  },
+  {
+   "tool": "ruff",
+   "rule": "B904",
+   "category": "error-handling",
+   "severity": "low",
+   "confidence": "medium",
+   "message": "Within an `except` clause, raise exceptions with `raise ... from err` or `raise ... from None` to distinguish them from errors in exception handling",
+   "file": "threat_model.py",
+   "line": 541,
+   "end_line": 541,
+   "cwe": null,
+   "on_changed_line": true,
+   "evidence": {
+    "type": "static",
+    "source_line": "raise ValueError(\"Could not extract valid JSON from model response\")",
+    "url": "https://docs.astral.sh/ruff/rules/raise-without-from-inside-except"
+   },
+   "sources": [
+    "ruff"
+   ],
+   "finding_id": "ea891a0cb8b0",
+   "score": 1.2
+  }
+ ],
+ "status": "ok",
+ "seconds": 5.5
+}

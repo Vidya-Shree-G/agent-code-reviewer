@@ -1,0 +1,195 @@
+{
+ "pr_id": 3155344702,
+ "repository": "aorwall/moatless-tools",
+ "pr_number": 59,
+ "split": "development",
+ "agent": "OpenAI_Codex",
+ "head_sha": "99e884f06cfdd1931fef91528b20605743b349ff",
+ "tool_versions": {
+  "ruff": "ruff 0.17.4",
+  "bandit": "__main__.py 1.9.4",
+  "python": "3.12.3"
+ },
+ "config": {
+  "run_tests": true,
+  "sandbox": true
+ },
+ "base_mode": "reverse_applied_diff",
+ "static": {
+  "files_analysed": 6,
+  "head_issues": 18,
+  "base_issues": 17,
+  "per_tool_head": {
+   "ruff": 18
+  },
+  "per_tool_base": {
+   "ruff": 17
+  },
+  "introduced": 2,
+  "seconds": 0.3
+ },
+ "tests": {
+  "env": {
+   "status": "ok",
+   "python": "3.12.10",
+   "steps": [
+    {
+     "step": "venv",
+     "ok": true,
+     "seconds": 0.0,
+     "timed_out": false,
+     "log_tail": ""
+    },
+    {
+     "step": "install -e .",
+     "ok": true,
+     "seconds": 5.4,
+     "timed_out": false,
+     "log_tail": ""
+    },
+    {
+     "step": "install --group dev",
+     "ok": true,
+     "seconds": 1.6,
+     "timed_out": false,
+     "log_tail": ""
+    },
+    {
+     "step": "install pytest",
+     "ok": true,
+     "seconds": 0.0,
+     "timed_out": false,
+     "log_tail": ""
+    }
+   ]
+  },
+  "selected_tests": [
+   {
+    "path": "tests/storage/test_memory_storage.py",
+    "reason": "changed_in_pr",
+    "exists_at_base": false
+   },
+   {
+    "path": "tests/runner/storage/test_memory_storage.py",
+    "reason": "matches_module:memory_storage",
+    "exists_at_base": true
+   }
+  ],
+  "head_run": {
+   "status": "completed",
+   "exit_code": 0,
+   "seconds": 0.5,
+   "addopts_overridden": false,
+   "counts": {
+    "passed": 10,
+    "failed": 0,
+    "error": 0,
+    "skipped": 0
+   },
+   "tests": {},
+   "log_tail": ""
+  },
+  "base_run": {
+   "status": "completed",
+   "exit_code": 0,
+   "seconds": 2.0,
+   "addopts_overridden": false,
+   "counts": {
+    "passed": 7,
+    "failed": 0,
+    "error": 0,
+    "skipped": 0
+   },
+   "tests": {},
+   "log_tail": ""
+  },
+  "comparison": {
+   "regressions": [],
+   "new_test_failures": [],
+   "fixed": [],
+   "persistent_failures": []
+  },
+  "imports_head": {
+   "moatless.events": {
+    "ok": true
+   },
+   "moatless.settings": {
+    "ok": true
+   },
+   "moatless.storage": {
+    "ok": true
+   },
+   "moatless.storage.memory_storage": {
+    "ok": true
+   }
+  },
+  "imports_base": {
+   "moatless.events": {
+    "ok": true
+   },
+   "moatless.settings": {
+    "ok": true
+   },
+   "moatless.storage": {
+    "ok": true
+   },
+   "moatless.storage.memory_storage": {
+    "ok": true
+   }
+  },
+  "status": "completed",
+  "dependency_cutoff": "2025-06-18T03:32:52Z",
+  "seconds": 11.6,
+  "head_failures": 0
+ },
+ "findings": [
+  {
+   "tool": "ruff",
+   "rule": "PLW2901",
+   "category": "correctness",
+   "severity": "medium",
+   "confidence": "medium",
+   "message": "`for` loop variable `item` overwritten by assignment target",
+   "file": "moatless/storage/memory_storage.py",
+   "line": 52,
+   "end_line": 52,
+   "cwe": null,
+   "on_changed_line": true,
+   "evidence": {
+    "type": "static",
+    "source_line": "item = item.strip()",
+    "url": "https://docs.astral.sh/ruff/rules/redefined-loop-name"
+   },
+   "sources": [
+    "ruff"
+   ],
+   "finding_id": "b83eee798cf8",
+   "score": 1.9
+  },
+  {
+   "tool": "ruff",
+   "rule": "PLW2901",
+   "category": "correctness",
+   "severity": "medium",
+   "confidence": "medium",
+   "message": "`for` loop variable `line` overwritten by assignment target",
+   "file": "moatless/storage/memory_storage.py",
+   "line": 59,
+   "end_line": 59,
+   "cwe": null,
+   "on_changed_line": true,
+   "evidence": {
+    "type": "static",
+    "source_line": "line = line.strip()",
+    "url": "https://docs.astral.sh/ruff/rules/redefined-loop-name"
+   },
+   "sources": [
+    "ruff"
+   ],
+   "finding_id": "efb5a420066e",
+   "score": 1.9
+  }
+ ],
+ "status": "ok",
+ "seconds": 34.1
+}

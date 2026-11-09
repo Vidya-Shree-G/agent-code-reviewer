@@ -1,0 +1,219 @@
+{
+ "pr_id": 3214122373,
+ "repository": "spcl/dace",
+ "pr_number": 2077,
+ "split": "development",
+ "agent": "Copilot",
+ "head_sha": "1ca938ba0ccf300ba9e6b894339dc0ef4c2453bf",
+ "tool_versions": {
+  "ruff": "ruff 0.17.4",
+  "bandit": "__main__.py 1.9.4",
+  "python": "3.12.3"
+ },
+ "config": {
+  "run_tests": true,
+  "sandbox": true
+ },
+ "base_mode": "reverse_applied_diff",
+ "static": {
+  "files_analysed": 3,
+  "head_issues": 32,
+  "base_issues": 30,
+  "per_tool_head": {
+   "ruff": 32
+  },
+  "per_tool_base": {
+   "ruff": 30
+  },
+  "introduced": 2,
+  "seconds": 0.7
+ },
+ "tests": {
+  "env": {
+   "status": "ok",
+   "python": "3.15.2",
+   "steps": [
+    {
+     "step": "venv",
+     "ok": true,
+     "seconds": 0.0,
+     "timed_out": false,
+     "log_tail": ""
+    },
+    {
+     "step": "install -e .",
+     "ok": true,
+     "seconds": 33.4,
+     "timed_out": false,
+     "log_tail": ""
+    },
+    {
+     "step": "install -r requirements.txt",
+     "ok": true,
+     "seconds": 27.3,
+     "timed_out": false,
+     "log_tail": ""
+    },
+    {
+     "step": "install pytest",
+     "ok": true,
+     "seconds": 0.0,
+     "timed_out": false,
+     "log_tail": ""
+    }
+   ]
+  },
+  "selected_tests": [
+   {
+    "path": "tests/library/library_node_expand_test.py",
+    "reason": "changed_in_pr",
+    "exists_at_base": false
+   },
+   {
+    "path": "tests/sdfg/nodes_test.py",
+    "reason": "matches_module:nodes",
+    "exists_at_base": true
+   },
+   {
+    "path": "tests/sdfg/state_test.py",
+    "reason": "matches_module:state",
+    "exists_at_base": true
+   }
+  ],
+  "head_run": {
+   "status": "completed",
+   "exit_code": 1,
+   "seconds": 3.3,
+   "addopts_overridden": false,
+   "counts": {
+    "passed": 16,
+    "failed": 1,
+    "error": 0,
+    "skipped": 0
+   },
+   "tests": {
+    "tests.library.library_node_expand_test::test_functional_correctness": {
+     "outcome": "failed",
+     "detail": "5%] Building CXX object CMakeFiles/test_expand.dir/dev/shm/acr/work/3214122373/src/head/.dacecache/test_expand/src/cpu/test_expand.cpp.o\nE               In file included from /dev/shm/acr/work/3214122373/src/head/dace/codegen/../runtime/include/dace/dace.h:22,\nE                                from /dev/shm/acr/work/3214122373/src/head/.dacecache/test_expand/src/cpu/test_expand.cpp:2:\nE               /dev/shm/acr/work/3214122373/src/head/dace/codegen/../runtime/include/dace/stream.h:5:10: fatal error: ../../../external/moodycamel/blockingconcurrentqueue.h: No such file or directory\nE                   5 | #include \"../../../external/moodycamel/blockingconcurrentqueue.h\"\nE                     |          ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~\nE               compilation terminated.\nE               gmake[2]: *** [CMakeFiles/test_expand.dir/build.make:76: CMakeFiles/test_expand.dir/dev/shm/acr/work/3214122373/src/head/.dacecache/test_expand/src/cpu/test_expand.cpp.o] Error 1\nE               gmake[1]: *** [CMakeFiles/Makefile2:85: CMakeFiles/test_expand.dir/all] Error 2\nE               gmake: *** [Makefile:91: all] Error 2\n\ndace/codegen/compiler.py:254: CompilationError"
+    }
+   },
+   "log_tail": ""
+  },
+  "base_run": {
+   "status": "completed",
+   "exit_code": 0,
+   "seconds": 2.5,
+   "addopts_overridden": false,
+   "counts": {
+    "passed": 8,
+    "failed": 0,
+    "error": 0,
+    "skipped": 0
+   },
+   "tests": {},
+   "log_tail": ""
+  },
+  "comparison": {
+   "regressions": [],
+   "new_test_failures": [
+    "tests.library.library_node_expand_test::test_functional_correctness"
+   ],
+   "fixed": [],
+   "persistent_failures": []
+  },
+  "imports_head": {
+   "dace.sdfg.nodes": {
+    "ok": true
+   },
+   "dace.sdfg.state": {
+    "ok": true
+   }
+  },
+  "imports_base": {
+   "dace.sdfg.nodes": {
+    "ok": true
+   },
+   "dace.sdfg.state": {
+    "ok": true
+   }
+  },
+  "status": "completed",
+  "dependency_cutoff": "2025-07-23T14:16:00Z",
+  "seconds": 70.1,
+  "head_failures": 1
+ },
+ "findings": [
+  {
+   "tool": "ruff",
+   "rule": "F401",
+   "category": "maintainability",
+   "severity": "low",
+   "confidence": "high",
+   "message": "`dace.dtypes` imported but unused",
+   "file": "tests/library/library_node_expand_test.py",
+   "line": 9,
+   "end_line": 9,
+   "cwe": null,
+   "on_changed_line": true,
+   "evidence": {
+    "type": "static",
+    "source_line": "from dace import SDFGState, SDFG, library, dtypes",
+    "url": "https://docs.astral.sh/ruff/rules/unused-import"
+   },
+   "sources": [
+    "ruff"
+   ],
+   "finding_id": "de679cab60c3",
+   "score": 1.5
+  },
+  {
+   "tool": "pytest",
+   "rule": "new-test-failure",
+   "category": "test",
+   "severity": "medium",
+   "confidence": "medium",
+   "message": "Test tests.library.library_node_expand_test::test_functional_correctness added or changed by the PR fails at head: 5%] Building CXX object CMakeFiles/test_expand.dir/dev/shm/acr/work/3214122373/src/head/.dacecache/test_expand/src/cpu/test_expand.cpp.o",
+   "file": "dace/codegen/compiler.py",
+   "line": 254,
+   "end_line": null,
+   "cwe": null,
+   "on_changed_line": false,
+   "evidence": {
+    "type": "test",
+    "test_id": "tests.library.library_node_expand_test::test_functional_correctness",
+    "outcome": "failed",
+    "detail": "5%] Building CXX object CMakeFiles/test_expand.dir/dev/shm/acr/work/3214122373/src/head/.dacecache/test_expand/src/cpu/test_expand.cpp.o\nE               In file included from /dev/shm/acr/work/3214122373/src/head/dace/codegen/../runtime/include/dace/dace.h:22,\nE                                from /dev/shm/acr/work/3214122373/src/head/.dacecache/test_expand/src/cpu/test_expand.cpp:2:\nE               /dev/shm/acr/work/3214122373/src/head/dace/codegen/../runtime/include/dace/stream.h:5:10: fatal error: ../../../external/moodycamel/blockingconcurrentqueue.h: No such file or directory\nE                   5 | #include \"../../../external/moodycamel/blockingconcurrentqueue.h\"\nE                     |          ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~\nE               compilation terminated.\nE               gmake[2]: *** [CMakeFiles/test_expand.dir/build.make:76: CMakeFiles/test_expand.dir/dev/shm/acr/work/3214122373/src/head/.dacecache/test_expand/src/cpu/test_expand.cpp.o] Error 1\nE               gmake[1]: *** [CMakeFiles/Makefile2:85: CMakeFiles/test_expand.dir/all] Error 2\nE               gmake: *** [Makefile:91: all] Error 2\n\ndace/codegen/compiler.py:254: CompilationError"
+   },
+   "sources": [
+    "pytest"
+   ],
+   "finding_id": "15e77e012737",
+   "score": 1.4
+  },
+  {
+   "tool": "ruff",
+   "rule": "RUF012",
+   "category": "correctness",
+   "severity": "low",
+   "confidence": "medium",
+   "message": "Mutable default value for class attribute",
+   "file": "tests/library/library_node_expand_test.py",
+   "line": 21,
+   "end_line": 21,
+   "cwe": null,
+   "on_changed_line": true,
+   "evidence": {
+    "type": "static",
+    "source_line": "environments = []",
+    "url": "https://docs.astral.sh/ruff/rules/mutable-class-default"
+   },
+   "sources": [
+    "ruff"
+   ],
+   "finding_id": "811cf92356b2",
+   "score": 1.2
+  }
+ ],
+ "status": "ok",
+ "seconds": 103.1
+}

@@ -1,0 +1,84 @@
+{
+ "pr_id": 3164218259,
+ "repository": "Azure/azure-sdk-for-python",
+ "pr_number": 41702,
+ "split": "development",
+ "agent": "Copilot",
+ "head_sha": "7fd8601698f75ab864fd22f85ad4ba449893402a",
+ "tool_versions": {
+  "ruff": "ruff 0.17.4",
+  "bandit": "__main__.py 1.9.4",
+  "python": "3.12.3"
+ },
+ "config": {
+  "run_tests": true,
+  "sandbox": true
+ },
+ "base_mode": "reverse_applied_diff",
+ "static": {
+  "files_analysed": 15,
+  "head_issues": 52,
+  "base_issues": 52,
+  "per_tool_head": {
+   "ruff": 52
+  },
+  "per_tool_base": {
+   "ruff": 52
+  },
+  "introduced": 0,
+  "seconds": 3.6
+ },
+ "tests": {
+  "env": {
+   "status": "partial",
+   "python": "3.15.2",
+   "steps": [
+    {
+     "step": "venv",
+     "ok": true,
+     "seconds": 0.1,
+     "timed_out": false,
+     "log_tail": ""
+    },
+    {
+     "step": "install -e .",
+     "ok": false,
+     "seconds": 24.8,
+     "timed_out": false,
+     "log_tail": "irname = prepare_metadata_for_build(__import__(\"os\").fsdecode(b\"/dev/shm/acr/work/_shared_cache/uv/builds-v0/.tmpPfa5xM/metadata_directory\"), {})\n           File \"/dev/shm/acr/work/_shared_cache/uv/builds-v0/.tmpPfa5xM/lib/python3.15/site-packages/setuptools/build_meta.py\", line 478, in prepare_metadata_for_build_editable\n             return self.prepare_metadata_for_build_wheel(\n                    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^\n                 metadata_directory, config_settings\n                 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n             )\n             ^\n           File \"/dev/shm/acr/work/_shared_cache/uv/builds-v0/.tmpPfa5xM/lib/python3.15/site-packages/setuptools/build_meta.py\", line 376, in prepare_metadata_for_build_wheel\n             self._bubble_up_info_directory(metadata_directory, \".egg-info\")\n             ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n           File \"/dev/shm/acr/work/_shared_cache/uv/builds-v0/.tmpPfa5xM/lib/python3.15/site-packages/setuptools/build_meta.py\", line 345, in _bubble_up_info_directory\n             info_dir = self._find_info_directory(metadata_directory, suffix)\n           File \"/dev/shm/acr/work/_shared_cache/uv/builds-v0/.tmpPfa5xM/lib/python3.15/site-packages/setuptools/build_meta.py\", line 356, in _find_info_directory\n             assert len(candidates) == 1, f\"Multiple {suffix} directories found\"\n                    ^^^^^^^^^^^^^^^^^^^^\n         AssertionError: Multiple .egg-info directories found\n"
+    },
+    {
+     "step": "install pytest",
+     "ok": true,
+     "seconds": 0.2,
+     "timed_out": false,
+     "log_tail": ""
+    }
+   ]
+  },
+  "selected_tests": [],
+  "head_run": {
+   "status": "not_run",
+   "tests": {}
+  },
+  "base_run": {
+   "status": "not_run",
+   "tests": {}
+  },
+  "comparison": {
+   "regressions": [],
+   "new_test_failures": [],
+   "fixed": [],
+   "persistent_failures": []
+  },
+  "imports_head": {},
+  "imports_base": {},
+  "status": "no_executable_checks",
+  "dependency_cutoff": "2025-06-20T19:59:13Z",
+  "seconds": 34.4,
+  "head_failures": 0
+ },
+ "findings": [],
+ "status": "ok",
+ "seconds": 170.9
+}

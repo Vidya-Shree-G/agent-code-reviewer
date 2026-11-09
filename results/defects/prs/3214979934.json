@@ -1,0 +1,142 @@
+{
+ "pr_id": 3214979934,
+ "repository": "pbs/pycaption",
+ "pr_number": 349,
+ "split": "development",
+ "agent": "Copilot",
+ "head_sha": "5edfa6a08d996585d2ca9d7c4942254d2d7db6be",
+ "tool_versions": {
+  "ruff": "ruff 0.17.4",
+  "bandit": "__main__.py 1.9.4",
+  "python": "3.12.3"
+ },
+ "config": {
+  "run_tests": true,
+  "sandbox": true
+ },
+ "base_mode": "reverse_applied_diff",
+ "static": {
+  "files_analysed": 4,
+  "head_issues": 9,
+  "base_issues": 9,
+  "per_tool_head": {
+   "ruff": 8,
+   "bandit": 1
+  },
+  "per_tool_base": {
+   "ruff": 8,
+   "bandit": 1
+  },
+  "introduced": 0,
+  "seconds": 0.3
+ },
+ "tests": {
+  "env": {
+   "status": "ok",
+   "python": "3.12.10",
+   "steps": [
+    {
+     "step": "venv",
+     "ok": true,
+     "seconds": 0.0,
+     "timed_out": false,
+     "log_tail": ""
+    },
+    {
+     "step": "install -e .",
+     "ok": true,
+     "seconds": 0.8,
+     "timed_out": false,
+     "log_tail": ""
+    },
+    {
+     "step": "install pytest",
+     "ok": true,
+     "seconds": 0.0,
+     "timed_out": false,
+     "log_tail": ""
+    }
+   ]
+  },
+  "selected_tests": [
+   {
+    "path": "tests/test_base.py",
+    "reason": "changed_in_pr",
+    "exists_at_base": true
+   },
+   {
+    "path": "tests/test_webvtt.py",
+    "reason": "matches_module:webvtt",
+    "exists_at_base": true
+   },
+   {
+    "path": "tests/test_webvtt_conversion.py",
+    "reason": "matches_module:webvtt",
+    "exists_at_base": true
+   }
+  ],
+  "head_run": {
+   "status": "completed",
+   "exit_code": 0,
+   "seconds": 0.5,
+   "addopts_overridden": false,
+   "counts": {
+    "passed": 47,
+    "failed": 0,
+    "error": 0,
+    "skipped": 0
+   },
+   "tests": {},
+   "log_tail": ""
+  },
+  "base_run": {
+   "status": "completed",
+   "exit_code": 0,
+   "seconds": 0.5,
+   "addopts_overridden": false,
+   "counts": {
+    "passed": 40,
+    "failed": 0,
+    "error": 0,
+    "skipped": 0
+   },
+   "tests": {},
+   "log_tail": ""
+  },
+  "comparison": {
+   "regressions": [],
+   "new_test_failures": [],
+   "fixed": [],
+   "persistent_failures": []
+  },
+  "imports_head": {
+   "pycaption.base": {
+    "ok": true
+   },
+   "pycaption.dfxp.base": {
+    "ok": true
+   },
+   "pycaption.webvtt": {
+    "ok": true
+   }
+  },
+  "imports_base": {
+   "pycaption.base": {
+    "ok": true
+   },
+   "pycaption.dfxp.base": {
+    "ok": true
+   },
+   "pycaption.webvtt": {
+    "ok": true
+   }
+  },
+  "status": "completed",
+  "dependency_cutoff": "2025-07-09T08:17:10Z",
+  "seconds": 2.2,
+  "head_failures": 0
+ },
+ "findings": [],
+ "status": "ok",
+ "seconds": 3.3
+}

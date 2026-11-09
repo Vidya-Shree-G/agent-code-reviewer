@@ -1,0 +1,161 @@
+{
+ "pr_id": 3115073079,
+ "repository": "static-frame/static-frame",
+ "pr_number": 1068,
+ "split": "evaluation",
+ "agent": "OpenAI_Codex",
+ "head_sha": "13dcc7ee7295770781dc28efbbd5ba72d711301c",
+ "tool_versions": {
+  "ruff": "ruff 0.17.4",
+  "bandit": "__main__.py 1.9.4",
+  "python": "3.12.3"
+ },
+ "config": {
+  "run_tests": true,
+  "sandbox": true
+ },
+ "base_mode": "reverse_applied_diff",
+ "static": {
+  "files_analysed": 1,
+  "head_issues": 0,
+  "base_issues": 0,
+  "per_tool_head": {},
+  "per_tool_base": {},
+  "introduced": 0,
+  "seconds": 0.2
+ },
+ "tests": {
+  "env": {
+   "status": "ok",
+   "python": "3.12.10",
+   "steps": [
+    {
+     "step": "venv",
+     "ok": true,
+     "seconds": 0.0,
+     "timed_out": false,
+     "log_tail": ""
+    },
+    {
+     "step": "install -e .",
+     "ok": true,
+     "seconds": 0.6,
+     "timed_out": false,
+     "log_tail": ""
+    },
+    {
+     "step": "install -r requirements.txt",
+     "ok": true,
+     "seconds": 0.0,
+     "timed_out": false,
+     "log_tail": ""
+    },
+    {
+     "step": "install pytest",
+     "ok": true,
+     "seconds": 0.0,
+     "timed_out": false,
+     "log_tail": ""
+    },
+    {
+     "step": "repair: install frame_fixtures",
+     "ok": true,
+     "seconds": 0.1,
+     "timed_out": false,
+     "log_tail": ""
+    }
+   ]
+  },
+  "selected_tests": [
+   {
+    "path": "static_frame/test/unit/test_index_auto.py",
+    "reason": "matches_module:index_auto",
+    "exists_at_base": true
+   }
+  ],
+  "head_run": {
+   "status": "completed",
+   "exit_code": 1,
+   "seconds": 0.7,
+   "addopts_overridden": false,
+   "counts": {
+    "passed": 8,
+    "failed": 1,
+    "error": 0,
+    "skipped": 0
+   },
+   "tests": {
+    "static_frame.test.unit.test_index_auto.TestUnit::test_index_auto_factory_from_optional_constructor": {
+     "outcome": "failed",
+     "detail": "TypeError: IndexDatetime.__init__() got an unexpected keyword argument 'dtype'\nTraceback (most recent call last):\n  File \"/dev/shm/acr/work/_shared_cache/python/cpython-3.12-linux-x86_64-gnu/lib/python3.12/unittest/case.py\", line 58, in testPartExecutor\n    yield\n  File \"/dev/shm/acr/work/_shared_cache/python/cpython-3.12-linux-x86_64-gnu/lib/python3.12/unittest/case.py\", line 634, in run\n    self._callTestMethod(testMethod)\n  File \"/dev/shm/acr/work/_shared_cache/python/cpython-3.12-linux-x86_64-gnu/lib/python3.12/unittest/case.py\", line 589, in _callTestMethod\n    if method() is not None:\n       ^^^^^^^^\n  File \"/dev/shm/acr/work/3115073079/src/head/static_frame/test/unit/test_index_auto.py\", line 49, in test_index_auto_factory_from_optional_constructor\n    post = IndexAutoFactory.from_optional_constructor(\n           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"/dev/shm/acr/work/3115073079/src/head/static_frame/core/index_auto.py\", line 136, in from_optional_constructor\n    return default_constructor(\n           ^^^^^^^^^^^^^^^^^^^^\nTypeError: IndexDatetime.__init__() got an unexpected keyword argument 'dtype'"
+    }
+   },
+   "log_tail": ""
+  },
+  "base_run": {
+   "status": "completed",
+   "exit_code": 0,
+   "seconds": 0.6,
+   "addopts_overridden": false,
+   "counts": {
+    "passed": 9,
+    "failed": 0,
+    "error": 0,
+    "skipped": 0
+   },
+   "tests": {},
+   "log_tail": ""
+  },
+  "comparison": {
+   "regressions": [
+    "static_frame.test.unit.test_index_auto.TestUnit::test_index_auto_factory_from_optional_constructor"
+   ],
+   "new_test_failures": [],
+   "fixed": [],
+   "persistent_failures": [],
+   "flaky_regressions": []
+  },
+  "imports_head": {
+   "static_frame.core.index_auto": {
+    "ok": true
+   }
+  },
+  "imports_base": {
+   "static_frame.core.index_auto": {
+    "ok": true
+   }
+  },
+  "status": "completed",
+  "dependency_cutoff": "2025-06-25T20:13:03Z",
+  "seconds": 6.3,
+  "head_failures": 1
+ },
+ "findings": [
+  {
+   "tool": "pytest",
+   "rule": "test-regression",
+   "category": "test",
+   "severity": "high",
+   "confidence": "high",
+   "message": "Test static_frame.test.unit.test_index_auto.TestUnit::test_index_auto_factory_from_optional_constructor passes at base but fails at head: TypeError: IndexDatetime.__init__() got an unexpected keyword argument 'dtype'",
+   "file": "static_frame/test/unit/test_index_auto.py",
+   "line": null,
+   "end_line": null,
+   "cwe": null,
+   "on_changed_line": false,
+   "evidence": {
+    "type": "test",
+    "test_id": "static_frame.test.unit.test_index_auto.TestUnit::test_index_auto_factory_from_optional_constructor",
+    "outcome": "failed",
+    "detail": "TypeError: IndexDatetime.__init__() got an unexpected keyword argument 'dtype'\nTraceback (most recent call last):\n  File \"/dev/shm/acr/work/_shared_cache/python/cpython-3.12-linux-x86_64-gnu/lib/python3.12/unittest/case.py\", line 58, in testPartExecutor\n    yield\n  File \"/dev/shm/acr/work/_shared_cache/python/cpython-3.12-linux-x86_64-gnu/lib/python3.12/unittest/case.py\", line 634, in run\n    self._callTestMethod(testMethod)\n  File \"/dev/shm/acr/work/_shared_cache/python/cpython-3.12-linux-x86_64-gnu/lib/python3.12/unittest/case.py\", line 589, in _callTestMethod\n    if method() is not None:\n       ^^^^^^^^\n  File \"/dev/shm/acr/work/3115073079/src/head/static_frame/test/unit/test_index_auto.py\", line 49, in test_index_auto_factory_from_optional_constructor\n    post = IndexAutoFactory.from_optional_constructor(\n           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"/dev/shm/acr/work/3115073079/src/head/static_frame/core/index_auto.py\", line 136, in from_optional_constructor\n    return default_constructor(\n           ^^^^^^^^^^^^^^^^^^^^\nTypeError: IndexDatetime.__init__() got an unexpected keyword argument 'dtype'"
+   },
+   "sources": [
+    "pytest"
+   ],
+   "finding_id": "6c3c53ffd3d1",
+   "score": 3.0
+  }
+ ],
+ "status": "ok",
+ "seconds": 28.6
+}

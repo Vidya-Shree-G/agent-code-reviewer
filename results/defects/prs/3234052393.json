@@ -1,0 +1,20 @@
+{
+ "pr_id": 3234052393,
+ "repository": "axinc-ai/ailia-models",
+ "pr_number": 1704,
+ "split": "evaluation",
+ "agent": "Devin",
+ "head_sha": "cf877d4e812e43f9f3b2b8cce2dc9a184beae326",
+ "tool_versions": {
+  "ruff": "ruff 0.17.4",
+  "bandit": "__main__.py 1.9.4",
+  "python": "3.12.3"
+ },
+ "config": {
+  "run_tests": true,
+  "sandbox": true
+ },
+ "status": "checkout_failed",
+ "error": "Command '['git', '-c', 'advice.detachedHead=false', 'fetch', '-q', '--depth=1', 'origin', 'cf877d4e812e43f9f3b2b8cce2dc9a184beae326']' timed out after 900 seconds",
+ "findings": []
+}

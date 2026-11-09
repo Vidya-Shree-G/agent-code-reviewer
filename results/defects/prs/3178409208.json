@@ -1,0 +1,307 @@
+{
+ "pr_id": 3178409208,
+ "repository": "PriorLabs/TabPFN",
+ "pr_number": 347,
+ "split": "development",
+ "agent": "OpenAI_Codex",
+ "head_sha": "5d87a3f8b4429f691a7d9a4d8c83e9d3bad553b7",
+ "tool_versions": {
+  "ruff": "ruff 0.17.4",
+  "bandit": "__main__.py 1.9.4",
+  "python": "3.12.3"
+ },
+ "config": {
+  "run_tests": true,
+  "sandbox": true
+ },
+ "base_mode": "reverse_applied_diff",
+ "static": {
+  "files_analysed": 1,
+  "head_issues": 5,
+  "base_issues": 5,
+  "per_tool_head": {
+   "bandit": 5
+  },
+  "per_tool_base": {
+   "bandit": 5
+  },
+  "introduced": 0,
+  "seconds": 0.3
+ },
+ "tests": {
+  "env": {
+   "status": "partial",
+   "python": "3.15.2",
+   "steps": [
+    {
+     "step": "venv",
+     "ok": true,
+     "seconds": 0.0,
+     "timed_out": false,
+     "log_tail": ""
+    },
+    {
+     "step": "install -e .[dev]",
+     "ok": false,
+     "seconds": 0.2,
+     "timed_out": false,
+     "log_tail": "error: No solution found when resolving dependencies\n  cause: Because only the following versions of torch are available:\n             torch<2.7.0+cpu\n             torch>2.7.0+cpu,<2.7.1+cpu\n         and all of:\n             torch>=2.1.0,<=2.7.0\n             torch==2.7.1\n          have no wheels with a matching Python ABI tag (e.g., `cp315`), we can conclude that all of:\n             torch>=2.1.0,<=2.7.0\n             torch==2.7.1\n          cannot be used.\n         And because tabpfn==2.0.9 depends on torch>=2.1, we can conclude that tabpfn==2.0.9 cannot be used.\n         And because only tabpfn[dev]==2.0.9 is available and you require tabpfn[dev], we can conclude that your requirements are unsatisfiable.\n\nhint: You require CPython 3.15 (`cp315`), but we only found wheels for `torch` (v2.7.1) with the following Python ABI tag: `cp313t`\n",
+     "superseded": true
+    },
+    {
+     "step": "install -e .",
+     "ok": false,
+     "seconds": 0.0,
+     "timed_out": false,
+     "log_tail": "error: No solution found when resolving dependencies\n  cause: Because only the following versions of torch are available:\n             torch<2.7.0+cpu\n             torch>2.7.0+cpu,<2.7.1+cpu\n         and all of:\n             torch>=2.1.0,<=2.7.0\n             torch==2.7.1\n          have no wheels with a matching Python ABI tag (e.g., `cp315`), we can conclude that all of:\n             torch>=2.1.0,<=2.7.0\n             torch==2.7.1\n          cannot be used.\n         And because tabpfn==2.0.9 depends on torch>=2.1, we can conclude that tabpfn==2.0.9 cannot be used.\n         And because only tabpfn==2.0.9 is available and you require tabpfn, we can conclude that your requirements are unsatisfiable.\n\nhint: You require CPython 3.15 (`cp315`), but we only found wheels for `torch` (v2.7.1) with the following Python ABI tag: `cp313t`\n"
+    },
+    {
+     "step": "install pytest",
+     "ok": true,
+     "seconds": 0.0,
+     "timed_out": false,
+     "log_tail": ""
+    },
+    {
+     "step": "repair: install numpy torch typing_extensions",
+     "ok": false,
+     "seconds": 0.0,
+     "timed_out": false,
+     "log_tail": "error: No solution found when resolving dependencies\n  cause: Because only the following versions of torch are available:\n             torch<2.7.0+cpu\n             torch>2.7.0+cpu,<2.7.1+cpu\n         and all of:\n             torch<=2.7.0\n             torch==2.7.1\n          have no wheels with a matching Python ABI tag (e.g., `cp315`), we can conclude that all of:\n             torch<=2.7.0\n             torch==2.7.1\n          cannot be used.\n         And because you require torch, we can conclude that your requirements are unsatisfiable.\n\nhint: You require CPython 3.15 (`cp315`), but we only found wheels for `torch` (v2.7.1) with the following Python ABI tag: `cp313t`\n"
+    }
+   ]
+  },
+  "selected_tests": [
+   {
+    "path": "tests/test_classifier_interface.py",
+    "reason": "full_suite",
+    "exists_at_base": true
+   },
+   {
+    "path": "tests/test_consistency.py",
+    "reason": "full_suite",
+    "exists_at_base": true
+   },
+   {
+    "path": "tests/test_finetuning_classifier.py",
+    "reason": "full_suite",
+    "exists_at_base": true
+   },
+   {
+    "path": "tests/test_finetuning_regressor.py",
+    "reason": "full_suite",
+    "exists_at_base": true
+   },
+   {
+    "path": "tests/test_ft_utils.py",
+    "reason": "full_suite",
+    "exists_at_base": true
+   },
+   {
+    "path": "tests/test_model/test_attention.py",
+    "reason": "full_suite",
+    "exists_at_base": true
+   },
+   {
+    "path": "tests/test_model/test_bar_distribution.py",
+    "reason": "full_suite",
+    "exists_at_base": true
+   },
+   {
+    "path": "tests/test_model/test_encoders.py",
+    "reason": "full_suite",
+    "exists_at_base": true
+   },
+   {
+    "path": "tests/test_model/test_seperate_train_inference.py",
+    "reason": "full_suite",
+    "exists_at_base": true
+   },
+   {
+    "path": "tests/test_preprocessing.py",
+    "reason": "full_suite",
+    "exists_at_base": true
+   },
+   {
+    "path": "tests/test_regressor_interface.py",
+    "reason": "full_suite",
+    "exists_at_base": true
+   },
+   {
+    "path": "tests/test_scripts.py",
+    "reason": "full_suite",
+    "exists_at_base": true
+   },
+   {
+    "path": "tests/test_utils.py",
+    "reason": "full_suite",
+    "exists_at_base": true
+   }
+  ],
+  "head_run": {
+   "status": "completed",
+   "exit_code": 2,
+   "seconds": 0.6,
+   "addopts_overridden": false,
+   "counts": {
+    "passed": 0,
+    "failed": 0,
+    "error": 11,
+    "skipped": 0
+   },
+   "tests": {
+    "::tests.test_classifier_interface": {
+     "outcome": "error",
+     "detail": "collection failure\nImportError while importing test module '/dev/shm/acr/work/3178409208/src/head/tests/test_classifier_interface.py'.\nHint: make sure your test modules/packages have valid Python names.\nTraceback:\n../../../_shared_cache/python/cpython-3.15.2-linux-x86_64-gnu/lib/python3.15/importlib/__init__.py:88: in import_module\n    return _bootstrap._gcd_import(name[level:], package, level)\n           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\ntests/test_classifier_interface.py:10: in <module>\n    import numpy as np\nE   ModuleNotFoundError: No module named 'numpy'. Did you mean: 'runpy'?"
+    },
+    "::tests.test_consistency": {
+     "outcome": "error",
+     "detail": "collection failure\nImportError while importing test module '/dev/shm/acr/work/3178409208/src/head/tests/test_consistency.py'.\nHint: make sure your test modules/packages have valid Python names.\nTraceback:\n../../../_shared_cache/python/cpython-3.15.2-linux-x86_64-gnu/lib/python3.15/importlib/__init__.py:88: in import_module\n    return _bootstrap._gcd_import(name[level:], package, level)\n           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\ntests/test_consistency.py:63: in <module>\n    import numpy as np\nE   ModuleNotFoundError: No module named 'numpy'. Did you mean: 'runpy'?"
+    },
+    "::tests.test_finetuning_classifier": {
+     "outcome": "error",
+     "detail": "collection failure\nImportError while importing test module '/dev/shm/acr/work/3178409208/src/head/tests/test_finetuning_classifier.py'.\nHint: make sure your test modules/packages have valid Python names.\nTraceback:\n../../../_shared_cache/python/cpython-3.15.2-linux-x86_64-gnu/lib/python3.15/importlib/__init__.py:88: in import_module\n    return _bootstrap._gcd_import(name[level:], package, level)\n           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\ntests/test_finetuning_classifier.py:8: in <module>\n    import numpy as np\nE   ModuleNotFoundError: No module named 'numpy'. Did you mean: 'runpy'?"
+    },
+    "::tests.test_finetuning_regressor": {
+     "outcome": "error",
+     "detail": "collection failure\nImportError while importing test module '/dev/shm/acr/work/3178409208/src/head/tests/test_finetuning_regressor.py'.\nHint: make sure your test modules/packages have valid Python names.\nTraceback:\n../../../_shared_cache/python/cpython-3.15.2-linux-x86_64-gnu/lib/python3.15/importlib/__init__.py:88: in import_module\n    return _bootstrap._gcd_import(name[level:], package, level)\n           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\ntests/test_finetuning_regressor.py:8: in <module>\n    import numpy as np\nE   ModuleNotFoundError: No module named 'numpy'. Did you mean: 'runpy'?"
+    },
+    "::tests.test_ft_utils": {
+     "outcome": "error",
+     "detail": "collection failure\nImportError while importing test module '/dev/shm/acr/work/3178409208/src/head/tests/test_ft_utils.py'.\nHint: make sure your test modules/packages have valid Python names.\nTraceback:\n../../../_shared_cache/python/cpython-3.15.2-linux-x86_64-gnu/lib/python3.15/importlib/__init__.py:88: in import_module\n    return _bootstrap._gcd_import(name[level:], package, level)\n           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\ntests/test_ft_utils.py:3: in <module>\n    import numpy as np\nE   ModuleNotFoundError: No module named 'numpy'. Did you mean: 'runpy'?"
+    },
+    "::tests.test_model.test_attention": {
+     "outcome": "error",
+     "detail": "collection failure\nImportError while importing test module '/dev/shm/acr/work/3178409208/src/head/tests/test_model/test_attention.py'.\nHint: make sure your test modules/packages have valid Python names.\nTraceback:\n../../../_shared_cache/python/cpython-3.15.2-linux-x86_64-gnu/lib/python3.15/importlib/__init__.py:88: in import_module\n    return _bootstrap._gcd_import(name[level:], package, level)\n           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\ntests/test_model/test_attention.py:3: in <module>\n    import torch\nE   ModuleNotFoundError: No module named 'torch'"
+    },
+    "::tests.test_model.test_bar_distribution": {
+     "outcome": "error",
+     "detail": "collection failure\nImportError while importing test module '/dev/shm/acr/work/3178409208/src/head/tests/test_model/test_bar_distribution.py'.\nHint: make sure your test modules/packages have valid Python names.\nTraceback:\n../../../_shared_cache/python/cpython-3.15.2-linux-x86_64-gnu/lib/python3.15/importlib/__init__.py:88: in import_module\n    return _bootstrap._gcd_import(name[level:], package, level)\n           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\ntests/test_model/test_bar_distribution.py:4: in <module>\n    import torch\nE   ModuleNotFoundError: No module named 'torch'"
+    },
+    "::tests.test_model.test_encoders": {
+     "outcome": "error",
+     "detail": "collection failure\nImportError while importing test module '/dev/shm/acr/work/3178409208/src/head/tests/test_model/test_encoders.py'.\nHint: make sure your test modules/packages have valid Python names.\nTraceback:\n../../../_shared_cache/python/cpython-3.15.2-linux-x86_64-gnu/lib/python3.15/importlib/__init__.py:88: in import_module\n    return _bootstrap._gcd_import(name[level:], package, level)\n           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\ntests/test_model/test_encoders.py:5: in <module>\n    import numpy as np\nE   ModuleNotFoundError: No module named 'numpy'. Did you mean: 'runpy'?"
+    },
+    "::tests.test_model.test_seperate_train_inference": {
+     "outcome": "error",
+     "detail": "collection failure\nImportError while importing test module '/dev/shm/acr/work/3178409208/src/head/tests/test_model/test_seperate_train_inference.py'.\nHint: make sure your test modules/packages have valid Python names.\nTraceback:\n../../../_shared_cache/python/cpython-3.15.2-linux-x86_64-gnu/lib/python3.15/importlib/__init__.py:88: in import_module\n    return _bootstrap._gcd_import(name[level:], package, level)\n           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\ntests/test_model/test_seperate_train_inference.py:4: in <module>\n    import torch\nE   ModuleNotFoundError: No module named 'torch'"
+    },
+    "::tests.test_preprocessing": {
+     "outcome": "error",
+     "detail": "collection failure\nImportError while importing test module '/dev/shm/acr/work/3178409208/src/head/tests/test_preprocessing.py'.\nHint: make sure your test modules/packages have valid Python names.\nTraceback:\n../../../_shared_cache/python/cpython-3.15.2-linux-x86_64-gnu/lib/python3.15/importlib/__init__.py:88: in import_module\n    return _bootstrap._gcd_import(name[level:], package, level)\n           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\ntests/test_preprocessing.py:3: in <module>\n    import numpy as np\nE   ModuleNotFoundError: No module named 'numpy'. Did you mean: 'runpy'?"
+    },
+    "::tests.test_regressor_interface": {
+     "outcome": "error",
+     "detail": "collection failure\nImportError while importing test module '/dev/shm/acr/work/3178409208/src/head/tests/test_regressor_interface.py'.\nHint: make sure your test modules/packages have valid Python names.\nTraceback:\n../../../_shared_cache/python/cpython-3.15.2-linux-x86_64-gnu/lib/python3.15/importlib/__init__.py:88: in import_module\n    return _bootstrap._gcd_import(name[level:], package, level)\n           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\ntests/test_regressor_interface.py:10: in <module>\n    import numpy as np\nE   ModuleNotFoundError: No module named 'numpy'. Did you mean: 'runpy'?"
+    }
+   },
+   "log_tail": ""
+  },
+  "base_run": {
+   "status": "completed",
+   "exit_code": 2,
+   "seconds": 0.5,
+   "addopts_overridden": false,
+   "counts": {
+    "passed": 0,
+    "failed": 0,
+    "error": 11,
+    "skipped": 0
+   },
+   "tests": {
+    "::tests.test_classifier_interface": {
+     "outcome": "error",
+     "detail": "collection failure\nImportError while importing test module '/dev/shm/acr/work/3178409208/src/base/tests/test_classifier_interface.py'.\nHint: make sure your test modules/packages have valid Python names.\nTraceback:\n../../../_shared_cache/python/cpython-3.15.2-linux-x86_64-gnu/lib/python3.15/importlib/__init__.py:88: in import_module\n    return _bootstrap._gcd_import(name[level:], package, level)\n           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\ntests/test_classifier_interface.py:10: in <module>\n    import numpy as np\nE   ModuleNotFoundError: No module named 'numpy'. Did you mean: 'runpy'?"
+    },
+    "::tests.test_consistency": {
+     "outcome": "error",
+     "detail": "collection failure\nImportError while importing test module '/dev/shm/acr/work/3178409208/src/base/tests/test_consistency.py'.\nHint: make sure your test modules/packages have valid Python names.\nTraceback:\n../../../_shared_cache/python/cpython-3.15.2-linux-x86_64-gnu/lib/python3.15/importlib/__init__.py:88: in import_module\n    return _bootstrap._gcd_import(name[level:], package, level)\n           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\ntests/test_consistency.py:63: in <module>\n    import numpy as np\nE   ModuleNotFoundError: No module named 'numpy'. Did you mean: 'runpy'?"
+    },
+    "::tests.test_finetuning_classifier": {
+     "outcome": "error",
+     "detail": "collection failure\nImportError while importing test module '/dev/shm/acr/work/3178409208/src/base/tests/test_finetuning_classifier.py'.\nHint: make sure your test modules/packages have valid Python names.\nTraceback:\n../../../_shared_cache/python/cpython-3.15.2-linux-x86_64-gnu/lib/python3.15/importlib/__init__.py:88: in import_module\n    return _bootstrap._gcd_import(name[level:], package, level)\n           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\ntests/test_finetuning_classifier.py:8: in <module>\n    import numpy as np\nE   ModuleNotFoundError: No module named 'numpy'. Did you mean: 'runpy'?"
+    },
+    "::tests.test_finetuning_regressor": {
+     "outcome": "error",
+     "detail": "collection failure\nImportError while importing test module '/dev/shm/acr/work/3178409208/src/base/tests/test_finetuning_regressor.py'.\nHint: make sure your test modules/packages have valid Python names.\nTraceback:\n../../../_shared_cache/python/cpython-3.15.2-linux-x86_64-gnu/lib/python3.15/importlib/__init__.py:88: in import_module\n    return _bootstrap._gcd_import(name[level:], package, level)\n           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\ntests/test_finetuning_regressor.py:8: in <module>\n    import numpy as np\nE   ModuleNotFoundError: No module named 'numpy'. Did you mean: 'runpy'?"
+    },
+    "::tests.test_ft_utils": {
+     "outcome": "error",
+     "detail": "collection failure\nImportError while importing test module '/dev/shm/acr/work/3178409208/src/base/tests/test_ft_utils.py'.\nHint: make sure your test modules/packages have valid Python names.\nTraceback:\n../../../_shared_cache/python/cpython-3.15.2-linux-x86_64-gnu/lib/python3.15/importlib/__init__.py:88: in import_module\n    return _bootstrap._gcd_import(name[level:], package, level)\n           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\ntests/test_ft_utils.py:3: in <module>\n    import numpy as np\nE   ModuleNotFoundError: No module named 'numpy'. Did you mean: 'runpy'?"
+    },
+    "::tests.test_model.test_attention": {
+     "outcome": "error",
+     "detail": "collection failure\nImportError while importing test module '/dev/shm/acr/work/3178409208/src/base/tests/test_model/test_attention.py'.\nHint: make sure your test modules/packages have valid Python names.\nTraceback:\n../../../_shared_cache/python/cpython-3.15.2-linux-x86_64-gnu/lib/python3.15/importlib/__init__.py:88: in import_module\n    return _bootstrap._gcd_import(name[level:], package, level)\n           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\ntests/test_model/test_attention.py:3: in <module>\n    import torch\nE   ModuleNotFoundError: No module named 'torch'"
+    },
+    "::tests.test_model.test_bar_distribution": {
+     "outcome": "error",
+     "detail": "collection failure\nImportError while importing test module '/dev/shm/acr/work/3178409208/src/base/tests/test_model/test_bar_distribution.py'.\nHint: make sure your test modules/packages have valid Python names.\nTraceback:\n../../../_shared_cache/python/cpython-3.15.2-linux-x86_64-gnu/lib/python3.15/importlib/__init__.py:88: in import_module\n    return _bootstrap._gcd_import(name[level:], package, level)\n           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\ntests/test_model/test_bar_distribution.py:4: in <module>\n    import torch\nE   ModuleNotFoundError: No module named 'torch'"
+    },
+    "::tests.test_model.test_encoders": {
+     "outcome": "error",
+     "detail": "collection failure\nImportError while importing test module '/dev/shm/acr/work/3178409208/src/base/tests/test_model/test_encoders.py'.\nHint: make sure your test modules/packages have valid Python names.\nTraceback:\n../../../_shared_cache/python/cpython-3.15.2-linux-x86_64-gnu/lib/python3.15/importlib/__init__.py:88: in import_module\n    return _bootstrap._gcd_import(name[level:], package, level)\n           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\ntests/test_model/test_encoders.py:5: in <module>\n    import numpy as np\nE   ModuleNotFoundError: No module named 'numpy'. Did you mean: 'runpy'?"
+    },
+    "::tests.test_model.test_seperate_train_inference": {
+     "outcome": "error",
+     "detail": "collection failure\nImportError while importing test module '/dev/shm/acr/work/3178409208/src/base/tests/test_model/test_seperate_train_inference.py'.\nHint: make sure your test modules/packages have valid Python names.\nTraceback:\n../../../_shared_cache/python/cpython-3.15.2-linux-x86_64-gnu/lib/python3.15/importlib/__init__.py:88: in import_module\n    return _bootstrap._gcd_import(name[level:], package, level)\n           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\ntests/test_model/test_seperate_train_inference.py:4: in <module>\n    import torch\nE   ModuleNotFoundError: No module named 'torch'"
+    },
+    "::tests.test_preprocessing": {
+     "outcome": "error",
+     "detail": "collection failure\nImportError while importing test module '/dev/shm/acr/work/3178409208/src/base/tests/test_preprocessing.py'.\nHint: make sure your test modules/packages have valid Python names.\nTraceback:\n../../../_shared_cache/python/cpython-3.15.2-linux-x86_64-gnu/lib/python3.15/importlib/__init__.py:88: in import_module\n    return _bootstrap._gcd_import(name[level:], package, level)\n           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\ntests/test_preprocessing.py:3: in <module>\n    import numpy as np\nE   ModuleNotFoundError: No module named 'numpy'. Did you mean: 'runpy'?"
+    },
+    "::tests.test_regressor_interface": {
+     "outcome": "error",
+     "detail": "collection failure\nImportError while importing test module '/dev/shm/acr/work/3178409208/src/base/tests/test_regressor_interface.py'.\nHint: make sure your test modules/packages have valid Python names.\nTraceback:\n../../../_shared_cache/python/cpython-3.15.2-linux-x86_64-gnu/lib/python3.15/importlib/__init__.py:88: in import_module\n    return _bootstrap._gcd_import(name[level:], package, level)\n           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\ntests/test_regressor_interface.py:10: in <module>\n    import numpy as np\nE   ModuleNotFoundError: No module named 'numpy'. Did you mean: 'runpy'?"
+    }
+   },
+   "log_tail": ""
+  },
+  "comparison": {
+   "regressions": [],
+   "new_test_failures": [],
+   "fixed": [],
+   "persistent_failures": [
+    "::tests.test_classifier_interface",
+    "::tests.test_consistency",
+    "::tests.test_finetuning_classifier",
+    "::tests.test_finetuning_regressor",
+    "::tests.test_ft_utils",
+    "::tests.test_model.test_attention",
+    "::tests.test_model.test_bar_distribution",
+    "::tests.test_model.test_encoders",
+    "::tests.test_model.test_seperate_train_inference",
+    "::tests.test_preprocessing",
+    "::tests.test_regressor_interface"
+   ]
+  },
+  "imports_head": {
+   "tabpfn.model.loading": {
+    "ok": false,
+    "type": "ModuleNotFoundError",
+    "message": "No module named 'typing_extensions'",
+    "missing_module": "typing_extensions",
+    "file": "src/tabpfn/classifier.py",
+    "line": 25,
+    "traceback": "it__.py\", line 88, in import_module\n    return _bootstrap._gcd_import(name[level:], package, level)\n           ~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"<frozen importlib._bootstrap>\", line 1389, in _gcd_import\n  File \"<frozen importlib._bootstrap>\", line 1338, in _find_and_load\n  File \"<frozen importlib._bootstrap>\", line 1299, in _resolve_parents\n  File \"<frozen importlib._bootstrap>\", line 491, in _call_with_frames_removed\n  File \"<frozen importlib._bootstrap>\", line 1389, in _gcd_import\n  File \"<frozen importlib._bootstrap>\", line 1338, in _find_and_load\n  File \"<frozen importlib._bootstrap>\", line 1299, in _resolve_parents\n  File \"<frozen importlib._bootstrap>\", line 491, in _call_with_frames_removed\n  File \"<frozen importlib._bootstrap>\", line 1389, in _gcd_import\n  File \"<frozen importlib._bootstrap>\", line 1353, in _find_and_load\n  File \"<frozen importlib._bootstrap>\", line 1249, in _find_and_load_unlocked\n  File \"<frozen importlib._bootstrap>\", line 857, in _load_unlocked\n  File \"<frozen importlib._bootstrap_external>\", line 751, in exec_module\n  File \"<frozen importlib._bootstrap>\", line 491, in _call_with_frames_removed\n  File \"/dev/shm/acr/work/3178409208/src/head/src/tabpfn/__init__.py\", line 3, in <module>\n    from tabpfn.classifier import TabPFNClassifier\n  File \"/dev/shm/acr/work/3178409208/src/head/src/tabpfn/classifier.py\", line 25, in <module>\n    from typing_extensions import Self\nModuleNotFoundError: No module named 'typing_extensions'\n"
+   }
+  },
+  "imports_base": {
+   "tabpfn.model.loading": {
+    "ok": false,
+    "type": "ModuleNotFoundError",
+    "message": "No module named 'typing_extensions'",
+    "missing_module": "typing_extensions",
+    "file": "src/tabpfn/classifier.py",
+    "line": 25,
+    "traceback": "it__.py\", line 88, in import_module\n    return _bootstrap._gcd_import(name[level:], package, level)\n           ~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"<frozen importlib._bootstrap>\", line 1389, in _gcd_import\n  File \"<frozen importlib._bootstrap>\", line 1338, in _find_and_load\n  File \"<frozen importlib._bootstrap>\", line 1299, in _resolve_parents\n  File \"<frozen importlib._bootstrap>\", line 491, in _call_with_frames_removed\n  File \"<frozen importlib._bootstrap>\", line 1389, in _gcd_import\n  File \"<frozen importlib._bootstrap>\", line 1338, in _find_and_load\n  File \"<frozen importlib._bootstrap>\", line 1299, in _resolve_parents\n  File \"<frozen importlib._bootstrap>\", line 491, in _call_with_frames_removed\n  File \"<frozen importlib._bootstrap>\", line 1389, in _gcd_import\n  File \"<frozen importlib._bootstrap>\", line 1353, in _find_and_load\n  File \"<frozen importlib._bootstrap>\", line 1249, in _find_and_load_unlocked\n  File \"<frozen importlib._bootstrap>\", line 857, in _load_unlocked\n  File \"<frozen importlib._bootstrap_external>\", line 751, in exec_module\n  File \"<frozen importlib._bootstrap>\", line 491, in _call_with_frames_removed\n  File \"/dev/shm/acr/work/3178409208/src/base/src/tabpfn/__init__.py\", line 3, in <module>\n    from tabpfn.classifier import TabPFNClassifier\n  File \"/dev/shm/acr/work/3178409208/src/base/src/tabpfn/classifier.py\", line 25, in <module>\n    from typing_extensions import Self\nModuleNotFoundError: No module named 'typing_extensions'\n"
+   }
+  },
+  "status": "completed",
+  "dependency_cutoff": "2025-06-27T09:30:01Z",
+  "seconds": 1.5,
+  "head_failures": 11
+ },
+ "findings": [],
+ "status": "ok",
+ "seconds": 9.2
+}

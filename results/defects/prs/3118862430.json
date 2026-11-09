@@ -1,0 +1,185 @@
+{
+ "pr_id": 3118862430,
+ "repository": "ACEsuit/mace",
+ "pr_number": 1001,
+ "split": "development",
+ "agent": "OpenAI_Codex",
+ "head_sha": "fedf78de8f0955452f13c92a4bc461b031a882c9",
+ "tool_versions": {
+  "ruff": "ruff 0.17.4",
+  "bandit": "__main__.py 1.9.4",
+  "python": "3.12.3"
+ },
+ "config": {
+  "run_tests": true,
+  "sandbox": true
+ },
+ "base_mode": "reverse_applied_diff",
+ "static": {
+  "files_analysed": 3,
+  "head_issues": 2,
+  "base_issues": 2,
+  "per_tool_head": {
+   "bandit": 2
+  },
+  "per_tool_base": {
+   "bandit": 2
+  },
+  "introduced": 0,
+  "seconds": 0.2
+ },
+ "tests": {
+  "env": {
+   "status": "partial",
+   "python": "3.15.2",
+   "steps": [
+    {
+     "step": "venv",
+     "ok": true,
+     "seconds": 0.0,
+     "timed_out": false,
+     "log_tail": ""
+    },
+    {
+     "step": "install -e .",
+     "ok": false,
+     "seconds": 0.6,
+     "timed_out": false,
+     "log_tail": "error: No solution found when resolving dependencies\n  cause: Because only the following versions of torch are available:\n             torch<2.7.0+cpu\n             torch>2.7.0+cpu,<2.7.1+cpu\n         and all of:\n             torch>=1.12.0,<=2.7.0\n             torch==2.7.1\n          have no wheels with a matching Python ABI tag (e.g., `cp315`), we can conclude that all of:\n             torch>=1.12.0,<=2.7.0\n             torch==2.7.1\n          cannot be used.\n         And because mace-torch==0.3.14 depends on torch>=1.12, we can conclude that mace-torch==0.3.14 cannot be used.\n         And because only mace-torch==0.3.14 is available and you require mace-torch, we can conclude that your requirements are unsatisfiable.\n\nhint: You require CPython 3.15 (`cp315`), but we only found wheels for `torch` (v2.7.1) with the following Python ABI tag: `cp313t`\n"
+    },
+    {
+     "step": "install pytest",
+     "ok": true,
+     "seconds": 0.0,
+     "timed_out": false,
+     "log_tail": ""
+    },
+    {
+     "step": "repair: install cuequivariance e3nn torch",
+     "ok": false,
+     "seconds": 0.6,
+     "timed_out": false,
+     "log_tail": "error: No solution found when resolving dependencies\n  cause: Because e3nn<=0.2.3 depends on torch>=1.4.0 and e3nn==0.2.8 depends on torch>=1.8.1, we can conclude that all of:\n             e3nn<=0.2.3\n             e3nn==0.2.8\n         depend on torch>=1.4.0.\n         And because all of:\n             e3nn>=0.2.4,<=0.2.7\n             e3nn>=0.2.9\n         depend on torch>=1.8.0 and torch>=1.4.0,<=1.7.1+cpu has no wheels with a matching Python ABI tag (e.g., `cp315`), we can conclude that all versions of e3nn depend on torch>=1.8.0. (1)\n\n         Because only the following versions of torch are available:\n             torch<2.7.0+cpu\n             torch>2.7.0+cpu,<2.7.1+cpu\n         and all of:\n             torch>=1.8.0,<=2.7.0\n             torch==2.7.1\n          have no wheels with a matching Python ABI tag (e.g., `cp315`), we can conclude that all of:\n             torch>=1.8.0,<=2.7.0\n             torch==2.7.1\n          cannot be used.\n         And because we know from (1) that all versions of e3nn depend on torch>=1.8.0, we can conclude that all versions of e3nn cannot be used.\n         And because you require e3nn, we can conclude that your requirements are unsatisfiable.\n\nhint: You require CPython 3.15 (`cp315`), but we only found wheels for `torch` (v1.7.1+cpu) with the following Python ABI tags: `cp36m`, `cp37m`, `cp38`, `cp39`\n"
+    }
+   ]
+  },
+  "selected_tests": [
+   {
+    "path": "tests/test_cueq_oeq.py",
+    "reason": "imports_changed_module",
+    "exists_at_base": true
+   }
+  ],
+  "head_run": {
+   "status": "completed",
+   "exit_code": 2,
+   "seconds": 0.3,
+   "addopts_overridden": false,
+   "counts": {
+    "passed": 0,
+    "failed": 0,
+    "error": 1,
+    "skipped": 0
+   },
+   "tests": {
+    "::tests.test_cueq_oeq": {
+     "outcome": "error",
+     "detail": "collection failure\nImportError while importing test module '/dev/shm/acr/work/3118862430/src/head/tests/test_cueq_oeq.py'.\nHint: make sure your test modules/packages have valid Python names.\nTraceback:\n../../../_shared_cache/python/cpython-3.15.2-linux-x86_64-gnu/lib/python3.15/importlib/__init__.py:88: in import_module\n    return _bootstrap._gcd_import(name[level:], package, level)\n           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\ntests/test_cueq_oeq.py:9: in <module>\n    import torch\nE   ModuleNotFoundError: No module named 'torch'"
+    }
+   },
+   "log_tail": ""
+  },
+  "base_run": {
+   "status": "completed",
+   "exit_code": 2,
+   "seconds": 0.3,
+   "addopts_overridden": false,
+   "counts": {
+    "passed": 0,
+    "failed": 0,
+    "error": 1,
+    "skipped": 0
+   },
+   "tests": {
+    "::tests.test_cueq_oeq": {
+     "outcome": "error",
+     "detail": "collection failure\nImportError while importing test module '/dev/shm/acr/work/3118862430/src/base/tests/test_cueq_oeq.py'.\nHint: make sure your test modules/packages have valid Python names.\nTraceback:\n../../../_shared_cache/python/cpython-3.15.2-linux-x86_64-gnu/lib/python3.15/importlib/__init__.py:88: in import_module\n    return _bootstrap._gcd_import(name[level:], package, level)\n           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\ntests/test_cueq_oeq.py:9: in <module>\n    import torch\nE   ModuleNotFoundError: No module named 'torch'"
+    }
+   },
+   "log_tail": ""
+  },
+  "comparison": {
+   "regressions": [],
+   "new_test_failures": [],
+   "fixed": [],
+   "persistent_failures": [
+    "::tests.test_cueq_oeq"
+   ]
+  },
+  "imports_head": {
+   "mace.cli.convert_cueq_e3nn": {
+    "ok": false,
+    "type": "ModuleNotFoundError",
+    "message": "No module named 'numpy'",
+    "missing_module": "numpy",
+    "file": "mace/cli/convert_cueq_e3nn.py",
+    "line": 10,
+    "traceback": "Traceback (most recent call last):\n  File \"<string>\", line 7, in <module>\n    importlib.import_module(m)\n    ~~~~~~~~~~~~~~~~~~~~~~~^^^\n  File \"/dev/shm/acr/work/_shared_cache/python/cpython-3.15.2-linux-x86_64-gnu/lib/python3.15/importlib/__init__.py\", line 88, in import_module\n    return _bootstrap._gcd_import(name[level:], package, level)\n           ~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"<frozen importlib._bootstrap>\", line 1389, in _gcd_import\n  File \"<frozen importlib._bootstrap>\", line 1353, in _find_and_load\n  File \"<frozen importlib._bootstrap>\", line 1249, in _find_and_load_unlocked\n  File \"<frozen importlib._bootstrap>\", line 857, in _load_unlocked\n  File \"<frozen importlib._bootstrap_external>\", line 751, in exec_module\n  File \"<frozen importlib._bootstrap>\", line 491, in _call_with_frames_removed\n  File \"/dev/shm/acr/work/3118862430/src/head/mace/cli/convert_cueq_e3nn.py\", line 10, in <module>\n    import numpy as np\nModuleNotFoundError: No module named 'numpy'. Did you mean: 'runpy'?\n"
+   },
+   "mace.cli.convert_e3nn_cueq": {
+    "ok": false,
+    "type": "ModuleNotFoundError",
+    "message": "No module named 'torch'",
+    "missing_module": "torch",
+    "file": "mace/cli/convert_e3nn_cueq.py",
+    "line": 10,
+    "traceback": "Traceback (most recent call last):\n  File \"<string>\", line 7, in <module>\n    importlib.import_module(m)\n    ~~~~~~~~~~~~~~~~~~~~~~~^^^\n  File \"/dev/shm/acr/work/_shared_cache/python/cpython-3.15.2-linux-x86_64-gnu/lib/python3.15/importlib/__init__.py\", line 88, in import_module\n    return _bootstrap._gcd_import(name[level:], package, level)\n           ~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"<frozen importlib._bootstrap>\", line 1389, in _gcd_import\n  File \"<frozen importlib._bootstrap>\", line 1353, in _find_and_load\n  File \"<frozen importlib._bootstrap>\", line 1249, in _find_and_load_unlocked\n  File \"<frozen importlib._bootstrap>\", line 857, in _load_unlocked\n  File \"<frozen importlib._bootstrap_external>\", line 751, in exec_module\n  File \"<frozen importlib._bootstrap>\", line 491, in _call_with_frames_removed\n  File \"/dev/shm/acr/work/3118862430/src/head/mace/cli/convert_e3nn_cueq.py\", line 10, in <module>\n    import torch\nModuleNotFoundError: No module named 'torch'\n"
+   },
+   "mace.tools.cg_cueq_tools": {
+    "ok": false,
+    "type": "ModuleNotFoundError",
+    "message": "No module named 'e3nn'",
+    "missing_module": "e3nn",
+    "file": "mace/tools/arg_parser_tools.py",
+    "line": 4,
+    "traceback": "Traceback (most recent call last):\n  File \"<string>\", line 7, in <module>\n    importlib.import_module(m)\n    ~~~~~~~~~~~~~~~~~~~~~~~^^^\n  File \"/dev/shm/acr/work/_shared_cache/python/cpython-3.15.2-linux-x86_64-gnu/lib/python3.15/importlib/__init__.py\", line 88, in import_module\n    return _bootstrap._gcd_import(name[level:], package, level)\n           ~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"<frozen importlib._bootstrap>\", line 1389, in _gcd_import\n  File \"<frozen importlib._bootstrap>\", line 1338, in _find_and_load\n  File \"<frozen importlib._bootstrap>\", line 1299, in _resolve_parents\n  File \"<frozen importlib._bootstrap>\", line 491, in _call_with_frames_removed\n  File \"<frozen importlib._bootstrap>\", line 1389, in _gcd_import\n  File \"<frozen importlib._bootstrap>\", line 1353, in _find_and_load\n  File \"<frozen importlib._bootstrap>\", line 1249, in _find_and_load_unlocked\n  File \"<frozen importlib._bootstrap>\", line 857, in _load_unlocked\n  File \"<frozen importlib._bootstrap_external>\", line 751, in exec_module\n  File \"<frozen importlib._bootstrap>\", line 491, in _call_with_frames_removed\n  File \"/dev/shm/acr/work/3118862430/src/head/mace/tools/__init__.py\", line 2, in <module>\n    from .arg_parser_tools import check_args\n  File \"/dev/shm/acr/work/3118862430/src/head/mace/tools/arg_parser_tools.py\", line 4, in <module>\n    from e3nn import o3\nModuleNotFoundError: No module named 'e3nn'\n"
+   }
+  },
+  "imports_base": {
+   "mace.cli.convert_cueq_e3nn": {
+    "ok": false,
+    "type": "ModuleNotFoundError",
+    "message": "No module named 'cuequivariance'",
+    "missing_module": "cuequivariance",
+    "file": "mace/cli/convert_cueq_e3nn.py",
+    "line": 6,
+    "traceback": "Traceback (most recent call last):\n  File \"<string>\", line 7, in <module>\n    importlib.import_module(m)\n    ~~~~~~~~~~~~~~~~~~~~~~~^^^\n  File \"/dev/shm/acr/work/_shared_cache/python/cpython-3.15.2-linux-x86_64-gnu/lib/python3.15/importlib/__init__.py\", line 88, in import_module\n    return _bootstrap._gcd_import(name[level:], package, level)\n           ~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"<frozen importlib._bootstrap>\", line 1389, in _gcd_import\n  File \"<frozen importlib._bootstrap>\", line 1353, in _find_and_load\n  File \"<frozen importlib._bootstrap>\", line 1249, in _find_and_load_unlocked\n  File \"<frozen importlib._bootstrap>\", line 857, in _load_unlocked\n  File \"<frozen importlib._bootstrap_external>\", line 751, in exec_module\n  File \"<frozen importlib._bootstrap>\", line 491, in _call_with_frames_removed\n  File \"/dev/shm/acr/work/3118862430/src/base/mace/cli/convert_cueq_e3nn.py\", line 6, in <module>\n    import cuequivariance as cue\nModuleNotFoundError: No module named 'cuequivariance'\n"
+   },
+   "mace.cli.convert_e3nn_cueq": {
+    "ok": false,
+    "type": "ModuleNotFoundError",
+    "message": "No module named 'cuequivariance'",
+    "missing_module": "cuequivariance",
+    "file": "mace/cli/convert_e3nn_cueq.py",
+    "line": 6,
+    "traceback": "Traceback (most recent call last):\n  File \"<string>\", line 7, in <module>\n    importlib.import_module(m)\n    ~~~~~~~~~~~~~~~~~~~~~~~^^^\n  File \"/dev/shm/acr/work/_shared_cache/python/cpython-3.15.2-linux-x86_64-gnu/lib/python3.15/importlib/__init__.py\", line 88, in import_module\n    return _bootstrap._gcd_import(name[level:], package, level)\n           ~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"<frozen importlib._bootstrap>\", line 1389, in _gcd_import\n  File \"<frozen importlib._bootstrap>\", line 1353, in _find_and_load\n  File \"<frozen importlib._bootstrap>\", line 1249, in _find_and_load_unlocked\n  File \"<frozen importlib._bootstrap>\", line 857, in _load_unlocked\n  File \"<frozen importlib._bootstrap_external>\", line 751, in exec_module\n  File \"<frozen importlib._bootstrap>\", line 491, in _call_with_frames_removed\n  File \"/dev/shm/acr/work/3118862430/src/base/mace/cli/convert_e3nn_cueq.py\", line 6, in <module>\n    import cuequivariance as cue\nModuleNotFoundError: No module named 'cuequivariance'\n"
+   },
+   "mace.tools.cg_cueq_tools": {
+    "ok": false,
+    "type": "ModuleNotFoundError",
+    "message": "No module named 'e3nn'",
+    "missing_module": "e3nn",
+    "file": "mace/tools/arg_parser_tools.py",
+    "line": 4,
+    "traceback": "Traceback (most recent call last):\n  File \"<string>\", line 7, in <module>\n    importlib.import_module(m)\n    ~~~~~~~~~~~~~~~~~~~~~~~^^^\n  File \"/dev/shm/acr/work/_shared_cache/python/cpython-3.15.2-linux-x86_64-gnu/lib/python3.15/importlib/__init__.py\", line 88, in import_module\n    return _bootstrap._gcd_import(name[level:], package, level)\n           ~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"<frozen importlib._bootstrap>\", line 1389, in _gcd_import\n  File \"<frozen importlib._bootstrap>\", line 1338, in _find_and_load\n  File \"<frozen importlib._bootstrap>\", line 1299, in _resolve_parents\n  File \"<frozen importlib._bootstrap>\", line 491, in _call_with_frames_removed\n  File \"<frozen importlib._bootstrap>\", line 1389, in _gcd_import\n  File \"<frozen importlib._bootstrap>\", line 1353, in _find_and_load\n  File \"<frozen importlib._bootstrap>\", line 1249, in _find_and_load_unlocked\n  File \"<frozen importlib._bootstrap>\", line 857, in _load_unlocked\n  File \"<frozen importlib._bootstrap_external>\", line 751, in exec_module\n  File \"<frozen importlib._bootstrap>\", line 491, in _call_with_frames_removed\n  File \"/dev/shm/acr/work/3118862430/src/base/mace/tools/__init__.py\", line 2, in <module>\n    from .arg_parser_tools import check_args\n  File \"/dev/shm/acr/work/3118862430/src/base/mace/tools/arg_parser_tools.py\", line 4, in <module>\n    from e3nn import o3\nModuleNotFoundError: No module named 'e3nn'\n"
+   }
+  },
+  "status": "completed",
+  "dependency_cutoff": "2025-06-04T19:21:41Z",
+  "seconds": 2.0,
+  "head_failures": 1
+ },
+ "findings": [],
+ "status": "ok",
+ "seconds": 180.4
+}

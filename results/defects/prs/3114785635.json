@@ -1,0 +1,226 @@
+{
+ "pr_id": 3114785635,
+ "repository": "roboflow/roboflow-python",
+ "pr_number": 385,
+ "split": "development",
+ "agent": "OpenAI_Codex",
+ "head_sha": "6ad60eda0f45735dcc3ef9f230612f98c8733c93",
+ "tool_versions": {
+  "ruff": "ruff 0.17.4",
+  "bandit": "__main__.py 1.9.4",
+  "python": "3.12.3"
+ },
+ "config": {
+  "run_tests": true,
+  "sandbox": true
+ },
+ "base_mode": "reverse_applied_diff",
+ "static": {
+  "files_analysed": 4,
+  "head_issues": 27,
+  "base_issues": 37,
+  "per_tool_head": {
+   "ruff": 7,
+   "bandit": 20
+  },
+  "per_tool_base": {
+   "ruff": 17,
+   "bandit": 20
+  },
+  "introduced": 0,
+  "seconds": 0.3
+ },
+ "tests": {
+  "env": {
+   "status": "partial",
+   "python": "3.15.2",
+   "steps": [
+    {
+     "step": "venv",
+     "ok": true,
+     "seconds": 0.0,
+     "timed_out": false,
+     "log_tail": ""
+    },
+    {
+     "step": "install -e .",
+     "ok": false,
+     "seconds": 0.9,
+     "timed_out": false,
+     "log_tail": "                ~~~~~~~~~~~~~~~~~~~~~~~~~^\n                 cmd,\n                 ^^^^\n             ...<3 lines>...\n                 self._arbitrary_args(config_settings),\n                 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n             )\n             ^\n           File \"/dev/shm/acr/work/_shared_cache/uv/builds-v0/.tmphAtCSF/lib/python3.15/site-packages/setuptools/build_meta.py\", line 404, in _build_with_temp_dir\n             self.run_setup()\n             ~~~~~~~~~~~~~~^^\n           File \"/dev/shm/acr/work/_shared_cache/uv/sdists-v10/pypi/pillow/11.2.1/Kn7wU2KezNJvMQTT/src/_custom_build/backend.py\", line 20, in run_setup\n             return super().run_setup(setup_script)\n                    ~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^\n           File \"/dev/shm/acr/work/_shared_cache/uv/builds-v0/.tmphAtCSF/lib/python3.15/site-packages/setuptools/build_meta.py\", line 317, in run_setup\n             exec(code, locals())\n             ~~~~^^^^^^^^^^^^^^^^\n           File \"<string>\", line 1069, in <module>\n         RequiredDependencyException: \n\n         The headers or library files could not be found for jpeg,\n         a required dependency when compiling Pillow from source.\n\n         Please see the install instructions at:\n            https://pillow.readthedocs.io/en/latest/installation/basic-installation.html\n\n\nhint: `pillow` (v11.2.1) was included because `roboflow` (v1.1.65) depends on `pillow`\n\nhint: Build failures usually indicate a problem with the package or the build environment\n"
+    },
+    {
+     "step": "install -r requirements.txt",
+     "ok": false,
+     "seconds": 0.5,
+     "timed_out": false,
+     "log_tail": "/build_meta.py\", line 423, in _build\n             return self._build_with_temp_dir(\n                    ~~~~~~~~~~~~~~~~~~~~~~~~~^\n                 cmd,\n                 ^^^^\n             ...<3 lines>...\n                 self._arbitrary_args(config_settings),\n                 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n             )\n             ^\n           File \"/dev/shm/acr/work/_shared_cache/uv/builds-v0/.tmpto2jN5/lib/python3.15/site-packages/setuptools/build_meta.py\", line 404, in _build_with_temp_dir\n             self.run_setup()\n             ~~~~~~~~~~~~~~^^\n           File \"/dev/shm/acr/work/_shared_cache/uv/sdists-v10/pypi/pillow/11.2.1/Kn7wU2KezNJvMQTT/src/_custom_build/backend.py\", line 20, in run_setup\n             return super().run_setup(setup_script)\n                    ~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^\n           File \"/dev/shm/acr/work/_shared_cache/uv/builds-v0/.tmpto2jN5/lib/python3.15/site-packages/setuptools/build_meta.py\", line 317, in run_setup\n             exec(code, locals())\n             ~~~~^^^^^^^^^^^^^^^^\n           File \"<string>\", line 1069, in <module>\n         RequiredDependencyException: \n\n         The headers or library files could not be found for jpeg,\n         a required dependency when compiling Pillow from source.\n\n         Please see the install instructions at:\n            https://pillow.readthedocs.io/en/latest/installation/basic-installation.html\n\n\nhint: Build failures usually indicate a problem with the package or the build environment\n"
+    },
+    {
+     "step": "install pytest",
+     "ok": true,
+     "seconds": 0.0,
+     "timed_out": false,
+     "log_tail": ""
+    },
+    {
+     "step": "repair: install requests responses",
+     "ok": true,
+     "seconds": 0.1,
+     "timed_out": false,
+     "log_tail": ""
+    }
+   ]
+  },
+  "selected_tests": [
+   {
+    "path": "tests/test_project.py",
+    "reason": "matches_module:project",
+    "exists_at_base": true
+   },
+   {
+    "path": "tests/test_rfapi.py",
+    "reason": "matches_module:rfapi",
+    "exists_at_base": true
+   }
+  ],
+  "head_run": {
+   "status": "completed",
+   "exit_code": 2,
+   "seconds": 0.5,
+   "addopts_overridden": false,
+   "counts": {
+    "passed": 0,
+    "failed": 0,
+    "error": 2,
+    "skipped": 0
+   },
+   "tests": {
+    "::tests.test_project": {
+     "outcome": "error",
+     "detail": "collection failure\nImportError while importing test module '/dev/shm/acr/work/3114785635/src/head/tests/test_project.py'.\nHint: make sure your test modules/packages have valid Python names.\nTraceback:\n../../../_shared_cache/python/cpython-3.15.2-linux-x86_64-gnu/lib/python3.15/importlib/__init__.py:88: in import_module\n    return _bootstrap._gcd_import(name[level:], package, level)\n           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\ntests/__init__.py:5: in <module>\n    import roboflow\nroboflow/__init__.py:11: in <module>\n    from roboflow.adapters import rfapi\nroboflow/adapters/rfapi.py:8: in <module>\n    from requests_toolbelt.multipart.encoder import MultipartEncoder\nE   ModuleNotFoundError: No module named 'requests_toolbelt'"
+    },
+    "::tests.test_rfapi": {
+     "outcome": "error",
+     "detail": "collection failure\nImportError while importing test module '/dev/shm/acr/work/3114785635/src/head/tests/test_rfapi.py'.\nHint: make sure your test modules/packages have valid Python names.\nTraceback:\n../../../_shared_cache/python/cpython-3.15.2-linux-x86_64-gnu/lib/python3.15/importlib/__init__.py:88: in import_module\n    return _bootstrap._gcd_import(name[level:], package, level)\n           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\ntests/__init__.py:5: in <module>\n    import roboflow\nroboflow/__init__.py:11: in <module>\n    from roboflow.adapters import rfapi\nroboflow/adapters/rfapi.py:8: in <module>\n    from requests_toolbelt.multipart.encoder import MultipartEncoder\nE   ModuleNotFoundError: No module named 'requests_toolbelt'"
+    }
+   },
+   "log_tail": ""
+  },
+  "base_run": {
+   "status": "completed",
+   "exit_code": 2,
+   "seconds": 0.5,
+   "addopts_overridden": false,
+   "counts": {
+    "passed": 0,
+    "failed": 0,
+    "error": 2,
+    "skipped": 0
+   },
+   "tests": {
+    "::tests.test_project": {
+     "outcome": "error",
+     "detail": "collection failure\nImportError while importing test module '/dev/shm/acr/work/3114785635/src/base/tests/test_project.py'.\nHint: make sure your test modules/packages have valid Python names.\nTraceback:\n../../../_shared_cache/python/cpython-3.15.2-linux-x86_64-gnu/lib/python3.15/importlib/__init__.py:88: in import_module\n    return _bootstrap._gcd_import(name[level:], package, level)\n           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\ntests/__init__.py:5: in <module>\n    import roboflow\nroboflow/__init__.py:11: in <module>\n    from roboflow.adapters import rfapi\nroboflow/adapters/rfapi.py:8: in <module>\n    from requests_toolbelt.multipart.encoder import MultipartEncoder\nE   ModuleNotFoundError: No module named 'requests_toolbelt'"
+    },
+    "::tests.test_rfapi": {
+     "outcome": "error",
+     "detail": "collection failure\nImportError while importing test module '/dev/shm/acr/work/3114785635/src/base/tests/test_rfapi.py'.\nHint: make sure your test modules/packages have valid Python names.\nTraceback:\n../../../_shared_cache/python/cpython-3.15.2-linux-x86_64-gnu/lib/python3.15/importlib/__init__.py:88: in import_module\n    return _bootstrap._gcd_import(name[level:], package, level)\n           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\ntests/__init__.py:5: in <module>\n    import roboflow\nroboflow/__init__.py:11: in <module>\n    from roboflow.adapters import rfapi\nroboflow/adapters/rfapi.py:8: in <module>\n    from requests_toolbelt.multipart.encoder import MultipartEncoder\nE   ModuleNotFoundError: No module named 'requests_toolbelt'"
+    }
+   },
+   "log_tail": ""
+  },
+  "comparison": {
+   "regressions": [],
+   "new_test_failures": [],
+   "fixed": [],
+   "persistent_failures": [
+    "::tests.test_project",
+    "::tests.test_rfapi"
+   ]
+  },
+  "imports_head": {
+   "roboflow.adapters.rfapi": {
+    "ok": false,
+    "type": "ModuleNotFoundError",
+    "message": "No module named 'requests_toolbelt'",
+    "missing_module": "requests_toolbelt",
+    "file": "roboflow/adapters/rfapi.py",
+    "line": 8,
+    "traceback": "in import_module\n    return _bootstrap._gcd_import(name[level:], package, level)\n           ~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"<frozen importlib._bootstrap>\", line 1389, in _gcd_import\n  File \"<frozen importlib._bootstrap>\", line 1338, in _find_and_load\n  File \"<frozen importlib._bootstrap>\", line 1299, in _resolve_parents\n  File \"<frozen importlib._bootstrap>\", line 491, in _call_with_frames_removed\n  File \"<frozen importlib._bootstrap>\", line 1389, in _gcd_import\n  File \"<frozen importlib._bootstrap>\", line 1338, in _find_and_load\n  File \"<frozen importlib._bootstrap>\", line 1299, in _resolve_parents\n  File \"<frozen importlib._bootstrap>\", line 491, in _call_with_frames_removed\n  File \"<frozen importlib._bootstrap>\", line 1389, in _gcd_import\n  File \"<frozen importlib._bootstrap>\", line 1353, in _find_and_load\n  File \"<frozen importlib._bootstrap>\", line 1249, in _find_and_load_unlocked\n  File \"<frozen importlib._bootstrap>\", line 857, in _load_unlocked\n  File \"<frozen importlib._bootstrap_external>\", line 751, in exec_module\n  File \"<frozen importlib._bootstrap>\", line 491, in _call_with_frames_removed\n  File \"/dev/shm/acr/work/3114785635/src/head/roboflow/__init__.py\", line 11, in <module>\n    from roboflow.adapters import rfapi\n  File \"/dev/shm/acr/work/3114785635/src/head/roboflow/adapters/rfapi.py\", line 8, in <module>\n    from requests_toolbelt.multipart.encoder import MultipartEncoder\nModuleNotFoundError: No module named 'requests_toolbelt'\n"
+   },
+   "roboflow.core.project": {
+    "ok": false,
+    "type": "ModuleNotFoundError",
+    "message": "No module named 'requests_toolbelt'",
+    "missing_module": "requests_toolbelt",
+    "file": "roboflow/adapters/rfapi.py",
+    "line": 8,
+    "traceback": "in import_module\n    return _bootstrap._gcd_import(name[level:], package, level)\n           ~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"<frozen importlib._bootstrap>\", line 1389, in _gcd_import\n  File \"<frozen importlib._bootstrap>\", line 1338, in _find_and_load\n  File \"<frozen importlib._bootstrap>\", line 1299, in _resolve_parents\n  File \"<frozen importlib._bootstrap>\", line 491, in _call_with_frames_removed\n  File \"<frozen importlib._bootstrap>\", line 1389, in _gcd_import\n  File \"<frozen importlib._bootstrap>\", line 1338, in _find_and_load\n  File \"<frozen importlib._bootstrap>\", line 1299, in _resolve_parents\n  File \"<frozen importlib._bootstrap>\", line 491, in _call_with_frames_removed\n  File \"<frozen importlib._bootstrap>\", line 1389, in _gcd_import\n  File \"<frozen importlib._bootstrap>\", line 1353, in _find_and_load\n  File \"<frozen importlib._bootstrap>\", line 1249, in _find_and_load_unlocked\n  File \"<frozen importlib._bootstrap>\", line 857, in _load_unlocked\n  File \"<frozen importlib._bootstrap_external>\", line 751, in exec_module\n  File \"<frozen importlib._bootstrap>\", line 491, in _call_with_frames_removed\n  File \"/dev/shm/acr/work/3114785635/src/head/roboflow/__init__.py\", line 11, in <module>\n    from roboflow.adapters import rfapi\n  File \"/dev/shm/acr/work/3114785635/src/head/roboflow/adapters/rfapi.py\", line 8, in <module>\n    from requests_toolbelt.multipart.encoder import MultipartEncoder\nModuleNotFoundError: No module named 'requests_toolbelt'\n"
+   },
+   "roboflow.core.workspace": {
+    "ok": false,
+    "type": "ModuleNotFoundError",
+    "message": "No module named 'requests_toolbelt'",
+    "missing_module": "requests_toolbelt",
+    "file": "roboflow/adapters/rfapi.py",
+    "line": 8,
+    "traceback": "in import_module\n    return _bootstrap._gcd_import(name[level:], package, level)\n           ~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"<frozen importlib._bootstrap>\", line 1389, in _gcd_import\n  File \"<frozen importlib._bootstrap>\", line 1338, in _find_and_load\n  File \"<frozen importlib._bootstrap>\", line 1299, in _resolve_parents\n  File \"<frozen importlib._bootstrap>\", line 491, in _call_with_frames_removed\n  File \"<frozen importlib._bootstrap>\", line 1389, in _gcd_import\n  File \"<frozen importlib._bootstrap>\", line 1338, in _find_and_load\n  File \"<frozen importlib._bootstrap>\", line 1299, in _resolve_parents\n  File \"<frozen importlib._bootstrap>\", line 491, in _call_with_frames_removed\n  File \"<frozen importlib._bootstrap>\", line 1389, in _gcd_import\n  File \"<frozen importlib._bootstrap>\", line 1353, in _find_and_load\n  File \"<frozen importlib._bootstrap>\", line 1249, in _find_and_load_unlocked\n  File \"<frozen importlib._bootstrap>\", line 857, in _load_unlocked\n  File \"<frozen importlib._bootstrap_external>\", line 751, in exec_module\n  File \"<frozen importlib._bootstrap>\", line 491, in _call_with_frames_removed\n  File \"/dev/shm/acr/work/3114785635/src/head/roboflow/__init__.py\", line 11, in <module>\n    from roboflow.adapters import rfapi\n  File \"/dev/shm/acr/work/3114785635/src/head/roboflow/adapters/rfapi.py\", line 8, in <module>\n    from requests_toolbelt.multipart.encoder import MultipartEncoder\nModuleNotFoundError: No module named 'requests_toolbelt'\n"
+   },
+   "roboflow.models.inference": {
+    "ok": false,
+    "type": "ModuleNotFoundError",
+    "message": "No module named 'requests_toolbelt'",
+    "missing_module": "requests_toolbelt",
+    "file": "roboflow/adapters/rfapi.py",
+    "line": 8,
+    "traceback": "in import_module\n    return _bootstrap._gcd_import(name[level:], package, level)\n           ~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"<frozen importlib._bootstrap>\", line 1389, in _gcd_import\n  File \"<frozen importlib._bootstrap>\", line 1338, in _find_and_load\n  File \"<frozen importlib._bootstrap>\", line 1299, in _resolve_parents\n  File \"<frozen importlib._bootstrap>\", line 491, in _call_with_frames_removed\n  File \"<frozen importlib._bootstrap>\", line 1389, in _gcd_import\n  File \"<frozen importlib._bootstrap>\", line 1338, in _find_and_load\n  File \"<frozen importlib._bootstrap>\", line 1299, in _resolve_parents\n  File \"<frozen importlib._bootstrap>\", line 491, in _call_with_frames_removed\n  File \"<frozen importlib._bootstrap>\", line 1389, in _gcd_import\n  File \"<frozen importlib._bootstrap>\", line 1353, in _find_and_load\n  File \"<frozen importlib._bootstrap>\", line 1249, in _find_and_load_unlocked\n  File \"<frozen importlib._bootstrap>\", line 857, in _load_unlocked\n  File \"<frozen importlib._bootstrap_external>\", line 751, in exec_module\n  File \"<frozen importlib._bootstrap>\", line 491, in _call_with_frames_removed\n  File \"/dev/shm/acr/work/3114785635/src/head/roboflow/__init__.py\", line 11, in <module>\n    from roboflow.adapters import rfapi\n  File \"/dev/shm/acr/work/3114785635/src/head/roboflow/adapters/rfapi.py\", line 8, in <module>\n    from requests_toolbelt.multipart.encoder import MultipartEncoder\nModuleNotFoundError: No module named 'requests_toolbelt'\n"
+   }
+  },
+  "imports_base": {
+   "roboflow.adapters.rfapi": {
+    "ok": false,
+    "type": "ModuleNotFoundError",
+    "message": "No module named 'requests_toolbelt'",
+    "missing_module": "requests_toolbelt",
+    "file": "roboflow/adapters/rfapi.py",
+    "line": 8,
+    "traceback": "in import_module\n    return _bootstrap._gcd_import(name[level:], package, level)\n           ~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"<frozen importlib._bootstrap>\", line 1389, in _gcd_import\n  File \"<frozen importlib._bootstrap>\", line 1338, in _find_and_load\n  File \"<frozen importlib._bootstrap>\", line 1299, in _resolve_parents\n  File \"<frozen importlib._bootstrap>\", line 491, in _call_with_frames_removed\n  File \"<frozen importlib._bootstrap>\", line 1389, in _gcd_import\n  File \"<frozen importlib._bootstrap>\", line 1338, in _find_and_load\n  File \"<frozen importlib._bootstrap>\", line 1299, in _resolve_parents\n  File \"<frozen importlib._bootstrap>\", line 491, in _call_with_frames_removed\n  File \"<frozen importlib._bootstrap>\", line 1389, in _gcd_import\n  File \"<frozen importlib._bootstrap>\", line 1353, in _find_and_load\n  File \"<frozen importlib._bootstrap>\", line 1249, in _find_and_load_unlocked\n  File \"<frozen importlib._bootstrap>\", line 857, in _load_unlocked\n  File \"<frozen importlib._bootstrap_external>\", line 751, in exec_module\n  File \"<frozen importlib._bootstrap>\", line 491, in _call_with_frames_removed\n  File \"/dev/shm/acr/work/3114785635/src/base/roboflow/__init__.py\", line 11, in <module>\n    from roboflow.adapters import rfapi\n  File \"/dev/shm/acr/work/3114785635/src/base/roboflow/adapters/rfapi.py\", line 8, in <module>\n    from requests_toolbelt.multipart.encoder import MultipartEncoder\nModuleNotFoundError: No module named 'requests_toolbelt'\n"
+   },
+   "roboflow.core.project": {
+    "ok": false,
+    "type": "ModuleNotFoundError",
+    "message": "No module named 'requests_toolbelt'",
+    "missing_module": "requests_toolbelt",
+    "file": "roboflow/adapters/rfapi.py",
+    "line": 8,
+    "traceback": "in import_module\n    return _bootstrap._gcd_import(name[level:], package, level)\n           ~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"<frozen importlib._bootstrap>\", line 1389, in _gcd_import\n  File \"<frozen importlib._bootstrap>\", line 1338, in _find_and_load\n  File \"<frozen importlib._bootstrap>\", line 1299, in _resolve_parents\n  File \"<frozen importlib._bootstrap>\", line 491, in _call_with_frames_removed\n  File \"<frozen importlib._bootstrap>\", line 1389, in _gcd_import\n  File \"<frozen importlib._bootstrap>\", line 1338, in _find_and_load\n  File \"<frozen importlib._bootstrap>\", line 1299, in _resolve_parents\n  File \"<frozen importlib._bootstrap>\", line 491, in _call_with_frames_removed\n  File \"<frozen importlib._bootstrap>\", line 1389, in _gcd_import\n  File \"<frozen importlib._bootstrap>\", line 1353, in _find_and_load\n  File \"<frozen importlib._bootstrap>\", line 1249, in _find_and_load_unlocked\n  File \"<frozen importlib._bootstrap>\", line 857, in _load_unlocked\n  File \"<frozen importlib._bootstrap_external>\", line 751, in exec_module\n  File \"<frozen importlib._bootstrap>\", line 491, in _call_with_frames_removed\n  File \"/dev/shm/acr/work/3114785635/src/base/roboflow/__init__.py\", line 11, in <module>\n    from roboflow.adapters import rfapi\n  File \"/dev/shm/acr/work/3114785635/src/base/roboflow/adapters/rfapi.py\", line 8, in <module>\n    from requests_toolbelt.multipart.encoder import MultipartEncoder\nModuleNotFoundError: No module named 'requests_toolbelt'\n"
+   },
+   "roboflow.core.workspace": {
+    "ok": false,
+    "type": "ModuleNotFoundError",
+    "message": "No module named 'requests_toolbelt'",
+    "missing_module": "requests_toolbelt",
+    "file": "roboflow/adapters/rfapi.py",
+    "line": 8,
+    "traceback": "in import_module\n    return _bootstrap._gcd_import(name[level:], package, level)\n           ~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"<frozen importlib._bootstrap>\", line 1389, in _gcd_import\n  File \"<frozen importlib._bootstrap>\", line 1338, in _find_and_load\n  File \"<frozen importlib._bootstrap>\", line 1299, in _resolve_parents\n  File \"<frozen importlib._bootstrap>\", line 491, in _call_with_frames_removed\n  File \"<frozen importlib._bootstrap>\", line 1389, in _gcd_import\n  File \"<frozen importlib._bootstrap>\", line 1338, in _find_and_load\n  File \"<frozen importlib._bootstrap>\", line 1299, in _resolve_parents\n  File \"<frozen importlib._bootstrap>\", line 491, in _call_with_frames_removed\n  File \"<frozen importlib._bootstrap>\", line 1389, in _gcd_import\n  File \"<frozen importlib._bootstrap>\", line 1353, in _find_and_load\n  File \"<frozen importlib._bootstrap>\", line 1249, in _find_and_load_unlocked\n  File \"<frozen importlib._bootstrap>\", line 857, in _load_unlocked\n  File \"<frozen importlib._bootstrap_external>\", line 751, in exec_module\n  File \"<frozen importlib._bootstrap>\", line 491, in _call_with_frames_removed\n  File \"/dev/shm/acr/work/3114785635/src/base/roboflow/__init__.py\", line 11, in <module>\n    from roboflow.adapters import rfapi\n  File \"/dev/shm/acr/work/3114785635/src/base/roboflow/adapters/rfapi.py\", line 8, in <module>\n    from requests_toolbelt.multipart.encoder import MultipartEncoder\nModuleNotFoundError: No module named 'requests_toolbelt'\n"
+   },
+   "roboflow.models.inference": {
+    "ok": false,
+    "type": "ModuleNotFoundError",
+    "message": "No module named 'requests_toolbelt'",
+    "missing_module": "requests_toolbelt",
+    "file": "roboflow/adapters/rfapi.py",
+    "line": 8,
+    "traceback": "in import_module\n    return _bootstrap._gcd_import(name[level:], package, level)\n           ~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"<frozen importlib._bootstrap>\", line 1389, in _gcd_import\n  File \"<frozen importlib._bootstrap>\", line 1338, in _find_and_load\n  File \"<frozen importlib._bootstrap>\", line 1299, in _resolve_parents\n  File \"<frozen importlib._bootstrap>\", line 491, in _call_with_frames_removed\n  File \"<frozen importlib._bootstrap>\", line 1389, in _gcd_import\n  File \"<frozen importlib._bootstrap>\", line 1338, in _find_and_load\n  File \"<frozen importlib._bootstrap>\", line 1299, in _resolve_parents\n  File \"<frozen importlib._bootstrap>\", line 491, in _call_with_frames_removed\n  File \"<frozen importlib._bootstrap>\", line 1389, in _gcd_import\n  File \"<frozen importlib._bootstrap>\", line 1353, in _find_and_load\n  File \"<frozen importlib._bootstrap>\", line 1249, in _find_and_load_unlocked\n  File \"<frozen importlib._bootstrap>\", line 857, in _load_unlocked\n  File \"<frozen importlib._bootstrap_external>\", line 751, in exec_module\n  File \"<frozen importlib._bootstrap>\", line 491, in _call_with_frames_removed\n  File \"/dev/shm/acr/work/3114785635/src/base/roboflow/__init__.py\", line 11, in <module>\n    from roboflow.adapters import rfapi\n  File \"/dev/shm/acr/work/3114785635/src/base/roboflow/adapters/rfapi.py\", line 8, in <module>\n    from requests_toolbelt.multipart.encoder import MultipartEncoder\nModuleNotFoundError: No module named 'requests_toolbelt'\n"
+   }
+  },
+  "status": "completed",
+  "dependency_cutoff": "2025-06-03T17:22:29Z",
+  "seconds": 3.6,
+  "head_failures": 2
+ },
+ "findings": [],
+ "status": "ok",
+ "seconds": 6.0
+}

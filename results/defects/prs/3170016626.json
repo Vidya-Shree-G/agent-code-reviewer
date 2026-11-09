@@ -1,0 +1,271 @@
+{
+ "pr_id": 3170016626,
+ "repository": "Nativu5/Gemini-FastAPI",
+ "pr_number": 7,
+ "split": "evaluation",
+ "agent": "OpenAI_Codex",
+ "head_sha": "f6eff015d52e048849880b2ff680330299d5ab27",
+ "tool_versions": {
+  "ruff": "ruff 0.17.4",
+  "bandit": "__main__.py 1.9.4",
+  "python": "3.12.3"
+ },
+ "config": {
+  "run_tests": true,
+  "sandbox": true
+ },
+ "base_mode": "reverse_applied_diff",
+ "static": {
+  "files_analysed": 10,
+  "head_issues": 3,
+  "base_issues": 3,
+  "per_tool_head": {
+   "ruff": 2,
+   "bandit": 1
+  },
+  "per_tool_base": {
+   "ruff": 2,
+   "bandit": 1
+  },
+  "introduced": 0,
+  "seconds": 0.3
+ },
+ "tests": {
+  "env": {
+   "status": "partial",
+   "python": "3.12.10",
+   "steps": [
+    {
+     "step": "venv",
+     "ok": true,
+     "seconds": 0.0,
+     "timed_out": false,
+     "log_tail": ""
+    },
+    {
+     "step": "install -e .[dev]",
+     "ok": false,
+     "seconds": 0.5,
+     "timed_out": false,
+     "log_tail": "error: Failed to build `gemini-fastapi @ file:///dev/shm/acr/work/3170016626/src/head`\n  cause: The build backend returned an error\n  cause: Call to `setuptools.build_meta:__legacy__.get_requires_for_build_editable` failed (exit status: 1)\n\n         [stderr]\n         error: Multiple top-level packages discovered in a flat-layout: ['app', 'config'].\n\n         To avoid accidental inclusion of unwanted files or directories,\n         setuptools will not proceed with this build.\n\n         If you are trying to create a single distribution with multiple packages\n         on purpose, you should not rely on automatic discovery.\n         Instead, consider the following options:\n\n         1. set up custom discovery (`find` directive with `include` or `exclude`)\n         2. use a `src-layout`\n         3. explicitly set `py_modules` or `packages` with a list of names\n\n         To find more information, look for \"package discovery\" on setuptools docs.\n\nhint: Build failures usually indicate a problem with the package or the build environment\n",
+     "superseded": true
+    },
+    {
+     "step": "install -e .",
+     "ok": false,
+     "seconds": 0.3,
+     "timed_out": false,
+     "log_tail": "error: Failed to build `gemini-fastapi @ file:///dev/shm/acr/work/3170016626/src/head`\n  cause: The build backend returned an error\n  cause: Call to `setuptools.build_meta:__legacy__.get_requires_for_build_editable` failed (exit status: 1)\n\n         [stderr]\n         error: Multiple top-level packages discovered in a flat-layout: ['app', 'config'].\n\n         To avoid accidental inclusion of unwanted files or directories,\n         setuptools will not proceed with this build.\n\n         If you are trying to create a single distribution with multiple packages\n         on purpose, you should not rely on automatic discovery.\n         Instead, consider the following options:\n\n         1. set up custom discovery (`find` directive with `include` or `exclude`)\n         2. use a `src-layout`\n         3. explicitly set `py_modules` or `packages` with a list of names\n\n         To find more information, look for \"package discovery\" on setuptools docs.\n\nhint: Build failures usually indicate a problem with the package or the build environment\n"
+    },
+    {
+     "step": "install pytest",
+     "ok": true,
+     "seconds": 0.0,
+     "timed_out": false,
+     "log_tail": ""
+    },
+    {
+     "step": "repair: install fastapi gemini_webapi loguru orjson pydantic",
+     "ok": true,
+     "seconds": 0.0,
+     "timed_out": false,
+     "log_tail": ""
+    }
+   ]
+  },
+  "selected_tests": [],
+  "head_run": {
+   "status": "not_run",
+   "tests": {}
+  },
+  "base_run": {
+   "status": "not_run",
+   "tests": {}
+  },
+  "comparison": {
+   "regressions": [],
+   "new_test_failures": [],
+   "fixed": [],
+   "persistent_failures": []
+  },
+  "imports_head": {
+   "app.main": {
+    "ok": false,
+    "type": "ModuleNotFoundError",
+    "message": "No module named 'pydantic_settings'",
+    "missing_module": "pydantic_settings",
+    "file": "app/utils/config.py",
+    "line": 7,
+    "traceback": "_shared_cache/python/cpython-3.12-linux-x86_64-gnu/lib/python3.12/importlib/__init__.py\", line 90, in import_module\n    return _bootstrap._gcd_import(name[level:], package, level)\n           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"<frozen importlib._bootstrap>\", line 1387, in _gcd_import\n  File \"<frozen importlib._bootstrap>\", line 1360, in _find_and_load\n  File \"<frozen importlib._bootstrap>\", line 1331, in _find_and_load_unlocked\n  File \"<frozen importlib._bootstrap>\", line 935, in _load_unlocked\n  File \"<frozen importlib._bootstrap_external>\", line 999, in exec_module\n  File \"<frozen importlib._bootstrap>\", line 488, in _call_with_frames_removed\n  File \"/dev/shm/acr/work/3170016626/src/head/app/main.py\", line 6, in <module>\n    from .server.chat import router as chat_router\n  File \"/dev/shm/acr/work/3170016626/src/head/app/server/chat.py\", line 18, in <module>\n    from ..services import (\n  File \"/dev/shm/acr/work/3170016626/src/head/app/services/__init__.py\", line 1, in <module>\n    from .client import GeminiClientWrapper\n  File \"/dev/shm/acr/work/3170016626/src/head/app/services/client.py\", line 7, in <module>\n    from ..utils import g_config\n  File \"/dev/shm/acr/work/3170016626/src/head/app/utils/__init__.py\", line 1, in <module>\n    from .config import initialize_config\n  File \"/dev/shm/acr/work/3170016626/src/head/app/utils/config.py\", line 7, in <module>\n    from pydantic_settings import (\nModuleNotFoundError: No module named 'pydantic_settings'\n"
+   },
+   "app.models.models": {
+    "ok": true
+   },
+   "app.server.chat": {
+    "ok": false,
+    "type": "ModuleNotFoundError",
+    "message": "No module named 'pydantic_settings'",
+    "missing_module": "pydantic_settings",
+    "file": "app/utils/config.py",
+    "line": 7,
+    "traceback": "Traceback (most recent call last):\n  File \"<string>\", line 7, in <module>\n  File \"/dev/shm/acr/work/_shared_cache/python/cpython-3.12-linux-x86_64-gnu/lib/python3.12/importlib/__init__.py\", line 90, in import_module\n    return _bootstrap._gcd_import(name[level:], package, level)\n           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"<frozen importlib._bootstrap>\", line 1387, in _gcd_import\n  File \"<frozen importlib._bootstrap>\", line 1360, in _find_and_load\n  File \"<frozen importlib._bootstrap>\", line 1331, in _find_and_load_unlocked\n  File \"<frozen importlib._bootstrap>\", line 935, in _load_unlocked\n  File \"<frozen importlib._bootstrap_external>\", line 999, in exec_module\n  File \"<frozen importlib._bootstrap>\", line 488, in _call_with_frames_removed\n  File \"/dev/shm/acr/work/3170016626/src/head/app/server/chat.py\", line 18, in <module>\n    from ..services import (\n  File \"/dev/shm/acr/work/3170016626/src/head/app/services/__init__.py\", line 1, in <module>\n    from .client import GeminiClientWrapper\n  File \"/dev/shm/acr/work/3170016626/src/head/app/services/client.py\", line 7, in <module>\n    from ..utils import g_config\n  File \"/dev/shm/acr/work/3170016626/src/head/app/utils/__init__.py\", line 1, in <module>\n    from .config import initialize_config\n  File \"/dev/shm/acr/work/3170016626/src/head/app/utils/config.py\", line 7, in <module>\n    from pydantic_settings import (\nModuleNotFoundError: No module named 'pydantic_settings'\n"
+   },
+   "app.server.health": {
+    "ok": false,
+    "type": "ModuleNotFoundError",
+    "message": "No module named 'pydantic_settings'",
+    "missing_module": "pydantic_settings",
+    "file": "app/utils/config.py",
+    "line": 7,
+    "traceback": "k (most recent call last):\n  File \"<string>\", line 7, in <module>\n  File \"/dev/shm/acr/work/_shared_cache/python/cpython-3.12-linux-x86_64-gnu/lib/python3.12/importlib/__init__.py\", line 90, in import_module\n    return _bootstrap._gcd_import(name[level:], package, level)\n           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"<frozen importlib._bootstrap>\", line 1387, in _gcd_import\n  File \"<frozen importlib._bootstrap>\", line 1360, in _find_and_load\n  File \"<frozen importlib._bootstrap>\", line 1331, in _find_and_load_unlocked\n  File \"<frozen importlib._bootstrap>\", line 935, in _load_unlocked\n  File \"<frozen importlib._bootstrap_external>\", line 999, in exec_module\n  File \"<frozen importlib._bootstrap>\", line 488, in _call_with_frames_removed\n  File \"/dev/shm/acr/work/3170016626/src/head/app/server/health.py\", line 5, in <module>\n    from ..services import GeminiClientPool, LMDBConversationStore\n  File \"/dev/shm/acr/work/3170016626/src/head/app/services/__init__.py\", line 1, in <module>\n    from .client import GeminiClientWrapper\n  File \"/dev/shm/acr/work/3170016626/src/head/app/services/client.py\", line 7, in <module>\n    from ..utils import g_config\n  File \"/dev/shm/acr/work/3170016626/src/head/app/utils/__init__.py\", line 1, in <module>\n    from .config import initialize_config\n  File \"/dev/shm/acr/work/3170016626/src/head/app/utils/config.py\", line 7, in <module>\n    from pydantic_settings import (\nModuleNotFoundError: No module named 'pydantic_settings'\n"
+   },
+   "app.services": {
+    "ok": false,
+    "type": "ModuleNotFoundError",
+    "message": "No module named 'pydantic_settings'",
+    "missing_module": "pydantic_settings",
+    "file": "app/utils/config.py",
+    "line": 7,
+    "traceback": "Traceback (most recent call last):\n  File \"<string>\", line 7, in <module>\n  File \"/dev/shm/acr/work/_shared_cache/python/cpython-3.12-linux-x86_64-gnu/lib/python3.12/importlib/__init__.py\", line 90, in import_module\n    return _bootstrap._gcd_import(name[level:], package, level)\n           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"<frozen importlib._bootstrap>\", line 1387, in _gcd_import\n  File \"<frozen importlib._bootstrap>\", line 1360, in _find_and_load\n  File \"<frozen importlib._bootstrap>\", line 1331, in _find_and_load_unlocked\n  File \"<frozen importlib._bootstrap>\", line 935, in _load_unlocked\n  File \"<frozen importlib._bootstrap_external>\", line 999, in exec_module\n  File \"<frozen importlib._bootstrap>\", line 488, in _call_with_frames_removed\n  File \"/dev/shm/acr/work/3170016626/src/head/app/services/__init__.py\", line 1, in <module>\n    from .client import GeminiClientWrapper\n  File \"/dev/shm/acr/work/3170016626/src/head/app/services/client.py\", line 7, in <module>\n    from ..utils import g_config\n  File \"/dev/shm/acr/work/3170016626/src/head/app/utils/__init__.py\", line 1, in <module>\n    from .config import initialize_config\n  File \"/dev/shm/acr/work/3170016626/src/head/app/utils/config.py\", line 7, in <module>\n    from pydantic_settings import (\nModuleNotFoundError: No module named 'pydantic_settings'\n"
+   },
+   "app.services.client": {
+    "ok": false,
+    "type": "ModuleNotFoundError",
+    "message": "No module named 'pydantic_settings'",
+    "missing_module": "pydantic_settings",
+    "file": "app/utils/config.py",
+    "line": 7,
+    "traceback": "64-gnu/lib/python3.12/importlib/__init__.py\", line 90, in import_module\n    return _bootstrap._gcd_import(name[level:], package, level)\n           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"<frozen importlib._bootstrap>\", line 1387, in _gcd_import\n  File \"<frozen importlib._bootstrap>\", line 1360, in _find_and_load\n  File \"<frozen importlib._bootstrap>\", line 1310, in _find_and_load_unlocked\n  File \"<frozen importlib._bootstrap>\", line 488, in _call_with_frames_removed\n  File \"<frozen importlib._bootstrap>\", line 1387, in _gcd_import\n  File \"<frozen importlib._bootstrap>\", line 1360, in _find_and_load\n  File \"<frozen importlib._bootstrap>\", line 1331, in _find_and_load_unlocked\n  File \"<frozen importlib._bootstrap>\", line 935, in _load_unlocked\n  File \"<frozen importlib._bootstrap_external>\", line 999, in exec_module\n  File \"<frozen importlib._bootstrap>\", line 488, in _call_with_frames_removed\n  File \"/dev/shm/acr/work/3170016626/src/head/app/services/__init__.py\", line 1, in <module>\n    from .client import GeminiClientWrapper\n  File \"/dev/shm/acr/work/3170016626/src/head/app/services/client.py\", line 7, in <module>\n    from ..utils import g_config\n  File \"/dev/shm/acr/work/3170016626/src/head/app/utils/__init__.py\", line 1, in <module>\n    from .config import initialize_config\n  File \"/dev/shm/acr/work/3170016626/src/head/app/utils/config.py\", line 7, in <module>\n    from pydantic_settings import (\nModuleNotFoundError: No module named 'pydantic_settings'\n"
+   },
+   "app.services.lmdb": {
+    "ok": false,
+    "type": "ModuleNotFoundError",
+    "message": "No module named 'pydantic_settings'",
+    "missing_module": "pydantic_settings",
+    "file": "app/utils/config.py",
+    "line": 7,
+    "traceback": "64-gnu/lib/python3.12/importlib/__init__.py\", line 90, in import_module\n    return _bootstrap._gcd_import(name[level:], package, level)\n           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"<frozen importlib._bootstrap>\", line 1387, in _gcd_import\n  File \"<frozen importlib._bootstrap>\", line 1360, in _find_and_load\n  File \"<frozen importlib._bootstrap>\", line 1310, in _find_and_load_unlocked\n  File \"<frozen importlib._bootstrap>\", line 488, in _call_with_frames_removed\n  File \"<frozen importlib._bootstrap>\", line 1387, in _gcd_import\n  File \"<frozen importlib._bootstrap>\", line 1360, in _find_and_load\n  File \"<frozen importlib._bootstrap>\", line 1331, in _find_and_load_unlocked\n  File \"<frozen importlib._bootstrap>\", line 935, in _load_unlocked\n  File \"<frozen importlib._bootstrap_external>\", line 999, in exec_module\n  File \"<frozen importlib._bootstrap>\", line 488, in _call_with_frames_removed\n  File \"/dev/shm/acr/work/3170016626/src/head/app/services/__init__.py\", line 1, in <module>\n    from .client import GeminiClientWrapper\n  File \"/dev/shm/acr/work/3170016626/src/head/app/services/client.py\", line 7, in <module>\n    from ..utils import g_config\n  File \"/dev/shm/acr/work/3170016626/src/head/app/utils/__init__.py\", line 1, in <module>\n    from .config import initialize_config\n  File \"/dev/shm/acr/work/3170016626/src/head/app/utils/config.py\", line 7, in <module>\n    from pydantic_settings import (\nModuleNotFoundError: No module named 'pydantic_settings'\n"
+   },
+   "app.services.pool": {
+    "ok": false,
+    "type": "ModuleNotFoundError",
+    "message": "No module named 'pydantic_settings'",
+    "missing_module": "pydantic_settings",
+    "file": "app/utils/config.py",
+    "line": 7,
+    "traceback": "64-gnu/lib/python3.12/importlib/__init__.py\", line 90, in import_module\n    return _bootstrap._gcd_import(name[level:], package, level)\n           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"<frozen importlib._bootstrap>\", line 1387, in _gcd_import\n  File \"<frozen importlib._bootstrap>\", line 1360, in _find_and_load\n  File \"<frozen importlib._bootstrap>\", line 1310, in _find_and_load_unlocked\n  File \"<frozen importlib._bootstrap>\", line 488, in _call_with_frames_removed\n  File \"<frozen importlib._bootstrap>\", line 1387, in _gcd_import\n  File \"<frozen importlib._bootstrap>\", line 1360, in _find_and_load\n  File \"<frozen importlib._bootstrap>\", line 1331, in _find_and_load_unlocked\n  File \"<frozen importlib._bootstrap>\", line 935, in _load_unlocked\n  File \"<frozen importlib._bootstrap_external>\", line 999, in exec_module\n  File \"<frozen importlib._bootstrap>\", line 488, in _call_with_frames_removed\n  File \"/dev/shm/acr/work/3170016626/src/head/app/services/__init__.py\", line 1, in <module>\n    from .client import GeminiClientWrapper\n  File \"/dev/shm/acr/work/3170016626/src/head/app/services/client.py\", line 7, in <module>\n    from ..utils import g_config\n  File \"/dev/shm/acr/work/3170016626/src/head/app/utils/__init__.py\", line 1, in <module>\n    from .config import initialize_config\n  File \"/dev/shm/acr/work/3170016626/src/head/app/utils/config.py\", line 7, in <module>\n    from pydantic_settings import (\nModuleNotFoundError: No module named 'pydantic_settings'\n"
+   },
+   "app.utils.config": {
+    "ok": false,
+    "type": "ModuleNotFoundError",
+    "message": "No module named 'pydantic_settings'",
+    "missing_module": "pydantic_settings",
+    "file": "app/utils/config.py",
+    "line": 7,
+    "traceback": "Traceback (most recent call last):\n  File \"<string>\", line 7, in <module>\n  File \"/dev/shm/acr/work/_shared_cache/python/cpython-3.12-linux-x86_64-gnu/lib/python3.12/importlib/__init__.py\", line 90, in import_module\n    return _bootstrap._gcd_import(name[level:], package, level)\n           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"<frozen importlib._bootstrap>\", line 1387, in _gcd_import\n  File \"<frozen importlib._bootstrap>\", line 1360, in _find_and_load\n  File \"<frozen importlib._bootstrap>\", line 1310, in _find_and_load_unlocked\n  File \"<frozen importlib._bootstrap>\", line 488, in _call_with_frames_removed\n  File \"<frozen importlib._bootstrap>\", line 1387, in _gcd_import\n  File \"<frozen importlib._bootstrap>\", line 1360, in _find_and_load\n  File \"<frozen importlib._bootstrap>\", line 1331, in _find_and_load_unlocked\n  File \"<frozen importlib._bootstrap>\", line 935, in _load_unlocked\n  File \"<frozen importlib._bootstrap_external>\", line 999, in exec_module\n  File \"<frozen importlib._bootstrap>\", line 488, in _call_with_frames_removed\n  File \"/dev/shm/acr/work/3170016626/src/head/app/utils/__init__.py\", line 1, in <module>\n    from .config import initialize_config\n  File \"/dev/shm/acr/work/3170016626/src/head/app/utils/config.py\", line 7, in <module>\n    from pydantic_settings import (\nModuleNotFoundError: No module named 'pydantic_settings'\n"
+   },
+   "app.utils.logging": {
+    "ok": false,
+    "type": "ModuleNotFoundError",
+    "message": "No module named 'pydantic_settings'",
+    "missing_module": "pydantic_settings",
+    "file": "app/utils/config.py",
+    "line": 7,
+    "traceback": "Traceback (most recent call last):\n  File \"<string>\", line 7, in <module>\n  File \"/dev/shm/acr/work/_shared_cache/python/cpython-3.12-linux-x86_64-gnu/lib/python3.12/importlib/__init__.py\", line 90, in import_module\n    return _bootstrap._gcd_import(name[level:], package, level)\n           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"<frozen importlib._bootstrap>\", line 1387, in _gcd_import\n  File \"<frozen importlib._bootstrap>\", line 1360, in _find_and_load\n  File \"<frozen importlib._bootstrap>\", line 1310, in _find_and_load_unlocked\n  File \"<frozen importlib._bootstrap>\", line 488, in _call_with_frames_removed\n  File \"<frozen importlib._bootstrap>\", line 1387, in _gcd_import\n  File \"<frozen importlib._bootstrap>\", line 1360, in _find_and_load\n  File \"<frozen importlib._bootstrap>\", line 1331, in _find_and_load_unlocked\n  File \"<frozen importlib._bootstrap>\", line 935, in _load_unlocked\n  File \"<frozen importlib._bootstrap_external>\", line 999, in exec_module\n  File \"<frozen importlib._bootstrap>\", line 488, in _call_with_frames_removed\n  File \"/dev/shm/acr/work/3170016626/src/head/app/utils/__init__.py\", line 1, in <module>\n    from .config import initialize_config\n  File \"/dev/shm/acr/work/3170016626/src/head/app/utils/config.py\", line 7, in <module>\n    from pydantic_settings import (\nModuleNotFoundError: No module named 'pydantic_settings'\n"
+   }
+  },
+  "imports_base": {
+   "app.main": {
+    "ok": false,
+    "type": "ModuleNotFoundError",
+    "message": "No module named 'pydantic_settings'",
+    "missing_module": "pydantic_settings",
+    "file": "app/utils/config.py",
+    "line": 7,
+    "traceback": "import_module\n    return _bootstrap._gcd_import(name[level:], package, level)\n           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"<frozen importlib._bootstrap>\", line 1387, in _gcd_import\n  File \"<frozen importlib._bootstrap>\", line 1360, in _find_and_load\n  File \"<frozen importlib._bootstrap>\", line 1331, in _find_and_load_unlocked\n  File \"<frozen importlib._bootstrap>\", line 935, in _load_unlocked\n  File \"<frozen importlib._bootstrap_external>\", line 999, in exec_module\n  File \"<frozen importlib._bootstrap>\", line 488, in _call_with_frames_removed\n  File \"/dev/shm/acr/work/3170016626/src/base/app/main.py\", line 6, in <module>\n    from .server.chat import router as chat_router\n  File \"/dev/shm/acr/work/3170016626/src/base/app/server/chat.py\", line 18, in <module>\n    from ..services import LMDBConversationStore, SingletonGeminiClient\n  File \"/dev/shm/acr/work/3170016626/src/base/app/services/__init__.py\", line 1, in <module>\n    from .client import SingletonGeminiClient\n  File \"/dev/shm/acr/work/3170016626/src/base/app/services/client.py\", line 7, in <module>\n    from ..utils import g_config\n  File \"/dev/shm/acr/work/3170016626/src/base/app/utils/__init__.py\", line 1, in <module>\n    from .config import initialize_config\n  File \"/dev/shm/acr/work/3170016626/src/base/app/utils/config.py\", line 7, in <module>\n    from pydantic_settings import BaseSettings, SettingsConfigDict, YamlConfigSettingsSource\nModuleNotFoundError: No module named 'pydantic_settings'\n"
+   },
+   "app.models.models": {
+    "ok": true
+   },
+   "app.server.chat": {
+    "ok": false,
+    "type": "ModuleNotFoundError",
+    "message": "No module named 'pydantic_settings'",
+    "missing_module": "pydantic_settings",
+    "file": "app/utils/config.py",
+    "line": 7,
+    "traceback": "e>\n  File \"/dev/shm/acr/work/_shared_cache/python/cpython-3.12-linux-x86_64-gnu/lib/python3.12/importlib/__init__.py\", line 90, in import_module\n    return _bootstrap._gcd_import(name[level:], package, level)\n           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"<frozen importlib._bootstrap>\", line 1387, in _gcd_import\n  File \"<frozen importlib._bootstrap>\", line 1360, in _find_and_load\n  File \"<frozen importlib._bootstrap>\", line 1331, in _find_and_load_unlocked\n  File \"<frozen importlib._bootstrap>\", line 935, in _load_unlocked\n  File \"<frozen importlib._bootstrap_external>\", line 999, in exec_module\n  File \"<frozen importlib._bootstrap>\", line 488, in _call_with_frames_removed\n  File \"/dev/shm/acr/work/3170016626/src/base/app/server/chat.py\", line 18, in <module>\n    from ..services import LMDBConversationStore, SingletonGeminiClient\n  File \"/dev/shm/acr/work/3170016626/src/base/app/services/__init__.py\", line 1, in <module>\n    from .client import SingletonGeminiClient\n  File \"/dev/shm/acr/work/3170016626/src/base/app/services/client.py\", line 7, in <module>\n    from ..utils import g_config\n  File \"/dev/shm/acr/work/3170016626/src/base/app/utils/__init__.py\", line 1, in <module>\n    from .config import initialize_config\n  File \"/dev/shm/acr/work/3170016626/src/base/app/utils/config.py\", line 7, in <module>\n    from pydantic_settings import BaseSettings, SettingsConfigDict, YamlConfigSettingsSource\nModuleNotFoundError: No module named 'pydantic_settings'\n"
+   },
+   "app.server.health": {
+    "ok": false,
+    "type": "ModuleNotFoundError",
+    "message": "No module named 'pydantic_settings'",
+    "missing_module": "pydantic_settings",
+    "file": "app/utils/config.py",
+    "line": 7,
+    "traceback": ">\n  File \"/dev/shm/acr/work/_shared_cache/python/cpython-3.12-linux-x86_64-gnu/lib/python3.12/importlib/__init__.py\", line 90, in import_module\n    return _bootstrap._gcd_import(name[level:], package, level)\n           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"<frozen importlib._bootstrap>\", line 1387, in _gcd_import\n  File \"<frozen importlib._bootstrap>\", line 1360, in _find_and_load\n  File \"<frozen importlib._bootstrap>\", line 1331, in _find_and_load_unlocked\n  File \"<frozen importlib._bootstrap>\", line 935, in _load_unlocked\n  File \"<frozen importlib._bootstrap_external>\", line 999, in exec_module\n  File \"<frozen importlib._bootstrap>\", line 488, in _call_with_frames_removed\n  File \"/dev/shm/acr/work/3170016626/src/base/app/server/health.py\", line 5, in <module>\n    from ..services import LMDBConversationStore, SingletonGeminiClient\n  File \"/dev/shm/acr/work/3170016626/src/base/app/services/__init__.py\", line 1, in <module>\n    from .client import SingletonGeminiClient\n  File \"/dev/shm/acr/work/3170016626/src/base/app/services/client.py\", line 7, in <module>\n    from ..utils import g_config\n  File \"/dev/shm/acr/work/3170016626/src/base/app/utils/__init__.py\", line 1, in <module>\n    from .config import initialize_config\n  File \"/dev/shm/acr/work/3170016626/src/base/app/utils/config.py\", line 7, in <module>\n    from pydantic_settings import BaseSettings, SettingsConfigDict, YamlConfigSettingsSource\nModuleNotFoundError: No module named 'pydantic_settings'\n"
+   },
+   "app.services": {
+    "ok": false,
+    "type": "ModuleNotFoundError",
+    "message": "No module named 'pydantic_settings'",
+    "missing_module": "pydantic_settings",
+    "file": "app/utils/config.py",
+    "line": 7,
+    "traceback": "Traceback (most recent call last):\n  File \"<string>\", line 7, in <module>\n  File \"/dev/shm/acr/work/_shared_cache/python/cpython-3.12-linux-x86_64-gnu/lib/python3.12/importlib/__init__.py\", line 90, in import_module\n    return _bootstrap._gcd_import(name[level:], package, level)\n           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"<frozen importlib._bootstrap>\", line 1387, in _gcd_import\n  File \"<frozen importlib._bootstrap>\", line 1360, in _find_and_load\n  File \"<frozen importlib._bootstrap>\", line 1331, in _find_and_load_unlocked\n  File \"<frozen importlib._bootstrap>\", line 935, in _load_unlocked\n  File \"<frozen importlib._bootstrap_external>\", line 999, in exec_module\n  File \"<frozen importlib._bootstrap>\", line 488, in _call_with_frames_removed\n  File \"/dev/shm/acr/work/3170016626/src/base/app/services/__init__.py\", line 1, in <module>\n    from .client import SingletonGeminiClient\n  File \"/dev/shm/acr/work/3170016626/src/base/app/services/client.py\", line 7, in <module>\n    from ..utils import g_config\n  File \"/dev/shm/acr/work/3170016626/src/base/app/utils/__init__.py\", line 1, in <module>\n    from .config import initialize_config\n  File \"/dev/shm/acr/work/3170016626/src/base/app/utils/config.py\", line 7, in <module>\n    from pydantic_settings import BaseSettings, SettingsConfigDict, YamlConfigSettingsSource\nModuleNotFoundError: No module named 'pydantic_settings'\n"
+   },
+   "app.services.client": {
+    "ok": false,
+    "type": "ModuleNotFoundError",
+    "message": "No module named 'pydantic_settings'",
+    "missing_module": "pydantic_settings",
+    "file": "app/utils/config.py",
+    "line": 7,
+    "traceback": "mport_module\n    return _bootstrap._gcd_import(name[level:], package, level)\n           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"<frozen importlib._bootstrap>\", line 1387, in _gcd_import\n  File \"<frozen importlib._bootstrap>\", line 1360, in _find_and_load\n  File \"<frozen importlib._bootstrap>\", line 1310, in _find_and_load_unlocked\n  File \"<frozen importlib._bootstrap>\", line 488, in _call_with_frames_removed\n  File \"<frozen importlib._bootstrap>\", line 1387, in _gcd_import\n  File \"<frozen importlib._bootstrap>\", line 1360, in _find_and_load\n  File \"<frozen importlib._bootstrap>\", line 1331, in _find_and_load_unlocked\n  File \"<frozen importlib._bootstrap>\", line 935, in _load_unlocked\n  File \"<frozen importlib._bootstrap_external>\", line 999, in exec_module\n  File \"<frozen importlib._bootstrap>\", line 488, in _call_with_frames_removed\n  File \"/dev/shm/acr/work/3170016626/src/base/app/services/__init__.py\", line 1, in <module>\n    from .client import SingletonGeminiClient\n  File \"/dev/shm/acr/work/3170016626/src/base/app/services/client.py\", line 7, in <module>\n    from ..utils import g_config\n  File \"/dev/shm/acr/work/3170016626/src/base/app/utils/__init__.py\", line 1, in <module>\n    from .config import initialize_config\n  File \"/dev/shm/acr/work/3170016626/src/base/app/utils/config.py\", line 7, in <module>\n    from pydantic_settings import BaseSettings, SettingsConfigDict, YamlConfigSettingsSource\nModuleNotFoundError: No module named 'pydantic_settings'\n"
+   },
+   "app.services.lmdb": {
+    "ok": false,
+    "type": "ModuleNotFoundError",
+    "message": "No module named 'pydantic_settings'",
+    "missing_module": "pydantic_settings",
+    "file": "app/utils/config.py",
+    "line": 7,
+    "traceback": "mport_module\n    return _bootstrap._gcd_import(name[level:], package, level)\n           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"<frozen importlib._bootstrap>\", line 1387, in _gcd_import\n  File \"<frozen importlib._bootstrap>\", line 1360, in _find_and_load\n  File \"<frozen importlib._bootstrap>\", line 1310, in _find_and_load_unlocked\n  File \"<frozen importlib._bootstrap>\", line 488, in _call_with_frames_removed\n  File \"<frozen importlib._bootstrap>\", line 1387, in _gcd_import\n  File \"<frozen importlib._bootstrap>\", line 1360, in _find_and_load\n  File \"<frozen importlib._bootstrap>\", line 1331, in _find_and_load_unlocked\n  File \"<frozen importlib._bootstrap>\", line 935, in _load_unlocked\n  File \"<frozen importlib._bootstrap_external>\", line 999, in exec_module\n  File \"<frozen importlib._bootstrap>\", line 488, in _call_with_frames_removed\n  File \"/dev/shm/acr/work/3170016626/src/base/app/services/__init__.py\", line 1, in <module>\n    from .client import SingletonGeminiClient\n  File \"/dev/shm/acr/work/3170016626/src/base/app/services/client.py\", line 7, in <module>\n    from ..utils import g_config\n  File \"/dev/shm/acr/work/3170016626/src/base/app/utils/__init__.py\", line 1, in <module>\n    from .config import initialize_config\n  File \"/dev/shm/acr/work/3170016626/src/base/app/utils/config.py\", line 7, in <module>\n    from pydantic_settings import BaseSettings, SettingsConfigDict, YamlConfigSettingsSource\nModuleNotFoundError: No module named 'pydantic_settings'\n"
+   },
+   "app.services.pool": {
+    "ok": false,
+    "type": "ModuleNotFoundError",
+    "message": "No module named 'pydantic_settings'",
+    "missing_module": "pydantic_settings",
+    "file": "app/utils/config.py",
+    "line": 7,
+    "traceback": "mport_module\n    return _bootstrap._gcd_import(name[level:], package, level)\n           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"<frozen importlib._bootstrap>\", line 1387, in _gcd_import\n  File \"<frozen importlib._bootstrap>\", line 1360, in _find_and_load\n  File \"<frozen importlib._bootstrap>\", line 1310, in _find_and_load_unlocked\n  File \"<frozen importlib._bootstrap>\", line 488, in _call_with_frames_removed\n  File \"<frozen importlib._bootstrap>\", line 1387, in _gcd_import\n  File \"<frozen importlib._bootstrap>\", line 1360, in _find_and_load\n  File \"<frozen importlib._bootstrap>\", line 1331, in _find_and_load_unlocked\n  File \"<frozen importlib._bootstrap>\", line 935, in _load_unlocked\n  File \"<frozen importlib._bootstrap_external>\", line 999, in exec_module\n  File \"<frozen importlib._bootstrap>\", line 488, in _call_with_frames_removed\n  File \"/dev/shm/acr/work/3170016626/src/base/app/services/__init__.py\", line 1, in <module>\n    from .client import SingletonGeminiClient\n  File \"/dev/shm/acr/work/3170016626/src/base/app/services/client.py\", line 7, in <module>\n    from ..utils import g_config\n  File \"/dev/shm/acr/work/3170016626/src/base/app/utils/__init__.py\", line 1, in <module>\n    from .config import initialize_config\n  File \"/dev/shm/acr/work/3170016626/src/base/app/utils/config.py\", line 7, in <module>\n    from pydantic_settings import BaseSettings, SettingsConfigDict, YamlConfigSettingsSource\nModuleNotFoundError: No module named 'pydantic_settings'\n"
+   },
+   "app.utils.config": {
+    "ok": false,
+    "type": "ModuleNotFoundError",
+    "message": "No module named 'pydantic_settings'",
+    "missing_module": "pydantic_settings",
+    "file": "app/utils/config.py",
+    "line": 7,
+    "traceback": "Traceback (most recent call last):\n  File \"<string>\", line 7, in <module>\n  File \"/dev/shm/acr/work/_shared_cache/python/cpython-3.12-linux-x86_64-gnu/lib/python3.12/importlib/__init__.py\", line 90, in import_module\n    return _bootstrap._gcd_import(name[level:], package, level)\n           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"<frozen importlib._bootstrap>\", line 1387, in _gcd_import\n  File \"<frozen importlib._bootstrap>\", line 1360, in _find_and_load\n  File \"<frozen importlib._bootstrap>\", line 1310, in _find_and_load_unlocked\n  File \"<frozen importlib._bootstrap>\", line 488, in _call_with_frames_removed\n  File \"<frozen importlib._bootstrap>\", line 1387, in _gcd_import\n  File \"<frozen importlib._bootstrap>\", line 1360, in _find_and_load\n  File \"<frozen importlib._bootstrap>\", line 1331, in _find_and_load_unlocked\n  File \"<frozen importlib._bootstrap>\", line 935, in _load_unlocked\n  File \"<frozen importlib._bootstrap_external>\", line 999, in exec_module\n  File \"<frozen importlib._bootstrap>\", line 488, in _call_with_frames_removed\n  File \"/dev/shm/acr/work/3170016626/src/base/app/utils/__init__.py\", line 1, in <module>\n    from .config import initialize_config\n  File \"/dev/shm/acr/work/3170016626/src/base/app/utils/config.py\", line 7, in <module>\n    from pydantic_settings import BaseSettings, SettingsConfigDict, YamlConfigSettingsSource\nModuleNotFoundError: No module named 'pydantic_settings'\n"
+   },
+   "app.utils.logging": {
+    "ok": false,
+    "type": "ModuleNotFoundError",
+    "message": "No module named 'pydantic_settings'",
+    "missing_module": "pydantic_settings",
+    "file": "app/utils/config.py",
+    "line": 7,
+    "traceback": "Traceback (most recent call last):\n  File \"<string>\", line 7, in <module>\n  File \"/dev/shm/acr/work/_shared_cache/python/cpython-3.12-linux-x86_64-gnu/lib/python3.12/importlib/__init__.py\", line 90, in import_module\n    return _bootstrap._gcd_import(name[level:], package, level)\n           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"<frozen importlib._bootstrap>\", line 1387, in _gcd_import\n  File \"<frozen importlib._bootstrap>\", line 1360, in _find_and_load\n  File \"<frozen importlib._bootstrap>\", line 1310, in _find_and_load_unlocked\n  File \"<frozen importlib._bootstrap>\", line 488, in _call_with_frames_removed\n  File \"<frozen importlib._bootstrap>\", line 1387, in _gcd_import\n  File \"<frozen importlib._bootstrap>\", line 1360, in _find_and_load\n  File \"<frozen importlib._bootstrap>\", line 1331, in _find_and_load_unlocked\n  File \"<frozen importlib._bootstrap>\", line 935, in _load_unlocked\n  File \"<frozen importlib._bootstrap_external>\", line 999, in exec_module\n  File \"<frozen importlib._bootstrap>\", line 488, in _call_with_frames_removed\n  File \"/dev/shm/acr/work/3170016626/src/base/app/utils/__init__.py\", line 1, in <module>\n    from .config import initialize_config\n  File \"/dev/shm/acr/work/3170016626/src/base/app/utils/config.py\", line 7, in <module>\n    from pydantic_settings import BaseSettings, SettingsConfigDict, YamlConfigSettingsSource\nModuleNotFoundError: No module named 'pydantic_settings'\n"
+   }
+  },
+  "status": "imports_only",
+  "dependency_cutoff": "2025-06-25T05:10:14Z",
+  "seconds": 1.8,
+  "head_failures": 0
+ },
+ "findings": [],
+ "status": "ok",
+ "seconds": 2.8
+}

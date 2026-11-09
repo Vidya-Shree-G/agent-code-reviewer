@@ -1,0 +1,143 @@
+{
+ "pr_id": 3169431698,
+ "repository": "fgmacedo/python-statemachine",
+ "pr_number": 533,
+ "split": "evaluation",
+ "agent": "OpenAI_Codex",
+ "head_sha": "d8e480d1e95c76e4122faa24935207c815def26d",
+ "tool_versions": {
+  "ruff": "ruff 0.17.4",
+  "bandit": "__main__.py 1.9.4",
+  "python": "3.12.3"
+ },
+ "config": {
+  "run_tests": true,
+  "sandbox": true
+ },
+ "base_mode": "reverse_applied_diff",
+ "static": {
+  "files_analysed": 2,
+  "head_issues": 0,
+  "base_issues": 0,
+  "per_tool_head": {},
+  "per_tool_base": {},
+  "introduced": 0,
+  "seconds": 0.3
+ },
+ "tests": {
+  "env": {
+   "status": "partial",
+   "python": "3.15.2",
+   "steps": [
+    {
+     "step": "venv",
+     "ok": true,
+     "seconds": 0.0,
+     "timed_out": false,
+     "log_tail": ""
+    },
+    {
+     "step": "install -e .",
+     "ok": true,
+     "seconds": 0.2,
+     "timed_out": false,
+     "log_tail": ""
+    },
+    {
+     "step": "install --group dev",
+     "ok": false,
+     "seconds": 6.0,
+     "timed_out": false,
+     "log_tail": "/build_meta.py\", line 423, in _build\n             return self._build_with_temp_dir(\n                    ~~~~~~~~~~~~~~~~~~~~~~~~~^\n                 cmd,\n                 ^^^^\n             ...<3 lines>...\n                 self._arbitrary_args(config_settings),\n                 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n             )\n             ^\n           File \"/dev/shm/acr/work/_shared_cache/uv/builds-v0/.tmpvPSiJg/lib/python3.15/site-packages/setuptools/build_meta.py\", line 404, in _build_with_temp_dir\n             self.run_setup()\n             ~~~~~~~~~~~~~~^^\n           File \"/dev/shm/acr/work/_shared_cache/uv/sdists-v10/pypi/pillow/11.2.1/Kn7wU2KezNJvMQTT/src/_custom_build/backend.py\", line 20, in run_setup\n             return super().run_setup(setup_script)\n                    ~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^\n           File \"/dev/shm/acr/work/_shared_cache/uv/builds-v0/.tmpvPSiJg/lib/python3.15/site-packages/setuptools/build_meta.py\", line 317, in run_setup\n             exec(code, locals())\n             ~~~~^^^^^^^^^^^^^^^^\n           File \"<string>\", line 1069, in <module>\n         RequiredDependencyException: \n\n         The headers or library files could not be found for jpeg,\n         a required dependency when compiling Pillow from source.\n\n         Please see the install instructions at:\n            https://pillow.readthedocs.io/en/latest/installation/basic-installation.html\n\n\nhint: Build failures usually indicate a problem with the package or the build environment\n"
+    },
+    {
+     "step": "install pytest",
+     "ok": true,
+     "seconds": 0.0,
+     "timed_out": false,
+     "log_tail": ""
+    }
+   ]
+  },
+  "selected_tests": [
+   {
+    "path": "tests/test_statemachine.py",
+    "reason": "changed_in_pr",
+    "exists_at_base": true
+   },
+   {
+    "path": "tests/test_statemachine_bounded_transitions.py",
+    "reason": "matches_module:statemachine",
+    "exists_at_base": true
+   },
+   {
+    "path": "tests/test_statemachine_inheritance.py",
+    "reason": "matches_module:statemachine",
+    "exists_at_base": true
+   }
+  ],
+  "head_run": {
+   "status": "completed",
+   "exit_code": 1,
+   "seconds": 0.4,
+   "addopts_overridden": true,
+   "counts": {
+    "passed": 43,
+    "failed": 0,
+    "error": 1,
+    "skipped": 2
+   },
+   "tests": {
+    "tests.test_statemachine::test_machine_should_activate_initial_state": {
+     "outcome": "error",
+     "detail": "roperty, record_xml_attribute, recwarn, requires_dot_installed, reverse_traffic_light_machine, tmp_path, tmp_path_factory, tmpdir, tmpdir_factory, traffic_light_machine\n>       use 'pytest --fixtures [testpath]' for help on them.\n\n/dev/shm/acr/work/3169431698/src/head/tests/test_statemachine.py:54\"\nfile /dev/shm/acr/work/3169431698/src/head/tests/test_statemachine.py, line 54\n  def test_machine_should_activate_initial_state(mocker):\nE       fixture 'mocker' not found\n>       available fixtures: AllActionsMachine, OrderControl, add_doctest_context, approval_machine, campaign_machine, campaign_machine_with_final_state, campaign_machine_with_validator, campaign_machine_with_values, capfd, capfdbinary, caplog, capsys, capsysbinary, capteesys, classic_traffic_light_machine, current_time, doctest_namespace, engine, has_dot_installed, monkeypatch, pytestconfig, record_property, record_testsuite_property, record_xml_attribute, recwarn, requires_dot_installed, reverse_traffic_light_machine, tmp_path, tmp_path_factory, tmpdir, tmpdir_factory, traffic_light_machine\n>       use 'pytest --fixtures [testpath]' for help on them.\n\n/dev/shm/acr/work/3169431698/src/head/tests/test_statemachine.py:54"
+    }
+   },
+   "log_tail": ""
+  },
+  "base_run": {
+   "status": "completed",
+   "exit_code": 1,
+   "seconds": 0.4,
+   "addopts_overridden": true,
+   "counts": {
+    "passed": 42,
+    "failed": 0,
+    "error": 1,
+    "skipped": 2
+   },
+   "tests": {
+    "tests.test_statemachine::test_machine_should_activate_initial_state": {
+     "outcome": "error",
+     "detail": "roperty, record_xml_attribute, recwarn, requires_dot_installed, reverse_traffic_light_machine, tmp_path, tmp_path_factory, tmpdir, tmpdir_factory, traffic_light_machine\n>       use 'pytest --fixtures [testpath]' for help on them.\n\n/dev/shm/acr/work/3169431698/src/base/tests/test_statemachine.py:54\"\nfile /dev/shm/acr/work/3169431698/src/base/tests/test_statemachine.py, line 54\n  def test_machine_should_activate_initial_state(mocker):\nE       fixture 'mocker' not found\n>       available fixtures: AllActionsMachine, OrderControl, add_doctest_context, approval_machine, campaign_machine, campaign_machine_with_final_state, campaign_machine_with_validator, campaign_machine_with_values, capfd, capfdbinary, caplog, capsys, capsysbinary, capteesys, classic_traffic_light_machine, current_time, doctest_namespace, engine, has_dot_installed, monkeypatch, pytestconfig, record_property, record_testsuite_property, record_xml_attribute, recwarn, requires_dot_installed, reverse_traffic_light_machine, tmp_path, tmp_path_factory, tmpdir, tmpdir_factory, traffic_light_machine\n>       use 'pytest --fixtures [testpath]' for help on them.\n\n/dev/shm/acr/work/3169431698/src/base/tests/test_statemachine.py:54"
+    }
+   },
+   "log_tail": ""
+  },
+  "comparison": {
+   "regressions": [],
+   "new_test_failures": [],
+   "fixed": [],
+   "persistent_failures": [
+    "tests.test_statemachine::test_machine_should_activate_initial_state"
+   ]
+  },
+  "imports_head": {
+   "statemachine.statemachine": {
+    "ok": true
+   }
+  },
+  "imports_base": {
+   "statemachine.statemachine": {
+    "ok": true
+   }
+  },
+  "status": "completed",
+  "dependency_cutoff": "2025-06-23T21:06:46Z",
+  "seconds": 7.7,
+  "head_failures": 1
+ },
+ "findings": [],
+ "status": "ok",
+ "seconds": 12.1
+}
