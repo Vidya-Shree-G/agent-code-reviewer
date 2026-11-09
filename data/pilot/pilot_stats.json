@@ -1,0 +1,26 @@
+{
+  "archive": "https://zenodo.org/records/16919051",
+  "seed": 572,
+  "input_pr_rows": 33596,
+  "input_repository_rows": 2807,
+  "metadata_exclusions": {
+    "language_or_stars": 26405,
+    "obvious_documentation_title": 206,
+    "missing_description_and_issue_body": 72
+  },
+  "eligible_prs_after_metadata_filters": 6913,
+  "eligible_repositories_after_metadata_filters": 491,
+  "candidate_prs": 10,
+  "candidate_repositories": 10,
+  "development_candidates": 8,
+  "evaluation_candidates": 2,
+  "fully_validated_candidates": 0,
+  "patch_screen_counts": {
+    "unverified": 3,
+    "contains_python_changes": 5,
+    "no_python_changes": 2
+  },
+  "screened_prs": 5,
+  "screened_development_prs": 4,
+  "screened_evaluation_prs": 1
+}
